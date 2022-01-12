@@ -1,0 +1,41 @@
+{
+  "name": "opensumi-doc",
+  "private": true,
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/opensumi/doc"
+  },
+  "bugs": {
+    "url": "https://github.com/opensumi/doc/issues"
+  },
+  "scripts": {
+    "start": "npm run develop",
+    "develop": "gatsby develop -H 0.0.0.0 --open",
+    "build": "gatsby build --prefix-paths",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "pretty-quick": "pretty-quick",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@opensumi/gatsby-theme": "^1.0.6",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "gatsby": "^2.15.34",
+    "husky": "^3.1.0",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
