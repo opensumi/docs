@@ -4,7 +4,6 @@ module.exports = {
       resolve: '@opensumi/gatsby-theme',
       options: {
         GATrackingId: 'G-63DR4G0WD7',
-        pathPrefix: '/doc',
         theme: {
           'primary-color': '#9f5fdb'
         },
