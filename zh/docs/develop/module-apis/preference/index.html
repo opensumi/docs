@@ -65,19 +65,23 @@
 <p>通过 <code class="language-text">VS Code Configuration Contribution</code> 进行配置注册及声明，见：<a href="https://code.visualstudio.com/api/references/contribution-points#contributes.configuration" target="_self" rel="nofollow">Configuration Contribution</a>。</p>
 <h4 id="方式二" style="position:relative"><a href="#%E6%96%B9%E5%BC%8F%E4%BA%8C" aria-label="方式二 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>方式二</h4>
 <p>通过在模块内进行额外的配置声明，代码如下：</p>
-<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> <span class="token keyword">export</span> <span class="token keyword">const</span> demoPreferenceSchema<span class="token operator">:</span> PreferenceSchema <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token string-property property">&#x27;type&#x27;</span><span class="token operator">:</span> <span class="token string">&#x27;object&#x27;</span><span class="token punctuation">,</span>
+<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> PreferenceContribution <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;@opensumi/ide-core-browser&#x27;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Domain<span class="token punctuation">,</span> PreferenceSchema <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;@opensumi/ide-core-common&#x27;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> demoPreferenceSchema<span class="token operator">:</span> PreferenceSchema <span class="token operator">=</span> <span class="token punctuation">{</span>
+  type<span class="token operator">:</span> <span class="token string">&#x27;object&#x27;</span><span class="token punctuation">,</span>
   properties<span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token string-property property">&#x27;demo.language&#x27;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       type<span class="token operator">:</span> <span class="token string">&#x27;string&#x27;</span><span class="token punctuation">,</span>
       <span class="token keyword">default</span><span class="token operator">:</span> <span class="token string">&#x27;typescript&#x27;</span><span class="token punctuation">,</span>
       description<span class="token operator">:</span> <span class="token string">&#x27;demo language type&#x27;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token decorator"><span class="token at operator">@</span><span class="token function">Domain</span></span><span class="token punctuation">(</span>PreferenceContribution<span class="token punctuation">)</span>
 <span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">DemoContribution</span> <span class="token keyword">implements</span> <span class="token class-name">PreferenceContribution</span> <span class="token punctuation">{</span>
-  psublic chema<span class="token operator">:</span> PreferenceSchema <span class="token operator">=</span> demoPreferenceSchema<span class="token punctuation">;</span>
+  <span class="token keyword">public</span> schema<span class="token operator">:</span> PreferenceSchema <span class="token operator">=</span> demoPreferenceSchema<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>将上述的 <code class="language-text">DemoContribution</code> 类在模块声明时引入，便可以在 IDE 环境中注册上新的配置，参考代码：<a href="https://gitlab.alibaba-inc.com/kaitian/ide-framework/blob/336132bd2a867b1c4af0b96e15886dcf7e1073dc/packages/core-browser/src/common/common.contribution.ts" target="_self" rel="nofollow">common.contribution.ts</a>。</p>
 <h3 id="配置值操作" style="position:relative"><a href="#%E9%85%8D%E7%BD%AE%E5%80%BC%E6%93%8D%E4%BD%9C" aria-label="配置值操作 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>配置值操作</h3>
