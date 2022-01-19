@@ -29,19 +29,23 @@ Preferences 模块主要用于处理整个 IDE 配置的读取逻辑，常见的
 通过在模块内进行额外的配置声明，代码如下：
 
 ```ts
-const export const demoPreferenceSchema: PreferenceSchema = {
-  'type': 'object',
+import { PreferenceContribution } from '@opensumi/ide-core-browser';
+import { Domain, PreferenceSchema } from '@opensumi/ide-core-common';
+
+export const demoPreferenceSchema: PreferenceSchema = {
+  type: 'object',
   properties: {
     'demo.language': {
       type: 'string',
       default: 'typescript',
       description: 'demo language type',
-    }
+    },
+  },
 };
 
 @Domain(PreferenceContribution)
 export class DemoContribution implements PreferenceContribution {
-  psublic chema: PreferenceSchema = demoPreferenceSchema;
+  public schema: PreferenceSchema = demoPreferenceSchema;
 }
 ```
 

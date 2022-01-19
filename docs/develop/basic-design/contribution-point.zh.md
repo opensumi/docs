@@ -182,23 +182,24 @@ export class DemoContribution implements MenuContribution {
 配置注册的贡献点为 `PreferenceContribution` ，我们可以通过该贡献点进行框架 `Preference（配置项）`的注册，使用方法如下：
 
 ```ts
+import { PreferenceContribution } from '@opensumi/ide-core-browser';
+import { Domain, PreferenceSchema } from '@opensumi/ide-core-common';
 
-const export const demoPreferenceSchema: PreferenceSchema = {
-  'type': 'object',
+export const demoPreferenceSchema: PreferenceSchema = {
+  type: 'object',
   properties: {
     'demo.language': {
       type: 'string',
       default: 'typescript',
       description: 'demo language type',
-    }
+    },
+  },
 };
-
 
 @Domain(PreferenceContribution)
 export class DemoContribution implements PreferenceContribution {
   public schema: PreferenceSchema = demoPreferenceSchema;
 }
-
 ```
 
 更多详细配置及用法，可参考 [配置模块](../module-apis/preference)
