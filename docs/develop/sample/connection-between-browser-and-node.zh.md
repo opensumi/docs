@@ -129,4 +129,4 @@ export class TodoNodeService extends RPCService implements ITodoNodeService {
 
 ![双向通信](https://img.alicdn.com/imgextra/i1/O1CN01ItcgHk1l0kmoQIjmb_!!6000000004757-1-tps-1200-706.gif)
 
-自此，我们便完成了整个案例的完整教学，你也可以直接访问 [kaitian/todo-list](https://code.alipay.com/kaitian/todo-list) 仓库，重新回顾整个模块的实现。
+自此，我们便完成了整个案例的完整教学。

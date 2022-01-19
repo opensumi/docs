@@ -36,17 +36,17 @@ Browser 插件是 OpenSumi 特有的，也是与 VS Code 最大的差异点。Br
 ### Node 环境中的 API
 
 `package.json` 中声明 `main` 以及 `sumiContributes#nodeMain` 的入口即是插件的 Node.js 环境，可以访问到 OpenSumi Node 环境的 API。
-在插件中调用 `import * as kaitian from 'kaitian'` 或 `const kaitian = require('kaitian')` 即可访问到插件 API，这些 API 根据功能由不同的 namespace 区分。这里导入 `kaitian` 将可以访问到 VS Code + OpenSumi 的 API ，而如果使用 `import vscode from 'vscode'` 则只能使用 VS Code 标准的 API。
+在插件中调用 `import * as sumi from 'sumi'` 或 `const sumi = require('sumi')` 即可访问到插件 API，这些 API 根据功能由不同的 namespace 区分。这里导入 `sumi` 将可以访问到 VS Code + OpenSumi 的 API ，而如果使用 `import vscode from 'vscode'` 则只能使用 VS Code 标准的 API。
 
 ### Worker 环境中的 API
 
-`package.json` 中声明 `sumiContributes#workerMain` 的入口即是插件的 Worker 环境，可以访问到 KAITIN Worker 环境中的 API。
+`package.json` 中声明 `sumiContributes#workerMain` 的入口即是插件的 Worker 环境，可以访问到 OpenSumi Worker 环境中的 API。
 
-Worker API 支持从 `kaitian-worker` 和 `kaitian` 两种模块名，这是因为很多 Worker 插件是从 Node 版本迁移而来的，保留 `kaitian` 这个模块名来兼容这类插件。
+Worker API 支持从 `sumi-worker` 和 `sumi` 两种模块名，这是因为很多 Worker 插件是从 Node 版本迁移而来的，保留 `sumi` 这个模块名来兼容这类插件。
 
 Worker API 是 Node 端 API 的子集，基本上除了与 FS、ChildProcess、Terminal 相关的 API，其他都可以运行在 Worker 中。
 
 ### Browser 环境 API
 
-`package.json` 中声明 `sumiContributes#browserMain` 的入口即是插件的 Browser 环境，可以访问到 KAITIN Browser 环境中的 API。
-Browser 环境中提供的 API 较少，可以通过引用 `kaitian-browser` 来调用，核心是提供了 `executeCommand` 来执行命令，这里的命令可以是跨进程调用，例如注册在 Node/Worker 中的命令。Browser 环境的设计原则是尽量只负责视图渲染，一些复杂的业务逻辑最好使用 Node/Worker 环境。
+`package.json` 中声明 `sumiContributes#browserMain` 的入口即是插件的 Browser 环境，可以访问到 OpenSumi Browser 环境中的 API。
+Browser 环境中提供的 API 较少，可以通过引用 `sumi-browser` 来调用，核心是提供了 `executeCommand` 来执行命令，这里的命令可以是跨进程调用，例如注册在 Node/Worker 中的命令。Browser 环境的设计原则是尽量只负责视图渲染，一些复杂的业务逻辑最好使用 Node/Worker 环境。
