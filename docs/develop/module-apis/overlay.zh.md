@@ -10,7 +10,7 @@ Overlay 模块为 IDE 上的浮层模块，例如包含 Dialog（弹窗）、Mes
 
 Message 会在 IDE 右下角弹出一个提示信息。
 
-![](https://gw-office.alipayobjects.com/bmw-prod/b9d110e1-73d5-41d7-aaad-14a4d630af13.png)
+![message](https://img.alicdn.com/imgextra/i1/O1CN010VHpDr1NuaK6IMhar_!!6000000001630-2-tps-1196-376.png)
 
 ## 接口
 
@@ -138,7 +138,7 @@ if (res === '确定') {
 
 Dialog 接口与消息一致，不过弹窗为模态
 
-![](https://gw-office.alipayobjects.com/bmw-prod/6869e5f6-3e1a-452f-a562-02bab963b1b0.png)
+![dialog](https://img.alicdn.com/imgextra/i2/O1CN01iiAS2T1DzwnvXSD8C_!!6000000000288-2-tps-1078-390.png)
 
 ## Example
 
