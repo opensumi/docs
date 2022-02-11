@@ -98,24 +98,27 @@ const IndexPage = () => {
 
   const imageUrl =
     i18n.language === 'en'
-      ? 'https://img.alicdn.com/imgextra/i3/O1CN01uIRRRl1wmLkN9geV3_!!6000000006350-2-tps-2844-1830.png'
-      : 'https://img.alicdn.com/imgextra/i1/O1CN01n6girT1wJ2OmjQ15K_!!6000000006286-2-tps-2844-1830.png';
+      ? 'https://img.alicdn.com/imgextra/i4/O1CN01bwaFlJ21FRNN2f63C_!!6000000006955-2-tps-3321-2049.png'
+      : 'https://img.alicdn.com/imgextra/i4/O1CN01bwaFlJ21FRNN2f63C_!!6000000006955-2-tps-3321-2049.png';
 
   return (
     <>
       <SEO title={t('OpenSumi')} lang={i18n.language} />
       <Banner
         coverImage={<img className={styles.coverImage} src={imageUrl} />}
-        // coverImage={<BannerSVG />}
         title={t('OpenSumi')}
         description={t('一款帮助你快速搭建本地和云端 IDE 的框架')}
-        className="banner"
+        className={styles.banner}
         buttons={bannerButtons}
         showGithubStars={true}
         notifications={[]}
       />
+      <div className={styles.titleBlock}>
+        <span className={styles.productCase}>Product Case</span>
+        <span className={styles.productCasePrev}>产品案例</span>
+      </div>
+      <Cases className={styles.caseBlock} cases={cases} />
       <Features features={features} />
-      <Cases cases={cases} />
       <Companies title={t('合作公司')} companies={companies} />
     </>
   );
