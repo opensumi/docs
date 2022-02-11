@@ -8,7 +8,7 @@ module.exports = {
           'primary-color': '#9f5fdb'
         },
         pwa: true,
-        cname: true,
+        cname: false,
         codeSplit: true
       }
     }
