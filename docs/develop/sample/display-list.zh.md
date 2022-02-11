@@ -2,7 +2,7 @@
 id: display-list
 title: 展示一个列表
 slug: display-list
-order: 3
+order: 4
 ---
 
 为了实现一个高性能的列表，我们通常可能需要一些三方库进行实现，而在 OpenSumi 中，我们在 `@opensumi/ide-components` 中内置实现了诸多通用组件，接下来便展示一下如何通过这些组件渲染我们的 TodoList 列表。

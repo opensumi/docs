@@ -2,7 +2,7 @@
 id: use-contribution-point
 title: 使用贡献点
 slug: use-contribution-point
-order: 5
+order: 3
 ---
 
 在模块开发中，你可能需要经常与贡献点打交道，在 OpenSumi 中，我们实现了许多关键逻辑的贡献点机制，详细可见：[贡献点](../modules/contribution-point) 文档。

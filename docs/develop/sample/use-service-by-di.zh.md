@@ -2,7 +2,7 @@
 id: use-service-by-di
 title: 通过 DI 注册并使用服务
 slug: use-service-by-di
-order: 4
+order: 5
 ---
 
 DI (依赖注入) 是 OpenSumi 框架的核心机制之一，通过 DI，我们能很容易的实现依赖的解耦及服务的复用，详细介绍可见：[依赖注入](../basic-design/dependence-injector) 文档。
