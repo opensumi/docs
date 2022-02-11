@@ -92,3 +92,50 @@
     margin: 0 auto;
   }
 }
+
+@media (max-width: 480px) {
+  :global(.teaser-img) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 300px;
+      margin: 0 auto;
+    }
+  }
+  .banner {
+    height: 200px;
+    :global {
+      .teaser {
+        top: 0;
+      }
+      .notifications {
+        display: none;
+      }
+    }
+  }
+  .titleBlock {
+    height: 60px;
+    margin: 10px auto;
+    .capabilityCharacteristicsPrev,
+    .productCasePrev {
+      font-size: 20px;
+    }
+    .capabilityCharacteristics,
+    .productCase {
+      font-size: 26px;
+    }
+  }
+  .feature_row {
+    margin-top: 0;
+    padding-bottom: 0;
+    flex-direction: column;
+    .feature {
+      margin-right: 0;
+      margin-top: 80px;
+    }
+  }
+  .featureWrap {
+    padding: 0 15px;
+  }
+}
