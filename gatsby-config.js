@@ -15,7 +15,8 @@ module.exports = {
   ],
   siteMetadata: {
     title: 'OpenSumi',
-    description: '一款帮助你快速搭建本地和云端 IDE 的框架 - A framework helps you quickly build Cloud or Desktop IDE products.',
+    description:
+      '一款帮助你快速搭建本地和云端 IDE 的框架 - A framework helps you quickly build Cloud or Desktop IDE products.',
     siteUrl: 'https://opensumi.com',
     logo: {
       img:
@@ -25,6 +26,7 @@ module.exports = {
     logoUrl:
       'https://img.alicdn.com/imgextra/i4/O1CN01i4NRTW1iw3WW708SI_!!6000000004476-2-tps-101-101.png',
     githubUrl: 'https://github.com/opensumi/core',
+    docsUrl: 'https://github.com/opensumi/doc',
     navs: [
       {
         slug: 'docs/integrate/overview',
@@ -39,7 +41,7 @@ module.exports = {
           en: 'Develop Guide',
           zh: '开发文档'
         }
-      },
+      }
     ],
     docs: [
       {
@@ -81,7 +83,7 @@ module.exports = {
           en: 'Sample'
         },
         order: 5
-      },
+      }
     ],
     showSearch: false, // 是否展示搜索框
     showChinaMirror: false, // 是否展示国内镜像链接
