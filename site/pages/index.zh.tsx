@@ -98,8 +98,8 @@ const IndexPage = () => {
 
   const imageUrl =
     i18n.language === 'en'
-      ? 'https://img.alicdn.com/imgextra/i4/O1CN01bwaFlJ21FRNN2f63C_!!6000000006955-2-tps-3321-2049.png'
-      : 'https://img.alicdn.com/imgextra/i4/O1CN01bwaFlJ21FRNN2f63C_!!6000000006955-2-tps-3321-2049.png';
+      ? 'https://img.alicdn.com/imgextra/i4/O1CN016dXc0k1ZXw88cUvnR_!!6000000003205-2-tps-3321-2049.png'
+      : 'https://img.alicdn.com/imgextra/i4/O1CN016dXc0k1ZXw88cUvnR_!!6000000003205-2-tps-3321-2049.png';
 
   return (
     <>
