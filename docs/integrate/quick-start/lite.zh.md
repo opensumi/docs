@@ -1,3 +1,9 @@
+---
+id: electron-quick-start
+title: 快速开始（纯前端）
+order: 3
+---
+
 # 概览
 
 OpenSumi 提供了纯前端版本的接入能力，可以让你脱离 node 的环境，在纯浏览器环境下，通过简单的 B/S 架构提供相对完整的 IDE 能力。
