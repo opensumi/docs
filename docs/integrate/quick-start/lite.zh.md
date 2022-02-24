@@ -26,7 +26,7 @@ $ npm run start                # 启动
 
 浏览器打开 `http://127.0.0.1:8080` 进行预览或开发。
 
-[![截图](https://img.alicdn.com/imgextra/i4/O1CN01W0RcLw1Mb3mZBWLjS_!!6000000001452-2-tps-3104-1974.png)](https://opensumi.github.io/ide-startup-lite/)
+![截图](https://img.alicdn.com/imgextra/i2/O1CN01nZ7iIk264W0aIM6Xw_!!6000000007608-2-tps-2796-1758.png)
 
 距离一个完整可用的纯前端版 IDE 还需要以下实现：
 
