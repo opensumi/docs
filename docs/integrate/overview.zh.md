@@ -11,7 +11,7 @@ OpenSumi 框架旨在解决阿里经济体内部 IDE 产品研发的重复建设
 
 ## 整体架构
 
-为了保证框架可以同时在 `Web` 和 `Electron` 环境下运行，OpenSumi 采用了一套前后端分离，通过一层抽象的通信层进行相互调用的结构。
+为了保证框架可以同时在 `Web` 和 `Electron` 环境下运行，OpenSumi 采用了一套前后端分离、通过一层抽象的通信层进行相互调用的项目结构。
 
 在 `Web` 上，我们使用 [WebSocket](https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket) 来作为通信的实现。
 
@@ -25,9 +25,9 @@ OpenSumi 框架旨在解决阿里经济体内部 IDE 产品研发的重复建设
 - 后端进程 （Node Process）
 - 前端进程 （Browser Process）
 
-为了保证插件的问题不会影响 IDE 的性能表现，插件能力上 OpenSumi 采用了跟 `VSCode` 类似的方案，通过独立的 `Extension` 进程去启动插件，`Extension` 进程再通过 `Node` 进程与 `Browser` 进程进行通信。
+为了保证插件的问题不会影响 IDE 的性能表现，插件能力上 OpenSumi 采用了跟 `VS Code` 类似的方案，通过独立的插件进程去启动插件，插件进程再通过后端进程与前端进程进行通信。
 
-![OpenSumi整体架构](https://img.alicdn.com/imgextra/i2/O1CN01JtYqIW24tgzXdD3mb_!!6000000007449-0-tps-2205-1668.jpg)
+![OpenSumi整体架构](https://img.alicdn.com/imgextra/i2/O1CN01qNPXUm1wbMFgrPieN_!!6000000006326-2-tps-1332-1180.png)
 
 OpenSumi 的不同能力实现被拆分到了不同的模块内，这些模块通过 [贡献点机制 (Contribution Point)](../develop/modules/contribution-point)、[DI 机制 (Dependence Inject)](../develop/modules/dependence-injector) 互相之间有较弱的依赖关系，对于一些比较核心的基础模块，如主题服务、布局服务等，也会被其他模块直接依赖。
 
@@ -35,7 +35,7 @@ OpenSumi 的不同能力实现被拆分到了不同的模块内，这些模块�
 
 整体启动的生命周期如下图所示：
 
-![生命周期](https://img.alicdn.com/imgextra/i2/O1CN01qpr3WB1iOcZNLbrcu_!!6000000004403-55-tps-3006-1224.svg)
+![生命周期](https://img.alicdn.com/imgextra/i4/O1CN01G6C1nf21GoZEzAlJk_!!6000000006958-2-tps-1564-874.png)
 
 ## 什么是模块？
 
@@ -102,14 +102,12 @@ export class ModuleDemoModule extends NodeModule {
 
 插件, 也可称为插件，是指当前 OpenSumi 框架下支持的，通过在特定位置安装插件文件，从而对 IDE 的界面、功能进行二次插件的一类程序文件，设计上兼容 `VSCode` 中的 [VSCode Extension API](https://code.visualstudio.com/api)，即对于使用 OpenSumi 进行开发的 IDE 产品天然兼容 `VSCode` 的插件体系。
 
+> 针对 OpenSumi 插件开发相关的研发流程链路支持将会在后续逐步推出，敬请期待。
+
 ![插件](https://img.alicdn.com/imgextra/i3/O1CN01gHphRQ26x18NyYeTz_!!6000000007727-2-tps-1156-800.png)
-
-### 如何开发插件
-
-参考文档：[插件开发概览](../extension/overview)
 
 ### 如何发布
 
-由于协议问题，OpenSumi 无法直接使用 VS Code 插件市场源，当前 OpenSumi 默认集成了 Eclipse 公司研发的 [Eclipse Open VSX](https://www.eclipse.org/community/eclipse_newsletter/2020/march/1.php) 服务，开发者可以直接使用，也可以基于 [Eclipse Open VSX](https://www.eclipse.org/community/eclipse_newsletter/2020/march/1.php) 建设自己的插件市场。
+由于协议问题，OpenSumi 无法直接使用 VS Code 插件市场源，当前 OpenSumi 默认集成了 Eclipse 公司研发的 [Eclipse Open VSX](https://www.eclipse.org/community/eclipse_newsletter/2020/march/1.php) 服务，开发者可以直接使用，也可以基于 [Eclipse Open VSX](https://www.eclipse.org/community/eclipse_newsletter/2020/march/1.php) 建设自己的插件市场， 后续，我们也将建设自己的插件市场开发免费的插件托管服务给更多开发者使用。
 
 参考文档：[Publishing Extensions](https://github.com/eclipse/openvsx/wiki/Publishing-Extensions)
