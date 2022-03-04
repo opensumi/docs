@@ -4,11 +4,11 @@ title: 快速开始（Electron）
 order: 2
 ---
 
-OpenSumi 内部集成了一个简易的 Electron 框架，旨在提供一个快速测试 OpenSumi 的桌面端环境。下面可以使用 [ide-electron](https://github.com/opensumi/ide-electron) 作为模板搭建自己的客户端。
+OpenSumi 内部集成了一个简易的 Electron 框架，旨在提供一个快速测试 OpenSumi 的桌面端环境。可以使用 [ide-electron](https://github.com/opensumi/ide-electron) 作为模板搭建自己的客户端。
 
 你也可以在 [Release](https://github.com/opensumi/ide-electron/releases) 列表中获取相关安装包进行快速体验。
 
-![preview](https://img.alicdn.com/imgextra/i4/O1CN01t2BoM81OHwV4e3mKF_!!6000000001681-2-tps-2542-1956.png)
+![preview](https://img.alicdn.com/imgextra/i4/O1CN013APO901bevPEe8Ydx_!!6000000003491-2-tps-2478-1624.png)
 
 ## 兼容环境
 
@@ -40,7 +40,7 @@ $ yarn run start
 $ yarn run watch
 ```
 
-启动 Electron 有用
+启动
 
 ```bash
 $ yarn start
