@@ -56,6 +56,11 @@ const IndexPage = () => {
       name: '淘宝',
       img:
         'https://gw.alipayobjects.com/mdn/rms_2274c3/afts/img/A*1l8-TqUr7UcAAAAAAAAAAABkARQnAQ'
+    },
+    {
+      name: '斑马智行',
+      img:
+        'https://img.alicdn.com/imgextra/i2/O1CN01LQrOdf1G4BhyTDAxN_!!6000000000568-2-tps-440-200.png'
     }
   ];
 
