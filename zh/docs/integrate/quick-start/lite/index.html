@@ -127,7 +127,7 @@ $ <span class="token function">npm</span> run start                <span class="
 <span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre></div>
 <p>将语法提示插件直接加入插件列表即可。</p>
 <h2 id="lsif-语法服务" style="position:relative"><a href="#lsif-%E8%AF%AD%E6%B3%95%E6%9C%8D%E5%8A%A1" aria-label="lsif 语法服务 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Lsif 语法服务</h2>
-<p>对于代码查看、Code review 这一类纯浏览场景，基于离线索引分析的 lsif 链接 todo 方案可以很好的支持跨文件 Hover 提示，代码跳转的需求，且不需要浏览器端承担任何额外的分析开销。OpenSumi 纯前端版集成了 lsif client，只需要简单的对接即可接入 lsif 服务：</p>
+<p>对于代码查看、Code review 这一类纯浏览场景，基于离线索引分析的 <a href="https://microsoft.github.io/language-server-protocol/specifications/lsif/0.6.0/specification/" target="_self" rel="nofollow">LSIF 方案</a> 可以很好的支持跨文件 Hover 提示，代码跳转的需求，且不需要浏览器端承担任何额外的分析开销。OpenSumi 纯前端版集成了 lsif client，只需要简单的对接即可接入 lsif 服务：</p>
 <blockquote>
 <p>文件位置：<code class="language-text">web-lite/language-service/lsif-service/lsif-client.ts</code></p>
 </blockquote>
