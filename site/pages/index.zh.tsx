@@ -50,12 +50,12 @@ const IndexPage = () => {
     {
       name: '天猫',
       img:
-        'https://gw.alipayobjects.com/mdn/rms_2274c3/afts/img/A*BQrxRK6oemMAAAAAAAAAAABkARQnAQ'
+        'https://img.alicdn.com/imgextra/i2/O1CN01QEz8v91KudWv8ilGz_!!6000000001224-2-tps-440-200.png'
     },
     {
       name: '淘宝',
       img:
-        'https://gw.alipayobjects.com/mdn/rms_2274c3/afts/img/A*1l8-TqUr7UcAAAAAAAAAAABkARQnAQ'
+        'https://img.alicdn.com/imgextra/i1/O1CN01VQtaSS1Tu1XhM1mbb_!!6000000002441-2-tps-440-200.png'
     },
     {
       name: '斑马智行',
