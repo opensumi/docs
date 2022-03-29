@@ -21,8 +21,8 @@ class {
   @Autowired(IReporterService)
   reporterService: IReporterService
 
-	async activateExtension() {
-  	...
+  async activateExtension() {
+    ...
     const timer = reporterService.time(REPORT_NAME.ACTIVE_EXTENSION);
     ...
     timer.timeEnd(extension.extensionId)
@@ -40,8 +40,8 @@ class {
   @Autowired(IReporterService)
   reporterService: IReporterService
 
-	async activateExtension() {
-  	...
+  async activateExtension() {
+    ...
     reporterService.point(REPORT_NAME.ACTIVE_EXTENSION, extension.extensionId);
   }
 }
@@ -100,7 +100,7 @@ injector.addProviders({
 | data.extra.extDuration 可以获取在插件进程中的耗时 |
 | channelReconnect                                  | point       | 无                   | 重连埋点                                                                                                                                                                                                                                                                                                                                |
 | measure                                           | performance | 阶段名               | 启动各个阶段生命周期执行的时间，其中 msg 格式主要包括：1. 各模块生命周期时长: ${ModuleConstructName}.(initialize &#124; onStart &#124; onDidStart) 2. 所有模块生命周期时长：Contributions.(initialize &#124; onStart &#124; start)3. 框架状态ready耗时：Framework.ready 4. 各个类内方法执行的时长：${ClassConstructName}.\${methodName} |
-|  |
+|                                                   |
 | provideHover                                      | performance | uri extname          | 调用耗时埋点                                                                                                                                                                                                                                                                                                                            |
 | provideDefinition                                 | performance | uri extname          | 调用耗时埋点                                                                                                                                                                                                                                                                                                                            |
 | provideTypeDefinition                             | performance | uri extname          | 调用耗时埋点                                                                                                                                                                                                                                                                                                                            |
