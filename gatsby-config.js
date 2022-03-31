@@ -20,11 +20,11 @@ module.exports = {
     siteUrl: 'https://opensumi.com',
     logo: {
       img:
-        'https://img.alicdn.com/imgextra/i1/O1CN01P04WYq1HV2XD2XhTP_!!6000000000762-2-tps-180-172.png',
+        'https://img.alicdn.com/imgextra/i2/O1CN01dqjQei1tpbj9z9VPH_!!6000000005951-55-tps-87-78.svg',
       link: 'https://opensumi.com'
     },
     logoUrl:
-      'https://img.alicdn.com/imgextra/i4/O1CN01i4NRTW1iw3WW708SI_!!6000000004476-2-tps-101-101.png',
+      'https://img.alicdn.com/imgextra/i2/O1CN01dqjQei1tpbj9z9VPH_!!6000000005951-55-tps-87-78.svg',
     githubUrl: 'https://github.com/opensumi/core',
     docsUrl: 'https://github.com/opensumi/doc',
     navs: [
@@ -90,16 +90,8 @@ module.exports = {
       'https://img.alicdn.com/imgextra/i1/O1CN01k3gCmL1HWPjLchVv7_!!6000000000765-0-tps-200-199.jpg',
     showSearch: false, // 是否展示搜索框
     showChinaMirror: false, // 是否展示国内镜像链接
-    showAntVProductsCard: false,
     showLanguageSwitcher: false, // 用于定义是否展示语言切换
     showGithubCorner: true, // 是否展示角落的 GitHub 图标
-    showExampleDemoTitle: false,
-    playground: {
-      extraLib: '',
-      container: '<div id="container" />',
-      playgroundDidMount: 'console.log("playgroundDidMount");',
-      playgroundWillUnmount: 'console.log("playgroundWillUnmount");'
-    },
     docsearchOptions: {
       apiKey: '733f00c901bfe392d78ba8c4437f8a32',
       indexName: 'opensumi'
