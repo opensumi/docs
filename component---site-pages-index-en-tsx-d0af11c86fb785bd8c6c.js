@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[15],{ug36:function(e,n,u){"use strict";u.r(n);var w=u("jAeI");n.default=w.default}}]);
