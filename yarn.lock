@@ -1524,10 +1524,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@opensumi/gatsby-theme@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@opensumi/gatsby-theme/-/gatsby-theme-1.1.2.tgz#c43d8847d3a3f0ed0610d198dbd46371a5761f1c"
-  integrity sha512-8+JwhorBYSAsOzV+5Sm2j05hnShcmLKDDLs5DLxPsP2UXyNrYEOqLOTo4ju90dizGK6CYUfMghnvkW+gDHtiUg==
+"@opensumi/gatsby-theme@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@opensumi/gatsby-theme/-/gatsby-theme-1.1.3.tgz#4e72de4f354c440fe5406d8e31f649aa2db2be7d"
+  integrity sha512-6RpLTcb/fxeuv+5IpDFqWB1b37vRvzNRfhZq+3mVN7hg80LWfTyPKLMot2d/xNoJGqJ78ESAUh/Dbrow207HOQ==
   dependencies:
     "@ant-design/icons" "^4.1.0"
     "@hot-loader/react-dom" "^16.9.0+4.12.11"
