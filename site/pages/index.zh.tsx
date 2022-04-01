@@ -28,7 +28,7 @@ const IndexPage = () => {
         'https://img.alicdn.com/imgextra/i2/O1CN01tAJG0Q1sy1OZDiqDb_!!6000000005834-2-tps-330-288.png',
       title: t('轻松集成'),
       description: t(
-        '提供面向容器场景、Electron场景和纯前端场景的快速集成解决方案，助力业务快速落地'
+        '提供面向容器场景、Electron 场景和纯前端场景的快速集成解决方案，助力业务快速落地'
       )
     },
     {
@@ -124,7 +124,6 @@ const IndexPage = () => {
         description={t('一款帮助你快速搭建本地和云端 IDE 的框架。')}
         className="banner"
         buttons={bannerButtons}
-        notifications={[]}
       />
       <Cases cases={cases} />
       <Features title={t('能力特性')} features={features} />
