@@ -1,5 +1,5 @@
 ---
-id: electron-quick-start
+id: quick-start-lite
 title: 快速开始（纯前端）
 order: 3
 ---
@@ -10,7 +10,7 @@ OpenSumi 提供了纯前端版本的接入能力，可以让你脱离 node 的�
 
 在开始运行前，请先保证本地的环境已经安装 Node.js 10.15.x 或以上版本。同时 OpenSumi 依赖一些 Node.js Addon，为了确保这些 Addon 能够被正常编译运行，建议参考 [node-gyp](https://github.com/nodejs/node-gyp#installation) 中的安装指南来搭建本地环境。
 
-同时，你也可以直接访问我们的[预览页面](https://opensumi.github.io/ide-startup-lite/)体验最新运行效果。
+同时，你也可以直接访问我们的[预览页面](https://opensumi.github.io/ide-startup-lite/)体验最新运行效果，支持分支或者 tag 地址 如 `https://opensumi.github.io/ide-startup-lite/#https://github.com/opensumi/core/tree/v2.16.0`。
 
 # 快速开始
 
@@ -26,7 +26,7 @@ $ npm run start                # 启动
 
 浏览器打开 `http://127.0.0.1:8080` 进行预览或开发。
 
-![截图](https://img.alicdn.com/imgextra/i2/O1CN01nZ7iIk264W0aIM6Xw_!!6000000007608-2-tps-2796-1758.png)
+![截图](https://gw.alipayobjects.com/mdn/rms_3b03a3/afts/img/A*ZXeHTJFmx3AAAAAAAAAAAAAAARQnAQ)
 
 距离一个完整可用的纯前端版 IDE 还需要以下实现：
 
@@ -36,6 +36,12 @@ $ npm run start                # 启动
 - 搜索服务配置
 
 # 文件服务配置
+
+纯前端版本使用 `BrowserFsProvider` 替换 OpenSumi 内的 `DiskFileSystemProvider`, 改动在于由原来的本地文件服务改成 http 接口服务
+
+> 文件位置：`web-lite/file-provider/browser-fs-provider.ts`
+
+## 文件服务
 
 与容器版、electron 版这种全功能 IDE 不同的是，纯前端版本 IDE 一般都服务于一个垂直、特定的场景，比如代码查看、codereview 等等，对应的底层能力是服务化的。且由于浏览器本身没有文件系统，因此需要一个外部的数据源来提供和维护文件信息。在纯前端版本，我们需要开发者实现以下两个方法来支持基础的代码查看能力：
 
