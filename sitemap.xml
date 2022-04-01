@@ -27,6 +27,7 @@
 <url> <loc>https://opensumi.com/zh/docs/integrate/universal-integrate-case/custom-command</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://opensumi.com/zh/docs/integrate/universal-integrate-case/custom-config</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://opensumi.com/zh/docs/integrate/universal-integrate-case/custom-menu</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://opensumi.com/zh/docs/integrate/universal-integrate-case/custom-reporter</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://opensumi.com/zh/docs/integrate/universal-integrate-case/custom-view</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://opensumi.com/en/docs/integrate/overview</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://opensumi.com/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
