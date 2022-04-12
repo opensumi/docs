@@ -56,7 +56,7 @@
 <li>注册新的菜单项</li>
 <li>向已有的菜单项注册子菜单</li>
 </ul>
-<p>OpenSumi 提供了自定义菜单能力，基于 OpenSumi 的 <a href="../../develop/modules/contribution-point">Contribution</a> 机制，实现 <code class="language-text">MenuContribution</code> ，调用 <code class="language-text">menuRegistry</code> 提供的方法即可。</p>
+<p>OpenSumi 提供了自定义菜单能力，基于 OpenSumi 的 <a href="../../develop/basic-design/contribution-point">Contribution</a> 机制，实现 <code class="language-text">MenuContribution</code> ，调用 <code class="language-text">menuRegistry</code> 提供的方法即可。</p>
 <div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token keyword">interface</span> <span class="token class-name">MenuContribution</span> <span class="token punctuation">{</span>
   registerMenus<span class="token operator">?</span><span class="token punctuation">(</span>menus<span class="token operator">:</span> IMenuRegistry<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
