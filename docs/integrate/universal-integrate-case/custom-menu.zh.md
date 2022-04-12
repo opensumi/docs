@@ -10,7 +10,7 @@ order: 2
 - 注册新的菜单项
 - 向已有的菜单项注册子菜单
 
-OpenSumi 提供了自定义菜单能力，基于 OpenSumi 的 [Contribution](../../develop/modules/contribution-point) 机制，实现 `MenuContribution` ，调用 `menuRegistry` 提供的方法即可。
+OpenSumi 提供了自定义菜单能力，基于 OpenSumi 的 [Contribution](../../develop/basic-design/contribution-point) 机制，实现 `MenuContribution` ，调用 `menuRegistry` 提供的方法即可。
 
 ```typescript
 interface MenuContribution {
