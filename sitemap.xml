@@ -8,8 +8,8 @@
 <url> <loc>https://opensumi.com/zh/docs/develop/basic-design/core-idea</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://opensumi.com/zh/docs/develop/basic-design/core-modules</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://opensumi.com/zh/docs/develop/basic-design/dependence-injector</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://opensumi.com/zh/docs/develop/basic-design/extension-mechanism</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://opensumi.com/zh/docs/develop/basic-design/lifecycle</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://opensumi.com/zh/docs/develop/basic-design/extension-mechanism</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://opensumi.com/zh/docs/develop/module-apis/decoration</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://opensumi.com/zh/docs/develop/module-apis/editor</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://opensumi.com/zh/docs/develop/module-apis/layout</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
