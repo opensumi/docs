@@ -1,6 +1,6 @@
 ---
 id: contribution-point
-title: 贡献点
+title: 贡献点机制
 slug: contribution-point
 order: 5
 ---
@@ -191,9 +191,9 @@ export const demoPreferenceSchema: PreferenceSchema = {
     'demo.language': {
       type: 'string',
       default: 'typescript',
-      description: 'demo language type',
-    },
-  },
+      description: 'demo language type'
+    }
+  }
 };
 
 @Domain(PreferenceContribution)
