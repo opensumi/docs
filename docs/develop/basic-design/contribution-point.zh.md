@@ -74,28 +74,6 @@ export class DemoContribution implements ClientAppContribution {
 }
 ```
 
-### 快捷键注册
-
-快捷键注册的贡献点为 `KeybindingContribution` ，我们可以通过该贡献点进行框架 `Keybinding（快捷键）`的注册，使用方法如下：
-
-```ts
-import {
-  Domain,
-  KeybindingContribution,
-  KeybindingRegistry
-} from '@opensumi/ide-core-browser';
-
-@Domain(KeybindingContribution)
-export class DemoContribution implements KeybindingContribution {
-  registerKeybindings(keybindings: KeybindingRegistry): void {
-    keybindings.registerKeybinding({
-      command: quickFileOpen.id,
-      keybinding: 'ctrlcmd+p'
-    });
-  }
-}
-```
-
 ### 命令注册
 
 命令注册的贡献点为 `KeybindingContribution` ，我们可以通过该贡献点进行框架 `Command（命令）`的注册，使用方法如下：
@@ -121,6 +99,55 @@ export class DemoContribution implements CommandContribution {
         }
       }
     );
+  }
+}
+```
+
+### 配置注册
+
+配置注册的贡献点为 `PreferenceContribution` ，我们可以通过该贡献点进行框架 `Preference（配置项）`的注册，使用方法如下：
+
+```ts
+import { PreferenceContribution } from '@opensumi/ide-core-browser';
+import { Domain, PreferenceSchema } from '@opensumi/ide-core-common';
+
+export const demoPreferenceSchema: PreferenceSchema = {
+  type: 'object',
+  properties: {
+    'demo.language': {
+      type: 'string',
+      default: 'typescript',
+      description: 'demo language type'
+    }
+  }
+};
+
+@Domain(PreferenceContribution)
+export class DemoContribution implements PreferenceContribution {
+  public schema: PreferenceSchema = demoPreferenceSchema;
+}
+```
+
+更多详细配置及用法，可参考 [配置模块](../module-apis/preference)
+
+### 快捷键注册
+
+快捷键注册的贡献点为 `KeybindingContribution` ，我们可以通过该贡献点进行框架 `Keybinding（快捷键）`的注册，使用方法如下：
+
+```ts
+import {
+  Domain,
+  KeybindingContribution,
+  KeybindingRegistry
+} from '@opensumi/ide-core-browser';
+
+@Domain(KeybindingContribution)
+export class DemoContribution implements KeybindingContribution {
+  registerKeybindings(keybindings: KeybindingRegistry): void {
+    keybindings.registerKeybinding({
+      command: quickFileOpen.id,
+      keybinding: 'ctrlcmd+p'
+    });
   }
 }
 ```
@@ -176,33 +203,6 @@ export class DemoContribution implements MenuContribution {
 ```
 
 框架默认注册了共计 53 个右键菜单的注册区位，详细可见 `@opensumi/ide-core-browser` 中的 `MenuId` 定义。
-
-### 配置注册
-
-配置注册的贡献点为 `PreferenceContribution` ，我们可以通过该贡献点进行框架 `Preference（配置项）`的注册，使用方法如下：
-
-```ts
-import { PreferenceContribution } from '@opensumi/ide-core-browser';
-import { Domain, PreferenceSchema } from '@opensumi/ide-core-common';
-
-export const demoPreferenceSchema: PreferenceSchema = {
-  type: 'object',
-  properties: {
-    'demo.language': {
-      type: 'string',
-      default: 'typescript',
-      description: 'demo language type'
-    }
-  }
-};
-
-@Domain(PreferenceContribution)
-export class DemoContribution implements PreferenceContribution {
-  public schema: PreferenceSchema = demoPreferenceSchema;
-}
-```
-
-更多详细配置及用法，可参考 [配置模块](../module-apis/preference)
 
 ### 自定义协议文件
 
