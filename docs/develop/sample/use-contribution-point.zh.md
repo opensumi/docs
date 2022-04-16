@@ -5,7 +5,7 @@ slug: use-contribution-point
 order: 3
 ---
 
-在模块开发中，你可能需要经常与贡献点打交道，在 OpenSumi 中，我们实现了许多关键逻辑的贡献点机制，详细可见：[贡献点](../modules/contribution-point) 文档。
+在模块开发中，你可能需要经常与贡献点打交道，在 OpenSumi 中，我们实现了许多关键逻辑的贡献点机制，详细可见：[贡献点](../basic-design/contribution-point) 文档。
 
 为了让我们的 TodoList 列表注册在左侧的资源管理器面板上，我们需要使用到 `MainLayoutContribution` 来进行面板的注册工作。
 

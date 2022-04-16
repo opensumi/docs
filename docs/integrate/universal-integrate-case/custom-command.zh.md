@@ -5,11 +5,11 @@ slug: custom-command
 order: 4
 ---
 
-# 使用
+## 概览
 
 使用命令的场景主要有下面两种：
 
-## 插件
+### 插件
 
 插件中可以通过下面例子的用法使用 OpenSumi 中的命令：
 
@@ -21,7 +21,7 @@ let uri = Uri.file('/some/path/to/folder');
 let success = await commands.executeCommand('vscode.openFolder', uri);
 ```
 
-## 模块
+### 模块
 
 模块中可以通过下面例子的用法使用 OpenSumi 中的命令：
 
@@ -44,7 +44,7 @@ class DemoModule {
 }
 ```
 
-# 内置命令
+## 内置命令
 
 在 OpenSumi 框架中，内置了许多基础命令，在需要实现时，你可以先到对应模块查找一下对应实现，避免重复劳动。常用的一些内置命令如下：
 
@@ -93,11 +93,11 @@ class DemoModule {
 | workbench.action.debug.stop                               | 调试终止                             |                                  |
 | workbench.action.showAllSymbols                           | 展示所有符号                         |                                  |
 
-# 注册自定义命令
+## 注册自定义命令
 
 注册自定义命令的方式同样也存在两种方式：
 
-## 通过插件注册
+### 通过插件注册
 
 插件注册主要依赖 `commands` 贡献点，详细文档可见：[contributes.commands](https://code.visualstudio.com/api/references/contribution-points#contributes.commands)。
 
@@ -136,6 +136,6 @@ export async function activate(context: sumi.ExtensionContext) {
 }
 ```
 
-## 通过模块注册
+### 通过模块注册
 
-在模块中，我们通常采用 `CommandContribution` 进行注册，详细可见文档：[命令注册](../..//develop/modules/contribution-point.md#命令注册)。
+在模块中，我们通常采用 `CommandContribution` 进行注册，详细可见文档：[命令注册](../../develop/basic-design/contribution-point#命令注册)。

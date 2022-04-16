@@ -5,6 +5,8 @@ slug: custom-view
 order: 3
 ---
 
+## 概览
+
 OpenSumi 视图基于 `插槽机制` 设计，整个 Layout 本身是一个大的 React 组件，组件会将视图划分为若干个插槽。如 OpenSumi 默认提供的布局组件就会将视图划分为如下图所示的插槽模板：
 
 ![默认插槽模板](https://img.alicdn.com/imgextra/i3/O1CN01jVb1Nv1n4XHe0H2wG_!!6000000005036-2-tps-1714-1374.png)
