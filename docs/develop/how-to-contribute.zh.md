@@ -15,7 +15,7 @@ order: 1
 
 在开发代码前你需要安装必要的一些开发工具，克隆我们的项目代码 [opensumi/core](https://github.com/opensumi/core)，并且通过 `npm` 安装依赖。
 
-由于长城防火墙的缘故，使用 npm 官方源会导致下载安装比较缓慢，建议在开始前将你的 npm 镜像切换至[npmmirror 中国镜像站](https://npmmirror.com/)（或安装一个 npm 镜像切换工具用于快速切换，如 [nrm](https://www.npmjs.com/package/nrm)）。
+由于长城防火墙的缘故，使用 npm 官方源会导致下载安装比较缓慢，建议在开始前将你的 npm 镜像切换至 [npmmirror 中国镜像站](https://npmmirror.com/)（或安装一个 npm 镜像切换工具用于快速切换，如 [nrm](https://www.npmjs.com/package/nrm)）。
 
 手动设置方式如下：
 
