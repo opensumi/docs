@@ -47,15 +47,15 @@ If you want to learn how to run OpenSumi or want to debug an issue, you need to 
 In the first step, you need to fork a copy of the `OpenSumi` repository, and then clone it locally:
 
 ```bash
-$ git clone https://github.com/<<<your-github-account>>>/core.git
+git clone https://github.com/<<<your-github-account>>>/core.git
 ```
 
 Usually you need to synchronize the latest branch code in advance before modifying or submitting the code.
 
 ```bash
-$ cd core
-$ git checkout main
-$ git pull https://github.com/opensumi/core.git main
+cd core
+git checkout main
+git pull https://github.com/opensumi/core.git main
 ```
 
 After handling the code conflicts, submit the code to your repository, and then you can go to [opensumi/core](https://github.com/opensumi/core/pulls) to submit your PR at any time.
@@ -64,18 +64,11 @@ Note: The default `opensumi/core` also contains a lot of GitHub Actions. If you 
 
 ### Build
 
-Enter the local project path, install dependencies through `npm` and initialize the dependencies. Due to the domestic wall, the download and installation of some packages will be slow. It is recommended to switch your npm mirror to the domestic Taobao mirror address before starting, or install one The npm mirror switching tool is used for quick switching, such as [nrm](https://www.npmjs.com/package/nrm), the manual setting method is as follows:
+Enter the local project path, install dependencies through `npm` and initialize the dependencies.
 
 ```bash
-$ npm config set registry https://registry.npm.taobao.org
-```
-
-Because `canvas` relies on GitHub Release resources, it is easy to time out in the domestic network environment, so please add the corresponding mirror address when installing the dependency as follows:
-
-```bash
-$ cd core
-$ npm install --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-canvas-prebuilt/
-$ npm run init
+cd core
+npm run init
 ```
 
 ### Run
@@ -83,13 +76,13 @@ $ npm run init
 After the initialization is complete, you can run the Web version directly with the following command, and enable `Hot Reload` at the same time. All modifications except the plug-in process can be seen in the Web in real time.
 
 ```bash
-$ npm start
+npm start
 ```
 
 By default, the framework will display the `tools/workspace` directory under the project as the workspace directory. You can also open OpenSumi by specifying the path with `MY_WORKSPACE=`, as shown below:
 
 ```bash
-$ MY_WORKSPACE={workspace_path} npm start
+MY_WORKSPACE={workspace_path} npm start
 ```
 
 ![perview](https://img.alicdn.com/imgextra/i2/O1CN01RkgC7P1zhGC1IgghU_!!6000000006745-2-tps-2930-1802.png)
@@ -135,7 +128,7 @@ For PR content, just follow the PR and fill in the template.
 If you want to debug the plug-in under the OpenSumi framework, you can link your local plug-in to the `{ide-framework}/tools/extensions` directory in the form of a soft link, such as:
 
 ```bash
-$ ln -s {local_path}/{extension_name} {ide-framework}/tools/extensions/{extension_name}
+ln -s {local_path}/{extension_name} {ide-framework}/tools/extensions/{extension_name}
 ```
 
 You can quickly preview the effect of the plug-in function by refreshing the page.
