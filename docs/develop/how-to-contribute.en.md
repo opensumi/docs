@@ -7,7 +7,7 @@ order: 1
 
 Generally speaking, you have many ways to contribute to the development of the `OpenSumi` code, for example: write down a issue about the bug you found, submit a PR (Pull Requests), or simply to some Each feature submits a suggestion, etc.
 
-After you clone and build our warehouse code, check [Issues](https://github.com/opensumi/core/issues). For issues marked with `PR Welcome`, it is best to submit your first PR If you have any questions in the process, you can always consult any project member in the comment area @ any project member.
+For [issues](https://github.com/opensumi/core/issues) marked with `PR Welcome`, it is best to submit your first PR If you have any questions in the process, you can always consult any project member in the comment area @ any project member.
 
 ## Development environment preparation
 
@@ -18,8 +18,8 @@ Before developing the code, you need to install some necessary development tools
 You may need the following development tools:
 
 - [Git](https://git-scm.com)
-- [Node.JS](https://nodejs.org/en/), **x64**, version number `>= 12.x`, `<= 14.x`
-- [Python](https://www.python.org/downloads/) (pre-dependency of node-gyp library; view [node-gyp readme](https://github.com/nodejs/node-gyp# installation) Find a suitable version currently supported)
+- [Node.JS](https://nodejs.org/en/), version number `>= 12.x`, `<= 14.x`
+- [Python](https://www.python.org/downloads/) \(pre-dependency of node-gyp library; view [node-gyp readme](https://github.com/nodejs/node-gyp#installation) Find a suitable version currently supported\)
   - **Note:** Windows users will install Python automatically by installing the npm module of `windows-build-tools`, which can be quickly installed in this way. (See below)
 - A C/C++ compilation tool suitable for your system:
   - **macOS**
@@ -30,7 +30,7 @@ You may need the following development tools:
       - If you install it through the Node installer provided by [Node.JS](https://nodejs.org/en/download/) and make sure you install the native module tools, the environment will be able to be used normally.
       - If you manage scripts through Node version, such as [nvm](https://github.com/coreybutler/nvm-windows) or [nvs](https://github.com/jasongin/nvs)
         - Install the Python version corresponding to the current version [Microsoft Store Package](https://docs.python.org/3/using/windows.html#the-microsoft-store-package)
-        - Install `Visual C++ Build Environment`: Visit and install [Visual Studio Build Tools](https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=BuildTools) or [ Visual Studio Community Edition](https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=Community). The minimal installation mode is to install only `Desktop Development with C++`
+        - Install `Visual C++ Build Environment`: Visit and install [Visual Studio Build Tools](https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=BuildTools) or [Visual Studio Community Edition](https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=Community). The minimal installation mode is to install only `Desktop Development with C++`
         - Open the command line and execute `npm config set msvs_version 2019`
     - Note: Make sure that your local PATH contains only ASCII characters, otherwise it may cause [node-gyp usage problems (nodejs/node-gyp/ issues#297)](https://github.com/nodejs/node-gyp/issues/297), and currently does not currently support the construction and debugging of the project under the lower version of the Windows environment.
 
@@ -47,49 +47,42 @@ If you want to learn how to run OpenSumi or want to debug an issue, you need to 
 In the first step, you need to fork a copy of the `OpenSumi` repository, and then clone it locally:
 
 ```bash
-$ git clone https://github.com/<<<your-github-account>>>/core.git
+git clone https://github.com/<<<your-github-account>>>/core.git
 ```
 
 Usually you need to synchronize the latest branch code in advance before modifying or submitting the code.
 
 ```bash
-$ cd core
-$ git checkout main
-$ git pull https://github.com/opensumi/core.git main
+cd core
+git checkout main
+git pull https://github.com/opensumi/core.git main
 ```
 
-After handling the code conflicts, submit the code to your warehouse, and then you can go to [opensumi/core](https://github.com/opensumi/core/pulls) to submit your PR at any time.
+After handling the code conflicts, submit the code to your repository, and then you can go to [opensumi/core](https://github.com/opensumi/core/pulls) to submit your PR at any time.
 
 Note: The default `opensumi/core` also contains a lot of GitHub Actions. If you don't want to execute these Actions, you can go to `https://github.com/<<Your Username>>/core/settings/actions` Close the corresponding Actions.
 
 ### Build
 
-Enter the local project path, install dependencies through `npm` and initialize the dependencies. Due to the domestic wall, the download and installation of some packages will be slow. It is recommended to switch your npm mirror to the domestic Taobao mirror address before starting, or install one The npm mirror switching tool is used for quick switching, such as [nrm](https://www.npmjs.com/package/nrm), the manual setting method is as follows:
+Enter the local project path, install dependencies through `npm` and initialize the dependencies.
 
 ```bash
-$ npm config set registry https://registry.npm.taobao.org
-```
-
-Because `canvas` relies on GitHub Release resources, it is easy to time out in the domestic network environment, so please add the corresponding mirror address when installing the dependency as follows:
-
-```bash
-$ cd core
-$ npm install --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-canvas-prebuilt/
-$ npm run init
+cd core
+npm run init
 ```
 
 ### Run
 
-After the initialization is complete, you can run the Web version directly with the following command, and enable `Hot Reload` at the same time. All modifications except the plug-in process can be seen in the Web in real time.
+After the initialization is complete, you can run the Web version directly with the following command, and enable `Hot Reload` at the same time. All modifications except the extension process can be seen in the Web in real time.
 
 ```bash
-$ npm start
+npm start
 ```
 
 By default, the framework will display the `tools/workspace` directory under the project as the workspace directory. You can also open OpenSumi by specifying the path with `MY_WORKSPACE=`, as shown below:
 
 ```bash
-$ MY_WORKSPACE={workspace_path} npm start
+MY_WORKSPACE={workspace_path} npm start
 ```
 
 ![perview](https://img.alicdn.com/imgextra/i2/O1CN01RkgC7P1zhGC1IgghU_!!6000000006745-2-tps-2930-1802.png)
@@ -102,21 +95,21 @@ There are multiple processes when OpenSumi is running. You need to determine the
 
 For the `Browser process`, you can debug directly through `Chrome Developer Tools` (recommended), or install [Debugger for Chrome](https: //marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) to debug the breakpoint of the `Browser process`. as the picture shows:
 
-![](https://img.alicdn.com/imgextra/i2/O1CN01RytoAv1zgLMg9FCna_!!6000000006743-2-tps-2602-1732.png#id=YcHEw&originHeight=1732&originWidth=2602&originalType=binary&ratio=1&status=done&style=none&style=
+![Browser process](https://img.alicdn.com/imgextra/i2/O1CN01RytoAv1zgLMg9FCna_!!6000000006743-2-tps-2602-1732.png#id=YcHEw&originHeight=1732&originWidth=2602&originalType=binary&ratio=1&status=done&style=none)
 
 ### Node process
 
 For the `Node process`, after you run the framework through `npm start`, you can use `VSCode` or the IDE debug panel built based on OpenSumi to make a breakpoint of the `Node process` by using `Attach to BackEnd` debugging.
 
-![](https://img.alicdn.com/imgextra/i3/O1CN014Or5e01CFOtP5rM44_!!6000000000051-2-tps-2828-1760.png#id=fYIYf&originHeight=1760&originWidth=2828&originalType=binary&ratio=1&status=done&style=none&style)
+![Node process](https://img.alicdn.com/imgextra/i3/O1CN014Or5e01CFOtP5rM44_!!6000000000051-2-tps-2828-1760.png#id=fYIYf&originHeight=1760&originWidth=2828&originalType=binary&ratio=1&status=done&style=none)
 
 In addition, you can also use the `Launch Backend` and `Launch Frontend` of the debug panel to start the `Node process` and `Browser process` respectively for debugging.
 
-### Plug-in process
+### extension process
 
-For the `plug-in process`, you can use `VSCode` or the `Attach to Extension Host` method in the debugging panel built on OpenSumi to debug the `plug-in process`. Occasionally, you can directly open the `chrome://inspect` panel for code debugging (it is easier to use). You can get the debugging after the framework is running by filling in `localhost:9999` in the discovery port The process is debugged, as shown in the following figure:
+For the `extension process`, you can use `VSCode` or the `Attach to Extension Host` method in the debugging panel built on OpenSumi to debug the `extension process`. Occasionally, you can directly open the `chrome://inspect` panel for code debugging (it is easier to use). You can get the debugging after the framework is running by filling in `localhost:9999` in the discovery port The process is debugged, as shown in the following figure:
 
-![](https://img.alicdn.com/imgextra/i4/O1CN01qr67Fb1LCxJsM9S8p_!!6000000001264-2-tps-2500-1412.png#id=MrtyW&originHeight=1412&originWidth=2500&originalType=binary&ratio=1&status=done&style)
+![Extension process](https://img.alicdn.com/imgextra/i4/O1CN01qr67Fb1LCxJsM9S8p_!!6000000001264-2-tps-2500-1412.png#id=MrtyW&originHeight=1412&originWidth=2500&originalType=binary&ratio=1&status=done&style)
 
 ## PR rules
 
@@ -124,21 +117,21 @@ Each commit should be as small as possible, and you need to fill in your commit 
 
 For example, you fixed the variable acquisition problem of the debug module, and the submission information can be as follows:
 
+```txt
+fix: fix variable acquisition under the debug panel
 ```
-fix: Fix the abnormal problem of variable acquisition under the debug panel
-```
 
-For PR content, just follow the PR and fill in the template. See: [New Merge Request](https://code.alipay.com/OpenSumi/ide-framework/pull_requests/new)
+For PR content, just follow the PR and fill in the template.
 
-## Plug-in debugging
+## Extension Process debugging
 
-If you want to debug the plug-in under the OpenSumi framework, you can link your local plug-in to the `{ide-framework}/tools/extensions` directory in the form of a soft link, such as:
+If you want to debug the extension process under the OpenSumi framework, you can link your local extension process to the `{root path}/tools/extensions` directory in the form of a soft link, such as:
 
 ```bash
-$ ln -s {local_path}/{extension_name} {ide-framework}/tools/extensions/{extension_name}
+ln -s {local_path}/{extension_name} {root path}/tools/extensions/{extension_name}
 ```
 
-You can quickly preview the effect of the plug-in function by refreshing the page.
+You can quickly preview the effect by refreshing the page.
 
 ## Feedback
 
