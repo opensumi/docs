@@ -157,10 +157,10 @@ fix: fix variable acquisition under the debug panel
 
 ## 插件调试
 
-如果你希望在 OpenSumi 框架下对插件进行调试，你可以将你的本地插件以软链接的方式链接到 `{ide-framework}/tools/extensions` 目录下，如：
+如果你希望在 OpenSumi 框架下对插件进行调试，你可以将你的本地插件以软链接的方式链接到 `{代码根目录}/tools/extensions` 目录下，如：
 
 ```bash
-ln -s {local_path}/{extension_name} {ide-framework}/tools/extensions/{extension_name}
+ln -s {local_path}/{extension_name} {代码根目录}/tools/extensions/{extension_name}
 ```
 
 通过刷新页面便可以快速进行插件功能的效果预览。

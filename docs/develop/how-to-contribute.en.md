@@ -125,10 +125,10 @@ For PR content, just follow the PR and fill in the template.
 
 ## Extension Process debugging
 
-If you want to debug the extension process under the OpenSumi framework, you can link your local extension process to the `{ide-framework}/tools/extensions` directory in the form of a soft link, such as:
+If you want to debug the extension process under the OpenSumi framework, you can link your local extension process to the `{root path}/tools/extensions` directory in the form of a soft link, such as:
 
 ```bash
-ln -s {local_path}/{extension_name} {ide-framework}/tools/extensions/{extension_name}
+ln -s {local_path}/{extension_name} {root path}/tools/extensions/{extension_name}
 ```
 
 You can quickly preview the effect by refreshing the page.
