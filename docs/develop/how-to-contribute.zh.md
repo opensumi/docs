@@ -111,13 +111,13 @@ OpenSumi 运行时存在多个进程，你需要确定你要调试的具体进�
 
 对于 `Browser 进程`，你可以直接通过 `Chrome Developer Tools` 进行调试（推荐），也可以通过在 `VSCode` 安装 [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) 的方式进行 `Browser 进程` 的断点调试。如图所示：
 
-![](https://img.alicdn.com/imgextra/i2/O1CN01RytoAv1zgLMg9FCna_!!6000000006743-2-tps-2602-1732.png#id=YcHEw&originHeight=1732&originWidth=2602&originalType=binary&ratio=1&status=done&style=none)
+![Browser 进程](https://img.alicdn.com/imgextra/i2/O1CN01RytoAv1zgLMg9FCna_!!6000000006743-2-tps-2602-1732.png#id=YcHEw&originHeight=1732&originWidth=2602&originalType=binary&ratio=1&status=done&style=none)
 
 ### Node 进程
 
 对于 `Node 进程`，在你通过 `npm start` 运行起框架后，你可以通过使用 `VSCode` 或基于 OpenSumi 搭建的 IDE 调试面板中的 `Attach to BackEnd` 的方式进行 `Node 进程` 的断点调试。
 
-![](https://img.alicdn.com/imgextra/i3/O1CN014Or5e01CFOtP5rM44_!!6000000000051-2-tps-2828-1760.png#id=fYIYf&originHeight=1760&originWidth=2828&originalType=binary&ratio=1&status=done&style=none)
+![Node 进程](https://img.alicdn.com/imgextra/i3/O1CN014Or5e01CFOtP5rM44_!!6000000000051-2-tps-2828-1760.png#id=fYIYf&originHeight=1760&originWidth=2828&originalType=binary&ratio=1&status=done&style=none)
 
 另外的，你也可以通过调试面板的 `Launch Backend` 和 `Launch Frontend` 分别启动 `Node 进程` 和 `Browser 进程` 进行调试。
 
@@ -125,7 +125,7 @@ OpenSumi 运行时存在多个进程，你需要确定你要调试的具体进�
 
 针对 `插件进程`，你可以通过使用 `VSCode` 或基于 OpenSumi 搭建的调试面板中的 `Attach to Extension Host` 的方式进行 `插件进程` 的断点调试。偶尔不太灵的情况，你也可以直接打开 `chrome://inspect` 面板进行代码调试（比较好用），通过在发现端口中填入 `localhost:9999` 便可以在框架运行后获取到调试进程进行调试，如下图所示：
 
-![](https://img.alicdn.com/imgextra/i4/O1CN01qr67Fb1LCxJsM9S8p_!!6000000001264-2-tps-2500-1412.png#id=MrtyW&originHeight=1412&originWidth=2500&originalType=binary&ratio=1&status=done&style=none)
+![插件进程](https://img.alicdn.com/imgextra/i4/O1CN01qr67Fb1LCxJsM9S8p_!!6000000001264-2-tps-2500-1412.png#id=MrtyW&originHeight=1412&originWidth=2500&originalType=binary&ratio=1&status=done&style=none)
 
 ## 单元测试
 

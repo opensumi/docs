@@ -30,7 +30,7 @@ You may need the following development tools:
       - If you install it through the Node installer provided by [Node.JS](https://nodejs.org/en/download/) and make sure you install the native module tools, the environment will be able to be used normally.
       - If you manage scripts through Node version, such as [nvm](https://github.com/coreybutler/nvm-windows) or [nvs](https://github.com/jasongin/nvs)
         - Install the Python version corresponding to the current version [Microsoft Store Package](https://docs.python.org/3/using/windows.html#the-microsoft-store-package)
-        - Install `Visual C++ Build Environment`: Visit and install [Visual Studio Build Tools](https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=BuildTools) or [ Visual Studio Community Edition](https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=Community). The minimal installation mode is to install only `Desktop Development with C++`
+        - Install `Visual C++ Build Environment`: Visit and install [Visual Studio Build Tools](https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=BuildTools) or [Visual Studio Community Edition](https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=Community). The minimal installation mode is to install only `Desktop Development with C++`
         - Open the command line and execute `npm config set msvs_version 2019`
     - Note: Make sure that your local PATH contains only ASCII characters, otherwise it may cause [node-gyp usage problems (nodejs/node-gyp/ issues#297)](https://github.com/nodejs/node-gyp/issues/297), and currently does not currently support the construction and debugging of the project under the lower version of the Windows environment.
 
@@ -73,7 +73,7 @@ npm run init
 
 ### Run
 
-After the initialization is complete, you can run the Web version directly with the following command, and enable `Hot Reload` at the same time. All modifications except the plug-in process can be seen in the Web in real time.
+After the initialization is complete, you can run the Web version directly with the following command, and enable `Hot Reload` at the same time. All modifications except the extension process can be seen in the Web in real time.
 
 ```bash
 npm start
@@ -95,21 +95,21 @@ There are multiple processes when OpenSumi is running. You need to determine the
 
 For the `Browser process`, you can debug directly through `Chrome Developer Tools` (recommended), or install [Debugger for Chrome](https: //marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) to debug the breakpoint of the `Browser process`. as the picture shows:
 
-![](https://img.alicdn.com/imgextra/i2/O1CN01RytoAv1zgLMg9FCna_!!6000000006743-2-tps-2602-1732.png#id=YcHEw&originHeight=1732&originWidth=2602&originalType=binary&ratio=1&status=done&style=none&style=
+![Browser process](https://img.alicdn.com/imgextra/i2/O1CN01RytoAv1zgLMg9FCna_!!6000000006743-2-tps-2602-1732.png#id=YcHEw&originHeight=1732&originWidth=2602&originalType=binary&ratio=1&status=done&style=none)
 
 ### Node process
 
 For the `Node process`, after you run the framework through `npm start`, you can use `VSCode` or the IDE debug panel built based on OpenSumi to make a breakpoint of the `Node process` by using `Attach to BackEnd` debugging.
 
-![](https://img.alicdn.com/imgextra/i3/O1CN014Or5e01CFOtP5rM44_!!6000000000051-2-tps-2828-1760.png#id=fYIYf&originHeight=1760&originWidth=2828&originalType=binary&ratio=1&status=done&style=none&style)
+![Node process](https://img.alicdn.com/imgextra/i3/O1CN014Or5e01CFOtP5rM44_!!6000000000051-2-tps-2828-1760.png#id=fYIYf&originHeight=1760&originWidth=2828&originalType=binary&ratio=1&status=done&style=none)
 
 In addition, you can also use the `Launch Backend` and `Launch Frontend` of the debug panel to start the `Node process` and `Browser process` respectively for debugging.
 
-### Plug-in process
+### extension process
 
-For the `plug-in process`, you can use `VSCode` or the `Attach to Extension Host` method in the debugging panel built on OpenSumi to debug the `plug-in process`. Occasionally, you can directly open the `chrome://inspect` panel for code debugging (it is easier to use). You can get the debugging after the framework is running by filling in `localhost:9999` in the discovery port The process is debugged, as shown in the following figure:
+For the `extension process`, you can use `VSCode` or the `Attach to Extension Host` method in the debugging panel built on OpenSumi to debug the `extension process`. Occasionally, you can directly open the `chrome://inspect` panel for code debugging (it is easier to use). You can get the debugging after the framework is running by filling in `localhost:9999` in the discovery port The process is debugged, as shown in the following figure:
 
-![](https://img.alicdn.com/imgextra/i4/O1CN01qr67Fb1LCxJsM9S8p_!!6000000001264-2-tps-2500-1412.png#id=MrtyW&originHeight=1412&originWidth=2500&originalType=binary&ratio=1&status=done&style)
+![Extension process](https://img.alicdn.com/imgextra/i4/O1CN01qr67Fb1LCxJsM9S8p_!!6000000001264-2-tps-2500-1412.png#id=MrtyW&originHeight=1412&originWidth=2500&originalType=binary&ratio=1&status=done&style)
 
 ## PR rules
 
@@ -117,21 +117,21 @@ Each commit should be as small as possible, and you need to fill in your commit 
 
 For example, you fixed the variable acquisition problem of the debug module, and the submission information can be as follows:
 
-```
+```txt
 fix: fix variable acquisition under the debug panel
 ```
 
 For PR content, just follow the PR and fill in the template.
 
-## Plug-in debugging
+## Extension Process debugging
 
-If you want to debug the plug-in under the OpenSumi framework, you can link your local plug-in to the `{ide-framework}/tools/extensions` directory in the form of a soft link, such as:
+If you want to debug the extension process under the OpenSumi framework, you can link your local extension process to the `{ide-framework}/tools/extensions` directory in the form of a soft link, such as:
 
 ```bash
 ln -s {local_path}/{extension_name} {ide-framework}/tools/extensions/{extension_name}
 ```
 
-You can quickly preview the effect of the plug-in function by refreshing the page.
+You can quickly preview the effect by refreshing the page.
 
 ## Feedback
 
