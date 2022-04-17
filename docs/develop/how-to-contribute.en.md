@@ -18,8 +18,8 @@ Before developing the code, you need to install some necessary development tools
 You may need the following development tools:
 
 - [Git](https://git-scm.com)
-- [Node.JS](https://nodejs.org/en/), **x64**, version number `>= 12.x`, `<= 14.x`
-- [Python](https://www.python.org/downloads/) (pre-dependency of node-gyp library; view [node-gyp readme](https://github.com/nodejs/node-gyp# installation) Find a suitable version currently supported)
+- [Node.JS](https://nodejs.org/en/), version number `>= 12.x`, `<= 14.x`
+- [Python](https://www.python.org/downloads/) \(pre-dependency of node-gyp library; view [node-gyp readme](https://github.com/nodejs/node-gyp#installation) Find a suitable version currently supported\)
   - **Note:** Windows users will install Python automatically by installing the npm module of `windows-build-tools`, which can be quickly installed in this way. (See below)
 - A C/C++ compilation tool suitable for your system:
   - **macOS**

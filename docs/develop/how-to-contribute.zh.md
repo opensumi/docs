@@ -32,7 +32,7 @@ npm install --canvas_binary_host_mirror=https://npmmirror.com/mirrors/canvas/
 你可能需要下面一些开发工具：
 
 - [Git](https://git-scm.com)
-- [Node.JS](https://nodejs.org/en/), **x64**, 版本号 `>= 12.x`, `<= 14.x`
+- [Node.JS](https://nodejs.org/en/), 版本号 `>= 12.x`, `<= 14.x`
 - [Python](https://www.python.org/downloads/) (node-gyp 库的前置依赖; 查看 [node-gyp readme](https://github.com/nodejs/node-gyp#installation) 找到当前支持的合适版本)
   - **注意:** Windows 用户通过安装 `windows-build-tools` 的 npm 模块将会自动安装 Python，可以通过这种方式进行快速安装。（见下方）
 - 一个适合你系统的 C/C++ 编译工具:
