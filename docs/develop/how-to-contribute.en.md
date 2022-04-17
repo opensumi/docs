@@ -7,7 +7,7 @@ order: 1
 
 Generally speaking, you have many ways to contribute to the development of the `OpenSumi` code, for example: write down a issue about the bug you found, submit a PR (Pull Requests), or simply to some Each feature submits a suggestion, etc.
 
-After you clone and build our warehouse code, check [Issues](https://github.com/opensumi/core/issues). For issues marked with `PR Welcome`, it is best to submit your first PR If you have any questions in the process, you can always consult any project member in the comment area @ any project member.
+For [issues](https://github.com/opensumi/core/issues) marked with `PR Welcome`, it is best to submit your first PR If you have any questions in the process, you can always consult any project member in the comment area @ any project member.
 
 ## Development environment preparation
 
@@ -58,7 +58,7 @@ $ git checkout main
 $ git pull https://github.com/opensumi/core.git main
 ```
 
-After handling the code conflicts, submit the code to your warehouse, and then you can go to [opensumi/core](https://github.com/opensumi/core/pulls) to submit your PR at any time.
+After handling the code conflicts, submit the code to your repository, and then you can go to [opensumi/core](https://github.com/opensumi/core/pulls) to submit your PR at any time.
 
 Note: The default `opensumi/core` also contains a lot of GitHub Actions. If you don't want to execute these Actions, you can go to `https://github.com/<<Your Username>>/core/settings/actions` Close the corresponding Actions.
 
@@ -125,10 +125,10 @@ Each commit should be as small as possible, and you need to fill in your commit 
 For example, you fixed the variable acquisition problem of the debug module, and the submission information can be as follows:
 
 ```
-fix: Fix the abnormal problem of variable acquisition under the debug panel
+fix: fix variable acquisition under the debug panel
 ```
 
-For PR content, just follow the PR and fill in the template. See: [New Merge Request](https://code.alipay.com/OpenSumi/ide-framework/pull_requests/new)
+For PR content, just follow the PR and fill in the template.
 
 ## Plug-in debugging
 
