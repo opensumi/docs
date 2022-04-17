@@ -150,7 +150,7 @@ npm run test:module -- --module=debug
 举个例子，你修复了调试模块的变量获取问题，提交信息可以如下所示：
 
 ```txt
-fix: 修复调试面板下的变量获取异常问题
+fix: fix variable acquisition under the debug panel
 ```
 
 对于 PR 内容，遵循 PR 填写模板即可。
