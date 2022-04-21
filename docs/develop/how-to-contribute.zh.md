@@ -50,7 +50,7 @@ npm install --canvas_binary_host_mirror=https://npmmirror.com/mirrors/canvas/
 
 ## 构建和运行
 
-如果你想了解如何运行 OpenSumi 或者想调试一个 Issue，你需要在本地获取代码，构建，然后运行它
+如果你想了解如何运行 OpenSumi 或者想调试一个 Issue，你需要在本地获取代码，构建，然后运行它。
 
 ### 获取代码
 
