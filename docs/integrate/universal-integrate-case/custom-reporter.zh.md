@@ -64,7 +64,7 @@ function deactivate() {
 
 ## 上报
 
-集成方通过替换内置 Provider 实现
+集成方通过替换内置 Provider 实现：
 
 ```typescript
 import {

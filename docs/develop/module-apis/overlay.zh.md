@@ -8,7 +8,7 @@ Overlay 模块为 IDE 上的浮层模块，例如包含 Dialog（弹窗）、Mes
 
 # Message
 
-Message 会在 IDE 右下角弹出一个提示信息。
+Message 会在 IDE 右下角弹出一个提示信息：
 
 ![message](https://img.alicdn.com/imgextra/i1/O1CN010VHpDr1NuaK6IMhar_!!6000000001630-2-tps-1196-376.png)
 
@@ -44,11 +44,11 @@ export interface IMessageService {
 
 ## 参数说明
 
-以下参数以 info 为例
+以下参数以 info 为例。
 
 ### message
 
-message 主要指定了消息体，可以是一个普通的文本消息，也可以是一个 React 组件
+message 主要指定了消息体，可以是一个普通的文本消息，也可以是一个 React 组件。
 
 ##### Example
 
@@ -68,7 +68,7 @@ export class MessageDemo {
 
 ### buttons
 
-buttons 为弹窗右下角按钮，按照从左向右的顺序依次渲染，用户选择后会返回选择的结果
+buttons 为弹窗右下角按钮，按照从左向右的顺序依次渲染，用户选择后会返回选择的结果。
 
 ##### Example
 
@@ -95,7 +95,7 @@ export class MessageDemo {
 
 ### closable
 
-是否显示关闭按钮，默认为 true
+是否显示关闭按钮，默认为 true。
 
 ## 常见问题
 
@@ -107,7 +107,7 @@ export class MessageDemo {
 
 ### 如何自定义消息组件
 
-如果不想用默认消息图标，可以使用 `open` 接口自定义消息组件
+如果不想用默认消息图标，可以使用 `open` 接口自定义消息组件。
 
 #### Example
 
@@ -136,7 +136,7 @@ if (res === '确定') {
 
 # Dialog
 
-Dialog 接口与消息一致，不过弹窗为模态
+Dialog 接口与消息一致，不过弹窗为模态。
 
 ![dialog](https://img.alicdn.com/imgextra/i2/O1CN01iiAS2T1DzwnvXSD8C_!!6000000000288-2-tps-1078-390.png)
 
