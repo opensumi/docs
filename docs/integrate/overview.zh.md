@@ -85,7 +85,7 @@ export class ModuleDemoModule extends BrowserModule {
 
 ### 拓展 Node 层能力
 
-我们通过以下的文件结构拓展 `Browser` 层能力，你可以通过在 `providers` 中声明相关内容来拓展能力，详细案例可见我们的 [Todo List 案例](../develop/sample/overview)。
+我们通过以下的文件结构拓展 `Node` 层能力，你可以通过在 `providers` 中声明相关内容来拓展能力，详细案例可见我们的 [Todo List 案例](../develop/sample/overview)。
 
 ```javascript
 // Node 模块入口
@@ -100,7 +100,7 @@ export class ModuleDemoModule extends NodeModule {
 
 ## 什么是插件？
 
-插件, 也可称为插件，是指当前 OpenSumi 框架下支持的，通过在特定位置安装插件文件，从而对 IDE 的界面、功能进行二次插件的一类程序文件，设计上兼容 `VSCode` 中的 [VSCode Extension API](https://code.visualstudio.com/api)，即对于使用 OpenSumi 进行开发的 IDE 产品天然兼容 `VSCode` 的插件体系。
+插件, 也可称为 Extension，是指当前 OpenSumi 框架下支持的，通过在特定位置安装插件文件，从而对 IDE 的界面、功能进行二次插件的一类程序文件，设计上兼容 `VSCode` 中的 [VSCode Extension API](https://code.visualstudio.com/api)，即对于使用 OpenSumi 进行开发的 IDE 产品天然兼容 `VSCode` 的插件体系。
 
 > 针对 OpenSumi 插件开发相关的研发流程链路支持将会在后续逐步推出，敬请期待。
 
