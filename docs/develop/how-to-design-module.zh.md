@@ -9,7 +9,7 @@ order: 2
 
 ## 了解依赖注入
 
-在了解模块前，建议先看一下 [依赖注入](./basic-design/dependence-injector.zh.md) 这篇文章，在 OpenSumi 中，所有的服务注册及调用都是基于这套统一的依赖注入结构进行服务的实现与调用逻辑的解耦，让框架开发者的开发能够聚焦于开发模块，实现更加独立的模块建设。
+在了解模块前，建议先看一下 [依赖注入](./basic-design/dependence-injector) 这篇文章，在 OpenSumi 中，所有的服务注册及调用都是基于这套统一的依赖注入结构进行服务的实现与调用逻辑的解耦，让框架开发者的开发能够聚焦于开发模块，实现更加独立的模块建设。
 
 ## 什么是模块？
 
@@ -136,7 +136,7 @@ export class DemoModule extends BrowserModule {
 }
 ```
 
-而对于个性化的服务能力注册，我们则建议你通过 [依赖注入](./basic-design/dependence-injector.zh.md) 的方式进行拓展, 最终通过 `Token + Service` 的方式进行注册。
+而对于个性化的服务能力注册，我们则建议你通过 [依赖注入](./basic-design/dependence-injector) 的方式进行拓展, 最终通过 `Token + Service` 的方式进行注册。
 
 ```ts
 @Injectable()
