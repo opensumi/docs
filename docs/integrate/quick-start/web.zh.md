@@ -44,7 +44,7 @@ Startup 中集成代码比较简单，大体上是分别实例化了 `ClientApp`
 
 ## 定制 IDE
 
-OpenSumi 支持通过模块的方式对界面主题、内置命令、菜单等基础能力进行定制，更多详细的定制内容可以查看
+OpenSumi 支持通过模块的方式对界面主题、内置命令、菜单等基础能力进行定制，更多详细的定制内容可以查看：
 
 - [集成配置](../universal-integrate-case/custom-config)
 - [自定义命令](../universal-integrate-case/custom-command)

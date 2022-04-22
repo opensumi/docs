@@ -82,4 +82,4 @@ OpenSumi 提供了自定义配置能力，基于 OpenSumi 的 [Contribution Poin
 | extHostIPCSockPath        | 插件进程存放用于通信的 sock 地址                                                                                                                      | /tmp          |
 | extHostForkOptions        | 插件进程 fork 配置                                                                                                                                    | 无            |
 
-更多配置，可查看 OpenSumi 源码。。
+更多配置，可查看 OpenSumi 源码。

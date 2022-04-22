@@ -35,13 +35,13 @@ $ npm run start
 
 ## 开发
 
-在项目根目录运行
+在项目根目录运行：
 
 ```bash
 $ npm run watch
 ```
 
-启动
+启动：
 
 ```bash
 $ npm run start
@@ -51,9 +51,10 @@ $ npm run start
 
 运行 `npm run pack` 即可将项目打包，打包后的安装包将输出在 `out` 目录。
 
-
 ## npm 镜像配置
+
 打开 `ide-electron/.npmrc`，添加下面的 npm 镜像配置，可以解决安装依赖失败的问题：
+
 ```config
 registry=https://registry.npmmirror.com/
 disturl=https://npmmirror.com/mirrors/node

@@ -12,9 +12,9 @@ Preferences 模块主要用于处理整个 IDE 配置的读取逻辑，常见的
 
 > 下面我们统一将 `.sumi` 作为我们默认的配置文件读取路径
 
-对于全局配置，我们一般是从 `~/.sumi/settings.json` 文件中读取；
+对于全局配置，我们一般是从 `~/.sumi/settings.json` 文件中读取。
 
-针对工作区的配置文件，我们一般是从 `${工作区路径}/.sumi/settings.json` 文件中读取，但在存在多个工作区存在的`多工作区` 项目，我们则是从 `${工作区名称}.sumi-workspace` 文件中读取；
+针对工作区的配置文件，我们一般是从 `${工作区路径}/.sumi/settings.json` 文件中读取，但在存在多个工作区存在的`多工作区` 项目，我们则是从 `${工作区名称}.sumi-workspace` 文件中读取。
 
 ## 使用
 
@@ -38,9 +38,9 @@ export const demoPreferenceSchema: PreferenceSchema = {
     'demo.language': {
       type: 'string',
       default: 'typescript',
-      description: 'demo language type',
-    },
-  },
+      description: 'demo language type'
+    }
+  }
 };
 
 @Domain(PreferenceContribution)

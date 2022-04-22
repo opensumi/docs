@@ -37,7 +37,7 @@ $ npm run start                # 启动
 
 ## 文件服务配置
 
-纯前端版本使用 `BrowserFsProvider` 替换 OpenSumi 内的 `DiskFileSystemProvider`, 改动在于由原来的本地文件服务改成 http 接口服务
+纯前端版本使用 `BrowserFsProvider` 替换 OpenSumi 内的 `DiskFileSystemProvider`, 改动在于由原来的本地文件服务改成 http 接口服务。
 
 > 文件位置：`web-lite/file-provider/browser-fs-provider.ts`
 

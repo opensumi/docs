@@ -5,11 +5,11 @@ slug: how-to-design-module
 order: 2
 ---
 
-本文主要介绍基于 OpenSumi 体系下搭建模块来拓展原生框架功能的思路，对于模块的创建及具体实践可参考我们的[经典案例](./sample/overview), 案例中有针对具体模块创建的一些基础思路及做法。
+本文主要介绍基于 OpenSumi 体系下搭建模块来拓展原生框架功能的思路，对于模块的创建及具体实践可参考我们的 [经典案例](./sample/overview), 案例中有针对具体模块创建的一些基础思路及做法。
 
 ## 了解依赖注入
 
-在了解模块前，建议先看一下 [依赖注入](./basic-design/dependence-injector.zh.md) 这篇文章，在 OpenSumi 中，所有的服务注册及调用都是基于这套统一的依赖注入结构进行服务的实现与调用逻辑的解耦，让框架开发者的开发能够聚焦于开发模块，实现更加独立的模块建设。
+在了解模块前，建议先看一下 [依赖注入](./basic-design/dependence-injector) 这篇文章，在 OpenSumi 中，所有的服务注册及调用都是基于这套统一的依赖注入结构进行服务的实现与调用逻辑的解耦，让框架开发者的开发能够聚焦于开发模块，实现更加独立的模块建设。
 
 ## 什么是模块？
 
@@ -45,7 +45,7 @@ export class ExplorerModule extends BrowserModule {
 
 ### 基于视图的需求
 
-所有视图的需求的第一步便是创建视图，而在 OpenSumi 的框架下，创建视图的步骤可以分为两步：
+所有视图的需求的第一步便是创建视图，而在 OpenSumi 的框架下，创建视图的步骤可以分为三步：
 
 1. 注册视图模块
 2. 引入模块
@@ -136,7 +136,7 @@ export class DemoModule extends BrowserModule {
 }
 ```
 
-而对于个性化的服务能力注册，我们则建议你通过 [依赖注入](./basic-design/dependence-injector.zh.md) 的方式进行拓展, 最终通过 `Token + Service` 的方式进行注册。
+而对于个性化的服务能力注册，我们则建议你通过 [依赖注入](./basic-design/dependence-injector) 的方式进行拓展, 最终通过 `Token + Service` 的方式进行注册。
 
 ```ts
 @Injectable()

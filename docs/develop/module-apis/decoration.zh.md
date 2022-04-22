@@ -8,7 +8,7 @@ FileDecoration 模块主要用来注册/管理/分发跟文件名相关 `Decorat
 
 ## 基础概念
 
-Decoration —— 装饰器，主要是用来 “装饰” 文件树样式的一种手段，常见的场景如：Git 项目的特殊装饰：
+Decoration —— 装饰器，主要是用来 “装饰” 文件树样式的一种手段，常见的场景，如 Git 项目的特殊装饰：
 
 ![git-sample](https://img.alicdn.com/imgextra/i4/O1CN0102WFi9267ik1JKMeC_!!6000000007615-2-tps-1038-824.png)
 

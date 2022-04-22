@@ -9,11 +9,11 @@ order: 7
 
 在一些特殊场景中，集成方希望可以在只读的模式下运行，例如 `分享` 功能，被分享的人只能看而不能写、不能使用某些命令、不能进行文件的创建和删除等这类需求。
 
-那么我们可以利用 OpenSumi 的自定义模块能力，通过在模块当中禁用掉某些功能和 `Command` 命令来达到只读模式的效果
+那么我们可以利用 OpenSumi 的自定义模块能力，通过在模块当中禁用掉某些功能和 `Command` 命令来达到只读模式的效果。
 
 ## 自定义一个 readonly module
 
-首先自定义一个 `ReadonlyModule` 模块
+首先自定义一个 `ReadonlyModule` 模块：
 
 ```typescript
 @Injectable()
@@ -25,7 +25,7 @@ export class ReadonlyModule extends BrowserModule {
 }
 ```
 
-然后实现一个 `ReadOnlyContribution`，并将其导入到 ReadonlyModule 的 providers
+然后实现一个 `ReadOnlyContribution`，并将其导入到 `ReadonlyModule` 的 providers：
 
 ```typescript
 @Domain(MenuContribution, CommandContribution, TabBarToolbarContribution)
@@ -71,11 +71,11 @@ export class ReadOnlyContribution
 }
 ```
 
-更多的 [`Command`](https://github.com/opensumi/core/blob/main/packages/core-browser/src/common/common.command.ts) 和 [`MenuId`](https://github.com/opensumi/core/blob/08cfc13779d0830fcd8663ca1e9dd4bc92218171/packages/core-browser/src/menu/next/menu-id.ts#L2) 可在源码中查看，只需按照代码所示的位置卸载掉 command 或 menu 即可
+更多的 [`Command`](https://github.com/opensumi/core/blob/main/packages/core-browser/src/common/common.command.ts) 和 [`MenuId`](https://github.com/opensumi/core/blob/08cfc13779d0830fcd8663ca1e9dd4bc92218171/packages/core-browser/src/menu/next/menu-id.ts#L2) 可在源码中查看，只需按照代码所示的位置卸载掉 command 或 menu 即可。
 
 ## 集成模块
 
-最后在集成时引入，以 `opensumi/ide-startup` 案例为例子，参考 [index.ts#L12](https://github.com/opensumi/ide-startup/blob/a46a78a56b25b17f7f36ddc3f340d1720311559a/src/browser/index.ts#L12) 时，导入到 modules 字段即可
+最后在集成时引入，以 `opensumi/ide-startup` 案例为例子，参考 [index.ts#L12](https://github.com/opensumi/ide-startup/blob/a46a78a56b25b17f7f36ddc3f340d1720311559a/src/browser/index.ts#L12) 时，导入到 modules 字段即可。
 
 ```typescript
 new ClientApp({

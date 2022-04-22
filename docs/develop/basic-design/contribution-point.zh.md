@@ -128,7 +128,7 @@ export class DemoContribution implements PreferenceContribution {
 }
 ```
 
-更多详细配置及用法，可参考 [配置模块](../module-apis/preference)
+更多详细配置及用法，可参考 [配置模块](../module-apis/preference)。
 
 ### 快捷键注册
 
@@ -208,8 +208,8 @@ export class DemoContribution implements MenuContribution {
 
 OpenSumi 中，我们通过 `IFileServiceClient` 的 DI Token 获取到对应的文件服务进行文件读写，在面对一些场景化的文件内容，我们通常会采取自定义协议头的方式，来实现对这类内容的读取，如：
 
-- 用户配置文件，我们使用 `user_stroage://settings.json` 进行读取。
-- 调试过程的虚拟文件，我们使用 `debug://{filename}` 进行读取。
+- 用户配置文件，我们使用 `user_stroage://settings.json` 进行读取
+- 调试过程的虚拟文件，我们使用 `debug://{filename}` 进行读取
 
 实现这块功能，我们便是通过 `FsProviderContribution` 的贡献点去实现的，使用方法如下：
 
