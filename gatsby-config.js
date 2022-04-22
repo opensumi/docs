@@ -26,7 +26,7 @@ module.exports = {
     logoUrl:
       'https://img.alicdn.com/imgextra/i2/O1CN01dqjQei1tpbj9z9VPH_!!6000000005951-55-tps-87-78.svg',
     githubUrl: 'https://github.com/opensumi/core',
-    docsUrl: 'https://github.com/opensumi/doc',
+    docsUrl: 'https://github.com/opensumi/docs',
     navs: [
       {
         slug: 'docs/integrate/overview',

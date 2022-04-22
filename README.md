@@ -7,7 +7,7 @@
   OpenSumi Document Website
 </h1>
 
-[![CI](https://github.com/opensumi/doc/actions/workflows/documentation.yml/badge.svg)](https://github.com/opensumi/doc/actions/workflows/documentation.yml)
+[![CI](https://github.com/opensumi/docs/actions/workflows/documentation.yml/badge.svg)](https://github.com/opensumi/docs/actions/workflows/documentation.yml)
 
 This website is built using [gatsbyjs](https://www.gatsbyjs.com/), a modern static website generator.
 

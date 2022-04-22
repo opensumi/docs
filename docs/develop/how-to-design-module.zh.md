@@ -209,4 +209,4 @@ export class DemoModule extends BrowserModule {
 
 6. 原则上如果模块 `common` 中只能引入 `@opensumi/ide-core-common` 中的内容，但如果该模块为纯 `Browser` 或 `Node` 模块，则允许从对应的 `@opensumi/ide-core-browser` 和 `@opensumi/ide-core-node` 中引入。
 
-自此，你便完成了对于 OpenSumi 模块的初步认识，剩下的便是不断实践，收获更多的实践经验，如果你有更多关于实践上的问题，也欢迎到 [Issue](https://github.com/opensumi/doc/issues) 提交，我们会及时处理你的相关问题。
+自此，你便完成了对于 OpenSumi 模块的初步认识，剩下的便是不断实践，收获更多的实践经验，如果你有更多关于实践上的问题，也欢迎到 [Issue](https://github.com/opensumi/docs/issues) 提交，我们会及时处理你的相关问题。

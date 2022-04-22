@@ -5,10 +5,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/opensumi/doc"
+    "url": "https://github.com/opensumi/docs"
   },
   "bugs": {
-    "url": "https://github.com/opensumi/doc/issues"
+    "url": "https://github.com/opensumi/docs/issues"
   },
   "scripts": {
     "start": "npm run develop",
