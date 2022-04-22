@@ -56,7 +56,7 @@
 <p><img src="https://img.alicdn.com/imgextra/i2/O1CN01BRKCnA1kelm2RqRVn_!!6000000004709-2-tps-1448-1058.png"/></p>
 <ol>
 <li>在整个 IDE 全局中，拥有一个唯一的 WorkbenchEditorService 实例，它是全局的编辑器管理服务。我们在打开一个编辑器时，首先要调用它的 open 方法，传入一个对应的 uri，如 file://path/to/fileToOpen.ts</li>
-<li>为了打开这个 uri， 我们需要将其转换为一个在编辑器中可打开的 IResource, 它会拥有更多必要的对编辑器的信息。 这些信息由提前注册的 <code class="language-text">IResourceProvider</code> 提供。</li>
+<li>为了打开这个 uri， 我们需要将其转换为一个在编辑器中可打开的 IResource, 它会拥有更多必要的对编辑器的信息。 这些信息由提前注册的 <code class="language-text">IResourceProvider</code> 提供</li>
 </ol>
 <div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token comment">/**
  * Resource
@@ -80,7 +80,7 @@
   deleted<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
 <ol start="3">
-<li>获得 IResource 之后，就可以在 tab 上创建新 tab， 展示对应的名称和 icon 了。</li>
+<li>获得 IResource 之后，就可以在 tab 上创建新 tab， 展示对应的名称和 icon 了</li>
 <li>为了能在编辑器中展示内容，还需要知道如何把这个 IResource 打开。开天的编辑器模块支持一个资源拥有多种打开方式，如 md 文件拥有代码和实时预览的方式。一个打开方式可以是代码编辑器、diff 编辑器，或者是一个编辑器富组件（React 组件）。这些打开方式和富组件都需要提前在 <code class="language-text">EditorComponentRegistry</code> 中进行注册</li>
 </ol>
 <div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token comment">// 定义一个resource如何被打开</span>
@@ -97,11 +97,11 @@
   weight<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
 <ol start="5">
-<li>获得对应的打开方式后，根据用户选择的类型将对应的内容展现在编辑器的主体中，这样就完成了一个 tab 的打开过程。</li>
+<li>获得对应的打开方式后，根据用户选择的类型将对应的内容展现在编辑器的主体中，这样就完成了一个 tab 的打开过程</li>
 </ol>
 <h2 id="拓展编辑器" style="position:relative"><a href="#%E6%8B%93%E5%B1%95%E7%BC%96%E8%BE%91%E5%99%A8" aria-label="拓展编辑器 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>拓展编辑器</h2>
 <h3 id="browsereditorcontribution" style="position:relative"><a href="#browsereditorcontribution" aria-label="browsereditorcontribution permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BrowserEditorContribution</h3>
-<p>所有向编辑器模块贡献功能的贡献点统一使用 <code class="language-text">BrowserEditorContribution</code></p>
+<p>所有向编辑器模块贡献功能的贡献点统一使用 <code class="language-text">BrowserEditorContribution</code>。</p>
 <p><strong>registerResource</strong></p>
 <p>用来在合适的时机向 <code class="language-text">ResourceService</code> 注册可以在编辑器内打开的资源。</p>
 <p>为了让一个 uri 能够在编辑器中被打开，首先需要向 <code class="language-text">ResourceService</code> 注册一个用于解析 uri 至一个编辑器资源（<code class="language-text">IResource</code>) 的 <code class="language-text">IResourceProvider</code>。它的主要职责是在这个 uri 在编辑器标签 Tab 上显示时提供它的名称、图标、是否被编辑等状态，以及相应这个 tab 被关闭时的回调等等。</p>
@@ -109,8 +109,7 @@
 <p>用来在合适的时机向 <code class="language-text">EditorComponentRegistry</code> 注册编辑器组件、打开方式等功能。</p>
 <p>一个 uri 对应的编辑器资源 (<code class="language-text">IResource</code>) 需要能够在编辑器中展示，还需要为它注册对应的一个或者多个打开方式，以及对应打开方式使用的 React 组件。</p>
 <p><strong>onDidRestoreState</strong></p>
-<p>当进入 IDE 时，编辑器会尝试恢复上一次打开的编辑器组和组内打开的文件
-完成后会执行 onDidRestoreState 这个 hook</p>
+<p>当进入 IDE 时，编辑器会尝试恢复上一次打开的编辑器组和组内打开的文件，完成后会执行 onDidRestoreState 这个 hook。</p>
 <p><strong>registerEditorFeature</strong></p>
 <p>用来在合适的时机向 <code class="language-text">IEditorFeatureRegistry</code> 注册 <code class="language-text">EditorFeatureContribution</code>，以通过这种方式增强 monaco 编辑器的能力。</p>
 <h3 id="example" style="position:relative"><a href="#example" aria-label="example permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h3>
@@ -159,7 +158,7 @@
     <span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p><strong>示例 2</strong> ： 为 monaco 编辑器提供额外的能力</p>
+<p><strong>示例 2</strong> ： 为 monaco 编辑器提供额外的能力。</p>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token decorator"><span class="token at operator">@</span><span class="token function">Domain</span></span><span class="token punctuation">(</span>BrowserEditorContribution<span class="token punctuation">)</span>
 <span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">ExampleEditorContribution</span> <span class="token keyword">implements</span> <span class="token class-name">BrowserEditorContribution</span> <span class="token punctuation">{</span>
 

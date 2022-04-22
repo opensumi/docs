@@ -57,8 +57,8 @@
 <blockquote>
 <p>下面我们统一将 <code class="language-text">.sumi</code> 作为我们默认的配置文件读取路径</p>
 </blockquote>
-<p>对于全局配置，我们一般是从 <code class="language-text">~/.sumi/settings.json</code> 文件中读取；</p>
-<p>针对工作区的配置文件，我们一般是从 <code class="language-text">${工作区路径}/.sumi/settings.json</code> 文件中读取，但在存在多个工作区存在的<code class="language-text">多工作区</code> 项目，我们则是从 <code class="language-text">${工作区名称}.sumi-workspace</code> 文件中读取；</p>
+<p>对于全局配置，我们一般是从 <code class="language-text">~/.sumi/settings.json</code> 文件中读取。</p>
+<p>针对工作区的配置文件，我们一般是从 <code class="language-text">${工作区路径}/.sumi/settings.json</code> 文件中读取，但在存在多个工作区存在的<code class="language-text">多工作区</code> 项目，我们则是从 <code class="language-text">${工作区名称}.sumi-workspace</code> 文件中读取。</p>
 <h2 id="使用" style="position:relative"><a href="#%E4%BD%BF%E7%94%A8" aria-label="使用 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用</h2>
 <h3 id="注册新配置" style="position:relative"><a href="#%E6%B3%A8%E5%86%8C%E6%96%B0%E9%85%8D%E7%BD%AE" aria-label="注册新配置 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>注册新配置</h3>
 <h4 id="方式一" style="position:relative"><a href="#%E6%96%B9%E5%BC%8F%E4%B8%80" aria-label="方式一 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>方式一</h4>
@@ -74,9 +74,9 @@
     <span class="token string-property property">&#x27;demo.language&#x27;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       type<span class="token operator">:</span> <span class="token string">&#x27;string&#x27;</span><span class="token punctuation">,</span>
       <span class="token keyword">default</span><span class="token operator">:</span> <span class="token string">&#x27;typescript&#x27;</span><span class="token punctuation">,</span>
-      description<span class="token operator">:</span> <span class="token string">&#x27;demo language type&#x27;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      description<span class="token operator">:</span> <span class="token string">&#x27;demo language type&#x27;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token decorator"><span class="token at operator">@</span><span class="token function">Domain</span></span><span class="token punctuation">(</span>PreferenceContribution<span class="token punctuation">)</span>

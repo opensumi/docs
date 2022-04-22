@@ -64,7 +64,7 @@
 </ul>
 <p>以下列举了一些你可能会遇到 OpenSumi 中常见的概念、名词与解释</p>
 <h2 id="模块" style="position:relative"><a href="#%E6%A8%A1%E5%9D%97" aria-label="模块 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>模块</h2>
-<p>OpenSumi 的发布产物是不同模块的 NPM 包，每个包就是一个<strong>模块</strong>，它们分别负责不同的功能。模块一般由前端、后端以及公共代码、类型几部分组成。一个常见的模块结构如下</p>
+<p>OpenSumi 的发布产物是不同模块的 NPM 包，每个包就是一个<strong>模块</strong>，它们分别负责不同的功能。模块一般由前端、后端以及公共代码、类型几部分组成。一个常见的模块结构如下：</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">.</span>
 ├── README.md
 ├── __tests__
@@ -80,7 +80,7 @@
 └── webpack.config.js</code></pre></div>
 <h3 id="模块的职责" style="position:relative"><a href="#%E6%A8%A1%E5%9D%97%E7%9A%84%E8%81%8C%E8%B4%A3" aria-label="模块的职责 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>模块的职责</h3>
 <p>一般意义上模块可以提供一些基础功能，例如 <code class="language-text">search</code> 模块提供了全文搜索功能，在该模块的 <code class="language-text">src/browser</code> 目录下包含了前端 UI 相关的代码，而执行搜索的则是 <code class="language-text">src/node</code> 目录下的代码。</p>
-<p>前端与后端通过 RPC 的方式通信，与调用一个异步方法没有太大区别，你不需要关心通信细节，只需要参考已有的模式来组织代码即可。关于模块前后端通信的使用可以参考 <a href="./connection">前端后端通信</a></p>
+<p>前端与后端通过 RPC 的方式通信，与调用一个异步方法没有太大区别，你不需要关心通信细节，只需要参考已有的模式来组织代码即可。关于模块前后端通信的使用可以参考 <a href="./connection">前端后端通信</a>。</p>
 <p>模块代码中 <code class="language-text">browser/node/common</code> 都不是必须的，允许存在仅提供前端 UI 或后端功能的模块。</p>
 <p>模块可以提供贡献点(Contribution)给其他模块，其他模块可以根据该模块声明的 <code class="language-text">ContributionProvider</code> 进行贡献点的注册。贡献点机制主要用于模块提供注册能力给其他模块的场景，例如 <code class="language-text">main-layout</code> 提供组件级别的贡献点，而其他模块通过注册组件后，可以结合 Layout 的能力自由组装 IDE 界面，菜单模块会提供注册菜单的贡献点。</p>
 <h3 id="模块分层与依赖" style="position:relative"><a href="#%E6%A8%A1%E5%9D%97%E5%88%86%E5%B1%82%E4%B8%8E%E4%BE%9D%E8%B5%96" aria-label="模块分层与依赖 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>模块分层与依赖</h3>
