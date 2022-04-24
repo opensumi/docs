@@ -66,7 +66,7 @@ export class DemoModule extends BrowserModule {
 }
 ```
 
-Apart from the `useClass` definition syntax, the common syntax also includes `useFactory`,  `useValue`. which can be used as follows.
+Apart from the `useClass` definition syntax, the common syntax also includes `useFactory`, `useValue`. which can be used as follows.
 
 ```ts
 export class DemoModule extends BrowserModule {
@@ -95,7 +95,7 @@ export class DemoModule extends BrowserModule {
 
 ### Implementing Multiple Instances
 
-在声明模块时，我们可以通过在模块的依赖注入配置中传入 `{ multiple: true }` 来让服务的实现变为多例，即每次通过 DI 获取到的服务都是重新初始化出来的实例，实例代码如下：When declaring a module, we can make the implementation of the service multi-instantiated by passing `{ multiple: true }` in the module's dependency injection configuration, i.e. each time the service is obtained through DI is a re-initialized instance, the example code is as follows:
+When declaring a module, we can make the implementation of the service multi-instantiated by passing `{ multiple: true }` in the module's dependency injection configuration.Namely each time the service is obtained through DI is a re-initialized instance, the example code is as follows:
 
 ```ts
 @Injectable({ multiple: true })
@@ -141,9 +141,9 @@ class DemoService {
 }
 ```
 
-### 分类服务  Classes of Service 
+### Classes of Service 
 
-通过在创建 DI 子容器中为服务注册声明 `tag`，我们就可以通过 `tag` 参数来实现对不同分类下服务的调用，通常我们用于一些需要有特定分类的服务调用上，如在配置模块中，通过 `tag` 对同一个 `Token` 注册了三个不同的实现：By registering a `tag` for the service in the DI subcontainer, we can use the 'tag' parameter to implement calls to different classes of services. This parameter is usually used for service calls that require specific classes, such as in configuration modules.  Three different implementations of the same 'Token' are registered via 'tag' :  
+By registering a `tag` for the service in the DI subcontainer, we can use the `tag` parameter to implement calls to different classes of services. This parameter is usually used for service calls that require specific classes, such as in configuration modules. Three different implementations of the same `Token`are registered via  `tag`:  
 
 ```ts
 export function injectFolderPreferenceProvider(inject: Injector): void {
