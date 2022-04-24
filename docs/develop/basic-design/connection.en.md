@@ -44,7 +44,7 @@ class BackService implements IBackService {
 
 This is a common example in OpenSumi. Generally, the back end is responsible for implementing specific functions, while the front fetchs data or performs some operations (usually involving IO or process operations) through RPC calls. In this case, the front end uses DI to inject `BackServicePath`. In fact, `BackServicePath` is a string injected into the front end as a Token through DI, but implemented as a `Proxy`.  
 
-A front-end call to the `$getSomelocalData` method is wrapped as a `Promise<Request>` during communication, and the latter is processed and returned directly by the back end, while the underlying implementation wraps the return value as the request result, and sends it to the front end with a unique ID, thus an RPC call is finished. In addition to `Request`, there is also a `Notification` employed in individual notifications, the difference being that the `Notification` has no return value.
+A front-end call to the `$getSomelocalData` method is wrapped as a `Promise<Request>` during communication, and the latter is processed and returned directly by the back end, while the underlying implementation wraps the return value as the request result, and sends it to the front end with a unique ID, thus an RPC call is finished. In addition to `Request`, `Notification` has been employed in individual notifications, the difference being that the `Notification` has no return value.
 
 ```typescript
 // 调用 $getSomeLocalData 时
