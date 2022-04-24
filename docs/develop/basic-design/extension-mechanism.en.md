@@ -13,40 +13,40 @@ OpenSumi extension system is a superset of VS Code extensions. In addition to of
 
 As shown in the figure, the whole extension system involves four environments: front-end UI, Web Worker, back-end main process, and extension process.
 
-The OpenSumi extension has three entrances: `main` , `browserMain` and `workerMain`, all of which are optional. `Main` is the extension running in the independent Node.js process shown above, its API remaining fully compatible with VS Code. Let's start from the main entrance of the extension process step by step to introduce the principle of the whole extension system.  
+The OpenSumi extension has three entrances: `main` , `browserMain` and `workerMain`. All of them are optional. `Main` is the extension running in the independent Node.js process as shown above, its API remain fully compatible with VS Code. Let's start from the main entrance of the extension process step by step to introduce the principle of the whole extension system.  
 
-### 插件进程 (Extension Node Host)
+### Extension Process (Extension Node Host)
 
-If you know about VS Code's extension system, you know that the VS Code plugin process is completely independent of the main process. The same is true of OpenSumi's extension process, as the extension process itself is a completely isolated sub process from the main process: they communicate though Node.js's IPC.
+If you know about VS Code's extension system, you will know that the VS Code plugin process is completely independent of the main process. The same is true of OpenSumi's extension process, as the extension process itself is a completely isolated sub process from the main process: they communicate though Node.js's IPC.
 
 ![](https://img.alicdn.com/imgextra/i3/O1CN01ttWp3E1dludC7Qkt5_!!6000000003777-2-tps-1723-726.png)
 
-而插件由于全部运行于同一个进程，它们之间是可以相互访问的，这也是继承自 VS Code 的设计，例如可以通过调用 `sumi.extensions.getExtension` 或 `sumi.extensions.all` 来获取到其他插件的实例，甚至可以调用其他插件暴露的 API，这些都是允许的。Extensions, since they all run in the same process, are accessible to each other, which is also inherited from VS Code's design. For example, when calling the ` sumi. Extensions. GetExtension ` or ` sumi. Extensions. All `, or even other APIs exposed by rest extensions, we can get other extension instances, all of these are allowed.  
+Extensions, since they all run in the same process, are accessible to each other, which is also inherited from VS Code's design. For example, when calling the  `sumi.extensions.getExtension` or `sumi.extensions.all`, or even other APIs exposed by rest extensions, we can fetch other extension instances, all of these are allowed.  
 
-### Web Worker 插件进程 (Extension Worker Host)
+### Web Worker Extension Process (Extension Worker Host)
 
-前文中提到的 Web Worker 插件环境可以看作是 Extension Node Host 的低配版<!--有没有更好的形容词，子集？精简版？-->，这是因为在设计之初 Web Worker 插件线程只用于承担一些与 Node.js 无关的、密集计算型的任务，它的架构图大体上与 Extension Node Host 一致，只是去掉了一些强依赖 Node.js 能力的 API，例如 FS、Terminal、Task 、Debug 等。
+前文中提到的 Web Worker 插件环境可以看作是 Extension Node Host 的低配版<!--有没有更好的形容词，子集？精简版？-->，这是因为在设计之初 Web Worker 插件线程只用于承担一些与 Node.js 无关的、密集计算型的任务，它的架构图大体上与 Extension Node Host 一致，只是去掉了一些强依赖 Node.js 能力的 API，例如 FS、Terminal、Task 、Debug 等。The Web Worker extension environment mentioned above can be seen as a low-profile version of Extension Node Host <!--Is there a better adjective, subset?  Lite version? -->. This is because at the beginning of the design, the Web Worker extension thread is only used to undertake some dense computational tasks without reference to Node.js. Its architecture diagram is basically the same as Extension Node Host, but some APIs that strongly depend on Node.js are removed, for example, FS, Terminal, Task, and Debug.  
 
 ### Browser Extensions
 
-Browser 插件是 OpenSumi 特有的，也是与 VS Code 最大的差异点。Browser 插件通过 `Contributes` 来声明注册点，代码中导出对应的 React 组件来实现的。Contributes Point 是固定的，包括左、右、底部面板，以及 Toolbar 等位置。The Browser extension is unique to OpenSumi and is the biggest difference from VS Code. The Browser extension declare the register point by `Contributes`  exporting the React component into the code.  Contributes Point is fixed and includes left, right, and bottom panels, as well as Toolbar, and so on.  
+The Browser extension is unique to OpenSumi, which is the biggest difference from VS Code. The Browser extension declares the register point by `Contributes`, exporting related React component into the code. Contributes Point is fixed, including left, right, and bottom panels, as well as Toolbar.  
 
-## 插件 API
+## Extension API
 
-### Node 环境中的 API
+### API in Node Environment 
 
-`package.json` 中声明 `main` 以及 `sumiContributes#nodeMain` 的入口即是插件的 Node.js 环境，可以访问到 OpenSumi Node 环境的 API。
-在插件中调用 `import * as sumi from 'sumi'` 或 `const sumi = require('sumi')` 即可访问到插件 API，这些 API 根据功能由不同的 namespace 区分。这里导入 `sumi` 将可以访问到 VS Code + OpenSumi 的 API ，而如果使用 `import vscode from 'vscode'` 则只能使用 VS Code 标准的 API。
+The `main` and `sumiContributes#nodeMain` entry declared in `package.json` are the extension's Node.js environment, which has access to the OpenSumi Node environment's APIs.
+Calling `import * as sumi from 'sumi'` or `const sumi = require('sumi')` in the extension will grant you the access to the extension APIs, and those APIs are distinguished by different namespace based on their functionality. Here importing `sumi` will access to the VS Code + OpenSumi API, while using `import vscode from 'vscode'` will only give access to the VS Code standard API.
 
-### Worker 环境中的 API
+### API in the Worker Environment 
 
-`package.json` 中声明 `sumiContributes#workerMain` 的入口即是插件的 Worker 环境，可以访问到 OpenSumi Worker 环境中的 API。
+The `package.json` declares that the entrance of `sumiContributes#workerMain` is the extension Worker environment, which can access the API in the OpenSumi Worker environment.  
 
-Worker API 支持从 `sumi-worker` 和 `sumi` 两种模块名，这是因为很多 Worker 插件是从 Node 版本迁移而来的，保留 `sumi` 这个模块名来兼容这类插件。
+The Worker API supports both `sumi-worker`and `sumi` module names. This is because many Worker extensions migrate from the Node version, leaving the `sumi` module name incompatible with such extensions.  
 
-Worker API 是 Node 端 API 的子集，基本上除了与 FS、ChildProcess、Terminal 相关的 API，其他都可以运行在 Worker 中。
+The Worker API is a subset of the Node side APIs, basically every APIs except those related to FS, ChildProcess, and Terminal can run in the Worker.
 
-### Browser 环境 API
+### API in Browser Environment
 
-`package.json` 中声明 `sumiContributes#browserMain` 的入口即是插件的 Browser 环境，可以访问到 OpenSumi Browser 环境中的 API。
-Browser 环境中提供的 API 较少，可以通过引用 `sumi-browser` 来调用，核心是提供了 `executeCommand` 来执行命令，这里的命令可以是跨进程调用，例如注册在 Node/Worker 中的命令。Browser 环境的设计原则是尽量只负责视图渲染，一些复杂的业务逻辑最好使用 Node/Worker 环境。
+The `package.json` declares that the entrance of `sumiContributes#workerMain` is the extension Worker environment, which can access the API in the OpenSumi Worker environment. 
+The Browser environment provides fewer APIs, which can be called by referring to  `sumi-browser`. At its core, 'executeCommand' is provided to execute commands. The latter can be called across processes, such as commands registered in Node/Worker. The Browser environment is designed solely for view rendering. It's better to use Node/Worker environments for complex business logic.
