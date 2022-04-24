@@ -5,19 +5,19 @@ slug: contribution-point
 order: 5
 ---
 
-The concept of contribution point comes from a design philosophy in VS Code. By defining a basic contribution point, it can implement a full capability and spread out the contribution point files for each submodule.  
+The concept of contribution point comes from a design philosophy in VS Code. By defining a basic contribution point, we can implement a full capability and spread out the contribution point files for each submodule.  
 
-## For Instance
+## For Example
 
 Since there are plenty of hot keys in IDE, if a module wants to register a shortcut, it can depend on the shortcut module, but if the shortcut module wants to register a command, it will depend directly on the command module and other logical modules, which in turn make these modules's connection difficult to maintain.
 
-With the `contribution point `mechanism, we can just perform the logic of the `contribution point` mechanism in the public module, and do not need to pay attention to the implementation details of the specific shortcut key. As shown in the figure:  
+With the `contribution point `mechanism, we can just perform the logic of the `contribution point` mechanism in the public module, and do not need to pay attention to the implementation details of specific shortcut keys, as shown in the figure:  
 
 ![Example](https://img.alicdn.com/imgextra/i1/O1CN0106jNQW1fyOfEae2Hd_!!6000000004075-2-tps-2146-1048.png)
 
 ## Frequently-used Contribution Points
 
-Usually, when we use contribution points to realize corresponding functions, we need to declare in the module and introduce them into the integration side to take effect. The basic declaration is as follows:  
+Usually, when we use contribution points to run corresponding functions, we need to declare them inside the module and bring into the integration side to take effect. The basic declaration is as follows:  
 
 ```ts
 @Injectable()
@@ -76,7 +76,7 @@ export class DemoContribution implements ClientAppContribution {
 
 ### Command Register
 
-The contribution point of command registration is `KeybindingContribution`, through which we can register 'Command', as follows:  
+The contribution point of command registration is `KeybindingContribution`, through which we can register 'Command' as follows:  
 
 ```ts
 import {
@@ -105,7 +105,7 @@ export class DemoContribution implements CommandContribution {
 
 ### Preference Register
 
-The contribution point for preference registration is `PreferenceContribution`, through which we can register `Preference (configuration item)`, using the following method: 
+The contribution point for preference registration is `PreferenceContribution`, through which we can register `Preference（配置项）`, just as follows: 
 
 ```ts
 import { PreferenceContribution } from '@opensumi/ide-core-browser';
@@ -128,11 +128,11 @@ export class DemoContribution implements PreferenceContribution {
 }
 ```
 
-For more detailed configuration and usage, please refer to [Preference Module](../module-apis/preference)  
+For more detailed preference and usage, please refer to [Preference Module](../module-apis/preference)  
 
 ### Keybinding Register
 
-The contribution point of the shortcut registration is`KeybindingContribution`, through which we can register 'Keybinding', using the following method:  
+The contribution point of the shortcut registration is`KeybindingContribution`, through which we can register  `Keybinding（快捷键）`, using the following method:  
 
 ```ts
 import {
@@ -154,7 +154,7 @@ export class DemoContribution implements KeybindingContribution {
 
 ### Right Menu Contribution
 
-Right-click the contribution point for 'MenuContribution', we can register 'Menu' through this contribution point as follows: 
+The contribution point of right click registration is `MenuContribution`. We can register  `Menu（菜单）`through this contribution point as follows: 
 
 ```ts
 import {
@@ -202,16 +202,16 @@ export class DemoContribution implements MenuContribution {
 }
 ```
 
-The framework registers a total of 53 registered locations in the right menu by default,, as can be seen in the definition of `MenuId` in  `@opensumi/ide-core-browser`.  
+The framework enrolls a total of 53 registered locations in the right menu by default,as can be seen in the definition of `MenuId` in  `@opensumi/ide-core-browser`.  
 
 ### User-defined Protocol Files
 
-In OpenSumi, we obtain the corresponding file service through the DI Token of  `IFileServiceClient` for file reading and writting. In the face of some scenarioalized file content, we usually adopt the method of user-defined protocol header to realize the reading of such content, for example:  
+In OpenSumi, we obtain the corresponding file service through the DI Token of  `IFileServiceClient` for file reading and writting. In the face of some scenarioalized file content, we usually adopt the method of user-defined protocol header to read such content, for example:  
 
 - To read user configuration files, we use `user_stroage://settings.json` .  
 - To read virtual files in Debugging process, we use `debug://{filename}` .  
 
-We have made this function possible by the contribution point of  `FsProviderContribution`, as follows:  
+We have made this function possible by the contribution point of `FsProviderContribution`, as follows:  
 
 ```ts
 import {
