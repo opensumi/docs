@@ -1,32 +1,32 @@
 ---
 id: preference
-title: 配置模块
+title: Prefernce Module
 slug: preference
 ---
 
-Preferences 模块主要用于处理整个 IDE 配置的读取逻辑，常见的配置常见有：颜色主题、图标主题、自动保存等。
+The Preferences module is used to process the reading logic of the entire IDE configuration, including color theme, icon theme, automatic save, and so on.  
 
-## 存储路径
+## Storage Paths
 
-配置文件的目录位置可通过在配置 `AppConfig` 时传入 `userPreferenceDirName` 及 `workspacePreferenceDirName` 分别配置`全局配置`和`工作区配置`的 `settings.json`读取路径。
+The directory location of the configuration file can be read by passing `userPreferenceDirName` and `workspacePreferenceDirName` to `settings.json` when configuring `AppConfig` for `global configuration` and `workspace configuration`, respectively.
 
-> 下面我们统一将 `.sumi` 作为我们默认的配置文件读取路径
+> We will use `.sumi` as our default path to read the configuration file 
 
-对于全局配置，我们一般是从 `~/.sumi/settings.json` 文件中读取；
+For global preference, we generally read from the `~/.sumi/settings.json` file.
 
-针对工作区的配置文件，我们一般是从 `${工作区路径}/.sumi/settings.json` 文件中读取，但在存在多个工作区存在的`多工作区` 项目，我们则是从 `${工作区名称}.sumi-workspace` 文件中读取；
+For workspace configuration files, we generally read them from the `${工作区路径}/.sumi/settings.json` file, but for `multi-workspace` projects where multiple workspaces exist, we read them from the  `${工作区名称}.sumi-workspace` file;
 
-## 使用
+## User Guide
 
-### 注册新配置
+### Register a new configuration  
 
-#### 方式一
+#### Mode 1
 
-通过 `VS Code Configuration Contribution` 进行配置注册及声明，见：[Configuration Contribution](https://code.visualstudio.com/api/references/contribution-points#contributes.configuration)。
+Set configuration registration and declaration via `VS Code Configuration Contribution`, please refer to[Configuration Contribution](https://code.visualstudio.com/api/references/contribution-points#contributes.configuration)。
 
-#### 方式二
+#### Mode 2
 
-通过在模块内进行额外的配置声明，代码如下：
+By making additional configuration declarations within the module, the code is as follows:  
 
 ```ts
 import { PreferenceContribution } from '@opensumi/ide-core-browser';
@@ -49,11 +49,11 @@ export class DemoContribution implements PreferenceContribution {
 }
 ```
 
-将上述的 `DemoContribution` 类在模块声明时引入，便可以在 IDE 环境中注册上新的配置，参考代码：[common.contribution.ts](https://github.com/opensumi/core/blob/v2.13.10/packages/core-browser/src/common/common.contribution.ts)。
+By introducing the above `DemoContribution` class in the module declaration, you can register the new configuration in the IDE environment, refer to the code: [common.contribution.ts](https://github.com/opensumi/core/blob/v2.13.10/ packages/core-browser/src/common/common.contribution.ts).
 
-### 配置值操作
+### Configuration Value Operation
 
-你可以简单的通过 `PreferenceService` 来进行配置文件的获取及修改，同时监听其变化：
+You can simply get and modify the configuration file via the  `PreferenceService` and listen for changes:
 
 ```ts
 
@@ -83,13 +83,13 @@ export class Demo {
 }
 ```
 
-## 拓展内容
+## Content Extended
 
-设置面板模块 `Keymap` 与 `Preference` 模块之间存在一定的依赖及关联关系。
+Setting panel module `Keymap` and`Preference` module have certain dependence and association relationship.  
 
-如果你需要让你通过模块引入定义的配置出现在设置面板中，你可以通过 `SettingContribution` 贡献点来定义。
+如果你需要让你通过模块引入定义的配置出现在设置面板中，你可以通过 `SettingContribution` 贡献点来定义。 If you need to have the configuration defined by introducing a module appear in the Settings panel, you can define the `SettingContribution` contribution point. 
 
-### 案例
+### Cases
 
 ```ts
 // 在 `general`  面板追加一个 `demo.language` 配置项的展示
@@ -118,9 +118,9 @@ export class DemoSettingContribution implements SettingContribution {
 }
 ```
 
-同时，你也可以通过 `SettingContribution` 配置某个配置值不出现在某个配置环境下，如：
+At the same time, You can also use a `SettingContribution` to make a configuration value that does not appear in a configuration environment, for example:
 
-我希望语言配置应该只存在`全局设置`，而不应该在`工作区配置`中出现，则我可以如下编写我的贡献点文件：
+I expect the language configuration only exists in `Gobal Settings`and not in`Workspace configuration`, so I can write my contribution point file as follows:
 
 ```ts
 @Domain(SettingContribution)
@@ -147,4 +147,4 @@ export class DemoSettingContribution implements SettingContribution {
 }
 ```
 
-更多配置说明及拓展，可进一步查看 OpenSumi 源码。
+For more configuration details and extensions, please refer to the OpenSumi source code.
