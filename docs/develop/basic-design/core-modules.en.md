@@ -88,7 +88,7 @@ Although OpenSumi employs Monorepo to organize the code structure, and each modu
 ├── opened-editor                 # The "Open Editor" functionality implementation
 ├── outline                       # Outline function, lSP-based symbol interface, providing Treeview-based symbol jump and other functions
 ├── output                        # The output functionality implementation, providing standard VS Code Output APIs
-├── overlay                       # OpenSumi built-in float layer functionality implementation, such as message、notification、modal
+├── overlay                       # OpenSumi built-in overlayer functionality implementation, such as message、notification、modal
 ├── preferences                   # Setting panel and functionality implementations
 ├── process                       # Utils module providing convenient subprocess management functions
 ├── quick-open                    # Quick open feature implementation, OpenSumi's quick open feature a separate implementation, similar to the Monaco Editor's built-in feature  

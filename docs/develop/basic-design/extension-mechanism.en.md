@@ -25,7 +25,7 @@ Extensions, since they all run in the same process, are accessible to each other
 
 ### Web Worker Extension Process (Extension Worker Host)
 
-前文中提到的 Web Worker 插件环境可以看作是 Extension Node Host 的低配版<!--有没有更好的形容词，子集？精简版？-->，这是因为在设计之初 Web Worker 插件线程只用于承担一些与 Node.js 无关的、密集计算型的任务，它的架构图大体上与 Extension Node Host 一致，只是去掉了一些强依赖 Node.js 能力的 API，例如 FS、Terminal、Task 、Debug 等。The Web Worker extension environment mentioned above can be seen as a low-profile version of Extension Node Host <!--Is there a better adjective, subset?  Lite version? -->. This is because at the beginning of the design, the Web Worker extension thread is only used to undertake some dense computational tasks without reference to Node.js. Its architecture diagram is basically the same as Extension Node Host, but some APIs that strongly depend on Node.js are removed, for example, FS, Terminal, Task, and Debug.  
+The Web Worker extension environment mentioned above can be seen as a low-profile version of Extension Node Host <or subset?  Lite version? -->. This is because at the beginning of the design, the Web Worker extension thread is only used to undertake some dense computational tasks without reference to Node.js. Its architecture diagram is basically the same as Extension Node Host, but some APIs that strongly depend on Node.js are removed, for example, FS, Terminal, Task, and Debug.  
 
 ### Browser Extensions
 

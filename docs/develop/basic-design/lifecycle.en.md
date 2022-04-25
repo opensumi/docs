@@ -5,59 +5,59 @@ slug: lifecycle
 order: 2
 ---
 
-在 [快速开始](../../integrate/quick-start/web) 中，我们实例化了一个 `ClientAPP` ，调用其 `start` 方法即可启动 OpenSumi。
+In[Quick Start](../../integrate/quick-start/web) , we instantiate a 'ClientAPP' and call its `start` mode to start OpenSumi.  
 
 ```typescript
 const app = new ClientAPP(/*..options*/);
 app.start();
 ```
 
-start 方法的流程比较简单直观，它主要负责一下工作
+The Start process is simple and perceivable, mainly responsible for the following tasks
 
-- 创建前后端连接，对于 Web ，将使用 Websocket，对于 Electron 端，则使用 IPC 通信
-- 初始化 ApplicationService, 用于缓存一些系统级的状态，如当前 OpenSumi 后端运行的 OS 等
-- 执行所有的 [贡献点](./contribution-point)
+- To create the front and back end connections, Websocket will be used for the Web end, and IPC for the Electron end 
+- To initialize ApplicationService to cache some system-level state, such as the OS currently running on the OpenSumi back end  
+- execute all [Contribution Points](./contribution-point) 
   - initialize
   - onStart
   - onDidStart
-- 渲染主界面
+-  Rendering the main screen
 
-这里的 `Contributions` 实际上就是一系列的生命周期方法，它们通过 `Contributions` 机制中的 `ClientAppContribution` 串联起来，会在 OpenSumi 运行过程中不同阶段调用。除了上述 start 中的生命周期方法之外，还有关闭窗口、连接变化等相关的方法，本文会详细介绍这些生命周期以及其使用方式。
+In this case, 'Contributions' are actually a series of life-cycle methods connected by`ClientAppContribution` in the`Contributions` mechanism, which are invoked at different stages of OpenSumi operation. In addition to the lifecycle methods described above in Start, there are other methods related to closing Windows, connection changes, etc, and this paper will describes these lifecycle and how they are used in detail.  
 
 ![lifecycle](https://img.alicdn.com/imgextra/i2/O1CN01qpr3WB1iOcZNLbrcu_!!6000000004403-55-tps-3006-1224.svg)
 
 ## initialize
 
-initialize 是初始化整个应用的阶段，一般来说比较核心的功能会在这个阶段做一些初始化操作，例如读取一些本地的缓存以便主界面渲染后快速实例化一些服务。此外为了加快可交互时间，initialize 阶段会启动插件进程，并执行一系列插件贡献点的注册操作。
+Initialize is the stage that initialize the entire application. Generally, some core functions are initialized in this stage, for example. reading some local caches to quickly instantiate some services after the main screen is rendered. In addition, to speed up the interaction time, the Initialize phase starts the extension process and performs a series of registration operations for extension contribution points.  
 
 ## render
 
-<!-- 未发布的版本中 renderApp 会被调整到 initialize 之前，在此之前文档先保持原状 -->
+<!-- 未发布的版本中 renderApp 会被调整到 initialize 之前，在此之前文档先保持原状 --> 
 
-renderApp 这部分负责渲染整个应用的主框架，核心是调用 ReactDOM 的 render 方法来渲染主界面，与一般应用不同的是，OpenSumi 的视图部分可以拖拽改变顺序、尺寸，同时也支持通过集成、插件等方式贡献新的视图界面。
+RenderApp is responsible for rendering the main framework of the entire application. The core is to call the Render mode of ReactDOM to render the main interface. Different from ordinary applications, OpenSumi's view part can be dragged and dropped to change the order and size, and it also supports the contribution of new view interface through integration, extensions, etc.  
 
-> renderApp 将会在下个版本调整顺序到 initialize 之前
+> In the next release, renderApp will be reordered before Initialize
 
 ## onStart
 
-onStart 在主界面渲染后执行，此时可以访问到 DOM ，一般来说可以在 onStart 阶段进行一些事件监听等操作，另外一些非首屏可见的功能也可以放在 onStart 里，起到延迟执行的作用。
+onStart is executed after the rendering of the main interface; at this time you can access the DOM, loosely speaking you can monitor some events and other operations in the onStart phase. In addition, other functions that are not visible on the first screen can also be placed in onStart to delay execution.
 
 ## onDidStart
 
-整个应用加载完成，核心功能已经可用(除插件外)，此时 IDE 的基础功能应该是完备的。
+When the entire application is loaded and the core functionality is available (except for extension), the IDE's basic functionalities should be complete.  
 
 ## onWillStop
 
-onWillStop 主要作用于 Electron 端，在窗口触发关闭前执行一些回收以及确认操作，例如当存在未保存文件时，弹窗询问用户是否保存后再关闭。
+OnStop is also applied to the Electron terminal and is executed after onWillStop when the user confirms that the window can be closed  
 
 ## onStop
 
-onStop 同样主要作用于 Electron 端，在 onWillStop 之后，用户确认可以关闭窗口时执行
+OnStop is also applied to the Electron terminal and is executed after onWillStop, when the user confirms that the window can be closed  
 
 ## onDisposeSideEffects
 
-与 onStop 触发时机类似，但 `onDisposeSideEffects` 是比较特殊的一类生命周期，当 IDE 被作为一个组件时，可能存在不刷新页面，单纯卸载整个 IDE 的情况，此时需要将所有 IDE 中的副作用清楚，通过主动调用 `clientApp.dispose` 方法即可触发。
+Similar to the onStop trigger time, but `onDisposeSideEffects` is a special kind of life cycle. When the IDE is taken as a component, it may be possible to uninstall the whole IDE without refreshing the page. At this time, all side effects of the IDE must be made clear. It can be triggered by actively calling the `clientApp.dispose` method.  
 
 ## onReconnect
 
-当前连接断开，同时重连成功后自动触发，再次连接后部分模块需要重新初始化(可能存在断开时文件、缓存被破坏，需要重新初始化)的情况。
+The current connection doesn't work and the module will be triggered automatically after reconnection. After the reconnection, some modules need to be re-initialized (files and cache may be damaged during the disconnection and need to be re-initialized).  
