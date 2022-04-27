@@ -34,24 +34,24 @@ export class ExplorerModule extends BrowserModule {
 
 而额外的一些 Service 定义
 
-## 如何编码
+## How to Code
 
 > 在初次接触 OpenSumi 的模块编码时，我们建议你可以先看一下 OpenSumi 内是否有类型的功能或布局，再通过参照源码的方式进行相关编码工作，这将会让你事半功倍。
 
-对于模块编码，从基本需求出发，一般可以简单分为如下两类：
+Based on basic requirements, module coding can be generally divided into the following two categories:  
 
-- 基于视图的功能需求
-- 基于服务能力的需求
+- View-based functional requirements
+- Demand based on service capacity
 
-### 基于视图的需求
+###  View-based requirements
 
-所有视图的需求的第一步便是创建视图，而在 OpenSumi 的框架下，创建视图的步骤可以分为两步：
+The first step for all view requirements is to create a view, and in the OpenSumi framework, the steps to create a view can be divided into two steps:
 
-1. 注册视图模块
-2. 引入模块
-3. 在特定的 `Location （布局区块）` 下使用
+1. Register view module  
+2. Introduce the module
+3. Used under the specific `Location （Layout Block）`case
 
-以 `Explorer` 模块为例，我们创建一个 `explorer.contribution.ts` 文件注册一个视图容器：
+Taking the `Explorer` module as an example, we create an `explorer.contribution.ts` file to register a view container.
 
 ```ts
 @Domain(ComponentContribution)
@@ -153,9 +153,9 @@ export class DemoModule extends BrowserModule {
 }
 ```
 
-具体的实践案例你都可以在 [经典案例](./sample/overview) 中学习到。
+Specific practical examples can be found in the[classic case](./sample/overview). A basic OpenSumi module generally needs to have the following hierarchical structure:  
 
-## 关于依赖的潜规则
+## Unspoken rules about dependencies
 
 一个基础的 OpenSumi 模块，一般需要具备如下的分层结构：
 

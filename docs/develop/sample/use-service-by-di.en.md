@@ -5,13 +5,13 @@ slug: use-service-by-di
 order: 5
 ---
 
-DI (依赖注入) 是 OpenSumi 框架的核心机制之一，通过 DI，我们能很容易的实现依赖的解耦及服务的复用，详细介绍可见：[依赖注入](../basic-design/dependence-injector) 文档。
+DI (Dependency Injection) is one of the core mechanisms of OpenSumi framework. Through DI, we can easily achieve the decoupling of dependencies and reuse of services, for details see: [Dependency Injection](../basic-design/dependence-injector) .
 
-本节内容将从案例出发，注册 `ITodoService` 服务，同时使用框架提供的 `IMessageService` 服务能力，Todo 项切换状态时展示切换信息。
+This section will start from the case, register `ITodoService` service, while using the `IMessageService` service offered by the framework. Todo items switch state to display the switch message.
 
-## 注册服务
+## Registration service
 
-声明 `ITodoService` 服务接口:
+Declare `ITodoService` service interface:
 
 ```ts
 export interface ITodoService {
@@ -21,7 +21,7 @@ export interface ITodoService {
 export const ITodoService = Symbol('ITodoService');
 ```
 
-实现 `ITodoService` 服务:
+Implement `ITodoService` services:
 
 ```ts
 import { Injectable, Autowired } from '@opensumi/di';
@@ -36,7 +36,7 @@ export class TodoService implements ITodoService {
 }
 ```
 
-注册 `ITodoService` 服务及其对应实现：
+Register the `ITodoService` service and its corresponding implementation:
 
 ```ts
 import { Provider, Injectable } from '@opensumi/di';
@@ -57,9 +57,9 @@ export class TodoListModule extends BrowserModule {
 
 ```
 
-## 使用自定义服务
+## Use Custom Services
 
-在视图中，我们实现了一个 `useInjectable` 的 hook 用于在视图层使用 DI 注册的服务，通过在视图中实现如下代码便可获取到 `ITodoService` 实例并使用：
+In the view, we made a `useInjectable` hook as a service to registered DI in the view layer. We can elicit the `ITodoService` instance and use it by implementing the following code:  
 
 ```tsx
 export const Todo = ({
@@ -73,7 +73,7 @@ export const Todo = ({
 
 ### Message Notification
 
-OpenSumi 内所有的能力基本上都以 DI 的形式存在，我们可以便捷的通过 DI 引入并使用，例如这里我们需要一个消息通知功能，我们便可以使用 `IMessageService` 来获取并使用该能力。For example, if we need a message notification feature, we can use `IMessageService` to get and use the feature.
+All the capabilities in OpenSumi basically exist in the form of DIs, which can be easily introduced and used. For example, if we need a message notification feature, we can use `IMessageService` to get and use that feature.
 
 ```ts
 import { Injectable, Autowired } from '@opensumi/di';
@@ -91,7 +91,7 @@ export class TodoService implements ITodoService {
 }
 ```
 
-通过在点击 Todo 项的时候绑定触发函数，就可以直接使用 `IMessageService` 来展示消息。By binding the trigger function when the Todo item is clicked, you can use the `IMessageService` to display the message directly.
+By binding the trigger function when the Todo item is clicked, you can use the `IMessageService` to display the message directly.
 
 ```ts
 export const Todo = ({
@@ -145,7 +145,7 @@ export const Todo = ({
 
 ### Add items using shortcut keys
 
-进一步的，我们还可以通过贡献点机制注册命令和快捷键，借助 `IQuickInputService` 来实现添加 Todo 项的能力。Further, we can also register commands and shortcuts through the contribution point mechanism, with the ability to add Todo items with the help of `IQuickInputService`.
+Further, we can also register commands and shortcut keys through the contribution point mechanism, with the ability to add Todo items with the help of `IQuickInputService`.
 
 ```ts
 import { Injectable, Autowired } from '@opensumi/di';
@@ -183,7 +183,7 @@ export class TodoService implements ITodoService {
 }
 ```
 
-注册命令及快捷键：
+Registration commands and shortcut keys:
 
 ```ts
 import { Autowired } from '@opensumi/di';
@@ -232,8 +232,8 @@ export class TodoContribution
 }
 ```
 
-#### 效果展示
+#### Results Show
 
-![快捷键](https://img.alicdn.com/imgextra/i4/O1CN01kAtflz1KZ6rsycc0r_!!6000000001177-1-tps-1200-706.gif)
+![keybinding](https://img.alicdn.com/imgextra/i4/O1CN01kAtflz1KZ6rsycc0r_!!6000000001177-1-tps-1200-706.gif)
 
-下一节，我们将进一步学习如何进行前后端双向通信，来实现双向的服务调用。
+In the next section, we'll take a closer look at both front and back two-way communication to implement a two-way service invocation.  
