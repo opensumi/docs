@@ -13,7 +13,7 @@ First of all, you need to define a single channel for two-way communication mess
 export const ITodoConnectionServerPath = 'ITodoConnectionServerPath';
 ```
 
-## Associating front-end and Back-end services
+## Associating Front-end and Back-end Services
 
 First, you need to inherit 'RPCService' on `TodoService` and `TodoNodeService`.
 
@@ -50,8 +50,8 @@ export class TodoListModule extends BrowserModule {
 
   backServices = [
     {
-      servicePath: ITodoConnectionServerPath, // 双端通信通道唯一路径
-      clientToken: ITodoService // 关联前端服务
+      servicePath: ITodoConnectionServerPath, // The only path of the two-end communication channel
+      clientToken: ITodoService // Associated front-end service
     }
   ];
 }
@@ -76,8 +76,8 @@ export class TodoListModule extends NodeModule {
 
   backServices = [
     {
-      servicePath: ITodoConnectionServerPath, // 双端通信通道唯一路径
-      token: ITodoNodeService // 关联后端服务
+      servicePath: ITodoConnectionServerPath, // The only path of the two-end communication channel
+      token: ITodoNodeService // Associated back-end service
     }
   ];
 }
@@ -96,12 +96,12 @@ export class TodoService extends RPCService implements ITodoService {
   @Autowired(ITodoConnectionServerPath)
   private todoNodeService: ITodoNodeService;
 
-  // 展示消息时调用后端服务
+  // Display the message when the backend service is invoked
   showMessage = (message: string) => {
     this.messageService.info(message);
     this.todoNodeService.showMessage(message);
   };
-  // 接收后端消息
+  // Receive back end messages
   onMessage = (message: string) => {
     this.messageService.info(message);
   };
@@ -119,7 +119,7 @@ import { RPCService } from '@ali/ide-connection';
 @Injectable()
 export class TodoNodeService extends RPCService implements ITodoNodeService {
   showMessage = (message: string) => {
-    // 这里的 this.rpcClient![0] 可以直接获取到通信通道下的 proxy 实例
+    // Here, this.rpcClient![0] can directly obtain the proxy instance under the communication channel
     this.rpcClient![0].onMessage(`I got you message, echo again. ${message}`);
   };
 }
@@ -129,4 +129,4 @@ export class TodoNodeService extends RPCService implements ITodoNodeService {
 
 ![Two-way dispaly](https://img.alicdn.com/imgextra/i1/O1CN01ItcgHk1l0kmoQIjmb_!!6000000004757-1-tps-1200-706.gif)
 
-Since then, we have completed the whole case teaching.
+Since then, we have completed the whole case instruction.
