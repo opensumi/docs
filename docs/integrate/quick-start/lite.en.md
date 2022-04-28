@@ -1,70 +1,74 @@
 ---
 id: quick-start-lite
-title: 快速开始（纯前端）
+title: Quick Start（Pure Front End）
 order: 3
 ---
 
-## 概览
+## Overview
 
-OpenSumi 提供了纯前端版本的接入能力，可以让你脱离 node 的环境，在纯浏览器环境下，通过简单的 B/S 架构提供相对完整的 IDE 能力。
+OpenSumi provides a pure front-end access capability that takes you out of the Node environment and provides relatively complete IDE capabilities with a simple B/S architecture in a pure browser environment.  
 
-在开始运行前，请先保证本地的环境已经安装 Node.js 10.15.x 或以上版本。同时 OpenSumi 依赖一些 Node.js Addon，为了确保这些 Addon 能够被正常编译运行，建议参考 [node-gyp](https://github.com/nodejs/node-gyp#installation) 中的安装指南来搭建本地环境。
+Before running it, please ensure that Node.js 10.15.x or higher is installed in your local environment. Also, OpenSumi relies on some Node.js Addons, so to ensure that these Addons are compiled properly, it is recommended to refer to the installation guide in [node-gyp](https://github.com/nodejs/node-gyp#installation) to set up your local environment.
 
-同时，你也可以直接访问我们的[预览页面](https://opensumi.github.io/ide-startup-lite/)体验最新运行效果，支持分支或者 tag 地址 如 `https://opensumi.github.io/ide-startup-lite/#https://github.com/opensumi/core/tree/v2.16.0`。
+At the same time, you can directly visit our [preview page](https://opensumi.github.io/ide-startup-lite/) to experience the latest running effect, It supports the branch or tag address such as  `https://opensumi.github.io/ide-startup-lite/#https://github.com/opensumi/core/tree/v2.16.0`.  
 
-## 快速开始
+## Quick Start
 
-克隆项目 `opensumi/ide-startup-lite`，进入目录执行以下命令启动 IDE：
+Clone `opensumi/ide-startup-lite`，go to the directory and execute the following command to start the IDE：
 
 ```shell
 $ git clone https://github.com/opensumi/ide-startup-lite.git
 $ cd ide-startup-lite
-$ npm install                  # 安装依赖
-$ npm run compile:ext-worker   # 编译 webworker 插件环境
-$ npm run start                # 启动
+$ npm install                  # to install dependency
+$ npm run compile:ext-worker   # to compile webworker environment
+$ npm run start                # to start
 ```
 
-浏览器打开 `http://127.0.0.1:8080` 进行预览或开发。
+Open `http://127.0.0.1:8080` in your browser for preview or development.
 
-![截图](https://gw.alipayobjects.com/mdn/rms_3b03a3/afts/img/A*ZXeHTJFmx3AAAAAAAAAAAAAAARQnAQ)
+![screenshot](https://gw.alipayobjects.com/mdn/rms_3b03a3/afts/img/A*ZXeHTJFmx3AAAAAAAAAAAAAAARQnAQ)
 
-距离一个完整可用的纯前端版 IDE 还需要以下实现：
+A fully feasible and pure front-end IDE requires the following implementations:  
 
-- 文件服务配置 \*（必选）
-- 插件配置
-- 语言能力配置
-- 搜索服务配置
+- File Service Configuration \*（mandatory）
+- Extension Configuration
+- Language Competence Configuration
+- Search service Configuration
 
-## 文件服务配置
+## File Service Configuration
 
-纯前端版本使用 `BrowserFsProvider` 替换 OpenSumi 内的 `DiskFileSystemProvider`, 改动在于由原来的本地文件服务改成 http 接口服务
+The pure front-end version uses `BrowserFsProvider` to replace `DiskFileSystemProvider` in OpenSumi. The difference is that the original local file service is changed into an http interface service
 
-> 文件位置：`web-lite/file-provider/browser-fs-provider.ts`
+> File Location：`web-lite/file-provider/browser-fs-provider.ts`
 
-### 文件服务
+### File Services
 
-与容器版、electron 版这种全功能 IDE 不同的是，纯前端版本 IDE 一般都服务于一个垂直、特定的场景，比如代码查看、codereview 等等，对应的底层能力是服务化的。且由于浏览器本身没有文件系统，因此需要一个外部的数据源来提供和维护文件信息。在纯前端版本，我们需要开发者实现以下两个方法来支持基础的代码查看能力：
+Different from full-featured IDEs such as container and electron versions, pure front-end versions of IDEs generally serve a vertical, specific scenario, such as code viewing, codereview, etc. The corresponding underlying capabilities are service-oriented. And since the browser itself does not have a file system, it needs an external data source to provide and maintain the file information. In the pure front-end version, we need developers to implement the following two methods to support the underlying code viewing capabilities.
 
-> 文件位置：`web-lite/file-provider/http-file-service.ts`
+Translated with www.DeepL.com/Translator (free version)
 
-- `readDir(uri: Uri): Promise<Array<{type: ‘tree’ | ‘leaf’, path: string}>>`：返回目录结构信息
-- `readFile(uri: Uri, encoding?: string): Promise<string>`：返回文件内容
+> File Location：`web-lite/file-provider/http-file-service.ts`
 
-实现上述两个方法即可支持只读模式下的 IDE 能力。如果需要支持代码编辑能力，还需要实现下面三个方法：
+- `readDir(uri: Uri): Promise<Array<{type: ‘tree’ | ‘leaf’, path: string}>>`：return directory structure information
+- `readFile(uri: Uri, encoding?: string): Promise<string>`：return file contents
+
+Implementing the above two methods enables IDE capabilities in read-only mode.  If you want to support code editing capabilities, you also need to implement the following three methods:  
 
 - `updateFile(uri: Uri, content: string, options: { encoding?: string; newUri?: Uri; }): Promise<void>`
 - `createFile(uri: Uri, content: string, options: { encoding?: string; }): Promise<void>`
 - `deleteFile(uri: Uri, options: { recursive?: boolean }): Promise<void>`
 
-代码修改后，会先调用对应方法同步到集成方的服务端，之后浏览器端也会在内存中缓存一份新的代码，刷新后失效。
+After the code is modified, the corresponding method will be called to synchronize the code to the server end of the integration side. After that, the browser side will cache new code in memory, and invalid it after refreshing.  
 
-## 插件声明
+## Extension Declaration
 
-纯前端环境下由于没有文件系统，无法通过插件扫描的逻辑获取已安装插件的列表及其对应的详细信息，需要提前在集成时进行声明。
+As there is no file system in the pure front-end environment, the list of installed extensions and their corresponding details cannot be obtained through the logic of extension scanning, which needs to be declared in advance at integration time.
 
-纯前端插件在上架插件市场时，会自动同步一份需要的资源到 oss 上（需要开启配置`{ “enableOpenSumiWebAssets”: true }`，开启后插件构建时会自动生成需要托管的目录列表文件 sumi-meta.json）。因此在内网环境下，要使用上传到插件市场的插件，只需要在插件列表里声明目标插件的 id 和版本即可，剩余逻辑已被抹平：
+When pure front-end plugins are added to the plugin marketplace, a copy of the required resources will be automatically synchronized to oss (you need to enable the configuration`{ “enableOpenSumiWebAssets”: true }`, after that when building extensions, it will automatically generate the directory list file, sumi-meta.json, which needs to be hosted .jso). Therefore, to use a plugin uploaded to the plugin marketplace in an intranet environment, you only need to declare the id and version of the target plugin in the plugin list, and the rest of the logic has been smoothed out:
 
-> 文件位置：`web-lite/extension/index.ts`
+Translated with www.DeepL.com/Translator (free version)
+
+> File Location：`web-lite/extension/index.ts`
 
 ```typescript
 const extensionList = [
@@ -74,15 +78,15 @@ const extensionList = [
 ];
 ```
 
-对于外网用户，可以将插件打包生成的需要托管的部分资源自行上传到 oss 或 cdn 上，然后修改插件市场的 oss 基础路径为自定义路径即可。
+For external users, you can upload some resources generated by plug-in packaging to the OSS or CDN, and then modify the oss base path in the  plug-in market to a customized path.  
 
-## 语法高亮及代码提示
+## Syntax Highlighting and Code Hints
 
-### 语法高亮
+### Syntax Highlighting
 
-出于性能考虑，纯前端版本的静态语法高亮能力默认不通过插件来注册，我们将常见的语法封装到了一个统一的 npm 包内，直接声明想要支持的语法即可：
+For performance reasons, the static syntax highlighting capability of the pure front-end version is not registered through plug-ins by default. We have encapsulated common syntax into a unified NPM package and declared the syntax we want to support directly:  
 
-> 文件位置：`web-lite/grammar/index.contribution.ts`
+> File Location：`web-lite/grammar/index.contribution.ts`
 
 ```typescript
 const languages = [
@@ -95,11 +99,11 @@ const languages = [
 ];
 ```
 
-> 注：我们提供了直接 Require 和动态 import 两种方式来引入语法声明文件，前者会使得 bundleSize 变大，后者部署成本会更高，集成时可自行选择
+> Note: We provide both direct Require and dynamic import to introduce syntax declaration files. The former will make bundleSize larger, while the latter will be more expensive. You may choose you desired for integration  
 
-### 单文件语法服务
+### Single file syntax service
 
-OpenSumi 基于纯前端插件（worker 版）能力，提供了常见语法的基础提示。由于没有文件服务，worker 版本语法提示插件只支持单文件的代码提示，不支持跨文件分析，对于纯前端的轻量编辑场景而言，基本上是够用的。目前可选的语法提示插件有：
+ OpenSumi is based on pure front-end plug-in (Worker version) capabilities, providing basic hints of common syntax.  Since there is no file service, the worker version syntax prompt plug-in only supports single-file code prompt and does not support cross-file analysis, which is basically sufficient for pure front-end lightweight editing scenarios.  Syntax hint plugins are currently available:  
 
 ```typescript
 const languageExtensions = [
@@ -111,13 +115,13 @@ const languageExtensions = [
 ];
 ```
 
-将语法提示插件直接加入插件列表即可。
+Add the syntax prompt plug-in directly to the plug-in list.
 
-### Lsif 语法服务
+### Lsif Syntax Service
 
-对于代码查看、Code review 这一类纯浏览场景，基于离线索引分析的 [LSIF 方案](https://microsoft.github.io/language-server-protocol/specifications/lsif/0.6.0/specification/) 可以很好的支持跨文件 Hover 提示，代码跳转的需求，且不需要浏览器端承担任何额外的分析开销。OpenSumi 纯前端版集成了 lsif client，只需要简单的对接即可接入 lsif 服务：
+For pure browsing scenarios such as code viewing and Code review, the [LSIF Scheme](https://microsoft.github.io/language-server-protocol/specifications/lsif/0.6.0/specification/) based on offline indexing analysis will support cross-file Hover hints and code skipping without any additional analysis overhead on the browser side. OpenSumi pure front-end version integrated with lsif client, just need a simple docking to access lsif service
 
-> 文件位置：`web-lite/language-service/lsif-service/lsif-client.ts`
+> File Location：`web-lite/language-service/lsif-service/lsif-client.ts`
 
 ```typescript
 export interface ILsifPayload {
@@ -136,13 +140,13 @@ export interface ILsifClient {
 }
 ```
 
-## 搜索能力
+## Search Capability
 
-搜索功能属于可选实现，默认不开启搜索功能。实现搜索能力的核心在于实现 file-search 和 search 模块的后端部分。
+The search function is optional and is not enabled by default. The core search capability lies in the implementation of file-search and the back-end part of the search module  
 
-### 文件搜索
+### File Search 
 
-要实现文件搜索功能（通过 cmd+p 触发），需要实现以下方法：
+To make the file search function (triggered by cmd+p)possible, the following method need to be implemented: 
 
 ```typescript
 export interface IFileSearchService {
@@ -158,8 +162,8 @@ export interface IFileSearchService {
 }
 ```
 
-实现后替换默认的 mock-file-seach.ts 即可。
+Replace the Default mock-file-seach.ts after implementation
 
-### 文件内容搜索
+### File Content Search  
 
-文件内容搜索功能的实现需要改造 `search.service.ts`，暂不提供官方实现。
+The implementation of the file content search function requires modification of `search.service.ts`, and the official implementation is not available at this time.
