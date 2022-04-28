@@ -166,12 +166,12 @@ import {
 @Domain(MenuContribution)
 export class DemoContribution implements MenuContribution {
   registerMenus(menus: IMenuRegistry): void {
-    // 注册一个一级菜单
+    // register a first level menu
     menus.registerMenubarItem(MenuId.DebugBreakpointsContext, {
       label: '断点调试',
       order: 999
     });
-    // 注册菜单下的一个选项
+    // register an option in menue
     menuRegistry.registerMenuItem(MenuId.DebugBreakpointsContext, {
       command: 'debug.breakpoint.delete',
       label: '删除断点',
@@ -179,17 +179,17 @@ export class DemoContribution implements MenuContribution {
       order: 1
     });
 
-    // 注册二级菜单
+    // Register secondary menu
     const menuId = 'more';
     const subMenuId = 'more/items';
-    // 绑定二级菜单到一个一级菜单的菜单项中
+    // Bind the second-level menu to a first-level menu item
     menuRegistry.registerMenuItem(menuId, {
       submenu: subMenuId,
       label: '更多设置',
       iconClass: '',
       group: 'more'
     });
-    // 注册二级菜单内容
+    // register secondary menu contents
     menuRegistry.registerMenuItems(subMenuId, [
       {
         command: {
