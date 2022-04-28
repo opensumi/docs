@@ -18,7 +18,7 @@ You can also get the relevant installation package in the [Release](https://gith
 
 ## Local Start
 
-> **注意：由于编译过程中需要下载大量的包，并且部分包需要访问 GitHub 下载源码，请保持 GitHub 的访问畅通。很多 404 Not Found 的问题都是网络访问失败引起的。** Note: As a large number of packages need to be downloaded during the compilation process, and some packages need to access GitHub to download the source code, please keep GitHub accessible.  Many 404 Not Found problems are caused by network access failures.  
+> **Note: As a large number of packages need to be downloaded during the compilation process, and some packages need to access GitHub to download the source code, please keep GitHub accessible.  Many 404 Not Found problems are caused by network access failures.**   
 > China mainland Users who cannot install dependencies properly because of network problems can switch to the `main-cn` branch first: `git checkout main-cn`, or refer to the appendix at the end of the article to configure the npm image.
 
 Run the following commands in sequence:
@@ -29,7 +29,7 @@ $ cd ide-electron
 $ npm install
 $ npm run build
 $ npm run rebuild-native -- --force-rebuild=true
-$ npm run download-extension # 安装内置插件（可选）
+$ npm run download-extension # install built-in plug-ins (optional)  
 $ npm run start
 ```
 
