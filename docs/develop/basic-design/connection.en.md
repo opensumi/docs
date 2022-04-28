@@ -47,10 +47,10 @@ This is a common example in OpenSumi. Generally, the back end is responsible for
 A front-end call to the `$getSomelocalData` method is wrapped as a `Promise<Request>` during communication, and the latter is processed and returned directly by the back end, while the underlying implementation wraps the return value as the request result, and sends it to the front end with a unique ID, thus an RPC call is finished. In addition to `Request`, `Notification` has been employed in individual notifications, the difference being that the `Notification` has no return value.
 
 ```typescript
-// 调用 $getSomeLocalData 时
+// when calling $getSomeLocalData
 await this.myBackService.$getSomeLocalData();
 
-// 伪代码实现
+// pseudocode implementation
 myBackService = new Proxy(
   {},
   {
@@ -58,9 +58,9 @@ myBackService = new Proxy(
       if (prop === '$getSomeLocalData') {
         return (...args) => {
           new Promise((resolve, reject) => {
-            // connection 表示前后端连接
+            // connection means the connection between front end and back end
             connection.sendRequest(prop, ...args, response => {
-              // 请求返回后通过 Promise resolve 将结果返回
+              // The request is returned before the result is returned through Promise resolve
               resolve(response);
             });
           });

@@ -98,7 +98,7 @@ const ExampleEditorComponent = () => {
 @Domain(BrowserEditorContribution)
 export class ExampleEditorContribution implements BrowserEditorContribution {
   registerResource(resourceService: ResourceService): void {
-    // 注册example_scheme 可以在编辑器打开，并且设定对应的tab icon 和 名字
+    // Register example_scheme that allows you to open it in the editor and set the corresponding tab icon and name
     resourceService.registerResourceProvider({
       scheme: 'example_scheme',
       provideResource: async (
@@ -114,14 +114,14 @@ export class ExampleEditorContribution implements BrowserEditorContribution {
   }
 
   registerEditorComponent(registry: EditorComponentRegistry) {
-    // 将组件进行注册
+    // register the component
     registry.registerEditorComponent({
       component: ExampleEditorComponent,
       uid: 'example_scheme_component',
       scheme: 'example_scheme'
     });
 
-    // 将这个组件设置为这个 example_scheme 的 resource 的默认打开方式
+    //  Set this component as the default opening method for the example_scheme's resource  
     registry.registerEditorComponentResolver(
       'example_scheme',
       (resource, results) => {
@@ -147,8 +147,8 @@ export class ExampleEditorContribution implements BrowserEditorContribution {
   registerEditorFeature(registry: IEditorFeatureRegistry) {
     registry.registerEditorFeatureContribution({
       contribute: (editor: IEditor) => {
-        // 在编辑器被创建时，会调用 contribute 这个函数，此时可以添加功能
-        // 需要返回一个 disposer，在编辑器实例被销毁的时候调用
+        // 在编辑器被创建时，会调用 contribute 这个函数，此时可以添加功能 The contribute function is called when the editor is created, and functions can be added at this time 
+        // need to return a disposer，which can be called when the editor instance is destroyed
         return editor.monacoEditor.onDidChangeModel((e) => {
           console.log(e.oldModelUrl?.toString());
         })

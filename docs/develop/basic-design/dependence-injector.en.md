@@ -82,8 +82,8 @@ export class DemoModule extends BrowserModule {
     {
       token: IDemoService,
       useFactory: (injector: Injector) => {
-        // 这里可以直接获取到 injector 实例
-        // 通过这种方式，我们可以为多个 Token 挂载同个实现来做到服务职责的分离
+        // We can get an instance of Injector directly here
+        // In this way, we can mount the same implementation for multiple tokens to achieve separation of service responsibilities  
         return injector.get(IDemo2Service);
       }
     }
@@ -165,7 +165,7 @@ export function injectFolderPreferenceProvider(inject: Injector): void {
             tag: sectionName
           }
         );
-        // 当传入为配置文件时，如settings.json, 获取Setting
+        // When passed in as a configuration file, such as settings.json, get the Setting
         if (configurations.isConfigUri(options.configUri)) {
           child.addProviders({
             token: FolderPreferenceProvider,
@@ -173,9 +173,9 @@ export function injectFolderPreferenceProvider(inject: Injector): void {
           });
           return child.get(FolderPreferenceProvider);
         }
-        // 当传入为其他文件时，如launch.json
-        // 需设置对应的FolderPreferenceProvider 及其对应的 FolderPreferenceProviderOptions 依赖
-        // 这里的FolderPreferenceProvider获取必须为多例，因为工作区模式下可能存在多个配置文件
+        // When passed in as another file, such as launch.json
+        // need to be set corresponding FolderPreferenceProvider and related FolderPreferenceProviderOptions depency
+        // The FolderPreferenceProvider fetch here must be multiple instances, because multiple profiles may exist in the workspace mode
         return child.get(FolderPreferenceProvider, {
           tag: sectionName,
           multiple: true
