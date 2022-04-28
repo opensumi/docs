@@ -31,14 +31,14 @@ module.exports = {
       {
         slug: 'docs/integrate/overview',
         title: {
-          en: 'User Guide',
+          en: 'Documentation',
           zh: '集成文档'
         }
       },
       {
         slug: 'docs/develop/how-to-contribute',
         title: {
-          en: 'Develop Guide',
+          en: 'Development',
           zh: '开发文档'
         }
       }
