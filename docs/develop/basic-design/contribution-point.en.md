@@ -171,7 +171,7 @@ export class DemoContribution implements MenuContribution {
       label: '断点调试',
       order: 999
     });
-    // register an option in menue
+    // register an item under the menu
     menuRegistry.registerMenuItem(MenuId.DebugBreakpointsContext, {
       command: 'debug.breakpoint.delete',
       label: '删除断点',
@@ -179,7 +179,7 @@ export class DemoContribution implements MenuContribution {
       order: 1
     });
 
-    // Register secondary menu
+    // Register submenu
     const menuId = 'more';
     const subMenuId = 'more/items';
     // Bind the second-level menu to a first-level menu item
@@ -189,7 +189,7 @@ export class DemoContribution implements MenuContribution {
       iconClass: '',
       group: 'more'
     });
-    // register secondary menu contents
+    // register submenu contents
     menuRegistry.registerMenuItems(subMenuId, [
       {
         command: {
@@ -223,7 +223,7 @@ import {
 export interface IUserStorageService extends FileSystemProvider {}
 
 export class UserStorageProvider implements IUserStorageService {
-  // 实现协议
+  // implement the protocol
 }
 
 @Domain(FsProviderContribution)
