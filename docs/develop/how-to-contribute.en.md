@@ -15,6 +15,16 @@ For [issues](https://github.com/opensumi/core/issues) marked with `PR Welcome`, 
 
 Before developing the code, you need to install some necessary development tools, clone our project code [opensumi/core](https://github.com/opensumi/core), and install dependencies through `npm`.
 
+For Apple Silicon M1, you will get a `canvas` package error when working with `npm install` etc. This is because [prebuild](https://github.com/node-gfx/node-canvas-prebuilt/issues/125) does not support the ARM architecture and needs to be compiled by hand.
+
+```bash
+npm uninstall canvas
+CPLUS_INCLUDE_PATH=/opt/homebrew/include npm i canvas@2.6.1
+npm run init
+```
+
+See the [issue](https://github.com/Automattic/node-canvas/issues/1733) in node-canvas for details.
+
 You may need the following development tools:
 
 - [Git](https://git-scm.com)
