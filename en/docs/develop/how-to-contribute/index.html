@@ -58,11 +58,6 @@
 <p>The system tool installation method here refers to the <a href="https://github.com/microsoft/vscode/wiki/How-to-Contribute" target="_self" rel="nofollow">How-to-Contribute</a> document of VS Code for translation, and you can directly view the document.</p>
 </blockquote>
 <p>Before developing the code, you need to install some necessary development tools, clone our project code <a href="https://github.com/opensumi/core" target="_self" rel="nofollow">opensumi/core</a>, and install dependencies through <code class="language-text">npm</code>.</p>
-<p>For Apple Silicon M1, you will get a <code class="language-text">canvas</code> package error when working with <code class="language-text">npm install</code> etc. This is because <a href="https://github.com/node-gfx/node-canvas-prebuilt/issues/125" target="_self" rel="nofollow">prebuild</a> does not support the ARM architecture and needs to be compiled by hand.</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> uninstall canvas
-<span class="token assign-left variable">CPLUS_INCLUDE_PATH</span><span class="token operator">=</span>/opt/homebrew/include <span class="token function">npm</span> i canvas@2.6.1
-<span class="token function">npm</span> run init</code></pre></div>
-<p>See the <a href="https://github.com/Automattic/node-canvas/issues/1733" target="_self" rel="nofollow">issue</a> in node-canvas for details.</p>
 <p>You may need the following development tools:</p>
 <ul>
 <li><a href="https://git-scm.com" target="_self" rel="nofollow">Git</a></li>
