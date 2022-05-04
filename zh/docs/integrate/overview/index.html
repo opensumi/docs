@@ -65,7 +65,7 @@
 <li>前端进程 （Browser Process）</li>
 </ul>
 <p>为了保证插件的问题不会影响 IDE 的性能表现，插件能力上 OpenSumi 采用了跟 <code class="language-text">VS Code</code> 类似的方案，通过独立的插件进程去启动插件，插件进程再通过后端进程与前端进程进行通信。</p>
-<p><img src="https://img.alicdn.com/imgextra/i2/O1CN01qNPXUm1wbMFgrPieN_!!6000000006326-2-tps-1332-1180.png" alt="OpenSumi整体架构"/></p>
+<p><img src="https://img.alicdn.com/imgextra/i3/O1CN019HcqJq1VzddNMtHcO_!!6000000002724-0-tps-800-709.jpg" alt="OpenSumi整体架构"/></p>
 <p>OpenSumi 的不同能力实现被拆分到了不同的模块内，这些模块通过 <a href="../develop/basic-design/contribution-point">贡献点机制 (Contribution Point)</a>、<a href="../develop/basic-design/dependence-injector">DI 机制 (Dependence Inject)</a> 互相之间有较弱的依赖关系，对于一些比较核心的基础模块，如主题服务、布局服务等，也会被其他模块直接依赖。</p>
 <p><strong>因此，在集成开发过程中需要保证一些模块的引入顺序。</strong></p>
 <p>整体启动的生命周期如下图所示：</p>
