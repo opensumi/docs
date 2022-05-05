@@ -154,7 +154,7 @@ export class DemoContribution implements KeybindingContribution {
 
 ### Right Menu Contribution
 
-The contribution point of right click registration is `MenuContribution`. We can register  `Menu（菜单）`through this contribution point as follows: 
+The contribution point of right click registration is `MenuContribution`. We can register `Menu` through this contribution point as follows: 
 
 ```ts
 import {

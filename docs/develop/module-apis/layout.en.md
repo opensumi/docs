@@ -1,6 +1,6 @@
 ---
 id: layout
-title: 布局模块
+title: Layout Module
 slug: layout
 ---
 
@@ -88,7 +88,7 @@ this.layoutService.collectViewComponent(
 );
 ```
 
-### 控制/监听视图变化
+### Control/Listen for view changes
 
 After registering a view to a location (currently left, bottom and right) that supports multi-view switching, you can get `TabbarHandler` via `layoutService.getTabbarHandler(viewOrContainerId: string)`. `TabbarHandler` provides very powerful view control and listening capabilities: the
 
@@ -231,9 +231,9 @@ Available only for Slots that support multiple sub view rendering. Pass in the S
 getTabbarHandler(viewOrContainerId: string): TabBarHandler | undefined
 ```
 
-仅在支持多视图注册、可折叠展开的 Slot 可用。获取视图或子视图对应的视图控制器，控制器支持进行视图事件监听、主动切换展开状态等能力。
+Available only in slots that support multiple view registration and collapsible expansion. Obtain the view controller corresponding to a view or subview. The controller supports view event monitoring and active expansion.
 
-一般情况下推荐使用`TabBarHandler`对视图状态进行主动控制，而不是使用`toggleSlot` api。
+It is generally recommended to use `TabBarHandler` for active control of view state, rather than the `toggleSlot` API.
 
 ###### Example
 

@@ -4,7 +4,7 @@ title: Overlay Module
 slug: overlay
 ---
 
-Overlay modules are covering modules on the IDE, such as Dialog and Message modules. You can use this module when you need to notify the user of a message from the IDE or when you need a modal dialog box to interact with the user.  
+Overlay modules are the covering modules on the IDE, such as Dialog and Message modules. You can use this module when you need to notify the user of a message from the IDE or when you need a modal dialog box to interact with the user.  
 
 # Message
 
@@ -12,7 +12,7 @@ Message will pop up a prompt in the lower right corner of the IDE.
 
 ![message](https://img.alicdn.com/imgextra/i1/O1CN010VHpDr1NuaK6IMhar_!!6000000001630-2-tps-1196-376.png)
 
-## 接口
+## Interface
 
 ```ts
 export interface IMessageService {
@@ -66,9 +66,9 @@ export class MessageDemo {
 }
 ```
 
-### buttons
+### Buttons
 
-Buttons are buttons in the lower right corner of the popup. They are rendered from left to right. After the user selects them, the results are returned  
+Buttons are in the lower right corner of the popup， rendered from left to right. After the user selects them, the results are returned  
 
 ##### Example
 
@@ -101,9 +101,9 @@ Whether to display the close button. The default is true
 
 ### How long does it take for the message to pop up
 
-- info: 15 秒
-- warning: 18 秒
-- error: 20 秒
+- info: 15 seconds
+- warning: 18 seconds
+- error: 20 seconds
 
 ### How do I customize message components
 

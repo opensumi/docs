@@ -114,14 +114,14 @@ export class ExampleEditorContribution implements BrowserEditorContribution {
   }
 
   registerEditorComponent(registry: EditorComponentRegistry) {
-    // 将组件进行注册
+    // register the component
     registry.registerEditorComponent({
       component: ExampleEditorComponent,
       uid: 'example_scheme_component',
       scheme: 'example_scheme'
     });
 
-    // 将这个组件设置为这个 example_scheme 的 resource 的默认打开方式
+    // 将这个组件设置为这个 example_scheme 的 resource 的默认打开方式 set this componet as the default opening for the example_scheme  
     registry.registerEditorComponentResolver(
       'example_scheme',
       (resource, results) => {
