@@ -43,33 +43,33 @@ import { Domain, ClientAppContribution } from '@opensumi/ide-core-browser';
 @Domain(ClientAppContribution)
 export class DemoContribution implements ClientAppContribution {
   initialize() {
-    // 在初始化阶段执行该函数
+    // This function is executed during initialization
   }
 
   onStart() {
-    // 在应用启动阶段执行该函数
+    // This function is executed during application startup
   }
 
   onDidStart() {
-    // 在大部分模块启动完成阶段执行该函数
+    // This function is executed during most module startup completion phases
   }
 
   onWillStop() {
-    // 在应用即将关闭前执行该函数，如果返回内容为 true，则关闭的行为将会被中断
+    // This function is executed just before the application is shut down, and if true is returned, the shutdown is interrupted  
   }
 
   onStop() {
-    // 关闭阶段执行
+    // Shutdown phase execution
   }
 
   onDisposeSideEffects() {
-    // 与 onStop 不同的是，onStop 仅适用于非阻塞性的工作
-    // onDisposeEffect 适用于一些耗时较长的阻塞性任务，适用于将 IDE 作为大组件优雅卸载的场景
-    // 但 onDisposeEffect 在 Electron 下可能会阻塞窗口关闭(例如需要1s以上时间关闭)
+    // Unlike onStop, onStop is only suitable for non-obstructive work  
+    // onDisposeEffect is suitable for some long, obstructive tasks, for scenarios where the IDE is gracefully unloaded as a large component  
+    // But the onDisposeEffect may block window closing under Electron (e.g. it takes more than 1s to close)   
   }
 
   onReconnect() {
-    // 插件进程重启阶段执行该函数
+    // This function is executed during extension process restart
   }
 }
 ```
@@ -91,11 +91,11 @@ export class DemoContribution implements CommandContribution {
     registry.registerCommand(
       {
         id: 'demo.command.test',
-        label: '测试命令'
+        label: 'test command'
       },
       {
         execute: () => {
-          console.log('测试命令');
+          console.log('test command');
         }
       }
     );
@@ -105,7 +105,7 @@ export class DemoContribution implements CommandContribution {
 
 ### Preference Register
 
-The contribution point for preference registration is `PreferenceContribution`, through which we can register `Preference（配置项）`, just as follows: 
+The contribution point for preference registration is `PreferenceContribution`, through which we can register `Preference`, just as follows: 
 
 ```ts
 import { PreferenceContribution } from '@opensumi/ide-core-browser';
@@ -132,7 +132,7 @@ For more detailed preference and usage, please refer to [Preference Module](../m
 
 ### Keybinding Register
 
-The contribution point of the shortcut registration is`KeybindingContribution`, through which we can register  `Keybinding（快捷键）`, using the following method:  
+The contribution point of the shortcut registration is`KeybindingContribution`, through which we can register  `Keybinding`, using the following method:  
 
 ```ts
 import {

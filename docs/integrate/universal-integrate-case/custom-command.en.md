@@ -93,7 +93,7 @@ In the OpenSumi framework, many basic commands are built-in. When you need to im
 | workbench.action.debug.stop                               | Debug to stop                            |                                  |
 | workbench.action.showAllSymbols                           | show all symbols                          |                                  |
 
-## 注册自定义命令 Registers a Custom Command
+## Registers a Custom Command
 
 There are also two ways to register a custom command:
 

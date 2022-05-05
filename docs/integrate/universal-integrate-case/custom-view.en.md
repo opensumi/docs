@@ -5,7 +5,7 @@ slug: custom-view
 order: 3
 ---
 
-## Over View
+## OverView
 
 The OpenSumi view is based on the `slot mechanism` design, where the entire Layout itself is a large React component that divides the view into several slots. For example, the default layout component provided by OpenSumi divides the view into slot templates as shown in the following figure:
 
@@ -86,7 +86,7 @@ export class TestContribution implements ComponentContribution {
         {
           id: 'test-toolbar',
           component: Toolbar,
-          name: '测试'
+          name: 'Test'
         }
       ],
       {

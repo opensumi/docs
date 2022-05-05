@@ -10,8 +10,8 @@ Since the OpenSumi module does not run independently, we recommend that you crea
 ```bash
 $ git clone git@github.com:opensumi/ide-startup.git
 $ cd ide-startup
-$ yarn					   # 安装依赖  
-$ yarn start		       # 并行启动前端和后端
+$ yarn					   # Install dependencies  
+$ yarn start		       # Start the front end and back end in parallel
 ```
 
 You can also directly clone our case project[opensumi/todo-list-sample](https://github.com/opensumi/todo-list-sample) to start Quick module experience. 
@@ -42,7 +42,7 @@ In the `modules` directory, we start creating our front and back entry files wit
 ```bash
 .
 └── ...
-├── modules                     # 存放模块目录
+├── modules                     # store module directory
 │   ├── browser
 │   │   └── index.ts
 │   │   ├── todo.module.less

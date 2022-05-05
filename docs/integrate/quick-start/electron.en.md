@@ -33,9 +33,9 @@ $ npm run download-extension # install built-in plug-ins (optional)
 $ npm run start
 ```
 
-## 开发
+## Development 
 
-在项目根目录运行
+Run in the project root directory
 
 ```bash
 $ npm run watch

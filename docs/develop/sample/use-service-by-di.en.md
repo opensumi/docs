@@ -173,7 +173,7 @@ export class TodoService implements ITodoService {
 
   addTodo = async () => {
     const param = await this.quickInputService.open({
-      placeHolder: '输入你的计划',
+      placeHolder: 'Enter your plan',
       value: ''
     });
     if (param !== undefined && param !== null) {

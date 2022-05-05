@@ -5,11 +5,10 @@ slug: how-to-design-module
 order: 2
 ---
 
-本文主要介绍基于 OpenSumi 体系下搭建模块来拓展原生框架功能的思路，对于模块的创建及具体实践可参考我们的[经典案例](./sample/overview), 案例中有针对具体模块创建的一些基础思路及做法。This article introduces the idea of building modules based on the OpenSumi system to extend the functionality of the native framework, for the creation of modules and specific practices can refer to our [classic case](. /sample/overview), which has some basic ideas and practices for creating specific modules.
+This article introduces the idea of building modules based on the OpenSumi system to extend the functionality of the native framework, for the creation of modules and specific practices can refer to our [classic case](./sample/overview), which has some basic ideas and practices for creating specific modules.
 
 ## Know about Dependency Injection
 
-在了解模块前，建议先看一下 [依赖注入](./basic-design/dependence-injector.zh.md) 这篇文章，在 OpenSumi 中，所有的服务注册及调用都是基于这套统一的依赖注入结构进行服务的实现与调用逻辑的解耦，让框架开发者的开发能够聚焦于开发模块，实现更加独立的模块建设。
 Before learning the module, it is recommended to read [Dependency Injection](./basic-design/dependence-injector.zh.md) . In OpenSumi, all service registration and invocation are based on this unified dependency injection structure to implement services and decoupling the implementation of services and invocation logic, allowing framework developers to focus their development on developing modules and achieve more independent module construction.
 
 ## What is a module?
@@ -25,8 +24,8 @@ import { BrowserModule } from '@opensumi/ide-core-browser';
 @Injectable()
 export class ExplorerModule extends BrowserModule {
   providers: Provider[] = [
-    AnyContributions, // 贡献点文件
-    AnyService // 注册额外的服务
+    AnyContributions, // contribution point files
+    AnyService // Register additional services
   ];
 }
 ```
@@ -52,7 +51,7 @@ The first step for all view requirements is to create a view, and in the OpenSum
 2. Introduce the module
 3. Used under the specific `Location （Layout Block）`case
 
-以 `Explorer` 模块为例，我们创建一个 `explorer.contribution.ts` 文件注册一个视图容器：
+Using the 'Explorer' module as an example, we create a `explorer.contribution.ts`file to register a view container:  
 
 ```ts
 @Domain(ComponentContribution)
@@ -62,7 +61,7 @@ export class ExplorerContribution implements ComponentContribution {
       iconClass: getIcon('explorer'),
       title: localize('explorer.title'),
       priority: 10,
-      // component: ExplorerComponent,  // 这里可以传入具体的渲染组件
+      // component: ExplorerComponent,  // The specific rendering component can be passed in here
       containerId: ExplorerContainerId
     });
   }
@@ -97,7 +96,7 @@ Detailed code reference:[explorer/src/browser/index.ts](https://github.com/opens
 
 In the end, you just need to import this module in the Browser layer and add the registered view ID to the corresponding layout Settings. Take the [opensumi/ide-startup]() project as an example:  
 
-To import `ExplorerModule`in [common-modules.ts#L44](https://github.com/opensumi/ide-startup/blob/master/src/browser/common-modules.ts#L44) , 同时，在 [layout-config.ts#L7](https://github.com/opensumi/ide-startup/blob/master/src/browser/layout-config.ts#L7) 下去声明布局区块下渲染的视图 ID 即可，如下所示：
+Introduce `ExplorerModule` in [common-modules.ts#L44](https://github.com/opensumi/ide-startup/blob/master/src/browser/common-modules.ts#L44), Also, go to [layout-config.ts#L7](https://github.com/opensumi/ide-startup/blob/master/src/browser/layout-config.ts#L7) and declare the view rendered under the layout block. As follows:
 
 ```ts
 import { SlotLocation } from '@opensumi/ide-core-browser/lib/react-providers/slot';
@@ -163,9 +162,9 @@ A basic OpenSumi module generally needs to have the following hierarchical struc
 ```
 .
 └── src
-│   ├── browser  # 可选
+│   ├── browser  # optional
 │   ├── common
-│   └── node     # 可选
+│   └── node     # optional
 └── webpack.config.js
 └── package.json
 └── README.md

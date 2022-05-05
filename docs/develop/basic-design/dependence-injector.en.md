@@ -174,7 +174,7 @@ export function injectFolderPreferenceProvider(inject: Injector): void {
           return child.get(FolderPreferenceProvider);
         }
         // When passed in as another file, such as launch.json
-        // need to be set corresponding FolderPreferenceProvider and related FolderPreferenceProviderOptions depency
+        // need to be set corresponding FolderPreferenceProvider and related FolderPreferenceProviderOptions dependency 
         // The FolderPreferenceProvider fetch here must be multiple instances, because multiple profiles may exist in the workspace mode
         return child.get(FolderPreferenceProvider, {
           tag: sectionName,
