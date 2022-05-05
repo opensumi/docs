@@ -168,13 +168,13 @@ export class DemoContribution implements MenuContribution {
   registerMenus(menus: IMenuRegistry): void {
     // register a first level menu
     menus.registerMenubarItem(MenuId.DebugBreakpointsContext, {
-      label: '断点调试',
+      label: 'Debug',
       order: 999
     });
     // register an item under the menu
     menuRegistry.registerMenuItem(MenuId.DebugBreakpointsContext, {
       command: 'debug.breakpoint.delete',
-      label: '删除断点',
+      label: 'Delete Breakpoint',
       group: '1_has_breakpoint',
       order: 1
     });
@@ -185,7 +185,7 @@ export class DemoContribution implements MenuContribution {
     // Bind the second-level menu to a first-level menu item
     menuRegistry.registerMenuItem(menuId, {
       submenu: subMenuId,
-      label: '更多设置',
+      label: 'More Settings',
       iconClass: '',
       group: 'more'
     });

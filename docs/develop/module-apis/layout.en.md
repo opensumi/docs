@@ -6,7 +6,7 @@ slug: layout
 
 ## Basic Concept
 
-布局模块（即 @opensumi/ide-main-layout）负责 IDE 的基础布局划分，将整个窗口划分为形如 left、main、bottom 的若干块区域，我们定义这种区域为插槽。在布局划分之后，又通过提供的插槽渲染器组件来消费注册到插槽的若干个大视图。在如左侧边栏这类特殊的插槽中，一个大的视图（称为视图容器）还可以支持注册多个小的子视图。所以最终整个布局和 React 视图组件的一个组织关系为 The layout module (@OpenSumi/IDE-main-Layout) is responsible for the basic layout of the IDE, dividing the entire window into several areas in the shape of left, main and bottom, which we define as slots. After the layout is partitioned, several large views registered to the slot are consumed through the provided slot renderer component. In special slots such as the left sidebar, a large view (called a view container) can also support registering multiple small child views. So the final organizational relationship between the entire layout and the React view component is
+The layout module (@OpenSumi/IDE-main-Layout) is responsible for the basic layout of the IDE, dividing the entire window into several areas in the shape of left, main and bottom, which we define as slots. After the layout is partitioned, several large views registered to the slot are consumed through the provided slot renderer component. In special slots such as the left sidebar, a large view (called a view container) can also support registering multiple small sub views. Therefore the final organizational relationship between the entire layout and the React view component is:
 
 ![The Organizational Relations Between Layout and View](https://img.alicdn.com/tfs/TB1gXOU3UH1gK0jSZSyXXXtlpXa-1850-990.png)
 
@@ -21,21 +21,21 @@ The views we register will end up inside the view container or sub-views. Each v
 Associate a view to a unique view Token via `ComponentContribution`, and then declare the Token to the corresponding location:  
 
 ```ts
-// 关联视图信息到token
+// Associate view information to Tokens
 registerComponent(registry: ComponentRegistry) {
   registry.register('@opensumi/ide-debug-console', {
-    // 子视图ID
+    // Subview ID
     id: DEBUG_CONSOLE_VIEW_ID,
     component: DebugConsoleView,
   }, {
     title: localize('debug.console.panel.title'),
     priority: 8,
-    // 视图容器ID
+    // View container ID
     containerId: DEBUG_CONSOLE_CONTAINER_ID,
     iconClass: getIcon('debug'),
   });
 }
-// 映射token到视图Slot
+// Map token to view slot 
 const layoutConfig = {
   [SlotLocation.left]: {modules: ['@opensumi/ide-debug-console']}
 }
@@ -53,14 +53,14 @@ Register the view by `LayoutService` directly:
 this.layoutService.collectTabbarComponent(
   [
     {
-      // 子视图ID
+      // Subview ID
       id: CommentPanelId,
       component: CommentsPanel
     }
   ],
   {
     badge: this.panelBadge,
-    // 视图容器ID
+    // View container ID
     containerId: CommentPanelId,
     title: localize('comments').toUpperCase(),
     hidden: false,
@@ -74,7 +74,7 @@ this.layoutService.collectTabbarComponent(
 Dynamic registration mode also supports registering subviews to an existing view container:
 
 ```ts
-// 注册文件树到资源管理器容器内
+// Register the file tree into the resource manager container
 this.layoutService.collectViewComponent(
   {
     id: ExplorerResourceViewId,
@@ -175,7 +175,7 @@ interface TabbarHandler {
 
 `DI token: IMainLayoutService`
 
-布局模块最上层的控制服务。
+Control services at the top of the layout module.
 
 #### Static Methods
 
@@ -198,7 +198,7 @@ This is a static method of testing (LayoutService does not have static methods, 
 isVisible(location: string): Boolean
 ```
 
-仅在支持多视图注册、可折叠展开的 Slot 可用。传入 Slot 位置，返回视图是否可见（非折叠状态）的状态。Available only in slots that support multiple view registration and collapsible expansion. Pass in the Slot location and return the state of whether the view is visible (not collapsed).
+Available only in slots that support multiple view registration and collapsible expansion. Import in the Slot location and return the state of whether the view is visible (not collapsed).
 
 ##### `toggleSlot()`
 
@@ -206,17 +206,16 @@ isVisible(location: string): Boolean
 toggleSlot(location: string, show?: boolean | undefined, size?: number | undefined): void
 ```
 
-仅在支持多视图注册、可折叠展开的 Slot 可用。切换 Slot 的折叠展开状态，支持显示的传入`show`参数指定是否展开，未传入则取当前状态相反值进行切换；支持显示传入`size`参数指定最终的展开尺寸。
+Only available for Slot with multi-view registration and collapsible expansion. Toggle the collapsed and expanded state of Slot, support to pass `show` parameter for display to specify whether to expand or not, or take the opposite value of current state to switch if not passed; support to pass `size` parameter for display to specify the final expanded size.
 
-传入的`size`若为 0 会被忽略。
+The incoming `size` of 0 will be ignored.
 
 ##### `getTabbarService()`
 
 ```js
 getTabbarService(location: string): TabbarService
 ```
-
-仅在支持多视图注册、可折叠展开的 Slot 可用。传入 Slot 位置，返回指定位置的`TabbarService`实例。
+Available only in Slot that supports multi-view registration and collapsible expansion. Pass in the Slot location and return the `TabbarService` instance at the specified location.
 
 ##### `getAccordionService()`
 
@@ -224,7 +223,7 @@ getTabbarService(location: string): TabbarService
 getAccordionService(containerId: string): AccordionService
 ```
 
-仅在支持多子视图渲染的 Slot 可用。传入 Slot 位置，返回指定位置的`AccordionService`实例。
+Available only for Slots that support multiple sub view rendering. Pass in the Slot location and return the `AccordionService` instance at the specified location.
 
 ##### `getTabbarHandler()`
 
@@ -252,7 +251,7 @@ handler.activate();
 collectTabbarComponent(views: View[], options: ViewContainerOptions, side: string): string
 ```
 
-仅在支持多视图注册、可折叠展开的 Slot 可用。往指定 Slot 注册一个或多个视图（若指定 Slot 不支持多个子视图，则只会渲染第一个）。支持自定义视图的标题组件`titleComponent`，标题组件为侧边栏顶部区域或底部栏的左上角区域。
+Available only for Slots that support multi-view registration and can be collapsed and expanded. Register one or more views to the specified Slot (if the specified Slot does not support multiple sub-views, only the first one will be rendered). Support for custom view title component `titleComponent`, which is the top area of the sidebar or the top left area of the bottom bar.
 
 ##### `disposeContainer()`
 
@@ -260,7 +259,7 @@ collectTabbarComponent(views: View[], options: ViewContainerOptions, side: strin
 disposeContainer(containerId: string): void
 ```
 
-仅在支持多视图注册、可折叠展开的 Slot 可用。销毁一个已注册的视图面板。
+Available only in Slot that supports multi-view registration with collapsible expansion. Destroys a registered view panel.
 
 ##### `collectViewComponent()`
 
@@ -268,7 +267,7 @@ disposeContainer(containerId: string): void
 collectViewComponent(view: View, containerId: string, props: any = {}): string
 ```
 
-仅在支持多子视图渲染的 Slot 可用。往一个视图面板内加入新的子视图面板，支持传入自定义的默认 props。
+Available only in Slot that supports multi-view rendering. Adding a new sub view panel to a view panel supports passing in custom default props.
 
 ##### `replaceViewComponent()`
 
@@ -276,7 +275,7 @@ collectViewComponent(view: View, containerId: string, props: any = {}): string
 replaceViewComponent(view: View, props?: any): void
 ```
 
-仅在支持多子视图渲染的 Slot 可用。替换一个已存在的子视图，一般用于预加载场景下，替换加载中的占位视图。
+Available only in Slot that supports multi-view rendering. Replaces an existing sub view, typically used in preloaded scenarios to replace a loaded placeholder view.
 
 ##### `disposeViewComponent()`
 
@@ -374,10 +373,10 @@ interface SplitPanelProps extends SplitChildProps {
   className?: string;
   direction?: Layout.direction;
   id: string;
-  // setAbsoluteSize 时保证相邻节点总宽度不变
+  // setAbsoluteSize ensures that the total width of adjacent nodes remains unchanged
   resizeKeep?: boolean;
   dynamicTarget?: boolean;
-  // 控制使用传入尺寸之和作为总尺寸或使用dom尺寸
+  // Control the use of sum of incoming dimensions as total dimensions or use dom dimensions
   useDomSize?: boolean;
 }
 
@@ -424,15 +423,15 @@ noAccordion?: boolean;
 TabbarView: React.FC<{
   TabView: React.FC<{component: ComponentRegistryInfo}>,
   forbidCollapse?: boolean;
-  // tabbar的尺寸（横向为宽，纵向高），tab折叠后为改尺寸加上panelBorderSize
+  // Tabbar size (horizontal for width, vertical for height), tab collapsed to change the size with panelBorderSize added
   barSize?: number;
-  // 包含tab的内外边距的总尺寸，用于控制溢出隐藏逻辑
+  // Includes the total size of the inner and outer margins of the tab, used to control the overflow hiding logic
   tabSize: number;
   MoreTabView: React.FC,
   panelBorderSize?: number;
   tabClassName?: string;
   className?: string;
-  // tab上预留的位置，用来控制tab过多的显示效果
+  // The position reserved on the tab, used to control the display effect of too many tabs
   margin?: number;
 }>;
 ```
@@ -442,7 +441,7 @@ TabbarView: React.FC<{
 ```js
 TabpanelView: React.FC<{
   PanelView: React.FC<{ component: ComponentRegistryInfo, side: string, titleMenu: IMenu }>;
-  // tabPanel的尺寸（横向为宽，纵向高）
+  // Size of tabPanel (horizontal for width, vertical for height)
   panelSize?: number;
 }>;
 ```

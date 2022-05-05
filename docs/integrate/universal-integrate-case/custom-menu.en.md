@@ -12,7 +12,7 @@ There are two common modes for registering custom menus
 - Register a new menu item
 - Registers submenus with existing menu items
 
-OpenSumi 提供了自定义菜单能力，基于 OpenSumi 的 [Contribution](../../develop/basic-design/contribution-point) 机制，实现 `MenuContribution` ，调用 `menuRegistry` 提供的方法即可。OpenSumi provides the ability to customize menus based on OpenSumi's [Contribution](... /... /develop/basic-design/contribution-point) mechanism, implement `MenuContribution` and call the methods provided by `menuRegistry`.
+OpenSumi provides the ability to customize menus based on OpenSumi's [Contribution](../../develop/basic-design/contribution-point)mechanism, to implement `MenuContribution` and call the methods provided by `menuRegistry`.
 
 ```typescript
 interface MenuContribution {
@@ -20,12 +20,12 @@ interface MenuContribution {
 }
 
 interface IMenuRegistry {
-  // 注册新的菜单项Register a new menu item
+  // Register a new menu item
   registerMenubarItem(
     menuId: string,
     item: PartialBy<IMenubarItem, 'id'>
   ): IDisposable;
-  // 向已有的菜单项注册子菜单 Register submenus with existing menu items
+  // Register submenus with existing menu items
   registerMenuItem(
     menuId: MenuId | string,
     item: IMenuItem | ISubmenuItem | IInternalComponentMenuItem
@@ -33,9 +33,9 @@ interface IMenuRegistry {
 }
 ```
 
-## 注册新的菜单项 Register a new menu item
+## Register a new menu item
 
-例如我们希望注册一个新的 `终端` 菜单项，并希望它展示在第一项，调用 `registry.registerMenuBarItem`， 同时传入 `order: 0` 表示其定位在第一项。For example, if we want to register a new `terminal` menu item and want it to be displayed in the first item, we call `registry.registerMenuBarItem` and pass `order: 0` to indicate that it is positioned in the first item.
+For example, if we want to register a new `terminal` menu item and want it to be displayed in the first item, we call `registry.registerMenuBarItem` and pass `order: 0` to indicate that it is positioned in the first item.
 
 ```typescript
 import {
@@ -50,7 +50,7 @@ const terminalMenuBarId = 'menubar/terminal';
 class MyMenusContribution implements MenuContribution {
   registerMenus(registry: IMenuRegistry) {
     registry.registerMenubarItem(terminalMenuBarId, {
-      label: '终端',
+      label: 'terminal',
       order: 0
     });
   }
@@ -138,7 +138,7 @@ registerMenus(registry: IMenuRegistry) {
       group: '2_clear',
     },
     {
-      label: '搜索',
+      label: 'search',
       group: '3_search',
       submenu: searchSubMenuId,
     },

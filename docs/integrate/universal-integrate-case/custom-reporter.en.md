@@ -9,7 +9,7 @@ order: 6
 
 OpenSumi provides built-in event tracking report, which provides the integrator with some key IDE data indicators, some key performance data of one party's core plug-ins, and so on. Integrators can report this data to their own platform.
 
-### Front-end module use
+### Front-end Module Use
 
 ```typescript
 import { IReporterService } from '@opensumi/ide-core-browser';
@@ -28,7 +28,7 @@ class {
 }
 ```
 
-### Back-end module use
+### Back-end Module Use
 
 ```typescript
 import { IReporterService } from '@opensumi/ide-core-node';
@@ -45,7 +45,7 @@ class {
 }
 ```
 
-### 插件中使用
+### Extension Use
 
 ```typescript
 import { reporter } from 'sumi';

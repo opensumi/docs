@@ -64,19 +64,19 @@ export class Demo {
   private preferenceService: PreferenceService;
   ...
 
-  // 监听配置变化事件，记得在界面卸载时调用这里的 `disposable.dispose()` 清理监听函数
+  // Listen for configuration change events and remember to call `disposable.dispose()` here to clear the listener function when the interface is unloaded
   const disposable = this.preferenceService.onPreferencesChanged((changes) => {
     console.log('Preferences Changes: ', changes);
   });
 
-  // 获取全局配置
+  // Obtain global preference
   this.preferenceService.get('demo.config', PreferenceScope.User);
-  // 设置工作区配置
+  // Set workspace preference
   this.preferenceService.get('demo.config', PreferenceScope.Workspace);
 
-  // 设置全局配置
+  // Set global preference
   this.preferenceService.set('demo.config', true, PreferenceScope.User);
-  // 设置工作区配置
+  // Set workspace Cpreference
   this.preferenceService.set('demo.config', true, PreferenceScope.Workspace);
 
   ...
@@ -92,7 +92,7 @@ If you need to have the configuration defined by  introducing a module appeared 
 ### Cases
 
 ```ts
-// 在 `general`  面板追加一个 `demo.language` 配置项的展示
+// Append a display of 'demo.language' configuration items to the 'General' panel  
 @Domain(SettingContribution)
 export class DemoSettingContribution implements SettingContribution {
   handleSettingSections(settingSections: { [key: string]: ISettingSection[] }) {
@@ -101,14 +101,14 @@ export class DemoSettingContribution implements SettingContribution {
       general: [
         {
           preferences: [
-            // 原有配置项
+            // Original Preference Items
             { id: 'general.theme', localized: 'preference.general.theme' },
             { id: 'general.icon', localized: 'preference.general.icon' },
             {
               id: 'general.language',
               localized: 'preference.general.language'
             },
-            // 追加配置项
+            // Add configuration item
             { id: 'demo.language', localized: 'preference.demo.language' }
           ]
         }
@@ -131,7 +131,7 @@ export class DemoSettingContribution implements SettingContribution {
       general: [
         {
           preferences: [
-            // 原有配置项
+            // Original Preference 
             { id: 'general.theme', localized: 'preference.general.theme' },
             { id: 'general.icon', localized: 'preference.general.icon' },
             {

@@ -120,7 +120,7 @@ For more information about view layout, see:[Custom View
 
 ###  Demand Based on Service Capability
 
-基于视图的需求一般也会包含基于服务的需求，通常而言，在 OpenSumi 框架中提供了大量基础能力支持各种场景下的功能需求，如 `文件服务`，`弹窗服务`，`存储服务` 等，在你需要定制相关服务能力前，可以先看看通过简单的功能组合是否可以达到期望的效果，如果不行，此时你便要考虑定制自定义的服务能力来满足你的需求了。In general, the OpenSumi framework provides a lot of basic capabilities to support various scenarios, such as `File Service`, `Popup Service`, `Storage Service`, etc. Before you need to customize the related service capabilities, you can see if the desired effect can be achieved through a simple combination of features, if not, then you should consider customizing the service capabilities to meet your needs.
+View-based requirements generally include service-based demands as well. In general, the OpenSumi framework provides a lot of basic capabilities to support various scenarios, such as `File Service`, `Popup Service`, `Storage Service`, etc. Before you need to customize the related service capabilities, you can see if the desired effect can be achieved through a simple combination of features, if not, then you should consider customizing the service capabilities to meet your needs.
 
 Translated with www.DeepL.com/Translator (free version)
 

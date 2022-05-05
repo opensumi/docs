@@ -42,7 +42,7 @@ export interface IResource<MetaData = any> {
 4. In order to display content in the editor, you also need to know how to open the IResource. KAITIAN editor module supports multiple ways to open a resource, such as md files with code and live preview. An opening means can be a code editor, diff editor, or an editor's rich components(React).  These open methods and rich components need to be registered in the EditorComponentRegistry in advance  
 
 ```typescript
-// 定义一个resource如何被打开
+// Define how to open a resource 
 export interface IEditorOpenType {
   type: 'code' | 'diff' | 'component';
 
@@ -52,7 +52,7 @@ export interface IEditorOpenType {
 
   readonly?: boolean;
 
-  // 默认0， 大的排在前面
+  // Default 0，the bigger ones rank first
   weight?: number;
 }
 ```
@@ -106,7 +106,7 @@ export class ExampleEditorContribution implements BrowserEditorContribution {
       ): Promise<IResource<IWelcomeMetaData>> => {
         return {
           uri,
-          name: '示例编辑器组件',
+          name: 'Sample Editor Component',
           icon: 'example-icon-class'
         };
       }
@@ -147,7 +147,7 @@ export class ExampleEditorContribution implements BrowserEditorContribution {
   registerEditorFeature(registry: IEditorFeatureRegistry) {
     registry.registerEditorFeatureContribution({
       contribute: (editor: IEditor) => {
-        // 在编辑器被创建时，会调用 contribute 这个函数，此时可以添加功能 The contribute function is called when the editor is created, and functions can be added at this time 
+        // The contribute function is called when the editor is created, you can add some features at this time 
         // need to return a disposer，which can be called when the editor instance is destroyed
         return editor.monacoEditor.onDidChangeModel((e) => {
           console.log(e.oldModelUrl?.toString());
