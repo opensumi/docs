@@ -5,7 +5,7 @@ slug: lifecycle
 order: 2
 ---
 
-In[Quick Start](../../integrate/quick-start/web) , we instantiate a 'ClientAPP' and call its `start` mode to start OpenSumi.  
+In[Quick Start](../../integrate/quick-start/web), we instantiate a 'ClientAPP' and call its `start` mode to start OpenSumi.  
 
 ```typescript
 const app = new ClientAPP(/*..options*/);
@@ -14,15 +14,15 @@ app.start();
 
 The Start process is simple and perceivable, mainly responsible for the following tasks
 
-- To create the front and back end connections, Websocket will be used for the Web end, and IPC for the Electron end 
-- To initialize ApplicationService to cache some system-level state, such as the OS currently running on the OpenSumi back end  
+- To create the front and back end connections, Websocket will be employed for the Web end, and IPC for the Electron end 
+- To initialize ApplicationService to cache some system-level state, such as the OS currently running on the OpenSumi backend  
 - execute all [Contribution Points](./contribution-point) 
   - initialize
   - onStart
   - onDidStart
 -  Rendering the main screen
 
-In this case, 'Contributions' are actually a series of life-cycle methods connected by`ClientAppContribution` in the`Contributions` mechanism, which are invoked at different stages of OpenSumi operation. In addition to the lifecycle methods described above in Start, there are other methods related to closing Windows, connection changes, etc, and this paper will describes these lifecycle and how they are used in detail.  
+In this case, `Contributions` are actually a series of life-cycle methods connected by`ClientAppContribution` in the`Contributions` mechanism, which are invoked at different stages of OpenSumi operation. In addition to the lifecycle methods described above in Start, there are other methods related to closing Windows, connection changes, etc, and this paper will describes these lifecycle and how they are used in detail.  
 
 ![lifecycle](https://img.alicdn.com/imgextra/i2/O1CN01qpr3WB1iOcZNLbrcu_!!6000000004403-55-tps-3006-1224.svg)
 
@@ -40,7 +40,7 @@ RenderApp is responsible for rendering the main framework of the entire applicat
 
 ## onStart
 
-onStart is executed after the rendering of the main interface; at this time you can access the DOM, loosely speaking you can monitor some events and other operations in the onStart phase. In addition, other functions that are not visible on the first screen can also be placed in onStart to delay execution.
+onStart is executed after the rendering of the main interface; at this time you can access the DOM, loosely speaking you can monitor some events and other operations in the onStart phase. In addition, other functions that are not visible above the fold can also be placed in onStart to delay execution.
 
 ## onDidStart
 

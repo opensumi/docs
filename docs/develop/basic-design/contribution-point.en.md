@@ -9,7 +9,7 @@ The concept of contribution point comes from a design philosophy in VS Code. By 
 
 ## For Example
 
-Since there are plenty of hot keys in IDE, if a module wants to register a shortcut, it can depend on the shortcut module, but if the shortcut module wants to register a command, it will depend directly on the command module and other logical modules, which in turn make these modules's connection difficult to maintain.
+Since there are plenty of hot keys in IDE, if a module wants to register a shortcut, it can depend on the shortcut module, but if the shortcut module wants to register a command, it will depend directly on the command module and other logical modules, which in turn makes these modules' connection difficult to maintain.
 
 With the `contribution point `mechanism, we can just perform the logic of the `contribution point` mechanism in the public module, and do not need to pay attention to the implementation details of specific shortcut keys, as shown in the figure:  
 
@@ -31,7 +31,7 @@ export class DemoModule extends BrowserModule {
 }
 ```
 
-The method of introducing a contribution point file will not be repeatly stated in subsequent cases.
+The method of introducing a contribution point file will not be repeatly stated in following cases.
 
 ### Lifecyle
 
@@ -63,7 +63,7 @@ export class DemoContribution implements ClientAppContribution {
   }
 
   onDisposeSideEffects() {
-    // Unlike onStop, onStop is only suitable for non-obstructive work  
+    // Different from onStop, the latter is only suitable for non-obstructive work  
     // onDisposeEffect is suitable for some long, obstructive tasks, for scenarios where the IDE is gracefully unloaded as a large component  
     // But the onDisposeEffect may block window closing under Electron (e.g. it takes more than 1s to close)   
   }
@@ -202,7 +202,7 @@ export class DemoContribution implements MenuContribution {
 }
 ```
 
-The framework enrolls a total of 53 registered locations in the right menu by default,as can be seen in the definition of `MenuId` in  `@opensumi/ide-core-browser`.  
+The framework enrolls a total of 53 registered locations in the right menu by default, as can be seen in the definition of `MenuId` in `@opensumi/ide-core-browser`.  
 
 ### User-defined Protocol Files
 

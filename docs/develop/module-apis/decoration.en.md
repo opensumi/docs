@@ -4,7 +4,7 @@ title: Decoration Module
 slug: decoration
 ---
 
-The FileDecoration module is used to register/manage/distribute filene-related 'Decoration' services. 
+The FileDecoration module is used to register/manage/distribute filename related `Decoration` services. 
 
 ## Basic Concepts
 
@@ -104,7 +104,7 @@ this.decorationsService.onDidChangeDecorations(() => {
 getDecoration(uri: Uri, includeChildren: boolean, overwrite?: IDecorationData): IDecoration | undefined;
 ```
 
-Get the result of the current file's Decoration by means of getting the uri, or return undefined if it doesn't get it.
+Obtain the result of the current file's Decoration by means of getting the uri, or return undefined if it doesn't get the Decoration.
 
 ##### Use Cases
 

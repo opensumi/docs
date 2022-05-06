@@ -5,7 +5,7 @@ slug: extension-mechanism
 order: 3
 ---
 
-OpenSumi extension system is a superset of VS Code extensions. In addition to official VS Code APIs, we also have extended some API extensions of our own, including front-end, WebWorker extensions, etc. This paper mainly introduces the basic principle and API implementation process of OpenSumi extensions.  
+OpenSumi extension system is a superset of VS Code extensions. In addition to official VS Code APIs, we also have extended some API extensions of our own, including frontend, WebWorker extensions, etc. This article mainly introduces the basic principle and API implementation process of OpenSumi extensions.  
 
 ## Basic Principle
 
@@ -17,15 +17,15 @@ The OpenSumi extension has three entrances: `main` , `browserMain` and `workerMa
 
 ### Extension Process (Extension Node Host)
 
-If you know about VS Code's extension system, you will know that the VS Code plugin process is completely independent of the main process. The same is true of OpenSumi's extension process, as the extension process itself is a completely isolated sub process from the main process: they communicate though Node.js's IPC.
+If you know about VS Code's extension system, you will know that the VS Code plugin process is completely independent of the main process. The same is true of OpenSumi's extension process, as the extension process itself is a completely isolated sub process from the main process：they communicate though Node.js's IPC.
 
 ![](https://img.alicdn.com/imgextra/i3/O1CN01ttWp3E1dludC7Qkt5_!!6000000003777-2-tps-1723-726.png)
 
-Extensions, since they all run in the same process, are accessible to each other, which is also inherited from VS Code's design. For example, when calling the  `sumi.extensions.getExtension` or `sumi.extensions.all`, or even other APIs exposed by rest extensions, we can fetch other extension instances, all of these are allowed.  
+Extensions, since they all run in the same process, are accessible to each other, also inherited from VS Code's design. For example, when calling the `sumi.extensions.getExtension` or `sumi.extensions.all`, or even other APIs exposed by rest extensions, we can fetch other extension instances, all of these are allowed.  
 
 ### Web Worker Extension Process (Extension Worker Host)
 
-The Web Worker extension environment mentioned above can be seen as a low-profile version of Extension Node Host <or subset?  Lite version? -->. This is because at the beginning of the design, the Web Worker extension thread is only used to undertake some dense computational tasks without reference to Node.js. Its architecture diagram is basically the same as Extension Node Host, but some APIs that strongly depend on Node.js are removed, for example, FS, Terminal, Task, and Debug.  
+The Web Worker extension environment mentioned above can be seen as a low-profile version of Extension Node Host<!--or subset?  Lite version? -->. This is because at the beginning of the design, the Web Worker extension thread is only used to undertake some dense computational tasks without reference to Node.js. Its architecture diagram is basically the same as Extension Node Host, but some APIs that strongly depend on Node.js are removed, for example, FS, Terminal, Task, and Debug.  
 
 ### Browser Extensions
 
@@ -49,4 +49,4 @@ The Worker API is a subset of the Node side APIs, basically every APIs except th
 ### API in Browser Environment
 
 The `package.json` declares that the entrance of `sumiContributes#workerMain` is the extension Worker environment, which can access the API in the OpenSumi Worker environment. 
-The Browser environment provides fewer APIs, which can be called by referring to  `sumi-browser`. At its core, 'executeCommand' is provided to execute commands. The latter can be called across processes, such as commands registered in Node/Worker. The Browser environment is designed solely for view rendering. It's better to use Node/Worker environments for complex business logic.
+The Browser environment provides fewer APIs, which can be called by referring to  `sumi-browser`. At its core, 'executeCommand' is provided to execute commands. The latter can be called across processes, such as commands registered in Node/Worker. The Browser environment is designed solely for view rendering. It's better to perform some complex business logic in Node/Worker environment.

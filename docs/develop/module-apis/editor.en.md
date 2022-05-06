@@ -17,29 +17,29 @@ The following diagram shows the complete process of opening an editor tab, which
 ```typescript
 /**
  * Resource
- * 一个资源代表了一个能够在编辑器区域被打开的东西
+ * A resource represents something that can be opened in the editor area  
  */
 export interface IResource<MetaData = any> {
   /**
-   * 是否允许刷新后恢复
+   * Whether to allow refresh recovery
    */
   supportsRevive?: boolean;
 
-  // 资源名称
+  // Resource Name
   name: string;
-  // 资源URI
+  // Resource URI
   uri: URI;
-  // 资源icon的class
+  // Resource icon' class
   icon: string;
-  // 资源的额外信息
+  // Resource 'addtional information
   metadata?: MetaData;
-  // 资源已被删除
+  // The resource has been deleted
   deleted?: any;
 }
 ```
 
 3. Once you get the IResource, you can create a new tab on the tab, displaying the corresponding name and icon.
-4. In order to display content in the editor, you also need to know how to open the IResource. KAITIAN editor module supports multiple ways to open a resource, such as md files with code and live preview. An opening means can be a code editor, diff editor, or an editor's rich components(React).  These open methods and rich components need to be registered in the EditorComponentRegistry in advance  
+4. In order to display contents in the editor, you also need to know how to open the IResource. KAITIAN editor module supports multiple ways to open a resource, such as .md files with code and live preview. An opening means can be a code editor, diff editor, or an editor's rich components(React). These open methods and rich components need to be registered in the EditorComponentRegistry in advance  
 
 ```typescript
 // Define how to open a resource 

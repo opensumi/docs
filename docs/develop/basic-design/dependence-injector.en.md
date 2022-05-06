@@ -66,7 +66,7 @@ export class DemoModule extends BrowserModule {
 }
 ```
 
-Apart from the `useClass` definition syntax, the common syntax also includes `useFactory`, `useValue`. which can be used as follows.
+Apart from the `useClass` definition syntax, the common syntax also includes `useFactory`, `useValue`. which can be used as follows:
 
 ```ts
 export class DemoModule extends BrowserModule {
@@ -95,7 +95,7 @@ export class DemoModule extends BrowserModule {
 
 ### Implementing Multiple Instances
 
-When declaring a module, we can make the implementation of the service multi-instantiated by passing `{ multiple: true }` in the module's dependency injection configuration.Namely each time the service is obtained through DI is a re-initialized instance, the example code is as follows:
+When declaring a module, we can make the implementation of the service multi-instantiated by passing `{ multiple: true }` in the module's dependency injection configuration. Namely each time the service is obtained through DI is a re-initialized instance, the example code is as follows:
 
 ```ts
 @Injectable({ multiple: true })
@@ -174,7 +174,7 @@ export function injectFolderPreferenceProvider(inject: Injector): void {
           return child.get(FolderPreferenceProvider);
         }
         // When passed in as another file, such as launch.json
-        // need to be set corresponding FolderPreferenceProvider and related FolderPreferenceProviderOptions dependency 
+        // need to be set corresponding FolderPreferenceProvider and the related FolderPreferenceProviderOptions dependency 
         // The FolderPreferenceProvider fetch here must be multiple instances, because multiple profiles may exist in the workspace mode
         return child.get(FolderPreferenceProvider, {
           tag: sectionName,
@@ -188,4 +188,4 @@ export function injectFolderPreferenceProvider(inject: Injector): void {
 
 For implementation details, please refer to：[preferences/src/browser/index.ts](https://github.com/opensumi/core/blob/develop/packages/preferences/src/browser/index.ts)
 
-For more information, please check for [@opensumi/di](https://web.npm.alibaba-inc.com/package/@opensumi/di) 文档。
+For more information, please check for [@opensumi/di](https://web.npm.alibaba-inc.com/package/@opensumi/di) .

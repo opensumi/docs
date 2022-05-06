@@ -20,7 +20,7 @@ Below is a list of some common concepts, terms and explanations you may find in 
 
 ## Module
 
-OpenSumi's offerings are NPM packages from different modules. Each package is a **module**, deal with different functions. Modules are generally composed of several parts: front-end, back-end, and public code and types. A common module structure is as follows:
+OpenSumi's offerings are NPM packages from different modules. Each package is a **module**, and deals with different functions. Modules are generally composed of several parts: frontend, backend, and public code and type. A common module structure is as follows:
 
 ```bash
 .
@@ -42,19 +42,19 @@ OpenSumi's offerings are NPM packages from different modules. Each package is a 
 
 In general, modules provide some basic functions. For example, the `search` module can perform a full-text search, where the `src/browser` directory includes UI-related code in front-end, while the search is performed by the code under the `src/node` directory.
 
-The front end communicates with the back via RPC, which is not much difference from calling an asynchronous method, so you don't need to concern about communication details, just refer to the existing pattern to organize the code. You can refer to [front-end and back-end communication](./connection)
+The front end communicates with the back via RPC, which is not too different from calling an asynchronous method, so you don't need to concern about communication details, just refer to the existing pattern to organize the code. You can refer to [front-end and back-end communication](./connection)
 
 Neither `browser/node/common` is a necessity in the module code, and module providing front-end UI or back-end functionalities only are allowed. 
 
 A module can provide Contribution to another, and other one in turn can register contribution points based on the `ContributionProvider` declared by that module. The contribution point mechanism is mainly used in scenarios where modules provide registration capabilities to other modules. For example, `main-layout` provides component-level contribution points, while other modules can freely assemble IDE interfaces by registering components with Layout's capabilities, and menu modules provide contribution points for registering menus.
 
-### Module Layering and Dependencies
+### Module Layer and Dependencies
 
-We divide the modules into 'core modules' and 'functional modules'. They have certain dependency relations. A typical module, take `file-service` as an example, is responsible for file reading and writing, file system registration and management, etc. In many functional modules, read and write operations will depend on `file-service`.  
+We divide the modules into` core modules` and` functional modules` . They have certain dependency relations. A typical module, taking `file-service` as an example, is responsible for file reading and writing, file system registration and management, etc. In many functional modules, read and write operations will depend on `file-service`.  
  
 Core modules are some mandatory modules that make up the core functionality of the IDE and cannot be removed. For example, `main-layout` is responsible for the overall layout of the main interface and view registration, `core-browser` and `core-node` are responsible for maintaining the declaration cycle of IDE ClientApp and ServerApp instances and related contribution point management.
 
-Functional modules are generally pluggable, which means that they can be removed from the integration code or replaced without affecting other functions. However, the removal of some modules with extension API will lead the extension malfunctioning, since `Extension` relies on most of the functional modules to provide the API. The following modules is the current modules that can be plugged:
+Functional modules are generally pluggable, which means that they can be removed from the integration code or replaced without affecting other functions. However, the removal of some modules with extension API will lead the extension malfunctioning, since `Extension` relies on most of the functional modules to provide APIs. The following modules are the currently pluggable:
 
 - Outline
 - File-search
@@ -67,10 +67,10 @@ Functional modules are generally pluggable, which means that they can be removed
 
 By a self-developed DI framework `@opensumi/di`, OpenSumi manages and acquires instances among these modules, and the dependency abstraction interface convention allows us to easily overlap part of the service or even the module implementation to improve extensibility.
 
-For more details on the use of `@opensumi/di`, please refer to the document [Dependency Injection](./dependence-injector), or visit the source code at [opensumi/di](https://github.com/opensumi/di).
+For more details on the usage of `@opensumi/di`, please refer to the document [Dependency Injection](./dependence-injector), or visit the source code at [opensumi/di](https://github.com/opensumi/di).
 
-## extensionand API
+## Extension and API
 
-As mentioned before, many of OpenSumi's functional modules are pluggable, and those that cannot be pluggable are because they provide extension APIs (in other words, they can be pluggable after the Extension module is removed). OpenSumi's extension system is based on the extension of VS Code, which can be regarded as a superset of VS Code extensions. For detailed introduction of the extension system, please refer to [Extension Mechanism](./extension-mechanism).
+As mentioned before, many of OpenSumi's functional modules are pluggable, and those that cannot be plugged are because they provide extension APIs (in other words, they can be pluggable after the Extension module is removed). OpenSumi's extension system is based on the extension of VS Code, which can be regarded as a superset of VS Code extensions. For detailed introduction of the extension system, please refer to [Extension Mechanism](./extension-mechanism).
 
 The OpenSumi extension is similar to the VS Code extensions. We will keep its compatibility with the VS Code extension API, and constantly update and iterate the extension API. The extension API is a collection of objects, such as methods, classes, etc., available for third-party code to call. Extension modules includes all extensions and extension API-related implementations, but when it comes to a certain extension API, the ultimately called module is the one implemented them. For instance, the `sumi.window.createTerminal` capability is provided by the ` terminal-next` module, while the extension just takes its package for the extension to call.
