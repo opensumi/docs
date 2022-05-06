@@ -100,7 +100,7 @@ export class ModuleDemoModule extends NodeModule {
 }
 ```
 
-## What is an extension？
+## What Is an Extension？
 
 Extension, also known as plug-in, is a type of program files supported by the OpenSumi framework. By installing extension files on a specific location, the interface and functions of IDE can be developed again. It is designed to be compatible with the [VSCode Extension API](https://code.visualstudio.com/api), i.e. for IDE products developed with OpenSumi, it is naturally compatible with `VSCode` plug-in system.
 
@@ -110,6 +110,6 @@ Extension, also known as plug-in, is a type of program files supported by the Op
 
 ### How to Release
 
-Due to protocol issues, OpenSumi cannot directly use the VS Code plugin market source, currently OpenSumi integrates by default with the [Eclipse Open VSX](https://www.eclipse.org/community/eclipse_newsletter/2020/march/1.php) service developed by Eclipse company, which developers can use directly or build their own extension market based on[Eclipse Open VSX](https://www.eclipse.org/community/eclipse_newsletter/2020/march/1.php). Marketplace, and later, we will also build our own extension marketplace to develop free extension hosting services for more developers.
+Due to protocol issues, OpenSumi cannot directly use the VS Code plugin market source, currently OpenSumi integrates by default with the [Eclipse Open VSX](https://www.eclipse.org/community/eclipse_newsletter/2020/march/1.php) service developed by Eclipse company, which developers can use directly or build their own extension Marketplace based on [Eclipse Open VSX](https://www.eclipse.org/community/eclipse_newsletter/2020/march/1.php). Later on, we will also build our own extension marketplace to develop free extension hosting services for more developers.
 
-Reference Documents：[Publishing Extensions](https://github.com/eclipse/openvsx/wiki/Publishing-Extensions)
+Reference documentation：[Publishing Extensions](https://github.com/eclipse/openvsx/wiki/Publishing-Extensions)

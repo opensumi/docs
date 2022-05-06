@@ -109,7 +109,7 @@ class DemoService {
 }
 ```
 
-### Creat a Sub container
+### Creat a Sub Container
 
 By creating sub-containers via [@opensumi/di](https://web.npm.alibaba-inc.com/package/@opensumi/di), we can also make colorful features including custom multitons possible with the help of getting `Injector` example directly.
 
@@ -174,7 +174,7 @@ export function injectFolderPreferenceProvider(inject: Injector): void {
           return child.get(FolderPreferenceProvider);
         }
         // When passed in as another file, such as launch.json
-        // need to be set corresponding FolderPreferenceProvider and the related FolderPreferenceProviderOptions dependency 
+        // Need to be set corresponding FolderPreferenceProvider and the related FolderPreferenceProviderOptions dependency 
         // The FolderPreferenceProvider fetch here must be multiple instances, because multiple profiles may exist in the workspace mode
         return child.get(FolderPreferenceProvider, {
           tag: sectionName,

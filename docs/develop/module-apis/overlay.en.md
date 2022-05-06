@@ -61,14 +61,14 @@ export class MessageDemo {
   messageService: IMessageService;
 
   private showMessage() {
-    this.messageService.info('复制成功');
+    this.messageService.info('copy successfully');
   }
 }
 ```
 
 ### Buttons
 
-Buttons are in the lower right corner of the popup， rendered from left to right. After the user selects them, the results are returned  
+Buttons are in the lower right corner of the popup, rendered from left to right. After the user selects them, the results are returned
 
 ##### Example
 
@@ -81,12 +81,12 @@ export class MessageDemo {
   messageService: IMessageService;
 
   private async showMessage() {
-    const res = await this.messageService.info('是否要更新插件', [
-      '确定',
-      '取消'
+    const res = await this.messageService.info('Whether to update the extension', [
+      'Yes',
+      'No'
     ]);
 
-    if (res === '确定') {
+    if (res === 'Yes') {
       //...
     }
   }
@@ -117,7 +117,7 @@ export const CustomMessage = () => {
   return (
     <div>
       <div>这是一个自定义消息</div>
-      <button onClick={() => messageService.hide('确定')}>确定</button>
+      <button onClick={() => messageService.hide('yes')}>确定</button>
     </div>
   );
 };
@@ -129,7 +129,7 @@ const res = await this.messageService.open(
   MessageType.EMPTY
 );
 
-if (res === '确定') {
+if (res === 'yes') {
   //...
 }
 ```
@@ -151,9 +151,9 @@ export class MessageDemo {
   dialogService: IDialogService;
 
   private async showMessage() {
-    const res = await this.dialogService.info('这是一个模态弹窗', ['取消', '确定’]);
+    const res = await this.dialogService.info('This is a modal popup', ['No', 'Yes’]);
 
-    if (res === '确定') {
+    if (res === 'yes') {
       //...
     }
   }

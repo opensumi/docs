@@ -26,7 +26,7 @@ export interface View {
 
 The `slot renderer` determines how this data is consumed. By default, the view is laid out tiled from top to bottom. In the sidebar and bottom bar, the slot renderer defaults to a TabBar component that supports collapsing and expanding and toggling. Except for the sidebar area which will support multiple sub-views like accordion, only the first view of views will be consumed by default. 
 
-The data provider offers LayoutConfig for the view configuration, whose data structure is showed as follows :
+The data provider offers LayoutConfig for the view configuration, whose data structure is showed as follows:
 
 ```typescript
 export const defaultConfig: LayoutConfig = {
@@ -207,4 +207,4 @@ In general, above method can complete the layout of the common custom needs supp
   - TabBar，The multi-tab management component supports view activation, folding, expansion, and switching, and supports Tab dragging to change position  
   - TabPanel，Tab rendering component，sidebar is Panel Title + Accordion. The bottom column is the common React view
 
-For details about how to use components, see the component type declaration.
+For details on how to use components, please refer to the component type declaration.

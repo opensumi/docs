@@ -58,7 +58,7 @@ myBackService = new Proxy(
       if (prop === '$getSomeLocalData') {
         return (...args) => {
           new Promise((resolve, reject) => {
-            // connection means the connection between frontend and back end
+            // Connection means the connection between frontend and back end
             connection.sendRequest(prop, ...args, response => {
               // The request is returned before the result is returned through Promise resolve
               resolve(response);

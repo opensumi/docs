@@ -28,15 +28,15 @@ The underlying data structure for registering a DecorationsProvider is as follow
 ```ts
 interface IDecorationData {
   /**
-   * 权重
+   * weight
    */
   readonly weight?: number;
   /**
-   * Decoration 颜色
+   * Decoration color
    */
   readonly color?: ColorIdentifier;
   /**
-   * Decoration 字符
+   * Decoration string
    */
   readonly letter?: string;
   /**
@@ -44,7 +44,7 @@ interface IDecorationData {
    */
   readonly tooltip?: string;
   /**
-   * Decoration 是否冒泡，类似文件的 Decoration 是否传给文件夹
+   * wheather Decoration bubbles，Whether to pass Decoration of similar files to folder
    */
   readonly bubble?: boolean;
 }

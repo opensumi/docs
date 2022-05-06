@@ -14,7 +14,7 @@ The views we register will end up inside the view container or sub-views. Each v
 
 ## Userage
 
-### Register a new view
+### Register a New View
 
 #### Mode 1: Static Declaration
 
@@ -45,7 +45,7 @@ renderApp({
 });
 ```
 
-#### Mode 2：Dynamic registration
+#### Mode 2：Dynamic Registration
 
 Register the view by `LayoutService` directly:
 
@@ -88,88 +88,88 @@ this.layoutService.collectViewComponent(
 );
 ```
 
-### Control/Listen for view changes
+### Control/Listen for View Changes
 
-After registering a view to a location (currently left, bottom and right) that supports multi-view switching, you can get `TabbarHandler` via `layoutService.getTabbarHandler(viewOrContainerId: string)`. `TabbarHandler` provides very powerful view control and listening capabilities: the
+After registering a view to a location (currently left, bottom and right) that supports multi-view switching, you can get `TabbarHandler` via `layoutService.getTabbarHandler(viewOrContainerId: string)`. `TabbarHandler` provides very powerful view control and listening capabilities: 
 
 ```ts
 interface TabbarHandler {
   /**
-   * dispose 整个视图面板
+   * dispose the entire view panel
    */
   dispose();
   /**
-   * dispose 子视图
+   * dispose subview
    */
   disposeView(viewId: string);
   /**
-   * 激活该视图
+   * activate the view
    */
   activate();
   /**
-   * 取消激活该视图
+   * deactivate the view
    */
   deactivate();
   /**
-   * 当前视图激活状态
+   * active status of the view
    */
   isActivated();
   /**
-   * 显示当前视图（区别于激活）
+   * display current view (as distinct from active)
    */
   show();
   /**
-   * 隐藏当前视图（区别于取消激活，整个视图将不展示在 tabbar 上）
+   * hide the current view (as opposed to de-activating it, where the entire view will not be displayed on the tabbar)
    */
   hide();
   /**
-   * 设置视图的顶部标题组件
+   * Set the top title component of the view
    */
   setTitleComponent(Fc: React.ComponentType, props?: object);
   /**
-   * 设置当前视图的展开尺寸，会强制展开面板
+   * set the expansion size of the current view, which will force the panel to expand 
    */
   setSize(size: number);
   /**
-   * 设置视图tab的徽标
+   * set the view tab's logo
    */
   setBadge(badge: string);
   /**
-   * 获取视图tab的徽标
+   * get the view tab's logo
    */
   getBadge();
   /**
-   * 设置视图tab的图标
+   * set the view TAB icon
    */
   setIconClass(iconClass: string);
   /**
-   * 当前视图是否折叠（区别于激活，整个slot位置都会折叠）
+   * whether the current view collapses (different from active, the entire slot position collapses)
    */
   isCollapsed(viewId: string);
   /**
-   * 折叠视图所在位置
+   * collapse view location
    */
   setCollapsed(viewId: string, collapsed: boolean);
   /**
-   * 切换子视图的折叠展开状态
+   * toggles the collapse expansion state of a subview
    */
   toggleViews(viewIds: string[], show: boolean);
   /**
-   * 更新子视图的标题
+   * Update the title of the subview
    */
   updateViewTitle(viewId: string, title: string);
   /**
-   * 更新视图的标题
+   * Update the title of the view
    */
   updateTitle(label: string);
   /**
-   * 禁用侧边栏的resize功能
+   * disable resize in the sidebar
    */
   setResizeLock(lock?: boolean);
 }
 ```
 
-## 类
+## Class
 
 ### LayoutService
 
@@ -376,7 +376,7 @@ interface SplitPanelProps extends SplitChildProps {
   // setAbsoluteSize ensures that the total width of adjacent nodes remains unchanged
   resizeKeep?: boolean;
   dynamicTarget?: boolean;
-  // Control the use of sum of incoming dimensions as total dimensions or use dom dimensions
+  // Control the use of incoming dimensions sum as total dimensions or use dom dimension
   useDomSize?: boolean;
 }
 

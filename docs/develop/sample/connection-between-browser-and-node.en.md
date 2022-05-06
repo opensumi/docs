@@ -7,7 +7,7 @@ order: 6
 
 To implement two-way communication between the front and back ends, we rely on special service declarations of 'BrowserModule' and 'NodeModule'.  
 
-First of all, you need to define a single channel for two-way communication message. We define a `ITodoConnectionServerPath ` as the only ID message channel. Front and back ends distributes the service through the channel.  
+First of all, you need to define a single channel for two-way communication message. We define a `ITodoConnectionServerPath` as the only ID message channel. Front and back ends distributes the service through the channel.  
 
 ```ts
 export const ITodoConnectionServerPath = 'ITodoConnectionServerPath';

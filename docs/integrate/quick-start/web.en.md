@@ -27,7 +27,7 @@ Open the browser  `http://127.0.0.1:8080` for preview or development.
 ## Use Docker Image 
 
 ```bash
-# Pull the image  
+# pull the image  
 docker pull ghcr.io/opensumi/opensumi-web:latest
 
 # run

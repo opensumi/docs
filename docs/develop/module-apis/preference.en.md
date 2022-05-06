@@ -14,11 +14,11 @@ The directory location of the configuration file can be read by passing `userPre
 
 For global preference, we generally read from the `~/.sumi/settings.json` file.
 
-For workspace configuration files, we generally read them from the `${工作区路径}/.sumi/settings.json` file, but for `multi-workspace` projects where multiple workspaces exist, we read them from the  `${工作区名称}.sumi-workspace` file;
+For workspace configuration files, we generally read them from the `${Workspace name}/.sumi/settings.json` file, but for `multi-workspace` projects where multiple workspaces exist, we read them from the  `${Workspace name}.sumi-workspace` file;
 
 ## User Guide
 
-### Register a new configuration  
+### Register a New Configuration  
 
 #### Mode 1
 
@@ -87,7 +87,7 @@ export class Demo {
 
 Setting panel module `Keymap` and`Preference` module have certain dependence and association relationship.  
 
-If you need to have the configuration defined by  introducing a module appeared in the Settings panel, you can define the `SettingContribution` contribution point. 
+If you need to have the configuration defined by introducing a module appeared in the Settings panel, you can define the `SettingContribution` contribution point. 
 
 ### Cases
 
@@ -120,7 +120,7 @@ export class DemoSettingContribution implements SettingContribution {
 
 At the same time, You can also use a `SettingContribution` to make a configuration value that does not appear in a configuration environment, for example:
 
-I expect the language configuration only exists in `Gobal Settings`and not in`Workspace configuration`, so I can write my contribution point file as follows:
+We expect the language configuration only exists in `Gobal Settings`and not in`Workspace configuration`, so we can write my contribution point file as follows:
 
 ```ts
 @Domain(SettingContribution)

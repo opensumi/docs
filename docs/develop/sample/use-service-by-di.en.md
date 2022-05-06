@@ -1,15 +1,15 @@
 ---
 id: use-service-by-di
-title: Register and Use services through DI
+title: Register and Use the service Through DI
 slug: use-service-by-di
 order: 5
 ---
 
-DI (Dependency Injection) is one of the core mechanisms of OpenSumi framework. Through DI, we can easily achieve the decoupling of dependencies and reuse of services, for details see: [Dependency Injection](../basic-design/dependence-injector) .
+DI (Dependency Injection) is one of the core mechanisms of OpenSumi framework. Through DI, we can easily achieve the decoupling of dependencies and reuse of services, more details on: [Dependency Injection](../basic-design/dependence-injector) .
 
 This section will start from the case, register `ITodoService` service, while using the `IMessageService` service offered by the framework. Todo items switch state to display the switch message.
 
-## Registration service
+## Registration Service
 
 Declare `ITodoService` service interface:
 
@@ -69,7 +69,7 @@ export const Todo = ({
 };
 ```
 
-## Using built-in Services
+## Using Built-in Services
 
 ### Message Notification
 
@@ -143,7 +143,7 @@ export const Todo = ({
 
 ![message notification](https://img.alicdn.com/imgextra/i4/O1CN01kA5rT529ilcreESVL_!!6000000008102-1-tps-1200-706.gif)
 
-### Add items using shortcut keys
+### Add Items Using shortcut keys
 
 Further, we can also register commands and shortcut keys through the contribution point mechanism, with the ability to add Todo items with the help of `IQuickInputService`.
 
@@ -236,4 +236,4 @@ export class TodoContribution
 
 ![keybinding](https://img.alicdn.com/imgextra/i4/O1CN01kAtflz1KZ6rsycc0r_!!6000000001177-1-tps-1200-706.gif)
 
-In the next section, we'll take a closer look at both front and back two-way communication to implement a two-way service invocation.  
+In the next section, we'll take a closer look at both frontend and backend two-way communication to implement a two-way service invocation.  

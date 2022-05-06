@@ -7,7 +7,7 @@ order: 3
 
 In module development, You may need to deal with contribution points on a regular basis. In OpenSumi we have implemented a contribution point mechanism for many key logics, as detailed in the documentation [contribution points](../basic-design/contribution-point).
 
-In order to register our TodoList list on the left Explorer panel, we need to use the `MainLayoutContribution` to register the panel.
+To register our TodoList list on the left Explorer panel, we need to use the `MainLayoutContribution` to register the panel.
 
 ## Creating a Front View
 
@@ -69,7 +69,7 @@ export class TodoListModule extends BrowserModule {
 }
 ```
 
-## Results preview  
+## Results Preview  
 
 ![Hello World](https://img.alicdn.com/imgextra/i2/O1CN01l3ioLn1wWJr2kidlG_!!6000000006315-2-tps-2738-1810.png)
 

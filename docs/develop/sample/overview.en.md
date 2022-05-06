@@ -11,7 +11,7 @@ This case teaches you how to develop your own modules from scratch, step by step
 - How to present a list
 - How to use and register services through DI
 - How to use the contribution point mechanism
-- How to implement front and back-end communication
+- How to implement frontend and backend communication
 
 We aim to：
 
@@ -22,4 +22,4 @@ We aim to：
 
 Through this case study, you will be able to quickly get started with OpenSumi's module development. 
 
-At the same time, if you want to see the code directly, you can directly access the repo [opensumi/todo-list-sample](https://github.com/opensumi/todo-list-sample) directly, and run projects directly to learn
+At the same time, if you want to see the code directly, you can directly access the repo [opensumi/todo-list-sample](https://github.com/opensumi/todo-list-sample) directly, and run projects to get some understandings directly.

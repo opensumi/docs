@@ -11,11 +11,11 @@ OpenSumi warehouse code is organized through [Monorepo] (https://www.perforce.co
 
 ## Introduction to Core Modules
 
-OpenSumi contains dozens of modules, while we don't need to reach every module in development. In general, we ought to have some basic understanding of the following modules.
+OpenSumi contains dozens of modules, while we don't need to reach every module in development. In general, we ought to have some basic understanding on following modules.
 
 ### Core Browser
 
-Core-browser is meant to manage part of the front end of OpenSumi at runtime, including the front-end's `ClientApp` and `Contribution` mechanism. In addition, core-Browser is also responsible for initiating the RPC connection with the back end, and  **cannot be hot-plugged**.  
+Core-browser is meant to manage part of the OpenSumi frontend at runtime, including the front-end's `ClientApp` and `Contribution` mechanism. In addition, core-Browser is also responsible for initiating the RPC connection with the back end, and  **cannot be hot-plugged**.  
 
 ### Core Node
 
@@ -27,7 +27,7 @@ The main purpose of the monaco module is to reorganize and export the APIs of th
 
 ### File Service
 
-File-service is a built-in file service implementation. Most cases are based on native file systems, while file-service is the default implementation. In addition, OpenSumi also helps to implement other file systems by means of customizing file-service. Examples include MemoryFS, BrowserFS, and so on. 
+File-service is a built-in file service implementation. Many cases are based on native file systems, while file-service is the default implementation. In addition, OpenSumi also helps to implement other file systems by means of customizing file-service. Examples include MemoryFS, BrowserFS, etc. 
 
 ### File Tree Next
 
@@ -43,19 +43,19 @@ Extension is the core OpenSumi extension system implementation, including the fr
 
 ### Extension Manager
 
-The main role of Extension-manager is to install, manage, enable or disable extensions. Aslo it supports customized sources. What makes it special is that extension-manager is the only module that can directly depend on extension module, because the extensions needs to be synchronized and activated after installing and enabling them.
+The main role of Extension-manager is to install, manage, enable or disable extensions. Aslo it supports customized sources. What makes it special is that extension-manager is the only module that can directly depend on extension module, because the extension needs to be synchronized and activated after installing and enabling it.
 
 ## Module Layering
 
 Although OpenSumi employs Monorepo to organize the code structure, and each module's "code" network looks flat, the logical relation between modules is actually layered. For example, the aforementioned `core-browser`, `core-node`, `file-service`, `connection`, ` monaco`, etc. are essential in most cases and can be considered as `underlying modules`, which cannot be safely removed or `hot-plugged`. Modules including `opened-editor`, `markdown`, `search`, etc. have a single role and just provide partial views and functionalities, so removing them will not have a damaging effect on OpenSumi itself, and we call them `functional modules`.
 
-\One of the most important criteria to determine a module an `underlying module` or a `core module` is whether it can be safely removed. If we take in 'no extension functionality', then in fact `extension` can also be a functional module, so that most of its dependencies can be safely removed.
+One of the most important criteria to determine a module an `underlying module` or a `core module` is whether it can be safely removed. If we take in 'no extension functionality', then in fact `extension` can also be a functional module, so that most of its dependencies can be safely removed.
 
 ## Module List and Overview
 
 ```bash
 .
-├── addons                        # Used to rely on modules to implement some functions that may have side effects, such as monitoring file-tree drag-and-drop issues and calling file-service APIs to write files  
+├── addons                        # Used to rely on some modules to implement some functions that may have side effects, such as monitoring file-tree drag-and-drop issues and calling file-service APIs to write files  
 ├── comments                      # To implement the built-in Code Review comments, offering standard VS Code Comments API  
 ├── components                    # A set of basic components shared by various OpenSumi modules  
 ├── connection                    # Used to implement the bottom RPC framework at the Web and Electron ends and the corresponding connection management  

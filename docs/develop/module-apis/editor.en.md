@@ -88,7 +88,7 @@ Used to register `EditorFeatureContribution` with the `IEditorFeatureRegistry` a
 
 ### Example
 
-**Sample 1** : Register an editor component for a Uri like example_scheme://exampleTitle, so that it can be opened within the editor.
+**Sample 1**: Register an editor component for a Uri, e.g. example_scheme://exampleTitle, so that it can be opened within the editor.
 
 ```tsx
 const ExampleEditorComponent = () => {
@@ -160,7 +160,7 @@ export class ExampleEditorContribution implements BrowserEditorContribution {
 
 ## User Guide
 
-The external module calls the editor module mainly through the class 'WorkbenchEditorService', to perform corresponding operations.  
+The external module calls the editor module mainly through the class `WorkbenchEditorService`, to perform corresponding operations.  
 
 ### Methods
 
@@ -178,7 +178,7 @@ Close All Editors
 open(uri: URI, options?: IResourceOpenOptions): Promise<IOpenResourceResult>;
 ```
 
-uri Open the assigned uri
+Open the assigned uri
 
 ##### `openUris()`
 

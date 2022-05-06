@@ -7,7 +7,7 @@ order: 5
 
 The concept of contribution point comes from a design philosophy in VS Code. By defining a basic contribution point, we can implement a full capability and spread out the contribution point files for each submodule.  
 
-## For Example
+## Samples
 
 Since there are plenty of hot keys in IDE, if a module wants to register a shortcut, it can depend on the shortcut module, but if the shortcut module wants to register a command, it will depend directly on the command module and other logical modules, which in turn makes these modules' connection difficult to maintain.
 

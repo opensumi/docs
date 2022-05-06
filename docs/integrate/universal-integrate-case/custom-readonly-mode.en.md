@@ -7,7 +7,7 @@ order: 7
 
 ## Overview
 
-In some special scenarios, the integrator wants to be able to run in read-only mode, such as `sharing` functions, where the person being shared can only read but not write, cannot use certain commands, cannot create and delete files, or other such requirements.
+In some special scenarios, the integrator wants to be able to run in read-only mode, such as `sharing` functions, where the person being shared can only read but not write, can't use certain commands, or create and delete files, or other such requirements.
 
 Then we can use OpenSumi's custom module capability to achieve read-only mode by disabling certain functions and `Command` commands in the module
 
@@ -73,14 +73,14 @@ export class ReadOnlyContribution
 
 More [`Command`](https://github.com/opensumi/core/blob/main/packages/core-browser/src/common/common.command.ts) and [`MenuId`](https://github.com/opensumi/core/blob/08cfc13779d0830fcd8663ca1e9dd4bc92218171/packages/core-browser/src/menu/next/menu-id.ts#L2) can be viewed in the source code，just need to uninstall command or Menu as shown in the code  
 
-## Integration module
+## Integration Module
 
 Finally introduced at integration time. Taking the `opensumi/ide-startup` case as an example, refer to [index.ts#L12](https://github.com/opensumi/ide-startup/blob/a46a78a56b25b17f7f36ddc3f340d1720311559a/src/browser/index.ts#L12) , just import it to the modules field
 
 ```typescript
 new ClientApp({
   modules: [
-    // other modules
+    // Other modules
     ReadonlyModule
   ],
   //  You can also set editor.forceReadOnly as true in the default configuration 
@@ -90,4 +90,4 @@ new ClientApp({
 });
 ```
 
-Here you have done simple read-only mode support.
+Here you have done a simple read-only mode support.

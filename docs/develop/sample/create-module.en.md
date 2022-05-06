@@ -22,9 +22,9 @@ Once you have your project in place, you can create a `modules` folder in your p
 
 ```bash
 .
-└── workspace                   # 工作目录
-├── modules                     # 存放模块目录
-├── extensions                  # 插件目录
+└── workspace                   # Work directory 
+├── modules                     # Directory for storing modules
+├── extensions                  # extension directory
 ├── src
 │   ├── browser
 │   └── node

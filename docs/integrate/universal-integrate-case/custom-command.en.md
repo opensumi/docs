@@ -9,9 +9,9 @@ order: 4
 
 The two main scenarios in which the command is used are as follows.
 
-### plugin 
+### Extension
 
-The commands in OpenSumi can be used in the plugin by the following example:
+The commands in OpenSumi can be used in the extension by the following example:
 
 ```ts
 import { commands, Uri } from 'sumi';
@@ -46,7 +46,7 @@ class DemoModule {
 
 ## Built-in Command
 
-In the OpenSumi framework, many basic commands are built-in. When you need to implement them, you can go to the corresponding module to find the corresponding implementation first to avoid repeated work. Some of the commonly used built-in commands are as follows.
+In the OpenSumi framework, many basic commands are built-in. When you need to implement them, you can go to the corresponding module to find the corresponding implementation first to avoid repeated work. Some of the commonly used built-in commands are as follows:
 
 | Command                        | Fuctionality             | parameter                             |
 | --------------------------------------------------------- | ------------------------------------ | -------------------------------- |
@@ -84,24 +84,24 @@ In the OpenSumi framework, many basic commands are built-in. When you need to im
 | workbench.action.navigateForward                          | Navigate back to the forward editor                   |                                  |
 | workbench.action.files.saveAll                            | Save all files                       |                                  |
 | workbench.action.debug.stepInto                           | Debug to step into                        |                                  |
-| workbench.action.debug.stepOut                            | debug to step out                       |                                  |
-| workbench.action.debug.stepOver                           | debug to step over                   |                                  |
-| workbench.action.debug.continue                           | debug to continue            |                                  |
-| workbench.action.debug.run (workbench.action.debug.start) | debug to run                             |                                  |
-| workbench.action.debug.pause                              | debug to pause                           |                                  |
-| workbench.action.debug.restart                            | debug to restart                           |                                  |
+| workbench.action.debug.stepOut                            | Debug to step out                       |                                  |
+| workbench.action.debug.stepOver                           | Debug to step over                   |                                  |
+| workbench.action.debug.continue                           | Debug to continue            |                                  |
+| workbench.action.debug.run (workbench.action.debug.start) | Debug to run                             |                                  |
+| workbench.action.debug.pause                              | Debug to pause                           |                                  |
+| workbench.action.debug.restart                            | Debug to restart                           |                                  |
 | workbench.action.debug.stop                               | Debug to stop                            |                                  |
-| workbench.action.showAllSymbols                           | show all symbols                          |                                  |
+| workbench.action.showAllSymbols                           | Show all symbols                          |                                  |
 
-## Registers a Custom Command
+## Register a Custom Command
 
 There are also two ways to register a custom command:
 
-### By extension
+### Register by Extensions
 
-插件注册主Plugin registration mainly relies on `commands`  contribution points, which are detailed in：[contributes.commands](https://code.visualstudio.com/api/references/contribution-points#contributes.commands)。
+Extension registration mainly relies on `commands`  contribution points, which are detailed in：[contributes.commands](https://code.visualstudio.com/api/references/contribution-points#contributes.commands)。
 
-A simple example of declaring a custom command in the plugin's `package.json` is as follows.
+A simple example of declaring a custom command in the extension's `package.json` is as follows.
 
 ```json
 {
@@ -136,6 +136,6 @@ export async function activate(context: sumi.ExtensionContext) {
 }
 ```
 
-### By module
+### Register by Modules
 
 In module, we usually register with `CommandContribution`, which is detailed in the documentation:[Command Register](../../develop/basic-design/contribution-point#命令注册)。
