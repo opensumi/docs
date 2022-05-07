@@ -24,9 +24,9 @@ export interface View {
 }
 ```
 
-The `slot renderer` determines how this data is consumed. By default, the view is laid out tiled from top to bottom. In the sidebar and bottom bar, the slot renderer defaults to a TabBar component that supports collapsing and expanding and toggling. Except for the sidebar area which will support multiple sub-views like accordion, only the first view of views will be consumed by default. 
+ `Slot renderer` determines how this data is consumed. By default, the view is laid out tiled from top to bottom. In the sidebar and bottom bar. The slot renderer defaults to a TabBar component that supports collapsing and expanding and toggling. Except for the sidebar area which will support multiple sub-views though accordion, other places will only consume the first view of views will be d by default. 
 
-The data provider offers LayoutConfig for the view configuration, whose data structure is showed as follows:
+The data provider offers LayoutConfig for the view configuration, whose data structure is as follows:
 
 ```typescript
 export const defaultConfig: LayoutConfig = {
@@ -45,7 +45,7 @@ export const defaultConfig: LayoutConfig = {
 };
 ```
 
-The Token of the view is registered with the real React component through ComponentContribution.
+The Token of the view is registered and connected with the real React component through ComponentContribution.
 
 ```typescript
 import { Search } from './search.view';
@@ -64,13 +64,13 @@ export class SearchContribution implements ComponentContribution {
 }
 ```
 
-The following is an example of how to customize the Layout by adding a ToolBar component to the right of the MenuBar.
+The following is an example of how to customize the Layout by adding a ToolBar component to the right side of the MenuBar.
 
 ![view effects](https://img.alicdn.com/imgextra/i2/O1CN01GNMkW31ygVtoizfSG_!!6000000006608-2-tps-2880-1750.png)
 
 ## View Registration
 
-First we need to register the ToolBar component to a string Token `test-toolbar`.
+First we need to register the ToolBar component to connect it to a string Token `test-toolbar`.
 
 ```typescript
 export const Toolbar = () => (
@@ -130,7 +130,7 @@ export class SampleContribution implements SlotRendererContribution {
   }
 }
 ```
-Then, in the view configuration, import the ToolBar's view to the top position.
+Then, in the view configuration, import the ToolBar's view to the top place.
 
 ```typescript
 const layoutConfig = {
@@ -145,7 +145,7 @@ renderApp({
 });
 ```
 
-### Add a Slot Position
+### Add a Slot's Position
 
 Adding a slot position is very simple: just put the SlotRenderer component into the view. The Layout is designed to be flexible and you can insert this renderer anywhere. In this case, you can choose to add the position in the Layout component or within the MenuBar view: 
 
@@ -183,7 +183,7 @@ export const MenuBarMixToolbarAction: React.FC<MenuBarMixToolbarActionProps> = p
 };
 ```
 
-After adding the slot location, add the corresponding location and the corresponding view Token in the view configuration.
+After adding the slot location, put on the corresponding location and view Token in the view configuration.
 
 ```typescript
 const layoutConfig = {
@@ -200,11 +200,11 @@ In general, above method can complete the layout of the common custom needs supp
 
 
 - The Layout Basic components
-  - BoxPanel，A common Flex layout component that supports Flex layouts in different directions
+  - BoxPanel，a common Flex layout component that supports Flex layouts in different directions
   - SplitPanel，a class of BoxPanel that Supports mouse drag and drop to change the size
 - Slot renderer implementation component
-  - Accordion，accordion component，support SplitPanel all capabilities，as well as the control of folding and expanding subview panels
-  - TabBar，The multi-tab management component supports view activation, folding, expansion, and switching, and supports Tab dragging to change position  
-  - TabPanel，Tab rendering component，sidebar is Panel Title + Accordion. The bottom column is the common React view
+  - Accordion，accordion component，support SplitPanel's all capabilities，as well as the control of folding and expanding subview panels
+  - TabBar，a multi-tab management component, supports view activation, folding, expansion, and switching, and supports Tab drag to change position  
+  - TabPanel，Tab rendering component. Its sidebar is Panel Title + Accordion. The bottom column is the ordinary React view
 
 For details on how to use components, please refer to the component type declaration.

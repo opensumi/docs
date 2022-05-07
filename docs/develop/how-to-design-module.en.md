@@ -5,7 +5,7 @@ slug: how-to-design-module
 order: 2
 ---
 
-This article mainly introduces the idea of building modules, based on the OpenSumi system, to extend the functionality of the native framework, for the creation of modules and specific practices can refer to our [classic case](./sample/overview), which has some basic ideas and practices for creating specific modules.
+This article mainly introduces the idea of building modules, based on the OpenSumi system, aiming to extend native framework functionalities. The creation of modules and specific practices can refer to our [classic case](./sample/overview), which basic ideas and practices for creating specific modules.
 
 ## Know about Dependency Injection
 
@@ -112,15 +112,15 @@ export const layoutConfig = {
 };
 ```
 
-The above code declares that the view component registered with ID `@OpenSumi/IDE-Explorer ` is rendered in the right sidebar area of the IDE.  
+The above code declares that the view component registered with ID `@OpenSumi/IDE-Explorer` is rendered in the right sidebar area of the IDE.  
 
-For more information about view layout, see:[Custom View](../integrate/universal-integrate-case/custom-view) document introduction。 
+For more information about view layout, please refer to [Custom View](../integrate/universal-integrate-case/custom-view) document introduction。 
 
 ### Demand Based on Service Capability
 
-View-based requirements generally include service-based demands as well. In general, the OpenSumi framework provides a number of basic capabilities to support various scenarios, such as `File Service`, `Popup Service`, `Storage Service`, etc. Before you need to customize the related service capabilities, you can see if the desired effect can be achieved through a simple combination of features, if not, then you should consider customizing the service capabilities to meet your needs.
+View-based requirements generally include service-based demands as well. In general, the OpenSumi framework provides a number of basic capabilities to support various scenarios, such as `File Service`, `Popup Service`, `Storage Service`, etc. Before customizing the related service capabilities, you can see if the desired effect can be achieved through a simple combination of features, if not, then you should consider customizing the service capabilities to meet your needs.
 
-For services such as `commands`, menus, shortcuts, configurations, etc., we recommend that you use [Contribute Points](./basic-design/contribution-point) for extensions. The final use is through the following base declaration.
+For services such as `commands`, menus, keybindings, configurations, etc., we recommend that you use [Contribute Points](./basic-design/contribution-point) for extensions. The final use is through the following base declaration.
 
 ```ts
 @Injectable()

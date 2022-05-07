@@ -35,7 +35,7 @@ interface IMenuRegistry {
 
 ## Register a New Menu Item
 
-For example, if we want to register a new `terminal` menu item and want it to be displayed in the first item, we call `registry.registerMenuBarItem` and pass `order: 0` to indicate that it is positioned in the first item.
+For example, if we want to register a new `terminal` menu item and hope it to be displayed in the first item, we call `registry.registerMenuBarItem` and pass `order: 0` to indicate that it is positioned in the first item.
 
 ```typescript
 import {
@@ -59,12 +59,11 @@ class MyMenusContribution implements MenuContribution {
 
 ![Menu](https://img.alicdn.com/imgextra/i4/O1CN01AMrUFm1E5RVxMZ417_!!6000000000300-2-tps-3808-2414.png)
 
-## Register Submenus with Existing Menu Items
+## Register Submenus Under Existing Menu Items
 
-We have registered the `terminal` menu item as the first item in the menubar, but it doesn't have submenu yet, and will not respond when clicked. We need to register another set of submenu for it. Call `registerMenuItem` of `registry`'to register a single menu item, or you can use the `registerMenuItems` method to register multiple submenu items in bulk.
-The menu needs to perform some action after click. In this case we want to split the terminal after click, we need to bind a `Command` for it. `Command` can also be [customized](./custom-command)by implementing `CommandContribution`, where we use the built-in `terminal.split` command.
+We have registered the `terminal` menu item as the first item in the menubar, but it doesn't have submenu yet, and will not respond when clicked. We need to register a set of submenu for it. Call `registerMenuItem` of `registry` to register a single menu item, or you can use the `registerMenuItems` method to register multiple submenu items in bulk.The menu needs to perform some action after click. In this case we want to split the terminal after click: we need to bind a `Command` for it. `Command` can also be [customized](./custom-command)by implementing `CommandContribution`, where we use the built-in `terminal.split` command.
 
-> Note that the label of a registered menubar item does not take effect by default when the bound Command is also registered with `label` property specified at the time of registration
+> Note that the label of registered menubar items will not take effect by default if the bound Command is also registered with specified `label` property when registration
 
 ```typescript
 registerMenus(registry: IMenuRegistry) {
@@ -81,11 +80,11 @@ registerMenus(registry: IMenuRegistry) {
 
 ### Submenu Grouping
 
-When there are more menus registered, we may want to space out some submenus with similar actions from other menus, and can use the `group` property to group the submenus. Specifically, you can use the same `group` value for these `similar actions` menus. Here we use `registry.registerMenuItems` to register more submenus.
+When there are plenty of registered menus, we may hope to space out some submenus with similar actions from other menus. We can use the `group` property to group the submenus. Specifically, you can use the same `group` value for these `similar actions` menus. Here we use `registry.registerMenuItems` to register more submenus.
 
 ```typescript
 registerMenus(registry: IMenuRegistry) {
-  registry.registerMenubarItem(terminalMenuBarId, { label: '终端', order: 0 });
+  registry.registerMenubarItem(terminalMenuBarId, { label: 'terminal', order: 0 });
 
   registry.registerMenuItems(terminalMenuBarId, [
     {
@@ -116,7 +115,7 @@ registerMenus(registry: IMenuRegistry) {
 
 ### Register the Secondary Submenu
 
-For the same type of menu, besides using `group` to group them, you can also register them as `secondary submenu`. When there are more submenus, using secondary menu can effectively improve the user experience. For example, we want to register both `search` and `search next match` as a secondary menu of `search`.
+For the same type of menu, besides using `group` to group them, you can also register them as `secondary submenu`. When there are a good deal of submenus, using secondary menu can effectively improve the user experience. For example, we want to register both `search` and `search next match` as a secondary menu of `search`.
 
 ```typescript
 const searchSubMenuId = 'terminal/search';

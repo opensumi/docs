@@ -7,11 +7,11 @@ order: 4
 
 ## Overview
 
-The two main scenarios in which the command is used are as follows.
+The two main scenarios to employ comand are as follows.
 
 ### Extension
 
-The commands in OpenSumi can be used in the extension by the following example:
+OpenSumi commands can be used in the extension by the following example:
 
 ```ts
 import { commands, Uri } from 'sumi';
@@ -23,7 +23,7 @@ let success = await commands.executeCommand('vscode.openFolder', uri);
 
 ### Module
 
-The commands in OpenSumi can be used in the module by the following example:  
+OpenSumi commands can be used in the module by the following example:  
 
 ```ts
 import { Injectable, Autowired } from '@opensumi/common-di';
@@ -48,18 +48,18 @@ class DemoModule {
 
 In the OpenSumi framework, many basic commands are built-in. When you need to implement them, you can go to the corresponding module to find the corresponding implementation first to avoid repeated work. Some of the commonly used built-in commands are as follows:
 
-| Command                        | Fuctionality             | parameter                             |
+| Command                        | Functionality             | parameter                             |
 | --------------------------------------------------------- | ------------------------------------ | -------------------------------- |
 | revealInExplorer                                          | Locate the file on the Explorer page | `uri`: URI                       |
 | setContext                                                | Set the Context variable value                 | `key`：键, `value`：值           |
 | workbench.action.closeActiveEditor                        | Close this active editor                 |                                  |
-| workbench.action.revertAndCloseActiveEditor               | Restore this file contents while closing the active editor|                                  |
+| workbench.action.revertAndCloseActiveEditor               | Restore this file contents while closing active editor|                                  |
 | workbench.action.splitEditorRight                         | Split this editor right                  |                                  |
 | workbench.action.splitEditorDown                          | Split this editor down                 |                                  |
 | workbench.action.files.newUntitledFile                    | Creat temporary editor file                |                                  |
 | workbench.action.closeAllEditors                          | Close all editors                      |                                  |
 | workbench.action.closeOtherEditors                        | Close Other editors                      |                                  |
-| workbench.action.files.save                               | Save current file                        |                                  |
+| workbench.action.files.save                               | Save this file                        |                                  |
 | workbench.action.splitEditor                              | Open the file and split to the right                   | `resource` ： ResourceArgs       | URI, `editorGroup?`：EditorGroup |
 | workbench.action.splitEditorOrthogonal                    | Open the file and split  down                 | `resource` ： ResourceArgs       | URI, `editorGroup？`: EditorGroup |
 | workbench.action.navigateLeft                             | Switch to the left editor                    |                                  |
@@ -99,7 +99,7 @@ There are also two ways to register a custom command:
 
 ### Register by Extensions
 
-Extension registration mainly relies on `commands`  contribution points, which are detailed in：[contributes.commands](https://code.visualstudio.com/api/references/contribution-points#contributes.commands)。
+Extension registration mainly relies on `commands`  contribution points, as details in：[contributes.commands](https://code.visualstudio.com/api/references/contribution-points#contributes.commands)。
 
 A simple example of declaring a custom command in the extension's `package.json` is as follows.
 
@@ -124,7 +124,7 @@ A simple example of declaring a custom command in the extension's `package.json`
 The advantage of the declaration is that the command is "explicitly" present in the frame, i.e. it can be found in the Quick Navigation panel opened by  `⇧⌘P`  or in the menu, and commands registered directly without the declaration will not appear in the above panel.
 
 ```ts
-// sumi's own API
+// sumi's built-in extension API
 import * as sumi from 'sumi';
 
 export async function activate(context: sumi.ExtensionContext) {

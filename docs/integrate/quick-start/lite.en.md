@@ -6,11 +6,11 @@ order: 3
 
 ## Overview
 
-OpenSumi provides a pure front-end access capability that takes you out of the Node environment and provides relatively complete IDE capabilities with a simple B/S architecture in a pure browser environment.  
+OpenSumi provides a pure front-end access capability that takes you away from the Node environment and provides relatively complete IDE capabilities with a simple B/S architecture in a pure browser environment.  
 
-Before running it, please ensure that Node.js 10.15.x or higher is installed in your local environment. Also, OpenSumi relies on some Node.js Addons, so to ensure that these Addons are compiled properly, it is recommended to refer to the installation guide in [node-gyp](https://github.com/nodejs/node-gyp#installation) to set up your local environment.
+Before running it, please ensure that Node.js 10.15.x or higher is installed in your local environment. Also, OpenSumi relies on some Node.js Addons, so as to ensure that these Addons are compiled properly. It is recommended to refer to the installation guide in [node-gyp](https://github.com/nodejs/node-gyp#installation) to set up local environment.
 
-At the same time, you can directly visit our [preview page](https://opensumi.github.io/ide-startup-lite/) to experience the latest running effect, It supports the branch or tag address such as  `https://opensumi.github.io/ide-startup-lite/#https://github.com/opensumi/core/tree/v2.16.0`.  
+At the same time, you can directly visit our [preview page](https://opensumi.github.io/ide-startup-lite/) to experience the latest running effect. It supports the branch or tag address, such as  `https://opensumi.github.io/ide-startup-lite/#https://github.com/opensumi/core/tree/v2.16.0`.  
 
 ## Quick Start
 
@@ -43,30 +43,26 @@ The pure front-end version uses `BrowserFsProvider` to replace `DiskFileSystemPr
 
 ### File Services
 
-Different from full-featured IDEs such as container and electron versions, pure front-end versions of IDEs generally serve a vertical, specific scenario, such as code viewing, codereview, etc. The corresponding underlying capabilities are service-oriented. And since the browser itself does not have a file system, it needs an external data source to provide and maintain the file information. In the pure front-end version, we need developers to implement the following two methods to support the underlying code viewing capabilities.
-
-Translated with www.DeepL.com/Translator (free version)
+Different from full-featured IDEs including container and electron versions, pure front-end versions of IDEs generally serve a vertical, specific scenario, such as code viewing, codereview, etc. The corresponding underlying capabilities are service-oriented. And since the browser itself does not have a file system, it needs an external data source to provide and maintain the file information. In the pure front-end version, we need developers to implement the following two methods to support the underlying code viewing capabilities:
 
 > File Location：`web-lite/file-provider/http-file-service.ts`
 
 - `readDir(uri: Uri): Promise<Array<{type: ‘tree’ | ‘leaf’, path: string}>>`：return directory structure information
 - `readFile(uri: Uri, encoding?: string): Promise<string>`：return file contents
 
-Implementing the above two methods enables IDE capabilities in read-only mode.  If you want to support code editing capabilities, you also need to implement the following three methods:  
+Implementing the above two methods enables IDE capabilities in read-only mode. If you want to support code editing capabilities, you also need to implement the following three methods:  
 
 - `updateFile(uri: Uri, content: string, options: { encoding?: string; newUri?: Uri; }): Promise<void>`
 - `createFile(uri: Uri, content: string, options: { encoding?: string; }): Promise<void>`
 - `deleteFile(uri: Uri, options: { recursive?: boolean }): Promise<void>`
 
-After the code is modified, the corresponding method will be called to synchronize the code to the server end of the integration side. After that, the browser side will cache new code in memory, and invalid it after refreshing.  
+After the code is modified, the corresponding method will be called to synchronize to the server end of the integration side. After that, the browser side will cache a new code in memory, and invalid it after refreshing.  
 
 ## Extension Declaration
 
-As there is no file system in the pure front-end environment, the list of installed extensions and their corresponding details cannot be obtained through the logic of extension scanning, which needs to be declared in advance at integration time.
+Since there is no file system in the pure front-end environment, the list of installed extensions and their corresponding details cannot be obtained through the logic of extension scanning, which needs to be declared in advance at integration time.
 
-When pure front-end plugins are added to the plugin marketplace, a copy of the required resources will be automatically synchronized to oss (you need to enable the configuration`{ “enableOpenSumiWebAssets”: true }`, after that when building extensions, it will automatically generate the directory list file, sumi-meta.json, which needs to be hosted .jso). Therefore, to use a plugin uploaded to the plugin marketplace in an intranet environment, you only need to declare the id and version of the target plugin in the plugin list, and the rest of the logic has been smoothed out:
-
-Translated with www.DeepL.com/Translator (free version)
+When pure front-end extensions are added to the extension marketplace, a copy of the required resources will be automatically synchronized to oss (you need to enable the configuration`{ “enableOpenSumiWebAssets”: true }`, after that when building extensions, it will automatically generate the directory list file, sumi-meta.json, which needs to be hosted). Therefore, to employ extensions uploaded to the extension marketplace in an intranet environment, you only need to declare the target extension's id and version in the extension list, and the rest of the logic has been smoothed out:
 
 > File Location：`web-lite/extension/index.ts`
 
@@ -78,13 +74,13 @@ const extensionList = [
 ];
 ```
 
-For external users, you can upload some resources generated by plug-in packaging to the OSS or CDN, and then modify the oss base path in the  plug-in market to a customized path.  
+For external users, you can upload some resources generated by extension packaging to the OSS or CDN, and then modify the oss base path in the extension market to a customized path.  
 
 ## Syntax Highlighting and Code Hints
 
 ### Syntax Highlighting
 
-For performance reasons, the static syntax highlighting capability of the pure front-end version is not registered through plug-ins by default. We have encapsulated common syntax into a unified NPM package and declared the syntax we want to support directly:  
+For performance reasons, the static syntax highlighting capability of the pure front-end version is not registered through extensions by default. We have encapsulated common syntax into a unified NPM package and declared the syntax we want to support directly:  
 
 > File Location：`web-lite/grammar/index.contribution.ts`
 
@@ -99,11 +95,11 @@ const languages = [
 ];
 ```
 
-> Note: We provide both direct Require and dynamic import to introduce syntax declaration files. The former will make bundleSize larger, while the latter will be more expensive. You may choose you desired for integration  
+> Note: We provide both direct Require and dynamic import to introduce syntax declaration files. The former will make bundleSize larger, while the latter deployment costs will be higher. You may take your chooice when integration. 
 
-### Single file syntax service
+### Single File Syntax Service
 
- OpenSumi is based on pure front-end plug-in (Worker version) capabilities, providing basic hints of common syntax.  Since there is no file service, the worker version syntax prompt plug-in only supports single-file code prompt and does not support cross-file analysis, which is basically sufficient for pure front-end lightweight editing scenarios.  Syntax hint plugins are currently available:  
+ OpenSumi is based on pure front-end extension (Worker version) capabilities, providing basic hints of common syntax. Since there is no file service, the worker version syntax prompt that extensions only support single-file code hints and do not support cross-file analysis, which is basically sufficient for pure front-end lightweight editing scenarios. The following is the Syntax hint extensions currently available:  
 
 ```typescript
 const languageExtensions = [
@@ -115,11 +111,11 @@ const languageExtensions = [
 ];
 ```
 
-Add the syntax prompt plug-in directly to the plug-in list.
+Add the syntax prompt extension directly to the extension list.
 
 ### Lsif Syntax Service
 
-For pure browsing scenarios such as code viewing and Code review, the [LSIF Scheme](https://microsoft.github.io/language-server-protocol/specifications/lsif/0.6.0/specification/) based on offline indexing analysis will support cross-file Hover hints and code skipping without any additional analysis overhead on the browser side. OpenSumi pure front-end version integrated with lsif client, just need a simple docking to access lsif service
+For pure browsing scenarios such as code viewing and Code review, the [LSIF Scheme](https://microsoft.github.io/language-server-protocol/specifications/lsif/0.6.0/specification/) based on offline indexing analysis will support cross-file Hover hints and code skipping without any additional analysis overhead on the browser side. OpenSumi pure front-end version integrated with lsif client,and just need a simple docking to access lsif service.
 
 > File Location：`web-lite/language-service/lsif-service/lsif-client.ts`
 
@@ -142,11 +138,11 @@ export interface ILsifClient {
 
 ## Search Capability
 
-The search function is optional and is not enabled by default. The core search capability lies in the implementation of file-search and the back-end part of the search module  
+The search function is optional and is not enabled by default. The core search capability lies in the implementation of file-search and the back-end part of the search module. 
 
 ### File Search 
 
-To make the file search function (triggered by cmd+p)possible, the following method need to be implemented: 
+To make the file search function (triggered by cmd+p) possible, the following method need to be implemented: 
 
 ```typescript
 export interface IFileSearchService {
@@ -162,7 +158,7 @@ export interface IFileSearchService {
 }
 ```
 
-Replace the Default mock-file-seach.ts after implementation
+Replace the default mock-file-seach.ts after implementation
 
 ### File Content Search  
 

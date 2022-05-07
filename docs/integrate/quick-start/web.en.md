@@ -5,13 +5,13 @@ slug: quick-start
 order: 1
 ---
 
-OpenSumi is based on Node.js version `12.x +` and you need to make sure you have the correct version of Node.js installed locally. Also, OpenSumi relies on a number of Node.js Addons. To ensure that these Addons are compiled properly, it is recommended that you refer to the installation guide in [node-gyp](https://github.com/nodejs/node-gyp#installation) to set up your local environment.
+OpenSumi is based on Node.js version `12.x +` and you need to make sure the correct version of Node.js installed locally. Also, OpenSumi relies on a number of Node.js Addons. To ensure these Addons are compiled properly, it is recommended to refer to the installation guide in [node-gyp](https://github.com/nodejs/node-gyp#installation) to set up your local environment.
 
 ![preview](https://img.alicdn.com/imgextra/i3/O1CN01uIRRRl1wmLkN9geV3_!!6000000006350-2-tps-2844-1830.png)
 
 ## Local Launch
 
-> **Note: Since there are a lot of packages to download during the compiling process, and some of them require access to GitHub to download the source code, please keep your access to GitHub open. Many 404 Not Found issues are caused by network access failures.**
+> **Note: Since there are a large number of packages to be downloaded during the compiling process, and some of them require the access to GitHub to download the source code, so please keep your access to GitHub open. Many 404 Not Found issues are caused by network access failures.**
 
 Run the following commands in sequence:
 
@@ -22,7 +22,7 @@ $ yarn					   # install dependency
 $ yarn start		       # side-by-side Start the front end and back end in parallel
 ```
 
-Open the browser  `http://127.0.0.1:8080` for preview or development.  
+Open the browser `http://127.0.0.1:8080` for preview or development.  
 
 ## Use Docker Image 
 
@@ -40,11 +40,11 @@ Open the browser `http://127.0.0.1:8080`for preview or development.
 
 The integration code in Startup is relatively simple, basically instantiating `ClientApp` and `ServerApp` respectively, inputing the appropriate parameters and starting it. The following lists some of the core startup parameters.  
 
-For detailed startup parameters, see[integrated configuration](../universal-integrate-case/custom-config) document.  
+For detailed startup parameters, please refer to [integrated configuration](../universal-integrate-case/custom-config) document.  
 
 ## Custom IDE
 
-OpenSumi supports customization of interface themes, built-in commands, menus, and other basic capabilities by means of modules. You can view more detailed customization content at:
+OpenSumi supports customize interface themes, built-in commands, menus, and other basic capabilities by means of modules. You can view more detailed customization content at:
 
 - [Integration configuration](../universal-integrate-case/custom-config)
 - [Custom Comand](../universal-integrate-case/custom-command)
