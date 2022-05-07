@@ -38,7 +38,7 @@ docker run --rm -d  -p 8080:8000/tcp ghcr.io/opensumi/opensumi-web:latest
 
 ## 启动参数
 
-Startup 中集成代码比较简单，大体上是分别实例化了 `ClientApp`  和 `ServerApp` ，传入相应的参数并启动。下面简单列举一部分核心启动参数。
+Startup 中集成代码比较简单，大体上是分别实例化了 `ClientApp`  和 `ServerApp` ，传入相应的参数并启动。
 
 详细启动参数可查看 [自定义配置](../universal-integrate-case/custom-config) 文档。
 
