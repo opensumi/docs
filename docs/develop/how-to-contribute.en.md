@@ -68,6 +68,7 @@ Enter the local project path, install dependencies through `npm` and initialize 
 
 ```bash
 cd core
+npm install
 npm run init
 ```
 

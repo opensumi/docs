@@ -70,6 +70,7 @@ git pull https://github.com/opensumi/core.git main
 
 ```bash
 cd core
+npm run install
 npm run init
 ```
 
