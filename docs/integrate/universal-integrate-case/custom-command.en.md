@@ -99,7 +99,7 @@ There are also two ways to register a custom command:
 
 ### Register by Extensions
 
-Extension registration mainly relies on `commands`  contribution points, as details in：[contributes.commands](https://code.visualstudio.com/api/references/contribution-points#contributes.commands)。
+Extension registration mainly relies on `commands` contribution points, as details in：[contributes.commands](https://code.visualstudio.com/api/references/contribution-points#contributes.commands)。
 
 A simple example of declaring a custom command in the extension's `package.json` is as follows.
 
@@ -121,7 +121,7 @@ A simple example of declaring a custom command in the extension's `package.json`
 }
 ```
 
-The advantage of the declaration is that the command is "explicitly" present in the frame, i.e. it can be found in the Quick Navigation panel opened by  `⇧⌘P`  or in the menu, and commands registered directly without the declaration will not appear in the above panel.
+The advantage of declaration is that the command is "explicitly" present in the frame, i.e. it can be found in the Quick Navigation panel opened by  `⇧⌘P`  or in the menu, and commands registered directly without the declaration will not appear in the above panel.
 
 ```ts
 // sumi's built-in extension API
@@ -138,4 +138,4 @@ export async function activate(context: sumi.ExtensionContext) {
 
 ### Register by Modules
 
-In module, we usually register with `CommandContribution`, which is detailed in the documentation:[Command Register](../../develop/basic-design/contribution-point#命令注册)。
+In module, we usually register by `CommandContribution`, which is detailed in the documentation:[Command Register](../../develop/basic-design/contribution-point#命令注册)。
