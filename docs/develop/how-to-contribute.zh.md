@@ -23,22 +23,6 @@ order: 1
 npm config set registry https://registry.npmmirror.com
 ```
 
-由于 `canvas` 依赖 GitHub Release 资源，在国内网络环境下极易超时，故安装依赖时请加上对应的镜像地址如下：
-
-```bash
-npm install --canvas_binary_host_mirror=https://npmmirror.com/mirrors/canvas/
-```
-
-对于 Apple Silicon 的 Mac，在 `npm install` 等操作时会出现 `canvas` 相关报错，这是由于 [prebuild](https://github.com/node-gfx/node-canvas-prebuilt/issues/125) 并不支持 ARM 架构，需要自行编译：
-
-```bash
-npm uninstall canvas
-CPLUS_INCLUDE_PATH=/opt/homebrew/include npm i canvas@2.6.1
-npm run init
-```
-
-详见 node-canvas 中的 [issue](https://github.com/Automattic/node-canvas/issues/1733)。
-
 你可能需要下面一些开发工具：
 
 - [Git](https://git-scm.com)
