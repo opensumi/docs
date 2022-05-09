@@ -76,7 +76,7 @@ export class DemoContribution implements ClientAppContribution {
 
 ### 命令注册
 
-命令注册的贡献点为 `KeybindingContribution` ，我们可以通过该贡献点进行框架 `Command（命令）`的注册，使用方法如下：
+命令注册的贡献点为 `CommandContribution` ，我们可以通过该贡献点进行框架 `Command（命令）`的注册，使用方法如下：
 
 ```ts
 import {
@@ -87,7 +87,7 @@ import {
 
 @Domain(CommandContribution)
 export class DemoContribution implements CommandContribution {
-  registerKeybindings(keybindings: CommandRegistry): void {
+  registerCommands(registry: CommandRegistry): void {
     registry.registerCommand(
       {
         id: 'demo.command.test',
