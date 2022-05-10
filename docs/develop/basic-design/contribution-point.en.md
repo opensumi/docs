@@ -5,19 +5,19 @@ slug: contribution-point
 order: 5
 ---
 
-The concept of contribution point comes from a design philosophy in VS Code. By defining a basic contribution point, we can implement a full capability and spread out the contribution point files for each submodule.  
+The concept of contribution point comes from a design philosophy in VS Code. By defining a basic contribution point, we can fully implement a capability and spread out the contribution point files for each submodule.  
 
 ## Samples
 
-Since there are plenty of hot keys in IDE, if a module wants to register a shortcut, it can depend on the shortcut module, but if the shortcut module wants to register a command, it will depend directly on the command module and other logical modules, which in turn makes these modules' connection difficult to maintain.
+Since there are plenty of hot keys in IDE, if a module wants to register a shortcut, it can depend on the shortcut module directly, but if the shortcut module wants to register a command, it will depend on the command module and other logical modules, which in turn makes these modules' connection difficult to sustain. 
 
-With the `contribution point `mechanism, we can just perform the logic of the `contribution point` mechanism in the public module, and do not need to pay attention to the implementation details of specific shortcut keys, as shown in the figure:  
+With the `contribution point` mechanism, we can just execute the logic of the `contribution point` mechanism in the public module, and don't need to pay attention to the implementation details of specific shortcut keys, as shown in the figure:
 
 ![Example](https://img.alicdn.com/imgextra/i1/O1CN0106jNQW1fyOfEae2Hd_!!6000000004075-2-tps-2146-1048.png)
 
 ## Frequently-used Contribution Points
 
-Usually, when we use contribution points to run corresponding functions, we need to declare them inside the module and bring into the integration side to take effect. The basic declaration is as follows:  
+Usually when we use contribution points to run corresponding functions, we need to declare them inside the module and bring them into the integration side to take effect. The basic declaration is as follows:  
 
 ```ts
 @Injectable()
@@ -35,7 +35,7 @@ The method of introducing a contribution point file will not be repeatly stated 
 
 ### Lifecyle
 
-If you want to perform some given logic during the lanuch of application's [Lifecyle](./lifecycle), you can use the `ClientAppContribution` contribution point to mount different 'hook' functions during the application's lifecycle to perform specific logic operations, just as follows:  
+If you want to perform some given logic during the lanuch of application's [Lifecyle](./lifecycle), you can use the `ClientAppContribution` contribution point to mount different "hook" functions during the application's lifecycle to perform specific logic operations, just as follows:  
 
 ```ts
 import { Domain, ClientAppContribution } from '@opensumi/ide-core-browser';
@@ -43,11 +43,11 @@ import { Domain, ClientAppContribution } from '@opensumi/ide-core-browser';
 @Domain(ClientAppContribution)
 export class DemoContribution implements ClientAppContribution {
   initialize() {
-    // This function is executed during initialization
+    // This function is executed during initialization phase
   }
 
   onStart() {
-    // This function is executed during application startup
+    // This function is executed during application startup phase
   }
 
   onDidStart() {
@@ -55,11 +55,11 @@ export class DemoContribution implements ClientAppContribution {
   }
 
   onWillStop() {
-    // This function is executed just before the application is shut down, and if true is returned, the shutdown is interrupted  
+    // This function is executed just before the application is to shut down. If returned "true", the shutdown will be interrupted  
   }
 
   onStop() {
-    // Shutdown phase execution
+    // This function is executed in shutdown phase
   }
 
   onDisposeSideEffects() {
@@ -76,7 +76,7 @@ export class DemoContribution implements ClientAppContribution {
 
 ### Command Register
 
-The contribution point of command registration is `KeybindingContribution`, through which we can register 'Command' as follows:  
+The contribution point of command registration is `KeybindingContribution`, through which we can register `Command` as follows:  
 
 ```ts
 import {
@@ -132,7 +132,7 @@ For more detailed preference and usage, please refer to [Preference Module](../m
 
 ### Keybinding Register
 
-The contribution point of the shortcut registration is`KeybindingContribution`, through which we can register  `Keybinding`, using the following method:  
+The contribution point of the Keybinding registration is`KeybindingContribution`, through which we can register `Keybinding`, using the following method:  
 
 ```ts
 import {
@@ -206,12 +206,12 @@ The framework enrolls a total of 53 registered locations in the right menu by de
 
 ### User-defined Protocol Files
 
-In OpenSumi, we obtain the corresponding file service through the DI Token of  `IFileServiceClient` for file reading and writting. In the face of some scenarioalized file content, we usually adopt the method of user-defined protocol header to read such content, for example:  
+In OpenSumi, we obtain the corresponding file service through the DI Token of `IFileServiceClient` for file reading and writting. In terms of some scenarioalized file content, we usually employ user-defined protocol header to read such content, for example:  
 
 - To read user configuration files, we use `user_stroage://settings.json` .  
 - To read virtual files in Debugging process, we use `debug://{filename}` .  
 
-We have made this function possible by the contribution point of `FsProviderContribution`, as follows:  
+We have made this function possible by the contribution point of `FsProviderContribution`, just as follows:  
 
 ```ts
 import {

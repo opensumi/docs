@@ -8,7 +8,7 @@ order: 1
 OpenSumi is positioned as an `IDE framework`, on which you can build IDE products based on Cloud or Desktop. OpenSumi provides the following capabilities by default:
 
 - Basic functional modules, such as FileTree, Editor, SCM, etc. 
-- Rich customizable features, including integration, extensions  
+- Rich customizable features, such as integration, extensions, etc.  
 - Compatible with VS Code plug-in system, supporting mainstream protocols such as LSP and DAP
 
 In contrast, OpenSumi does not provide the following capabilities for some ends currently 
@@ -20,7 +20,7 @@ Below is a list of some common concepts, terms and explanations you may find in 
 
 ## Module
 
-OpenSumi's offerings are NPM packages from different modules. Each package is a **module**, and deals with different functions. Modules are generally composed of several parts: frontend, backend, and public code and type. A common module structure is as follows:
+OpenSumi's offerings are NPM packages from different modules. Each package is a **module**, and deals with different functions. Modules are generally composed of several parts: frontend, backend, public code and type. A common module structure is as follows:
 
 ```bash
 .
@@ -40,7 +40,8 @@ OpenSumi's offerings are NPM packages from different modules. Each package is a 
 
 ### Responsibilities of the Module 
 
-In general, modules provide some basic functions. For example, the `search` module can perform a full-text search, where the `src/browser` directory includes UI-related code in front-end, while the search is performed by the code under the `src/node` directory.
+In general, modules provide some basic functions. For example, the `search` module can perform a full-text search, where the `src/browser` directory includes UI-related code in front-end, while the search is performed by the code under the `src/node` directory.一般意义上模块可以提供一些基础功能，例如 `search` 模块提供了全文搜索功能，在该模块的 `src/browser` 目录下包含了前端 UI 相关的代码，而执行搜索的则是 `src/node` 目录下的代码。
+
 
 The front end communicates with the back via RPC, which is not too different from calling an asynchronous method, so you don't need to concern about communication details, just refer to the existing pattern to organize the code. You can refer to [front-end and back-end communication](./connection)
 
