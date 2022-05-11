@@ -121,7 +121,7 @@ export class ExampleEditorContribution implements BrowserEditorContribution {
       scheme: 'example_scheme'
     });
 
-    // 将这个组件设置为这个 example_scheme 的 resource 的默认打开方式 set this componet as the default opening for the example_scheme  
+    // 将这个组件设置为这个 example_scheme 的 resource 的默认打开方式  
     registry.registerEditorComponentResolver(
       'example_scheme',
       (resource, results) => {
