@@ -5,11 +5,11 @@ slug: how-to-design-module
 order: 2
 ---
 
-本文主要介绍基于 OpenSumi 体系下搭建模块来拓展原生框架功能的思路，对于模块的创建及具体实践可参考我们的[经典案例](./sample/overview), 案例中有针对具体模块创建的一些基础思路及做法。
+本文主要介绍基于 OpenSumi 体系下搭建模块来拓展原生框架功能的思路，对于模块的创建及具体实践可参考我们的 [经典案例](./sample/overview), 案例中有针对具体模块创建的一些基础思路及做法。
 
 ## 了解依赖注入
 
-在了解模块前，建议先看一下 [依赖注入](./basic-design/dependence-injector.zh.md) 这篇文章，在 OpenSumi 中，所有的服务注册及调用都是基于这套统一的依赖注入结构进行服务的实现与调用逻辑的解耦，让框架开发者的开发能够聚焦于开发模块，实现更加独立的模块建设。
+在了解模块前，建议先看一下 [依赖注入](./basic-design/dependence-injector) 这篇文章，在 OpenSumi 中，所有的服务注册及调用都是基于这套统一的依赖注入结构进行服务的实现与调用逻辑的解耦，让框架开发者的开发能够聚焦于开发模块，实现更加独立的模块建设。
 
 ## 什么是模块？
 
@@ -34,24 +34,24 @@ export class ExplorerModule extends BrowserModule {
 
 而额外的一些 Service 定义
 
-## How to Code
+## 如何编码
 
 > 在初次接触 OpenSumi 的模块编码时，我们建议你可以先看一下 OpenSumi 内是否有类型的功能或布局，再通过参照源码的方式进行相关编码工作，这将会让你事半功倍。
 
-Based on basic requirements, module coding can be generally divided into the following two categories:  
+对于模块编码，从基本需求出发，一般可以简单分为如下两类：
 
-- View-based functional requirements
-- Demand based on service capacity
+- 基于视图的功能需求
+- 基于服务能力的需求
 
-###  View-based requirements
+### 基于视图的需求
 
-The first step for all view requirements is to create a view, and in the OpenSumi framework, the steps to create a view can be divided into two steps:
+所有视图的需求的第一步便是创建视图，而在 OpenSumi 的框架下，创建视图的步骤可以分为三步：
 
-1. Register view module  
-2. Introduce the module
-3. Used under the specific `Location （Layout Block）`case
+1. 注册视图模块
+2. 引入模块
+3. 在特定的 `Location （布局区块）` 下使用
 
-Taking the `Explorer` module as an example, we create an `explorer.contribution.ts` file to register a view container.
+以 `Explorer` 模块为例，我们创建一个 `explorer.contribution.ts` 文件注册一个视图容器：
 
 ```ts
 @Domain(ComponentContribution)
@@ -136,7 +136,7 @@ export class DemoModule extends BrowserModule {
 }
 ```
 
-而对于个性化的服务能力注册，我们则建议你通过 [依赖注入](./basic-design/dependence-injector.zh.md) 的方式进行拓展, 最终通过 `Token + Service` 的方式进行注册。
+而对于个性化的服务能力注册，我们则建议你通过 [依赖注入](./basic-design/dependence-injector) 的方式进行拓展, 最终通过 `Token + Service` 的方式进行注册。
 
 ```ts
 @Injectable()
@@ -153,9 +153,9 @@ export class DemoModule extends BrowserModule {
 }
 ```
 
-Specific practical examples can be found in the[classic case](./sample/overview). A basic OpenSumi module generally needs to have the following hierarchical structure:  
+具体的实践案例你都可以在 [经典案例](./sample/overview) 中学习到。
 
-## Unspoken rules about dependencies
+## 关于依赖的潜规则
 
 一个基础的 OpenSumi 模块，一般需要具备如下的分层结构：
 
@@ -209,4 +209,4 @@ Specific practical examples can be found in the[classic case](./sample/overview)
 
 6. 原则上如果模块 `common` 中只能引入 `@opensumi/ide-core-common` 中的内容，但如果该模块为纯 `Browser` 或 `Node` 模块，则允许从对应的 `@opensumi/ide-core-browser` 和 `@opensumi/ide-core-node` 中引入。
 
-自此，你便完成了对于 OpenSumi 模块的初步认识，剩下的便是不断实践，收获更多的实践经验，如果你有更多关于实践上的问题，也欢迎到 [Issue](https://github.com/opensumi/doc/issues) 提交，我们会及时处理你的相关问题。
+自此，你便完成了对于 OpenSumi 模块的初步认识，剩下的便是不断实践，收获更多的实践经验，如果你有更多关于实践上的问题，也欢迎到 [Issue](https://github.com/opensumi/docs/issues) 提交，我们会及时处理你的相关问题。

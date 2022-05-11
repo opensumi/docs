@@ -12,7 +12,7 @@ slug: editor
 
 1. 在整个 IDE 全局中，拥有一个唯一的 WorkbenchEditorService 实例，它是全局的编辑器管理服务。我们在打开一个编辑器时，首先要调用它的 open 方法，传入一个对应的 uri，如 file://path/to/fileToOpen.ts
 
-2. 为了打开这个 uri， 我们需要将其转换为一个在编辑器中可打开的 IResource, 它会拥有更多必要的对编辑器的信息。 这些信息由提前注册的 `IResourceProvider` 提供。
+2. 为了打开这个 uri， 我们需要将其转换为一个在编辑器中可打开的 IResource, 它会拥有更多必要的对编辑器的信息。 这些信息由提前注册的 `IResourceProvider` 提供
 
 ```typescript
 /**
@@ -38,7 +38,7 @@ export interface IResource<MetaData = any> {
 }
 ```
 
-3. 获得 IResource 之后，就可以在 tab 上创建新 tab， 展示对应的名称和 icon 了。
+3. 获得 IResource 之后，就可以在 tab 上创建新 tab， 展示对应的名称和 icon 了
 4. 为了能在编辑器中展示内容，还需要知道如何把这个 IResource 打开。开天的编辑器模块支持一个资源拥有多种打开方式，如 md 文件拥有代码和实时预览的方式。一个打开方式可以是代码编辑器、diff 编辑器，或者是一个编辑器富组件（React 组件）。这些打开方式和富组件都需要提前在 `EditorComponentRegistry` 中进行注册
 
 ```typescript
@@ -57,13 +57,13 @@ export interface IEditorOpenType {
 }
 ```
 
-5. 获得对应的打开方式后，根据用户选择的类型将对应的内容展现在编辑器的主体中，这样就完成了一个 tab 的打开过程。
+5. 获得对应的打开方式后，根据用户选择的类型将对应的内容展现在编辑器的主体中，这样就完成了一个 tab 的打开过程
 
 ## 拓展编辑器
 
 ### BrowserEditorContribution
 
-所有向编辑器模块贡献功能的贡献点统一使用 `BrowserEditorContribution`
+所有向编辑器模块贡献功能的贡献点统一使用 `BrowserEditorContribution`。
 
 **registerResource**
 
@@ -79,8 +79,7 @@ export interface IEditorOpenType {
 
 **onDidRestoreState**
 
-当进入 IDE 时，编辑器会尝试恢复上一次打开的编辑器组和组内打开的文件
-完成后会执行 onDidRestoreState 这个 hook
+当进入 IDE 时，编辑器会尝试恢复上一次打开的编辑器组和组内打开的文件，完成后会执行 onDidRestoreState 这个 hook。
 
 **registerEditorFeature**
 
@@ -114,14 +113,14 @@ export class ExampleEditorContribution implements BrowserEditorContribution {
   }
 
   registerEditorComponent(registry: EditorComponentRegistry) {
-    // register the component
+    // 将组件进行注册
     registry.registerEditorComponent({
       component: ExampleEditorComponent,
       uid: 'example_scheme_component',
       scheme: 'example_scheme'
     });
 
-    // 将这个组件设置为这个 example_scheme 的 resource 的默认打开方式  
+    // 将这个组件设置为这个 example_scheme 的 resource 的默认打开方式
     registry.registerEditorComponentResolver(
       'example_scheme',
       (resource, results) => {
@@ -137,7 +136,7 @@ export class ExampleEditorContribution implements BrowserEditorContribution {
 }
 ```
 
-**示例 2** ： 为 monaco 编辑器提供额外的能力
+**示例 2** ： 为 monaco 编辑器提供额外的能力。
 
 ```ts
 
