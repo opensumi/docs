@@ -90,11 +90,11 @@ module.exports = {
       'https://img.alicdn.com/imgextra/i1/O1CN01k3gCmL1HWPjLchVv7_!!6000000000765-0-tps-200-199.jpg',
     showSearch: false, // 是否展示搜索框
     showChinaMirror: false, // 是否展示国内镜像链接
-    showLanguageSwitcher: false, // 用于定义是否展示语言切换
+    showLanguageSwitcher: true, // 用于定义是否展示语言切换
     showGithubCorner: true, // 是否展示角落的 GitHub 图标
     docsearchOptions: {
-      apiKey: '733f00c901bfe392d78ba8c4437f8a32',
-      indexName: 'opensumi'
+      apiKey: 'SOZF8EXD5Z',
+      indexName: 'docs'
     },
     redirects: []
   }
