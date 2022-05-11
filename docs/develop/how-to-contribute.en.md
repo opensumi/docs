@@ -9,7 +9,7 @@ Generally speaking, you have many ways to contribute to the development of the `
 
 For [issues](https://github.com/opensumi/core/issues) marked with `PR Welcome`, it is best to submit your first PR If you have any questions in the process, you can always consult any project member in the comment area @ any project member.
 
-## Development environment preparation
+## Development Environment Preparation
 
 > The system tool installation method here refers to the [How-to-Contribute](https://github.com/microsoft/vscode/wiki/How-to-Contribute) document of VS Code for translation, and you can directly view the document.
 
@@ -34,15 +34,15 @@ You may need the following development tools:
         - Open the command line and execute `npm config set msvs_version 2019`
     - Note: Make sure that your local PATH contains only ASCII characters, otherwise it may cause [node-gyp usage problems (nodejs/node-gyp/ issues#297)](https://github.com/nodejs/node-gyp/issues/297), and currently does not currently support the construction and debugging of the project under the lower version of the Windows environment.
 
-## Troubleshooting
+## Troubleshoot
 
 In the actual development process, you may encounter issues such as `node-gyp` and other dependencies that become invalid due to NodeJS version switching. You can run `yarn rebuild:node` in the framework to rebuild the native dependencies.
 
-## Build and run
+## Build and Run
 
-If you want to learn how to run OpenSumi or want to debug an issue, you need to get the code locally, build it, and then run it
+If you want to learn how to run OpenSumi or debug an issue, you need to get the code locally, build it, and then run it
 
-### Getting the sources
+### Obtain the Sources
 
 In the first step, you need to fork a copy of the `OpenSumi` repository, and then clone it locally:
 
@@ -60,7 +60,7 @@ git pull https://github.com/opensumi/core.git main
 
 After handling the code conflicts, submit the code to your repository, and then you can go to [opensumi/core](https://github.com/opensumi/core/pulls) to submit your PR at any time.
 
-Note: The default `opensumi/core` also contains a lot of GitHub Actions. If you don't want to execute these Actions, you can go to `https://github.com/<<Your Username>>/core/settings/actions` Close the corresponding Actions.
+Note: The default `opensumi/core` also contains a lot of GitHub Actions. If you don't want to execute these Actions, you can go to `https://github.com/<<Your Username>>/core/settings/actions` to close the corresponding Actions.
 
 ### Build
 
@@ -106,13 +106,13 @@ For the `Node process`, after you run the framework through `npm start`, you can
 
 In addition, you can also use the `Launch Backend` and `Launch Frontend` of the debug panel to start the `Node process` and `Browser process` respectively for debugging.
 
-### extension process
+### Extension process
 
-For the `extension process`, you can use `VSCode` or the `Attach to Extension Host` method in the debugging panel built on OpenSumi to debug the `extension process`. Occasionally, you can directly open the `chrome://inspect` panel for code debugging (it is easier to use). You can get the debugging after the framework is running by filling in `localhost:9999` in the discovery port The process is debugged, as shown in the following figure:
+For the `extension process`, you can use `VSCode` or the `Attach to Extension Host` method in the debugging panel built on OpenSumi to debug the `extension process`. Occasionally, you can directly open the `chrome://inspect` panel for code debugging (easy to use). You can get the debugging after the framework is running by filling in `localhost:9999` in the discovery port, so the process is debugged, as shown in the following figure: 
 
 ![Extension process](https://img.alicdn.com/imgextra/i4/O1CN01qr67Fb1LCxJsM9S8p_!!6000000001264-2-tps-2500-1412.png#id=MrtyW&originHeight=1412&originWidth=2500&originalType=binary&ratio=1&status=done&style)
 
-## PR rules
+## PR Rules
 
 Each commit should be as small as possible, and you need to fill in your commit information in accordance with [ng4's submission specifications](https://www.npmjs.com/package/@commitlint/config-conventional#type-enum).
 
@@ -124,7 +124,7 @@ fix: fix variable acquisition under the debug panel
 
 For PR content, just follow the PR and fill in the template.
 
-## Extension Process debugging
+## Extension Process Debugging
 
 If you want to debug the extension process under the OpenSumi framework, you can link your local extension process to the `{root path}/tools/extensions` directory in the form of a soft link, such as:
 
