@@ -1,5 +1,3 @@
-
-
 ---
 id: core-modules
 title: Core Modules
