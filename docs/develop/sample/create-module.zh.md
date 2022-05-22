@@ -43,14 +43,15 @@ $ yarn start		       # 并行启动前端和后端
 .
 └── ...
 ├── modules                     # 存放模块目录
-│   ├── browser
-│   │   └── index.ts
-│   │   ├── todo.module.less
-│   │   └── todo.view.tsx
-│   ├── common
-│   │   └── index.ts
-│   └── node
-│   │   └── index.ts
+│   ├── todo
+│   │   ├── browser
+│   │   │   └── index.ts
+│   │   │   ├── todo.module.less
+│   │   │   └── todo.view.tsx
+│   │   ├── common
+│   │   │   └── index.ts
+│   │   └── node
+│   │   │   └── index.ts
 └── ...
 ```
 

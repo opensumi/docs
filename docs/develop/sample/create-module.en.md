@@ -43,14 +43,15 @@ In the `modules` directory, we start creating our front and back entry files wit
 .
 └── ...
 ├── modules                     # store module directory
-│   ├── browser
-│   │   └── index.ts
-│   │   ├── todo.module.less
-│   │   └── todo.view.tsx
-│   ├── common
-│   │   └── index.ts
-│   └── node
-│   │   └── index.ts
+│   ├── todo
+│   │   ├── browser
+│   │   │   └── index.ts
+│   │   │   ├── todo.module.less
+│   │   │   └── todo.view.tsx
+│   │   ├── common
+│   │   │   └── index.ts
+│   │   └── node
+│   │   │   └── index.ts
 └── ...
 ```
 
