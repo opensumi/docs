@@ -10,6 +10,8 @@ order: 6
 首先，需要定义一个双向通信的消息唯一通道，我们定义一个 `ITodoConnectionServerPath` 作为消息通道的唯一 ID，前后端的服务都通过这个通道进行消息分发。
 
 ```ts
+// modules/todo/common/index.ts
+
 export const ITodoConnectionServerPath = 'ITodoConnectionServerPath';
 ```
 
@@ -18,11 +20,15 @@ export const ITodoConnectionServerPath = 'ITodoConnectionServerPath';
 首先，需要在 `TodoService` 和 `TodoNodeService` 上继承 `RPCService`。
 
 ```ts
+// modules/todo/browser/todo.service.ts
+
 @Injectable()
 export class TodoService extends RPCService implements ITodoService { ... }
 ```
 
 ```ts
+// modules/todo/node/todo.service.ts
+
 @Injectable()
 export class TodoNodeService extends RPCService implements ITodoNodeService { ... }
 ```
@@ -32,6 +38,8 @@ export class TodoNodeService extends RPCService implements ITodoNodeService { ..
 ### 关联前端服务
 
 ```ts
+// modules/todo/browser/index.ts
+
 import { Provider, Injectable } from '@ali/common-di';
 import { BrowserModule } from '@ali/ide-core-browser';
 import { TodoContribution } from './todo.contribution';
@@ -60,6 +68,8 @@ export class TodoListModule extends BrowserModule {
 ### 关联后端服务
 
 ```ts
+// modules/todo/node/index.ts
+
 import { Provider, Injectable } from '@ali/common-di';
 import { NodeModule } from '@ali/ide-core-node';
 import { ITodoNodeService, ITodoConnectionServerPath } from '../common';
@@ -90,6 +100,8 @@ export class TodoListModule extends NodeModule {
 前端服务展示消息时同时通知到后端服务。
 
 ```ts
+// modules/todo/browser/todo.service.ts
+
 @Injectable()
 export class TodoService extends RPCService implements ITodoService {
   ...
@@ -112,6 +124,8 @@ export class TodoService extends RPCService implements ITodoService {
 后端服务接收到消息后回传到前端服务。
 
 ```ts
+// modules/todo/node/todo.service.ts
+
 import { Injectable } from '@ali/common-di';
 import { ITodoNodeService } from '../common';
 import { RPCService } from '@ali/ide-connection';

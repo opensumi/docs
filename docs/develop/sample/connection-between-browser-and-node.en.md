@@ -5,11 +5,13 @@ slug: connection-between-browser-and-node
 order: 6
 ---
 
-To implement two-way communication between the front and back ends, we rely on special service declarations of 'BrowserModule' and 'NodeModule'.  
+To implement two-way communication between the front and back ends, we rely on special service declarations of 'BrowserModule' and 'NodeModule'.
 
-First of all, you need to define a single channel for two-way communication message. We define a `ITodoConnectionServerPath` as the only ID message channel. Front and back ends distributes the service through the channel.  
+First of all, you need to define a single channel for two-way communication message. We define a `ITodoConnectionServerPath` as the only ID message channel. Front and back ends distributes the service through the channel.
 
 ```ts
+// modules/todo/common/index.ts
+
 export const ITodoConnectionServerPath = 'ITodoConnectionServerPath';
 ```
 
@@ -18,11 +20,15 @@ export const ITodoConnectionServerPath = 'ITodoConnectionServerPath';
 First, you need to inherit 'RPCService' on `TodoService` and `TodoNodeService`.
 
 ```ts
+// modules/todo/browser/todo.service.ts
+
 @Injectable()
 export class TodoService extends RPCService implements ITodoService { ... }
 ```
 
 ```ts
+// modules/todo/node/todo.service.ts
+
 @Injectable()
 export class TodoNodeService extends RPCService implements ITodoNodeService { ... }
 ```
@@ -32,6 +38,8 @@ Associate on a double end `TodoListModule` .
 ### Associated Front-end Service
 
 ```ts
+// modules/todo/browser/index.ts
+
 import { Provider, Injectable } from '@ali/common-di';
 import { BrowserModule } from '@ali/ide-core-browser';
 import { TodoContribution } from './todo.contribution';
@@ -60,6 +68,8 @@ export class TodoListModule extends BrowserModule {
 ### Associate Front-end and Back-end Services
 
 ```ts
+// modules/todo/node/index.ts
+
 import { Provider, Injectable } from '@ali/common-di';
 import { NodeModule } from '@ali/ide-core-node';
 import { ITodoNodeService, ITodoConnectionServerPath } from '../common';
@@ -90,6 +100,8 @@ This case makes it possible that while the Todo item is clicked, a message is pa
 The front-end service notifies the back-end service as it displays the message.
 
 ```ts
+// modules/todo/browser/todo.service.ts
+
 @Injectable()
 export class TodoService extends RPCService implements ITodoService {
   ...
@@ -112,6 +124,8 @@ export class TodoService extends RPCService implements ITodoService {
 The back-end service receives the message and sends it back to the front-end service.
 
 ```ts
+// modules/todo/node/todo.service.ts
+
 import { Injectable } from '@ali/common-di';
 import { ITodoNodeService } from '../common';
 import { RPCService } from '@ali/ide-connection';

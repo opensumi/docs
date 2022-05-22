@@ -5,13 +5,15 @@ slug: display-list
 order: 4
 ---
 
-To achieve a list of high performance, we usually need some three-party library to implement it.  In OpenSumi, however, we have built in a number of common components in `@opensumi/ide-components`, and we will show how to render our TodoList list with these components.
+To achieve a list of high performance, we usually need some three-party library to implement it. In OpenSumi, however, we have built in a number of common components in `@opensumi/ide-components`, and we will show how to render our TodoList list with these components.
 
 ## Data Structure
 
-In panels registered by `IMainLayoutService` service, components render with a default `viewState` property, from which you can get the width and height of the entire panel.  
+In panels registered by `IMainLayoutService` service, components render with a default `viewState` property, from which you can get the width and height of the entire panel.
 
 ```ts
+// modules/todo/browser/todo.view.tsx
+
 export interface ITodo {
   description: string;
   isChecked: boolean;
@@ -32,9 +34,11 @@ export const Todo = ({
 
 ## Rendering List
 
-We bring `RecycleList` and `CheckBox`  from `@opensumi/ide-components`, respectively.
+We bring `RecycleList` and `CheckBox` from `@opensumi/ide-components`, respectively.
 
 ```ts
+// modules/todo/browser/todo.view.tsx
+
 import * as React from 'react';
 import { ViewState } from '@opensumi/ide-core-browser';
 import * as styles from './todo.module.less';
