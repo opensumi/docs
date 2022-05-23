@@ -14,6 +14,8 @@ order: 3
 首先，我们先编写一个简单的前端展示组件，见：
 
 ```ts
+// modules/todo/browser/todo.view.tsx
+
 import * as React from 'react';
 import * as styles from './todo.module.less';
 
@@ -27,6 +29,8 @@ export const Todo = () => {
 创建 `todo.contribution.ts` 文件，使用 `onDidRender` 的贡献点，在 OpenSumi 渲染阶段注册我们的 Todo 面板，见：
 
 ```ts
+// modules/todo/browser/todo.contribution.ts
+
 import { Autowired } from '@opensumi/di';
 import { Domain, localize } from '@opensumi/ide-core-browser';
 import { ExplorerContainerId } from '@opensumi/ide-explorer/lib/browser/explorer-contribution';
@@ -60,6 +64,8 @@ export class TodoContribution implements MainLayoutContribution {
 同时，我们还需要在模块的入口文件中，显示声明一下该贡献点文件的引用，如下：
 
 ```ts
+// modules/todo/browser/index.ts
+
 import { Provider, Injectable } from '@opensumi/di';
 import { BrowserModule } from '@opensumi/ide-core-browser';
 

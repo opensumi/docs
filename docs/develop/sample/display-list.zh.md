@@ -12,6 +12,8 @@ order: 4
 在通过 `IMainLayoutService` 服务注册的面板中，组件渲染时会默认接收一个 `viewState` 属性，你可以从中获取到整个面板的宽高信息。
 
 ```ts
+// modules/todo/browser/todo.view.tsx
+
 export interface ITodo {
   description: string;
   isChecked: boolean;
@@ -35,6 +37,8 @@ export const Todo = ({
 我们分别从 `@opensumi/ide-components` 中引入 `RecycleList` 和 `CheckBox` 组件，组合后完整代码如下：
 
 ```ts
+// modules/todo/browser/todo.view.tsx
+
 import * as React from 'react';
 import { ViewState } from '@opensumi/ide-core-browser';
 import * as styles from './todo.module.less';

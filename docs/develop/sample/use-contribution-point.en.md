@@ -14,6 +14,8 @@ To register our TodoList list on the left Explorer panel, we need to use the `Ma
 First, let's write a simple front-end presentation component as follows:
 
 ```ts
+// modules/todo/browser/todo.view.tsx
+
 import * as React from 'react';
 import * as styles from './todo.module.less';
 
@@ -24,9 +26,11 @@ export const Todo = () => {
 
 ## Creat a Contribution Point
 
-To create the`todo.contribution.ts`file, use the `onDidRender`contribution points to register our Todo panel in the OpenSumi rendering phase, see:  
+To create the`todo.contribution.ts`file, use the `onDidRender`contribution points to register our Todo panel in the OpenSumi rendering phase, see:
 
 ```ts
+// modules/todo/browser/todo.contribution.ts
+
 import { Autowired } from '@opensumi/di';
 import { Domain, localize } from '@opensumi/ide-core-browser';
 import { ExplorerContainerId } from '@opensumi/ide-explorer/lib/browser/explorer-contribution';
@@ -55,11 +59,13 @@ export class TodoContribution implements MainLayoutContribution {
 }
 ```
 
-The above code registers our Todo component in the Explorer panel View of the during the rendering phase of OpenSumi, with the service capability provided by  `IMainLayoutService` .  
+The above code registers our Todo component in the Explorer panel View of the during the rendering phase of OpenSumi, with the service capability provided by `IMainLayoutService` .
 
 At the same time, we need to show a declaration of the reference to the contribution point file in the module's entry file, as follows.
 
 ```ts
+// modules/todo/browser/index.ts
+
 import { Provider, Injectable } from '@opensumi/di';
 import { BrowserModule } from '@opensumi/ide-core-browser';
 
@@ -69,8 +75,8 @@ export class TodoListModule extends BrowserModule {
 }
 ```
 
-## Results Preview  
+## Results Preview
 
 ![Hello World](https://img.alicdn.com/imgextra/i2/O1CN01l3ioLn1wWJr2kidlG_!!6000000006315-2-tps-2738-1810.png)
 
-In the next section, we'll learn how to further present our TodoList list information.  
+In the next section, we'll learn how to further present our TodoList list information.
