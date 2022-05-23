@@ -57,7 +57,9 @@
 <p>为了让我们的 TodoList 列表注册在左侧的资源管理器面板上，我们需要使用到 <code class="language-text">MainLayoutContribution</code> 来进行面板的注册工作。</p>
 <h2 id="创建前端视图" style="position:relative"><a href="#%E5%88%9B%E5%BB%BA%E5%89%8D%E7%AB%AF%E8%A7%86%E5%9B%BE" aria-label="创建前端视图 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>创建前端视图</h2>
 <p>首先，我们先编写一个简单的前端展示组件，见：</p>
-<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> React <span class="token keyword">from</span> <span class="token string">&#x27;react&#x27;</span><span class="token punctuation">;</span>
+<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token comment">// modules/todo/browser/todo.view.tsx</span>
+
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> React <span class="token keyword">from</span> <span class="token string">&#x27;react&#x27;</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> styles <span class="token keyword">from</span> <span class="token string">&#x27;./todo.module.less&#x27;</span><span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">Todo</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
@@ -65,7 +67,9 @@
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
 <h2 id="创建贡献点" style="position:relative"><a href="#%E5%88%9B%E5%BB%BA%E8%B4%A1%E7%8C%AE%E7%82%B9" aria-label="创建贡献点 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>创建贡献点</h2>
 <p>创建 <code class="language-text">todo.contribution.ts</code> 文件，使用 <code class="language-text">onDidRender</code> 的贡献点，在 OpenSumi 渲染阶段注册我们的 Todo 面板，见：</p>
-<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> Autowired <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;@opensumi/di&#x27;</span><span class="token punctuation">;</span>
+<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token comment">// modules/todo/browser/todo.contribution.ts</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Autowired <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;@opensumi/di&#x27;</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> Domain<span class="token punctuation">,</span> localize <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;@opensumi/ide-core-browser&#x27;</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> ExplorerContainerId <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;@opensumi/ide-explorer/lib/browser/explorer-contribution&#x27;</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span>
@@ -93,7 +97,9 @@
 <span class="token punctuation">}</span></code></pre></div>
 <p>上述的代码是在 OpenSumi 的渲染阶段，通过 <code class="language-text">IMainLayoutService</code> 提供的服务能力，在资源管理器面板的视图上，注册上了我们的 Todo 组件。</p>
 <p>同时，我们还需要在模块的入口文件中，显示声明一下该贡献点文件的引用，如下：</p>
-<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> Provider<span class="token punctuation">,</span> Injectable <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;@opensumi/di&#x27;</span><span class="token punctuation">;</span>
+<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token comment">// modules/todo/browser/index.ts</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Provider<span class="token punctuation">,</span> Injectable <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;@opensumi/di&#x27;</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> BrowserModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;@opensumi/ide-core-browser&#x27;</span><span class="token punctuation">;</span>
 
 <span class="token decorator"><span class="token at operator">@</span><span class="token function">Injectable</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
