@@ -71,7 +71,7 @@ Module includes both `Browser` level code or `Node` level code
 
 ### Expand Browser layer Capabilities
 
-We extend the `Browser` layer capabilities with the following file structure. You can extend the capabilities by declaring the relevant content in `providers`. Please refer to our [Todo List cases](../develop/sample/overview)for detailed examples.
+We extend the `Browser` layer capabilities with the following file structure. You can extend the capabilities by declaring the relevant content in `providers`. For detailed examples, see [Todo List cases](../develop/sample/overview).
 
 ```javascript
 // Browser module entry
@@ -87,7 +87,7 @@ export class ModuleDemoModule extends BrowserModule {
 
 ### Extending Node Layer Capabilities
 
-We extend the `Browser` layer capabilities with the following file structure. You can extend the capabilities by declaring the relevant content in `providers`. Please refer to our [Todo List case](../develop/sample/overview) for detailed examples.
+We extend the `Browser` layer capabilities with the following file structure. You can extend the capabilities by declaring the relevant content in `providers`. For detailed examples, see [Todo List case](../develop/sample/overview).
 
 ```javascript
 // Node module entry

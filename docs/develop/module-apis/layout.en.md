@@ -6,19 +6,19 @@ slug: layout
 
 ## Basic Concept
 
-The layout module (@OpenSumi/IDE-main-Layout) is responsible for the basic layout of the IDE, dividing the entire window into several areas in the shape of left, main and bottom, which we define as slots. After the layout is partitioned, several large views registered to the slot are consumed through the provided slot renderer component. In special slots such as the left sidebar, a large view (called a view container) can also support registering multiple small sub views. Therefore the final organizational relationship between the entire layout and the React view component is:
+The layout module(that is, @OpenSumi/IDE-main-Layout) is responsible for the basic layout of the IDE, dividing the entire window into several areas in the shape of left, main and bottom. We define those areas as slots. After we partition the layout, several large views registered to the slot are consumed through the provided slot renderer component. In special slots such as the left sidebar, a large view(called a view container) also supports registering multiple small subviews, so the final organizational relationship between the entire layout and the React view component is:
 
 ![The Organizational Relations Between Layout and View](https://img.alicdn.com/tfs/TB1gXOU3UH1gK0jSZSyXXXtlpXa-1850-990.png)
 
 The views we register will end up inside the view container or sub-views. Each view will be injected with a global DI instance through the ContextProvider, and the instances of each class will be available inside the view through the `useInjectable` method.
 
-## Userage
+## User Guide
 
 ### Register a New View
 
 #### Mode 1: Static Declaration
 
-Associate a view to a unique view Token via `ComponentContribution`, and then declare the Token to the corresponding location:  
+Associate a view to a unique view Token by using `ComponentContribution`, and then declare the Token to the corresponding location:  
 
 ```ts
 // Associate view information to Tokens
@@ -90,7 +90,7 @@ this.layoutService.collectViewComponent(
 
 ### Control/Listen for View Changes
 
-After registering a view to a location (currently left, bottom and right) that supports multi-view switching, you can get `TabbarHandler` via `layoutService.getTabbarHandler(viewOrContainerId: string)`. `TabbarHandler` provides very powerful view control and listening capabilities: 
+After registering a view to a location (currently left, bottom and right) that supports multi-view switching, you can get `TabbarHandler` by using `layoutService.getTabbarHandler(viewOrContainerId: string)`. `TabbarHandler` provides very powerful view control and listening capabilities: 
 
 ```ts
 interface TabbarHandler {
@@ -275,7 +275,7 @@ Available only in Slot that supports multi-view rendering. Adding a new sub view
 replaceViewComponent(view: View, props?: any): void
 ```
 
-Available only in Slot that supports multi-view rendering. Replaces an existing sub view, typically used in preloaded scenarios to replace a loaded placeholder view.
+Available only in Slot that supports multi-view rendering. Replace an existing sub view, typically used in preloaded scenarios to replace a loaded placeholder view.
 
 ##### `disposeViewComponent()`
 
@@ -441,7 +441,7 @@ TabbarView: React.FC<{
 ```js
 TabpanelView: React.FC<{
   PanelView: React.FC<{ component: ComponentRegistryInfo, side: string, titleMenu: IMenu }>;
-  // Size of tabPanel (horizontal for width, vertical for height)
+  // Size of tabPanel (horizontal is the width, vertical is height)
   panelSize?: number;
 }>;
 ```

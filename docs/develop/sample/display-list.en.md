@@ -5,11 +5,11 @@ slug: display-list
 order: 4
 ---
 
-To achieve a list of high performance, we usually need some three-party library to implement it.  In OpenSumi, however, we have built in a number of common components in `@opensumi/ide-components`, and we will show how to render our TodoList list with these components.
+To achieve a list of high performance, we usually need some three-party library to implement it. In OpenSumi, however, we have built in a number of common components in `@opensumi/ide-components`, and we will show how to render our TodoList list with these components.
 
 ## Data Structure
 
-In panels registered by `IMainLayoutService` service, components render with a default `viewState` property, from which you can get the width and height of the entire panel.  
+In panels registered by `IMainLayoutService` service, components render with a default `viewState` property, from which you can get the width and height of the entire panel.
 
 ```ts
 export interface ITodo {

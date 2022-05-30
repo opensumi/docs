@@ -11,14 +11,14 @@ Since the OpenSumi module does not run independently, we recommend that you crea
 $ git clone git@github.com:opensumi/ide-startup.git
 $ cd ide-startup
 $ yarn					   # Install dependencies  
-$ yarn start		       # Start the front end and back end in parallel
+$ yarn start		       # Start the frontend and backend in parallel
 ```
 
 You can also directly clone our case project[opensumi/todo-list-sample](https://github.com/opensumi/todo-list-sample) to start Quick module experience. 
 
 ## Directory Structure 
 
-Once you have your project in place, you can create a `modules` folder in your project and directory to store module files. The basic directory structure is as follows:  
+Once you have your project in place, you can create a `modules` folder in your project and directory to store module files. The following is the basic directory structure:  
 
 ```bash
 .
@@ -37,12 +37,12 @@ Once you have your project in place, you can create a `modules` folder in your p
 
 ## Create Entry Files
 
-In the `modules` directory, we start creating our front and back entry files with the following basic directory structure:  
+In the `modules` directory, we start to create our front and back entry files with the following basic directory structure:  
 
 ```bash
 .
 └── ...
-├── modules                     # store module directory
+├── modules                     # to store module directory
 │   ├── browser
 │   │   └── index.ts
 │   │   ├── todo.module.less
@@ -66,7 +66,7 @@ export class TodoListModule extends BrowserModule {
 }
 ```
 
-### Back-End module Entrance
+### Back-End Module Entrance
 
 ```ts
 import { Provider, Injectable } from '@opensumi/di';
@@ -78,7 +78,7 @@ export class TodoListModule extends NodeModule {
 }
 ```
 
-### Introduction of Custom Modules
+### To Introduce Custom Modules
 
 We find the front and back end entry files of the framework and introduce our custom modules separately in `common-modules.ts`.
 

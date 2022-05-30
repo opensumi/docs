@@ -5,7 +5,7 @@ slug: how-to-design-module
 order: 2
 ---
 
-This article mainly introduces the idea of building modules, based on the OpenSumi system, aiming to extend native framework functionalities. The creation of modules and specific practices can refer to our [classic case](./sample/overview), which basic ideas and practices for creating specific modules.
+This article mainly introduces the idea of building modules, based on the OpenSumi system, aiming to extend native framework functionalities. The creation of modules and specific practices can be found in our [classic case](./sample/overview), which basic ideas and practices for creating specific modules.
 
 ## Know about Dependency Injection
 

@@ -9,9 +9,9 @@ In module development, You may need to deal with contribution points on a regula
 
 To register our TodoList list on the left Explorer panel, we need to use the `MainLayoutContribution` to register the panel.
 
-## Creating a Front View
+## Create a Front View
 
-First, let's write a simple front-end presentation component as follows:
+First, the following code writes a simple front-end presentation component:
 
 ```ts
 import * as React from 'react';
@@ -22,7 +22,7 @@ export const Todo = () => {
 };
 ```
 
-## Creat a Contribution Point
+## Create a Contribution Point
 
 To create the`todo.contribution.ts`file, use the `onDidRender`contribution points to register our Todo panel in the OpenSumi rendering phase, see:  
 

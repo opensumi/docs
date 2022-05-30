@@ -207,4 +207,4 @@ In general, above method can complete the layout of the common custom needs supp
   - TabBar，a multi-tab management component, supports view activation, folding, expansion, and switching, and supports Tab drag to change position  
   - TabPanel，Tab rendering component. Its sidebar is Panel Title + Accordion. The bottom column is the ordinary React view
 
-For details on how to use components, please refer to the component type declaration.
+For details on how to use components, see the component type declaration.
