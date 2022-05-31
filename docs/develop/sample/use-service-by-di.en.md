@@ -5,7 +5,7 @@ slug: use-service-by-di
 order: 5
 ---
 
-DI (Dependency Injection) is one of the core mechanisms of OpenSumi framework. Through DI, we can easily achieve the decoupling of dependencies and reuse of services. [Dependency Injection](../basic-design/dependence-injector) .
+DI (Dependency Injection) is one of the core mechanisms of OpenSumi framework. By using DI, we can easily achieve the decoupling of dependencies and reuse of services. For more details, please see [Dependency Injection](../basic-design/dependence-injector) .
 
 This section will start from use cases. Rgister `ITodoService` service When you are using the `IMessageService` service offered by the framework. Todo items switch state to display handover information.
 
@@ -59,7 +59,7 @@ export class TodoListModule extends BrowserModule {
 
 ## Use Custom Services
 
-In the view, we make `useInjectable` hook function as a service to registered DI in the view layer. We can elicit the `ITodoService` instance and use it by implementing the following code:  
+In the view, we make `useInjectable` hook function as a service to register DI in the view layer. We can elicit the `ITodoService` instance and use it by implementing the following code:  
 
 ```tsx
 export const Todo = ({
@@ -69,7 +69,7 @@ export const Todo = ({
 };
 ```
 
-## Using Built-in Services
+## Use Built-in Services
 
 ### Message Notification
 

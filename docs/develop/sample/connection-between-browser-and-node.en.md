@@ -13,7 +13,7 @@ First of all, you need to define a single channel for two-way communication mess
 export const ITodoConnectionServerPath = 'ITodoConnectionServerPath';
 ```
 
-## Associating Front-end and Back-end Services
+## Associate Front-end and Back-end Services
 
 First, you need to inherit `RPCService` on `TodoService` and `TodoNodeService`.
 

@@ -5,7 +5,7 @@ slug: create-module
 order: 2
 ---
 
-Since the OpenSumi module does not run independently, we recommend that you create your module directory outside the project directory when creating the module. Taking the template repository provided by Quick Start as an example, you can quickly start an IDE project:  
+Because the OpenSumi module does not run independently, we recommend you create your module directory outside the project directory when creating the module. Taking the template repository provided by Quick Start as an example, you can quickly start an IDE project:  
 
 ```bash
 $ git clone git@github.com:opensumi/ide-startup.git
@@ -54,7 +54,7 @@ In the `modules` directory, we start to create our front and back entry files wi
 └── ...
 ```
 
-### Front-end Module Entrance
+### Front-end Module Entry
 
 ```ts
 import { Provider, Injectable } from '@opensumi/di';
@@ -66,7 +66,7 @@ export class TodoListModule extends BrowserModule {
 }
 ```
 
-### Back-End Module Entrance
+### Back-End Module Entry
 
 ```ts
 import { Provider, Injectable } from '@opensumi/di';
@@ -80,7 +80,7 @@ export class TodoListModule extends NodeModule {
 
 ### To Introduce Custom Modules
 
-We find the front and back end entry files of the framework and introduce our custom modules separately in `common-modules.ts`.
+We find the frontend and backend entry files of the framework, and introduce our custom modules separately in `common-modules.ts`.
 
 ```ts
 export const CommonBrowserModules: ConstructorOf<BrowserModule>[] = [
@@ -94,4 +94,4 @@ export const CommonNodeModules: ConstructorOf<NodeModule>[] = [
 ];
 ```
 
-Thus, the creation and introduction of our TodoList module is finished.
+Consequently, the creation and introduction of TodoList module is finished.

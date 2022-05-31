@@ -17,9 +17,9 @@ We aim to：
 
 - Register a TodoList panel in the left explorer panel.
 - Display TodoList list.
-- back up quick addition of Todo items by using shortcut keys.
+- Suppport quick addition of Todo items by using shortcut keys.
 - Implement basic two-way communication logic between front and back end.
 
 By studying this case, you will be able to quickly get started with OpenSumi's module development. 
 
-At the same time, if you want to see the code directly, you can directly access the repo [opensumi/todo-list-sample](https://github.com/opensumi/todo-list-sample) directly, and run projects to get some understandings directly.
+At the same time, if you want to see the code directly, you can directly access the repo [opensumi/todo-list-sample](https://github.com/opensumi/todo-list-sample), and run projects to get some understandings.

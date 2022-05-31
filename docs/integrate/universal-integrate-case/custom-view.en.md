@@ -7,11 +7,11 @@ order: 3
 
 ## OverView
 
-The OpenSumi view is based on the `slot mechanism` design, where the entire Layout itself is a large React component that divides the view into several slots. For example, the default layout component provided by OpenSumi divides the view into slot templates as shown in the following figure:
+The OpenSumi view is based on the `slot mechanism` design, where the entire Layout itself is a large React component that divides the view into several slots. For example, the layout component provided by OpenSumi by default divides the view into slot templates as shown in the following figure:
 
 ![Default slot template](https://img.alicdn.com/imgextra/i3/O1CN01jVb1Nv1n4XHe0H2wG_!!6000000005036-2-tps-1714-1374.png)
 
-Slots are used for the mounting of component views and each slot consumes a data structure as follows.
+Slots are used to mount component views and each slot consumes a data structure as follows:
 
 ```typescript
 type ComponentsInfo = Array<{
@@ -24,9 +24,9 @@ export interface View {
 }
 ```
 
- `Slot renderer` determines how this data is consumed. By default, the view is laid out tiled from top to bottom. In the sidebar and bottom bar. The slot renderer defaults to a TabBar component that supports collapsing and expanding and toggling. Except for the sidebar area which will support multiple sub-views though accordion, other places will only consume the first view of views will be d by default. 
+ `Slot renderer` determines how this data is consumed. By default, the view is laid out tiled from top to bottom. In sidebar and bottom bar, by default the slot renderer is the TabBar component that supports collapsing and expanding and toggling. Except for the sidebar area that supports multiple subviews though accordion, other places will only consume the first view of views by default. 
 
-The data provider offers LayoutConfig for the view configuration, whose data structure is as follows:
+The data provider offers LayoutConfig for the view configuration. The following code shows its data structure.
 
 ```typescript
 export const defaultConfig: LayoutConfig = {
@@ -45,7 +45,7 @@ export const defaultConfig: LayoutConfig = {
 };
 ```
 
-The Token of the view is registered and connected with the real React component through ComponentContribution.
+The Token of the view is registered and connected with the real React component by ComponentContribution.
 
 ```typescript
 import { Search } from './search.view';
@@ -64,13 +64,13 @@ export class SearchContribution implements ComponentContribution {
 }
 ```
 
-The following is an example of how to customize the Layout by adding a ToolBar component to the right side of the MenuBar.
+The following is an example of customizing Layout by adding a ToolBar component to the right side of MenuBar.
 
 ![view effects](https://img.alicdn.com/imgextra/i2/O1CN01GNMkW31ygVtoizfSG_!!6000000006608-2-tps-2880-1750.png)
 
 ## View Registration
 
-First we need to register the ToolBar component to connect it to a string Token `test-toolbar`.
+First we need to register the ToolBar component to connect it to string Token `test-toolbar`.
 
 ```typescript
 export const Toolbar = () => (
@@ -99,7 +99,7 @@ export class TestContribution implements ComponentContribution {
 
 ## View Consumption
 
-For this demand, there are two options to support the rendering of views.
+For this demand, there are two options to support view rendering:
 
 1. Replace the top slot renderer to support left and right tiling
 2. Map out a new slot location on the layout component that supports ToolBar registration alone  
@@ -130,7 +130,7 @@ export class SampleContribution implements SlotRendererContribution {
   }
 }
 ```
-Then, in the view configuration, import the ToolBar's view to the top place.
+Then, import the ToolBar's view to the top area in the view configuration.
 
 ```typescript
 const layoutConfig = {
@@ -145,9 +145,9 @@ renderApp({
 });
 ```
 
-### Add a Slot's Position
+### Add Slot Positions
 
-Adding a slot position is very simple: just put the SlotRenderer component into the view. The Layout is designed to be flexible and you can insert this renderer anywhere. In this case, you can choose to add the position in the Layout component or within the MenuBar view: 
+To Add a slot position is very simple: just put the SlotRenderer component into the view. Layout is designed to be flexible and you can insert this renderer anywhere. In this case, you can choose to add the position in the Layout component or within the MenuBar view: 
 
 ```typescript
 // Add to the layout template
@@ -183,7 +183,7 @@ export const MenuBarMixToolbarAction: React.FC<MenuBarMixToolbarActionProps> = p
 };
 ```
 
-After adding the slot location, put on the corresponding location and view Token in the view configuration.
+After adding the slot location, you can put on the corresponding location and view Token in the view configuration.
 
 ```typescript
 const layoutConfig = {
@@ -196,14 +196,14 @@ const layoutConfig = {
 
 ## Extended Reading
 
-In general, above method can complete the layout of the common custom needs support, but for some need to drag and change size, view, switching functions of customization scenarios, it would be more complicated to start writing directly with native HTML and the interaction is inconsistent. OpenSumi provides several types of basic components that can be used to build layouts.
+In general, above methods can complete the layout requirements of common custom, but for some needs, such as, drag and change size, view, switching functions of customization scenarios, it would be more complicated to start writing directly with native HTML, and the interaction is inconsistent. OpenSumi provides several types of basic components that can be used to build layouts.
 
 
 - The Layout Basic components
   - BoxPanel，a common Flex layout component that supports Flex layouts in different directions
   - SplitPanel，a class of BoxPanel that Supports mouse drag and drop to change the size
 - Slot renderer implementation component
-  - Accordion，accordion component，support SplitPanel's all capabilities，as well as the control of folding and expanding subview panels
+  - Accordion，accordion component，support all capabilities of SplitPanel，as well as the control of folding and expanding subview panels
   - TabBar，a multi-tab management component, supports view activation, folding, expansion, and switching, and supports Tab drag to change position  
   - TabPanel，Tab rendering component. Its sidebar is Panel Title + Accordion. The bottom column is the ordinary React view
 

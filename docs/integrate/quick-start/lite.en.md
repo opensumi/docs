@@ -8,9 +8,9 @@ order: 3
 
 OpenSumi provides a pure frontend access that takes you away from the Node environment and provides relatively complete IDE capabilities with a simple B/S architecture in a pure browser environment.  
 
-Before running it, please ensure that Node.js 10.15.x or later is installed in your local environment. Also, OpenSumi relies on some Node.js Addons, so as to ensure that these Addons are compiled properly. we recommend you to check out the installation guide in [node-gyp](https://github.com/nodejs/node-gyp#installation) to set up local environment.
+Before running it, please ensure that Node.js 10.15.x or later is installed in your local environment. Also, OpenSumi relies on some Node.js Addons, to ensure that these Addons are compiled properly. we recommend you to check out the installation guide in [node-gyp](https://github.com/nodejs/node-gyp#installation) to set up local environment.
 
-At the same time, you can directly visit our [preview page](https://opensumi.github.io/ide-startup-lite/) to check out the latest running effect. It supports the branch or tag address, such as `https://opensumi.github.io/ide-startup-lite/#https://github.com/opensumi/core/tree/v2.16.0`.  
+At the same time, you can directly visit our [preview page](https://opensumi.github.io/ide-startup-lite/) to check out the latest running effect. It supports the branch or tag address, for example, `https://opensumi.github.io/ide-startup-lite/#https://github.com/opensumi/core/tree/v2.16.0`.  
 
 ## Quick Start
 
@@ -37,20 +37,20 @@ A fully feasible and pure frontend IDE requires the following implementations:
 
 ## File Service Configuration
 
-The pure frontend version uses `BrowserFsProvider` to replace `DiskFileSystemProvider` in OpenSumi. The difference is that the original local file service is changed into an http interface service
+The pure frontend version uses `BrowserFsProvider` to replace `DiskFileSystemProvider` in OpenSumi. The difference is that the original local file service is changed into an http interface service.
 
 > File Location：`web-lite/file-provider/browser-fs-provider.ts`
 
 ### File Services
 
-Different from full-featured IDEs including container and electron versions, pure frontend versions of IDEs generally serve a vertical, specific scenario, such as code viewing, codereview, etc. The corresponding underlying capabilities are service-oriented. And since the browser itself does not have a file system, it needs an external data source to provide and maintain the file information. In the pure frontend version, we need developers to implement the following two methods to support the underlying code viewing capabilities:
+Different from full-featured IDEs of container and electron versions, pure frontend versions of IDEs generally serve for a vertical, specific scenario, such as code viewing and codereview. The corresponding underlying capabilities are service-oriented. And since the browser itself does not have a file system, it needs an external data source to provide and maintain the file information. In pure frontend version, we need developers to implement the following two methods to support the underlying code viewing capabilities:
 
 > File Location：`web-lite/file-provider/http-file-service.ts`
 
 - `readDir(uri: Uri): Promise<Array<{type: ‘tree’ | ‘leaf’, path: string}>>`：return directory structure information
 - `readFile(uri: Uri, encoding?: string): Promise<string>`：return file contents
 
-Implementing the above two methods enables IDE capabilities in read-only mode. If you want to support code editing capabilities, you also need to implement the following three methods:  
+To implement preceding two methods enables IDE capabilities in read-only mode. If you want to support code editing feature, you also need to implement the following three methods:  
 
 - `updateFile(uri: Uri, content: string, options: { encoding?: string; newUri?: Uri; }): Promise<void>`
 - `createFile(uri: Uri, content: string, options: { encoding?: string; }): Promise<void>`
@@ -60,7 +60,7 @@ After the code is modified, the corresponding method will be called to synchroni
 
 ## Extension Declaration
 
-Since there is no file system in the pure frontend environment, the list of installed extensions and their corresponding details cannot be obtained through the logic of extension scanning, which needs to be declared in advance at integration time.
+Because there is no file system in the pure frontend environment, the list of installed extensions and their corresponding details cannot be obtained through the logic of extension scanning, which needs to be declared in advance at integration time.
 
 When pure frontend extensions are added to the extension marketplace, a copy of the required resources will be automatically synchronized to oss (you need to enable the configuration`{ “enableOpenSumiWebAssets”: true }`, after that when building extensions, it will automatically generate the directory list file, sumi-meta.json, which needs to be hosted). Therefore, to employ extensions uploaded to the extension marketplace in an intranet environment, you only need to declare the target extension's id and version in the extension list, and the rest of the logic has been smoothed out:
 
@@ -99,7 +99,7 @@ const languages = [
 
 ### Single File Syntax Service
 
- OpenSumi is based on pure frontend extension (Worker version) capabilities, providing basic hints of common syntax. Since there is no file service, the worker version syntax prompt that extensions only support single-file code hints and do not support cross-file analysis, which is basically sufficient for pure frontend lightweight editing scenarios. The following is the Syntax hint extensions currently available:  
+ OpenSumi is based on pure frontend extension (Worker version) capabilities, providing basic hints of common syntax. Due to no file service, the worker version syntax prompt that extensions only support single-file code hints and do not support cross-file analysis, which is basically sufficient for pure frontend lightweight editing scenarios. The following is the Syntax hint extensions currently available:  
 
 ```typescript
 const languageExtensions = [
@@ -115,7 +115,7 @@ Add the syntax prompt extension directly to the extension list.
 
 ### Lsif Syntax Service
 
-For pure browsing scenarios such as code viewing and Code review, the [LSIF Scheme](https://microsoft.github.io/language-server-protocol/specifications/lsif/0.6.0/specification/) based on offline indexing analysis will support cross-file Hover hints and code skipping without any additional analysis overhead on the browser side. OpenSumi pure frontend version integrated with lsif client,and just need a simple docking to access lsif service.
+For pure browsing scenarios such as code viewing and Code review, the [LSIF Scheme](https://microsoft.github.io/language-server-protocol/specifications/lsif/0.6.0/specification/) based on offline indexing analysis will support cross-file Hover hints and code skipping without any additional analysis overhead on the browser side. OpenSumi pure frontend version integrated with lsif client, and just need a simple docking to access lsif service.
 
 > File Location：`web-lite/language-service/lsif-service/lsif-client.ts`
 
@@ -138,11 +138,11 @@ export interface ILsifClient {
 
 ## Search Capability
 
-The search function is optional and is not enabled by default. The core search capability lies in the implementation of file-search and the back-end part of the search module. 
+The search function is optional and is not enabled by default. The core search capability lies in the implementation of file-search and the backend part of the search module. 
 
 ### File Search 
 
-To make the file search function (triggered by cmd+p) possible, the following method need to be implemented: 
+To make the file search function (triggered by cmd+p) possible, you need to implement following method: 
 
 ```typescript
 export interface IFileSearchService {
@@ -158,7 +158,7 @@ export interface IFileSearchService {
 }
 ```
 
-Replace the default mock-file-seach.ts after implementation
+Replace the default mock-file-seach.ts after implementation.
 
 ### File Content Search  
 

@@ -10,9 +10,9 @@ order: 2
 There are two common modes for registering custom menus
 
 - Register a new menu item
-- Registers submenus with existing menu items
+- Registers a submenu with existing menu items
 
-OpenSumi provides the ability to customize menus based on OpenSumi's [Contribution](../../develop/basic-design/contribution-point)mechanism, to implement `MenuContribution` and call the methods provided by `menuRegistry`.
+OpenSumi provides the ability to customize menus based on OpenSumi [Contribution](../../develop/basic-design/contribution-point)mechanism, to implement `MenuContribution` and call the methods provided by `menuRegistry`.
 
 ```typescript
 interface MenuContribution {
@@ -25,7 +25,7 @@ interface IMenuRegistry {
     menuId: string,
     item: PartialBy<IMenubarItem, 'id'>
   ): IDisposable;
-  // Register submenus with existing menu items
+  // Register a submenu with existing menu items
   registerMenuItem(
     menuId: MenuId | string,
     item: IMenuItem | ISubmenuItem | IInternalComponentMenuItem
@@ -61,9 +61,9 @@ class MyMenusContribution implements MenuContribution {
 
 ## Register Submenus Under Existing Menu Items
 
-We have registered the `terminal` menu item as the first item in the menubar, but it doesn't have submenu yet, and will not respond when clicked. We need to register a set of submenu for it. Call `registerMenuItem` of `registry` to register a single menu item, or you can use the `registerMenuItems` method to register multiple submenu items in bulk.The menu needs to perform some action after click. In this case we want to split the terminal after click: we need to bind a `Command` for it. `Command` can also be [customized](./custom-command)by implementing `CommandContribution`, where we use the built-in `terminal.split` command.
+We register the `terminal` menu item as the first item in the menubar, but it doesn't have a submenu, and will not respond when clicked it. We need to register a set of submenu for it. Call `registerMenuItem` of `registry` to register a single menu item, or you can use the `registerMenuItems` method to register multiple submenu items in bulk. The menu needs to perform some action after click. In this case we want to split the terminal after click. We need to bind a `Command` for it. `Command` can also be [customized](./custom-command) by implementing `CommandContribution`, where we use the built-in `terminal.split` command.
 
-> Note that the label of registered menubar items will not take effect by default if the bound Command is also registered with specified `label` property when registration
+> Note that by default the label of registered menubar items will not take effect, if the bound Command also specifies `label` property during registration.
 
 ```typescript
 registerMenus(registry: IMenuRegistry) {

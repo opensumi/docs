@@ -7,7 +7,7 @@ order: 4
 
 ## Overview
 
-The two main scenarios to employ comand are as follows.
+The two main scenarios to employ comand are as follows:
 
 ### Extension
 
@@ -23,7 +23,7 @@ let success = await commands.executeCommand('vscode.openFolder', uri);
 
 ### Module
 
-OpenSumi commands can be used in the module by the following example:  
+The following example shows how to use OpenSumi commands in the module:  
 
 ```ts
 import { Injectable, Autowired } from '@opensumi/common-di';
@@ -46,7 +46,7 @@ class DemoModule {
 
 ## Built-in Command
 
-In the OpenSumi framework, many basic commands are built-in. When you need to implement them, you can go to the corresponding module to find the corresponding implementation first to avoid repeated work. Some of the commonly used built-in commands are as follows:
+In the OpenSumi framework, many basic commands are built-in. When you need to implement them, you can go to the module to find the corresponding implementation first to avoid repetitive work. the following table lists some frequently used built-in commands.
 
 | Command                        | Functionality             | parameter                             |
 | --------------------------------------------------------- | ------------------------------------ | -------------------------------- |
@@ -93,15 +93,15 @@ In the OpenSumi framework, many basic commands are built-in. When you need to im
 | workbench.action.debug.stop                               | Debug to stop                            |                                  |
 | workbench.action.showAllSymbols                           | Show all symbols                          |                                  |
 
-## Register a Custom Command
+## Register a Customized Command
 
 There are also two ways to register a custom command:
 
 ### Register by Extensions
 
-Extension registration mainly relies on `commands` contribution points, as details in：[contributes.commands](https://code.visualstudio.com/api/references/contribution-points#contributes.commands)。
+Extension registration mainly relies on `commands` contribution points. For more details, please see[contributes.commands](https://code.visualstudio.com/api/references/contribution-points#contributes.commands)。
 
-A simple example of declaring a custom command in the extension's `package.json` is as follows.
+The following code illustrate a simple example of declaring a custom command in the extension's `package.json`.
 
 ```json
 {
@@ -121,7 +121,7 @@ A simple example of declaring a custom command in the extension's `package.json`
 }
 ```
 
-The advantage of declaration is that the command is "explicitly" present in the frame, i.e. it can be found in the Quick Navigation panel opened by  `⇧⌘P`  or in the menu, and commands registered directly without the declaration will not appear in the above panel.
+The advantage of declaration is that the command is "explicitly" present in the frame, that is, it can be found in the Quick Navigation panel opened by `⇧⌘P` or in the menu, and commands registered directly without the declaration will not appear in the above panel.
 
 ```ts
 // sumi's built-in extension API
@@ -138,4 +138,4 @@ export async function activate(context: sumi.ExtensionContext) {
 
 ### Register by Modules
 
-In module, we usually register by `CommandContribution`, which is detailed in the documentation:[Command Register](../../develop/basic-design/contribution-point#命令注册)。
+In module, we usually register by `CommandContribution`, which is detailed in the documentation [Command Register](../../develop/basic-design/contribution-point#命令注册)。

@@ -5,7 +5,7 @@ slug: display-list
 order: 4
 ---
 
-To achieve a list of high performance, we usually need some three-party library to implement it. In OpenSumi, however, we have built in a number of common components in `@opensumi/ide-components`, and we will show how to render our TodoList list with these components.
+To reach a list of high performance, we usually need some three-party libraries to implement it. However, we have established a number of common components in `@opensumi/ide-components` under OpenSumi, and we will show how to render our TodoList list with these components.
 
 ## Data Structure
 
@@ -32,7 +32,7 @@ export const Todo = ({
 
 ## Rendering List
 
-We bring `RecycleList` and `CheckBox`  from `@opensumi/ide-components`, respectively.
+We introduce `RecycleList` and `CheckBox` from `@opensumi/ide-components`.The following is the complete code after combination:
 
 ```ts
 import * as React from 'react';
