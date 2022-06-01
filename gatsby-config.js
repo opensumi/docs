@@ -93,7 +93,6 @@ module.exports = {
     showChinaMirror: false, // 是否展示国内镜像链接
     showLanguageSwitcher: true, // 用于定义是否展示语言切换
     showGithubCorner: true, // 是否展示角落的 GitHub 图标
-    showSearch: false,
     docsearchOptions: {
       appId: 'SOZF8EXD5Z',
       apiKey: '614258d3f6d9bcfde76edcc8e45887af',
