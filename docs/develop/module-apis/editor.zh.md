@@ -39,7 +39,11 @@ export interface IResource<MetaData = any> {
 ```
 
 3. 获得 IResource 之后，就可以在 tab 上创建新 tab， 展示对应的名称和 icon 了
+<<<<<<< HEAD
 4. 为了能在编辑器中展示内容，还需要知道如何把这个 IResource 打开。开天的编辑器模块支持一个资源拥有多种打开方式，如 md 文件拥有代码和实时预览的方式。一个打开方式可以是代码编辑器、diff 编辑器，或者是一个编辑器富组件（React 组件）。这些打开方式和富组件都需要提前在 `EditorComponentRegistry` 中进行注册
+=======
+4. 为了能在编辑器中展示内容，还需要知道如何把这个 IResource 打开。OpenSumi 的编辑器模块支持一个资源拥有多种打开方式，如 md 文件拥有代码和实时预览的方式。一个打开方式可以是代码编辑器、diff 编辑器，或者是一个编辑器富组件（React 组件）。这些打开方式和富组件都需要提前在 `EditorComponentRegistry` 中进行注册
+>>>>>>> origin/main
 
 ```typescript
 // 定义一个resource如何被打开

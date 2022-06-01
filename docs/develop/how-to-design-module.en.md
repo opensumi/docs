@@ -72,7 +72,7 @@ When registering a view component, you can also import a specific rendering comp
 
 ![Search](https://img.alicdn.com/imgextra/i1/O1CN01wo34Pj1YjYZj9JPkH_!!6000000003095-0-tps-200-134.jpg)
 
-If you want to register a drawerlayout that can hold multiple view components in the left and right sidebar, you can leave it here and then unregister the view in another module, such as the drawerlayout in `Explorer`, as shown in the picture below:  
+If you want to register a drawerlayout that can hold multiple view components in the left and right sidebar, you can leave it here and then unregister the view in another module, such as the drawerlayout in `Explorer`, as shown in the following picture :  
 
 ![Explorer](https://img.alicdn.com/imgextra/i1/O1CN01nOueUR1ExwhcLPjvv_!!6000000000419-0-tps-200-111.jpg)
 

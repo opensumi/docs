@@ -11,7 +11,7 @@ order: 5
 
 ## 注册快捷键
 
-在模块中，我们通常采用 `KeybindingContribution` 的方式进行注册，详细可参加：[快捷键注册](../../develop/basic-design/contribution-point#快捷键注册)。
+在模块中，我们通常采用 `KeybindingContribution` 的方式进行注册，详细可参见：[快捷键注册](../../develop/basic-design/contribution-point#快捷键注册)。
 
 ## 支持的快捷键字符
 

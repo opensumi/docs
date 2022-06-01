@@ -12,7 +12,7 @@ const app = new ClientAPP(/*..options*/);
 app.start();
 ```
 
-start 方法的流程比较简单直观，它主要负责一下工作
+start 方法的流程比较简单直观，它主要负责以下工作：
 
 - 创建前后端连接，对于 Web ，将使用 Websocket，对于 Electron 端，则使用 IPC 通信
 - 初始化 ApplicationService, 用于缓存一些系统级的状态，如当前 OpenSumi 后端运行的 OS 等
@@ -52,7 +52,7 @@ onWillStop 主要作用于 Electron 端，在窗口触发关闭前执行一些�
 
 ## onStop
 
-onStop 同样主要作用于 Electron 端，在 onWillStop 之后，用户确认可以关闭窗口时执行
+onStop 同样主要作用于 Electron 端，在 onWillStop 之后，用户确认可以关闭窗口时执行。
 
 ## onDisposeSideEffects
 

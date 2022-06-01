@@ -1,3 +1,4 @@
+require('dotenv').config();
 module.exports = {
   plugins: [
     {
@@ -26,19 +27,19 @@ module.exports = {
     logoUrl:
       'https://img.alicdn.com/imgextra/i2/O1CN01dqjQei1tpbj9z9VPH_!!6000000005951-55-tps-87-78.svg',
     githubUrl: 'https://github.com/opensumi/core',
-    docsUrl: 'https://github.com/opensumi/doc',
+    docsUrl: 'https://github.com/opensumi/docs',
     navs: [
       {
         slug: 'docs/integrate/overview',
         title: {
-          en: 'User Guide',
+          en: 'Documentation',
           zh: '集成文档'
         }
       },
       {
         slug: 'docs/develop/how-to-contribute',
         title: {
-          en: 'Develop Guide',
+          en: 'Development',
           zh: '开发文档'
         }
       }
@@ -90,11 +91,12 @@ module.exports = {
       'https://img.alicdn.com/imgextra/i1/O1CN01k3gCmL1HWPjLchVv7_!!6000000000765-0-tps-200-199.jpg',
     showSearch: false, // 是否展示搜索框
     showChinaMirror: false, // 是否展示国内镜像链接
-    showLanguageSwitcher: false, // 用于定义是否展示语言切换
+    showLanguageSwitcher: true, // 用于定义是否展示语言切换
     showGithubCorner: true, // 是否展示角落的 GitHub 图标
     docsearchOptions: {
-      apiKey: '733f00c901bfe392d78ba8c4437f8a32',
-      indexName: 'opensumi'
+      appId: 'SOZF8EXD5Z',
+      apiKey: '614258d3f6d9bcfde76edcc8e45887af',
+      indexName: 'docs'
     },
     redirects: []
   }

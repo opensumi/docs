@@ -27,7 +27,7 @@ OpenSumi 框架旨在解决阿里经济体内部 IDE 产品研发的重复建设
 
 为了保证插件的问题不会影响 IDE 的性能表现，插件能力上 OpenSumi 采用了跟 `VS Code` 类似的方案，通过独立的插件进程去启动插件，插件进程再通过后端进程与前端进程进行通信。
 
-![OpenSumi整体架构](https://img.alicdn.com/imgextra/i2/O1CN01qNPXUm1wbMFgrPieN_!!6000000006326-2-tps-1332-1180.png)
+![OpenSumi整体架构](https://img.alicdn.com/imgextra/i3/O1CN019HcqJq1VzddNMtHcO_!!6000000002724-0-tps-800-709.jpg)
 
 OpenSumi 的不同能力实现被拆分到了不同的模块内，这些模块通过 [贡献点机制 (Contribution Point)](../develop/basic-design/contribution-point)、[DI 机制 (Dependence Inject)](../develop/basic-design/dependence-injector) 互相之间有较弱的依赖关系，对于一些比较核心的基础模块，如主题服务、布局服务等，也会被其他模块直接依赖。
 
@@ -85,7 +85,7 @@ export class ModuleDemoModule extends BrowserModule {
 
 ### 拓展 Node 层能力
 
-我们通过以下的文件结构拓展 `Browser` 层能力，你可以通过在 `providers` 中声明相关内容来拓展能力，详细案例可见我们的 [Todo List 案例](../develop/sample/overview)。
+我们通过以下的文件结构拓展 `Node` 层能力，你可以通过在 `providers` 中声明相关内容来拓展能力，详细案例可见我们的 [Todo List 案例](../develop/sample/overview)。
 
 ```javascript
 // Node 模块入口
@@ -100,7 +100,7 @@ export class ModuleDemoModule extends NodeModule {
 
 ## 什么是插件？
 
-插件, 也可称为插件，是指当前 OpenSumi 框架下支持的，通过在特定位置安装插件文件，从而对 IDE 的界面、功能进行二次插件的一类程序文件，设计上兼容 `VSCode` 中的 [VSCode Extension API](https://code.visualstudio.com/api)，即对于使用 OpenSumi 进行开发的 IDE 产品天然兼容 `VSCode` 的插件体系。
+插件, 也可称为 Extension，是指当前 OpenSumi 框架下支持的，通过在特定位置安装插件文件，从而对 IDE 的界面、功能进行二次插件的一类程序文件，设计上兼容 `VSCode` 中的 [VSCode Extension API](https://code.visualstudio.com/api)，即对于使用 OpenSumi 进行开发的 IDE 产品天然兼容 `VSCode` 的插件体系。
 
 > 针对 OpenSumi 插件开发相关的研发流程链路支持将会在后续逐步推出，敬请期待。
 

@@ -23,12 +23,6 @@ order: 1
 npm config set registry https://registry.npmmirror.com
 ```
 
-由于 `canvas` 依赖 GitHub Release 资源，在国内网络环境下极易超时，故安装依赖时请加上对应的镜像地址如下：
-
-```bash
-npm install --canvas_binary_host_mirror=https://npmmirror.com/mirrors/canvas/
-```
-
 你可能需要下面一些开发工具：
 
 - [Git](https://git-scm.com)
@@ -50,7 +44,7 @@ npm install --canvas_binary_host_mirror=https://npmmirror.com/mirrors/canvas/
 
 ## 构建和运行
 
-如果你想了解如何运行 OpenSumi 或者想调试一个 Issue，你需要在本地获取代码，构建，然后运行它
+如果你想了解如何运行 OpenSumi 或者想调试一个 Issue，你需要在本地获取代码，构建，然后运行它。
 
 ### 获取代码
 
@@ -76,6 +70,7 @@ git pull https://github.com/opensumi/core.git main
 
 ```bash
 cd core
+npm install
 npm run init
 ```
 

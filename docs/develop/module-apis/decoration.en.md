@@ -85,9 +85,15 @@ class SampleDecorationsProvider implements IDecorationsProvider {
   readonly onDidChangeDecorations: Event<IResourceDecorationChangeEvent>;
 ```
 
+<<<<<<< HEAD
 Event distribution is performed for the file name Decoration change event
 
 ##### Use Case
+=======
+Event distribution is performed for the change event of file name Decoration
+
+##### Use Cases
+>>>>>>> origin/main
 
 ```ts
 this.decorationsService.onDidChangeDecorations(() => {
@@ -103,9 +109,15 @@ this.decorationsService.onDidChangeDecorations(() => {
 getDecoration(uri: Uri, includeChildren: boolean, overwrite?: IDecorationData): IDecoration | undefined;
 ```
 
+<<<<<<< HEAD
 Obtain the result of the current file's Decoration by means of getting the uri, or return "undefined" if it doesn't get the Decoration.
 
 ##### Use Case
+=======
+Obtain the result of the current file's Decoration by means of getting the uri, or return undefined if it doesn't get the Decoration.
+
+##### Use Cases
+>>>>>>> origin/main
 
 ```ts
 this.decorationsService.getDecoration(uri, true);

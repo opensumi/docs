@@ -7,11 +7,11 @@ order: 7
 
 OpenSumi 是前后端分离的设计，不论是在 Web 还是 Electron 环境下，浏览器/窗口中展示的界面部分我们称之为 OpenSumi 的前端，而对于文件读写、终端连接、插件进程等功能则运行在 OpenSumi 的后端。与传统的 B/S、C/S 架构不同的是，OpenSumi 前后端之间的通信仅由一个长链接连接实现。
 
-在 Web 环境下，前后端会建立一条 `WebSocket` 连接
+在 Web 环境下，前后端会建立一条 `WebSocket` 连接：
 
 ![Web Connection](https://img.alicdn.com/imgextra/i3/O1CN01QiEuJD1QeVE2NkPMY_!!6000000002001-55-tps-182-243.svg)
 
-在 Electron 环境下，则会建立一条 `Socket` 连接进行进程间通信(IPC)
+在 Electron 环境下，则会建立一条 `Socket` 连接进行进程间通信(IPC)：
 
 ![Electron Connection](https://img.alicdn.com/imgextra/i3/O1CN01zDX6Wg1tjeXHaqyjQ_!!6000000005938-55-tps-232-242.svg)
 
@@ -19,7 +19,7 @@ OpenSumi 是前后端分离的设计，不论是在 Web 还是 Electron 环境�
 
 OpenSumi 核心功能的代码都是可以在 Web/Electron 端复用的，任何前/后端的交互都保持了接口、用法的一致性，这是因为 OpenSumi 内的 `connection` 模块屏蔽了大部分平台、底层通信协之间的差异。connection 模块基于 [JSON-RPC 2.0](https://www.jsonrpc.org/specification) 实现了一个 RPC 框架，将 Web 与 Electron 端通信过程通过 RPC 协议来封装起来，这样对于集成用户来说，体现在代码层面，两端的区别非常小。
 
-我们通过一个 OpenSumi 内简单的 RPC 调用来介绍前后端通信的基本原理
+我们通过一个 OpenSumi 内简单的 RPC 调用来介绍前后端通信的基本原理：
 
 ```typescript
 // Front End

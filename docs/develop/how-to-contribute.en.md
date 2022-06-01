@@ -46,7 +46,7 @@ You may need the following development tools:
 
 If you want to learn how to run OpenSumi or debug an issue, you need to get the code locally, build it and run it.
 
-### Obtain the code
+### Obtain the Code
 
 In the first step, you need to fork a copy of the `OpenSumi` repository, and then clone it locally:
 
@@ -70,6 +70,7 @@ Note: The default `opensumi/core` also contains a lot of GitHub Actions. If you 
 
 ```bash
 cd core
+npm install
 npm run init
 ```
 

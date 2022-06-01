@@ -1,13 +1,14 @@
-<p align="center">
-  <a href="https://opensumi.com">
-    <img alt="Gatsby" src="https://img.alicdn.com/imgextra/i3/O1CN01Rkfi5j1bJrBDnqEtt_!!6000000003445-2-tps-300-300.png" width="150" />
-  </a>
-</p>
-<h1 align="center">
-  OpenSumi Document Website
-</h1>
+<div align="center">
 
-[![CI](https://github.com/opensumi/doc/actions/workflows/documentation.yml/badge.svg)](https://github.com/opensumi/doc/actions/workflows/documentation.yml)
+<img width="1200" alt="homepage" src="https://img.alicdn.com/imgextra/i1/O1CN01OlP4Ty27Wk3MXFSGX_!!6000000007805-2-tps-1369-889.png">
+
+# OpenSumi Documentation Website
+
+✨ Powered by [OpenSumi Gatsby Theme](https://github.com/opensumi/gatsby-theme).
+
+[![CI](https://github.com/opensumi/docs/actions/workflows/documentation.yml/badge.svg)](https://github.com/opensumi/docs/actions/workflows/documentation.yml)
+
+</div>
 
 This website is built using [gatsbyjs](https://www.gatsbyjs.com/), a modern static website generator.
 

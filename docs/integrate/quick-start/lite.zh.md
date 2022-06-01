@@ -37,7 +37,7 @@ $ npm run start                # 启动
 
 ## 文件服务配置
 
-纯前端版本使用 `BrowserFsProvider` 替换 OpenSumi 内的 `DiskFileSystemProvider`, 改动在于由原来的本地文件服务改成 http 接口服务
+纯前端版本使用 `BrowserFsProvider` 替换 OpenSumi 内的 `DiskFileSystemProvider`, 改动在于由原来的本地文件服务改成 http 接口服务。
 
 > 文件位置：`web-lite/file-provider/browser-fs-provider.ts`
 
@@ -57,24 +57,6 @@ $ npm run start                # 启动
 - `deleteFile(uri: Uri, options: { recursive?: boolean }): Promise<void>`
 
 代码修改后，会先调用对应方法同步到集成方的服务端，之后浏览器端也会在内存中缓存一份新的代码，刷新后失效。
-
-## 插件声明
-
-纯前端环境下由于没有文件系统，无法通过插件扫描的逻辑获取已安装插件的列表及其对应的详细信息，需要提前在集成时进行声明。
-
-纯前端插件在上架插件市场时，会自动同步一份需要的资源到 oss 上（需要开启配置`{ “enableOpenSumiWebAssets”: true }`，开启后插件构建时会自动生成需要托管的目录列表文件 sumi-meta.json）。因此在内网环境下，要使用上传到插件市场的插件，只需要在插件列表里声明目标插件的 id 和版本即可，剩余逻辑已被抹平：
-
-> 文件位置：`web-lite/extension/index.ts`
-
-```typescript
-const extensionList = [
-  { id: ‘OpenSumi.vsicons-slim’, version: ‘1.0.4’ },
-  { id: ‘tao.o2-cr-theme’, version: ‘2.6.3’ },
-  { id: ‘alex.typescript-language-features-worker’, version: ‘1.0.0-beta.2’ }
-];
-```
-
-对于外网用户，可以将插件打包生成的需要托管的部分资源自行上传到 oss 或 cdn 上，然后修改插件市场的 oss 基础路径为自定义路径即可。
 
 ## 语法高亮及代码提示
 

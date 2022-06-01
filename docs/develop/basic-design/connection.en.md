@@ -33,7 +33,7 @@ class MyService implements IMyService {
   }
 }
 
-// backEnd
+// Back End
 class BackService implements IBackService {
   public $getSomeLocalData(): Promise<ILocalData> {
     const data = await getData();

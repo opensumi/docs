@@ -6,7 +6,7 @@ slug: layout
 
 ## 基础概念
 
-布局模块（即 @opensumi/ide-main-layout）负责 IDE 的基础布局划分，将整个窗口划分为形如 left、main、bottom 的若干块区域，我们定义这种区域为插槽。在布局划分之后，又通过提供的插槽渲染器组件来消费注册到插槽的若干个大视图。在如左侧边栏这类特殊的插槽中，一个大的视图（称为视图容器）还可以支持注册多个小的子视图。所以最终整个布局和 React 视图组件的一个组织关系为
+布局模块（即 @opensumi/ide-main-layout）负责 IDE 的基础布局划分，将整个窗口划分为形如 left、main、bottom 的若干块区域，我们定义这种区域为插槽。在布局划分之后，又通过提供的插槽渲染器组件来消费注册到插槽的若干个大视图。在如左侧边栏这类特殊的插槽中，一个大的视图（称为视图容器）还可以支持注册多个小的子视图。所以最终整个布局和 React 视图组件的一个组织关系为：
 
 ![布局与视图的组织关系](https://img.alicdn.com/tfs/TB1gXOU3UH1gK0jSZSyXXXtlpXa-1850-990.png)
 
@@ -188,7 +188,7 @@ static test(
 ): ContentState
 ```
 
-这是一个测试的静态方法（LayoutService 没有静态方法，先做个示例）.
+这是一个测试的静态方法（LayoutService 没有静态方法，先做个示例）。
 
 #### Methods
 
@@ -310,7 +310,7 @@ revealView(viewId: string): void
 readonly onCurrentChange: Event<{previousId: string; currentId: string}>
 ```
 
-当前激活视图变化的事件
+当前激活视图变化的事件。
 
 ###### Example
 

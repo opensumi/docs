@@ -18,7 +18,7 @@ $ yarn start		       # 并行启动前端和后端
 
 ## 目录结构
 
-在具备工程后，你就可以在项目跟目录创建一个 `modules` 文件夹用于存放模块文件，基础目录结构如下：
+在具备工程后，你就可以在项目根目录创建一个 `modules` 文件夹用于存放模块文件，基础目录结构如下：
 
 ```bash
 .
@@ -43,20 +43,23 @@ $ yarn start		       # 并行启动前端和后端
 .
 └── ...
 ├── modules                     # 存放模块目录
-│   ├── browser
-│   │   └── index.ts
-│   │   ├── todo.module.less
-│   │   └── todo.view.tsx
-│   ├── common
-│   │   └── index.ts
-│   └── node
-│   │   └── index.ts
+│   ├── todo
+│   │   ├── browser
+│   │   │   └── index.ts
+│   │   │   ├── todo.module.less
+│   │   │   └── todo.view.tsx
+│   │   ├── common
+│   │   │   └── index.ts
+│   │   └── node
+│   │   │   └── index.ts
 └── ...
 ```
 
 ### 前端模块入口
 
 ```ts
+// modules/todo/browser/index.ts
+
 import { Provider, Injectable } from '@opensumi/di';
 import { BrowserModule } from '@opensumi/ide-core-browser';
 
@@ -69,6 +72,8 @@ export class TodoListModule extends BrowserModule {
 ### 后端模块入口
 
 ```ts
+// modules/todo/node/index.ts
+
 import { Provider, Injectable } from '@opensumi/di';
 import { NodeModule } from '@opensumi/ide-core-node';
 
@@ -83,12 +88,16 @@ export class TodoListModule extends NodeModule {
 我们找到框架的前后端入口文件，在 `common-modules.ts` 中将我们的自定义模块分别引入。
 
 ```ts
+// src/browser/common-modules.ts
+
 export const CommonBrowserModules: ConstructorOf<BrowserModule>[] = [
   ...TodoListModule
 ];
 ```
 
 ```ts
+// src/node/common-modules.ts
+
 export const CommonNodeModules: ConstructorOf<NodeModule>[] = [
   ...TodoListModule
 ];

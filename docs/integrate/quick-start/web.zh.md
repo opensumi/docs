@@ -38,15 +38,14 @@ docker run --rm -d  -p 8080:8000/tcp ghcr.io/opensumi/opensumi-web:latest
 
 ## 启动参数
 
-Startup 中集成代码比较简单，大体上是分别实例化了 `ClientApp`  和 `ServerApp` ，传入相应的参数并启动。下面简单列举一部分核心启动参数。
+Startup 中集成代码比较简单，大体上是分别实例化了 `ClientApp`  和 `ServerApp` ，传入相应的参数并启动。
 
-详细启动参数可查看 [集成配置](../universal-integrate-case/custom-config) 文档。
+详细启动参数可查看 [自定义配置](../universal-integrate-case/custom-config) 文档。
 
 ## 定制 IDE
 
-OpenSumi 支持通过模块的方式对界面主题、内置命令、菜单等基础能力进行定制，更多详细的定制内容可以查看
+OpenSumi 支持通过模块的方式对界面主题、内置命令、菜单等基础能力进行定制，更多详细的定制内容可以查看：
 
-- [集成配置](../universal-integrate-case/custom-config)
 - [自定义命令](../universal-integrate-case/custom-command)
 - [自定义配置](../universal-integrate-case/custom-config)
 - [自定义视图](../universal-integrate-case/custom-view)
