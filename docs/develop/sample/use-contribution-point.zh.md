@@ -61,13 +61,14 @@ export class TodoContribution implements MainLayoutContribution {
 
 上述的代码是在 OpenSumi 的渲染阶段，通过 `IMainLayoutService` 提供的服务能力，在资源管理器面板的视图上，注册上了我们的 Todo 组件。
 
-同时，我们还需要在模块的入口文件中，显示声明一下该贡献点文件的引用，如下：
+同时，我们还需要在模块的入口文件中，显式声明一下该贡献点文件的引用，如下：
 
 ```ts
 // modules/todo/browser/index.ts
 
 import { Provider, Injectable } from '@opensumi/di';
 import { BrowserModule } from '@opensumi/ide-core-browser';
+import { TodoContribution } from './todo.contribution';
 
 @Injectable()
 export class TodoListModule extends BrowserModule {
