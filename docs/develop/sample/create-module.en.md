@@ -5,16 +5,11 @@ slug: create-module
 order: 2
 ---
 
-<<<<<<< HEAD
 Because the OpenSumi module does not run independently, we recommend you create your module directory outside the project directory when creating the module. Taking the template repository provided by Quick Start as an example, you can quickly start an IDE project:  
-=======
-Since the OpenSumi module does not run independently, we recommend that you create your module directory outside the project directory when creating the module. Taking the template repository provided by Quick Start as an example, you can quickly start an IDE project:
->>>>>>> origin/main
 
 ```bash
 $ git clone git@github.com:opensumi/ide-startup.git
 $ cd ide-startup
-<<<<<<< HEAD
 $ yarn					   # Install dependencies  
 $ yarn start		       # Start the frontend and backend in parallel
 ```
@@ -28,21 +23,6 @@ Once you have your project in place, you can create a `modules` folder in your p
 ```bash
 .
 └── workspace                   # Work directory 
-=======
-$ yarn					   # Install dependencies
-$ yarn start		       # Start the front end and back end in parallel
-```
-
-You can also directly clone our case project[opensumi/todo-list-sample](https://github.com/opensumi/todo-list-sample) to start Quick module experience.
-
-## Directory Structure
-
-Once you have your project in place, you can create a `modules` folder in your project and directory to store module files. The basic directory structure is as follows:
-
-```bash
-.
-└── workspace                   # Work directory
->>>>>>> origin/main
 ├── modules                     # Directory for storing modules
 ├── extensions                  # extension directory
 ├── src

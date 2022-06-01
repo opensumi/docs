@@ -38,7 +38,7 @@ OpenSumi's offerings are NPM packages from different modules. Each package is a 
 └── webpack.config.js
 ```
 
-### Responsibilities of the Module 
+### Responsibilities of Module 
 
 In general, modules provide some basic functions. For example, the `search` module performs a full-text search, where the `src/browser` directory includes UI-related code in frontend, while the search is performed by the code under the `src/node` directory.
 

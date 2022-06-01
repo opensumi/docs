@@ -139,7 +139,7 @@ export const Todo = ({
 };
 ```
 
-#### Effects Show
+#### Effect Show
 
 ![message notification](https://img.alicdn.com/imgextra/i4/O1CN01kA5rT529ilcreESVL_!!6000000008102-1-tps-1200-706.gif)
 
