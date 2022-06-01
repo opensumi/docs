@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[13],{BxFN:function(n,t,a){"use strict";a.r(t);var e=a("q1tI"),o=a.n(e),r=a("9Koi"),u=function(){var n=Object(r.a)().t;return o.a.createElement(o.a.Fragment,null,n("独立页面"))};u.noLayout=!0,t.default=u}}]);
