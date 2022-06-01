@@ -14,11 +14,11 @@ There are two main ways to register frequently-used customized configurations:
 
 OpenSumi provides custom configuration capabilities based on OpenSumi's [Contribution Point](../../develop/basic-design/contribution-point) mechanism. You only need to implement `PreferenceContribution` to register the configuration.
 
-Another way to register is by using extensions [configuration Contribution points](https://code.visualstudio.com/api/references/contribution-points#contributes.configuration).
+Another way to register is to use extensions [configuration Contribution points](https://code.visualstudio.com/api/references/contribution-points#contributes.configuration).
 
 ## Customize Integration Parameters
 
-When integrating OpenSumi framework, we often need to perform independent configuration, and the following table lists some parameters that can be configured during the integration phase by passing in configuration items.
+When integrating OpenSumi framework, we often need to perform independent configurations, and the following table lists some parameters that can be configured during the integration phase by passing in configuration items.
 
 ### Browser Configuration
 

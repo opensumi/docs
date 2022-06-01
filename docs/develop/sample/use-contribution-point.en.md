@@ -5,7 +5,7 @@ slug: use-contribution-point
 order: 3
 ---
 
-In module development, You may need to deal with contribution points on a regular basis. In OpenSumi we implement a contribution point mechanism for many key logics. For more details,you can see [contribution points](../basic-design/contribution-point).
+In module development, You may need to deal with contribution points on a regular basis. In OpenSumi we implement a contribution point mechanism for many key logics. For more details, you can see [contribution points](../basic-design/contribution-point).
 
 To register our TodoList list on the left Explorer panel, we need to use the `MainLayoutContribution` to register the panel.
 
@@ -24,7 +24,7 @@ export const Todo = () => {
 
 ## Create a Contribution Point
 
-To create the`todo.contribution.ts`file, you can use the `onDidRender` contribution points to register our Todo panel in the OpenSumi rendering phase, see:  
+To create the`todo.contribution.ts` file, you can use the `onDidRender` contribution points to register our Todo panel in the OpenSumi rendering phase, see:  
 
 ```ts
 import { Autowired } from '@opensumi/di';

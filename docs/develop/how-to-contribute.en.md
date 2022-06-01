@@ -11,11 +11,11 @@ For [issue](https://github.com/opensumi/core/issues) marked with `PR Welcome`, i
 
 ## Prepare Development Environment
 
-> The system tool installation method here refers to the [How-to-Contribute](https://github.com/microsoft/vscode/wiki/How-to-Contribute) document of VS Code for translation, and you can directly view the document.
+> The system tool installation method here refers to [How-to-Contribute](https://github.com/microsoft/vscode/wiki/How-to-Contribute) document of VS Code for translation, and you can directly view the document.
 
 Before developing the code, you need to install some necessary development tools, clone our project code [opensumi/core](https://github.com/opensumi/core), and install dependencies through `npm`.
 
-Due to the Great Firewall, using the official npm source will lead to slow download and installation. we recommend to switch your NPM image to  [npmmirror China image station](https://npmmirror.com/) before starting (or install an NPM image switching tool for quick switchover, such as [nrm](https://www.npmjs.com/package/nrm).
+Due to the Great Firewall, using the official npm source will lead to slow download and installation. We recommend to switch your NPM image to  [npmmirror China image station](https://npmmirror.com/) before starting (or install an NPM image switching tool for quick switchover, such as [nrm](https://www.npmjs.com/package/nrm)).
 
 The following is the manual setting mode:
 
@@ -96,7 +96,7 @@ There are multiple processes when OpenSumi is running. You need to determine the
 
 ### Browser process
 
-As for the `Browser process`, you can debug directly through `Chrome Developer Tools` (recommended), or install [Debugger for Chrome](https: //marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) to debug the breakpoint of the `Browser process`. as the picture shows:
+As for the `Browser process`, you can debug directly through `Chrome Developer Tools` (recommended), or install [Debugger for Chrome](https: //marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) to debug the breakpoint of the `Browser process`, as the picture shows:
 
 ![Browser process](https://img.alicdn.com/imgextra/i2/O1CN01RytoAv1zgLMg9FCna_!!6000000006743-2-tps-2602-1732.png#id=YcHEw&originHeight=1732&originWidth=2602&originalType=binary&ratio=1&status=done&style=none)
 
@@ -134,7 +134,7 @@ When running `npm run lint`, you can directly retrieve the overall code specific
 
 Each commit should be as small as possible, and you need to fill in your commit information in accordance with [ng4's submission specifications](https://www.npmjs.com/package/@commitlint/config-conventional#type-enum).
 
-For example, you fixed the variable acquisition problem of the debug module, and the submission information can be as follows:
+For example, when you fix the variable acquisition problem of the debug module, the submission information can be as follows:
 
 ```txt
 fix: fix variable acquisition under the debug panel
@@ -154,7 +154,7 @@ You can quickly preview the effect by refreshing the page.
 
 ## Spelling
 
-For common spelling issues, We recommend that you install [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) plug-in under `VSCode ` or an IDE built on OpenSumi, to avoid some  English spelling problems.
+For common spelling issues, We recommend that you install [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) plug-in under `VSCode ` or an IDE built on OpenSumi, to avoid English spelling mistakes.
 
 ## Feedback
 

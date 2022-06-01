@@ -7,7 +7,7 @@ order: 2
 
 ## Register Custom Menus
 
-There are two common modes for registering custom menus
+There are two common modes for registering custom menus:
 
 - Register a new menu item
 - Registers a submenu with existing menu items

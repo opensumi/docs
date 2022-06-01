@@ -45,13 +45,13 @@ To start with basic needs, module coding can be generally divided into following
 
 ### Requirements Based on a View
 
-The first step for all view requirements is to create a view, and in the OpenSumi framework, the steps to create a view can be divided into two steps.
+The first step for all view requirements is to create a view, and in the OpenSumi framework, the steps to create a view can be divided into two steps:
 
 1. Register the view module
 2. Introduce the module
 3. Used under the specific `Location （Layout Block）`case
 
-Using the 'Explorer' module as an example, we create a `explorer.contribution.ts`file to register a view container:  
+Using the 'Explorer' module as an example, we create a `explorer.contribution.ts` file to register a view container:  
 
 ```ts
 @Domain(ComponentContribution)
@@ -112,7 +112,7 @@ export const layoutConfig = {
 };
 ```
 
-The Preceding code declares that the view component registered with ID `@OpenSumi/IDE-Explorer` is rendered in the right sidebar area of the IDE.  
+The preceding code declares that the view component registered with ID `@OpenSumi/IDE-Explorer` is rendered in the right sidebar area of the IDE.  
 
 For more information about view layout, please refer to [Custom View](../integrate/universal-integrate-case/custom-view) document introduction。 
 
@@ -120,7 +120,7 @@ For more information about view layout, please refer to [Custom View](../integra
 
 View-based requirements generally include service-based demands as well. In general, the OpenSumi framework provides a number of basic capabilities to support various scenarios, such as `File Service`, `Popup Service`, `Storage Service`, etc. Before customizing the related service capabilities, you can see if the desired effect can be achieved through a simple combination of features, if not, then you should consider customizing the service capabilities to meet your needs.
 
-For services such as `commands`, menus, keybindings, configurations, etc., we recommend that you use [Contribute Points](./basic-design/contribution-point) for extensions. The final use is through the following base declaration.
+For services such as `commands`, menus, keybindings and configurations, we recommend that you use [Contribute Points](./basic-design/contribution-point) for extensions. The final use is through the following base declaration.
 
 ```ts
 @Injectable()
@@ -194,9 +194,9 @@ Place the Browser layer and build dependencies in `devDependencies`, and Node la
 
 For some of the OpenSumi global dependency structures, the following lists some hidden rules:
 
-1. `@opensumi/ide-core-common` is the shared dependency of  `@opensumi/ide-core-node`, `@opensumi/ide-core-browser`and `@opensumi/ide-electron` 
+1. `@opensumi/ide-core-common` is the shared dependency of `@opensumi/ide-core-node`, `@opensumi/ide-core-browser`and `@opensumi/ide-electron` 
 
-2. Modules do not directly depend on `@opensumi/ide-core-common`, but indirectly through `@opensumi/ide-core-node` and `@opensumi/ide-core-browser`
+2. Modules do not directly depend on `@opensumi/ide-core-common`, but indirectly depend on `@opensumi/ide-core-node` and `@opensumi/ide-core-browser`
 
 3. Browser resources are usually packaged and built with scripts, while Node resources need to rely directly on `node_modules`. Therefore, we expected the Browser layer dependency of the module to be placed in `DevDepedences` in the early design, and Node layer dependency placed on `Dependences`.  
 
@@ -204,6 +204,6 @@ For some of the OpenSumi global dependency structures, the following lists some 
 
 5. Based on this directory structure, if there are multiple public dependencies of Browser modules, you can put them in `@opensumi/ide-core-browser`, so as to reduce the version maintenance problems. As a resulit, many public dependencies in the frontend and backend of OpenSumi are declared independently in `@opensumi/ide-core-browser` and `@opensumi/ide-core-node` respectively.
 
-6. In principle, the module `common` can only import content from `@opensumi/ide-core-common`, but if this module is pure `Browser` or `Node` module, it can be imported from the corresponding `@opensumi/ide-core-browser` and `@opensumi/ide-core-node`.  
+6. In principle, the module `common` can only import content from `@opensumi/ide-core-common`, but if this module is a pure `Browser` or `Node` module, it can be imported from the corresponding `@opensumi/ide-core-browser` and `@opensumi/ide-core-node`.  
 
 Now that you have an initial understanding of the OpenSumi module, all that is left is to practice and gain more practical experiences. If you have questions about practice, please feel free to submit them to [Issue](https://github.com/opensumi/doc/issues) and we will handle your questions promptly.

@@ -7,13 +7,13 @@ order: 7
 
 ## Overview
 
-In some special scenarios, the integrator wants to be able to run in read-only mode. For example, `sharing` functions enable the receiver read but cannot write, cannot use certain commands, or create and delete files, or other such requirements.
+In some special scenarios, the integrator wants to be able to run in read-only mode. For example, `sharing` functions enable the receiver read but cannot write, use certain commands, or create and delete files, or other such requirements.
 
 Then we can use OpenSumi custom module capability to enable read-only mode by disabling certain functions and `Command` commands in the module.
 
 ## Custom a Readonly Module
 
-First, custom a `ReadonlyModule` module:
+Firstly, custom a `ReadonlyModule` module:
 
 ```typescript
 @Injectable()
@@ -25,7 +25,7 @@ export class ReadonlyModule extends BrowserModule {
 }
 ```
 
-Then, implement `ReadOnlyContribution` and import it into the `ReadonlyModule`'s providers:
+secondly, implement `ReadOnlyContribution` and import it into the `ReadonlyModule`'s providers:
 
 ```typescript
 @Domain(MenuContribution, CommandContribution, TabBarToolbarContribution)
@@ -35,11 +35,11 @@ export class ReadOnlyContribution
   protected menuRegistry: IMenuRegistry;
 
   static UNREGISTER_COMMAND = new Set([
-    // Disabling file saving
+    // Disabling file save
     EDITOR_COMMANDS.SAVE_CURRENT,
     EDITOR_COMMANDS.SAVE_URI,
     EDITOR_COMMANDS.SAVE_ALL,
-    // Disabling file operations
+    // Disabling file operation
     EDITOR_COMMANDS.NEW_UNTITLED_FILE,
     FILE_COMMANDS.DELETE_FILE,
     FILE_COMMANDS.RENAME_FILE,

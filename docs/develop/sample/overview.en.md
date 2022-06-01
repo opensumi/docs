@@ -5,7 +5,7 @@ slug: overview
 order: 1
 ---
 
-This case teaches you how to develop your own modules from scratch, step by step, by implementing a TodoList list in OpenSumi, and through this case you will gain some knowledge:
+This case teaches you how to develop your own modules from scratch, step by step, by implementing a TodoList list in OpenSumi, and by this case you will gain some knowledge:
 
 - How to create a module.
 - How to present a list.
@@ -22,4 +22,4 @@ We aim to：
 
 By studying this case, you will be able to quickly get started with OpenSumi's module development. 
 
-At the same time, if you want to see the code directly, you can directly access the repo [opensumi/todo-list-sample](https://github.com/opensumi/todo-list-sample), and run projects to get some understandings.
+At the same time, if you want to see the code directly, you can directly access the repo [opensumi/todo-list-sample](https://github.com/opensumi/todo-list-sample), and run projects to get some knowladge.

@@ -8,7 +8,7 @@ order: 3
 
 OpenSumi provides a pure frontend access that takes you away from the Node environment and provides relatively complete IDE capabilities with a simple B/S architecture in a pure browser environment.  
 
-Before running it, please ensure that Node.js 10.15.x or later is installed in your local environment. Also, OpenSumi relies on some Node.js Addons, to ensure that these Addons are compiled properly. we recommend you to check out the installation guide in [node-gyp](https://github.com/nodejs/node-gyp#installation) to set up local environment.
+Before running it, please ensure that Node.js 10.15.x or later is installed in your local environment. Also, OpenSumi relies on some Node.js Addons, to ensure that these Addons are compiled properly. We recommend you to check out the installation guide in [node-gyp](https://github.com/nodejs/node-gyp#installation) to set up local environment.
 
 At the same time, you can directly visit our [preview page](https://opensumi.github.io/ide-startup-lite/) to check out the latest running effect. It supports the branch or tag address, for example, `https://opensumi.github.io/ide-startup-lite/#https://github.com/opensumi/core/tree/v2.16.0`.  
 
@@ -43,7 +43,7 @@ The pure frontend version uses `BrowserFsProvider` to replace `DiskFileSystemPro
 
 ### File Services
 
-Different from full-featured IDEs of container and electron versions, pure frontend versions of IDEs generally serve for a vertical, specific scenario, such as code viewing and codereview. The corresponding underlying capabilities are service-oriented. And since the browser itself does not have a file system, it needs an external data source to provide and maintain the file information. In pure frontend version, we need developers to implement the following two methods to support the underlying code viewing capabilities:
+Different from full-featured IDEs of container and electron versions, pure frontend version of IDEs generally serves for a vertical and specific scenario, such as code viewing and codereview. The corresponding underlying capabilities are service-oriented. And since the browser itself does not have a file system, it needs an external data source to provide and maintain the file information. In pure frontend version, we need developers to implement the following two methods to support the underlying code viewing capabilities:
 
 > File Location：`web-lite/file-provider/http-file-service.ts`
 
