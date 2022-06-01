@@ -95,11 +95,12 @@
   <!-- --><span class="token punctuation">}<!-- --></span>
 <!-- --><span class="token punctuation">}<!-- --></span></code></pre></div>
 <!-- --><p>上述的代码是在 OpenSumi 的渲染阶段，通过 <!-- --><code class="language-text">IMainLayoutService<!-- --></code> 提供的服务能力，在资源管理器面板的视图上，注册上了我们的 Todo 组件。<!-- --></p>
-<!-- --><p>同时，我们还需要在模块的入口文件中，显示声明一下该贡献点文件的引用，如下：<!-- --></p>
+<!-- --><p>同时，我们还需要在模块的入口文件中，显式声明一下该贡献点文件的引用，如下：<!-- --></p>
 <!-- --><div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token comment">// modules/todo/browser/index.ts<!-- --></span>
 
 <!-- --><span class="token keyword">import<!-- --></span> <!-- --><span class="token punctuation">{<!-- --></span> Provider<!-- --><span class="token punctuation">,<!-- --></span> Injectable <!-- --><span class="token punctuation">}<!-- --></span> <!-- --><span class="token keyword">from<!-- --></span> <!-- --><span class="token string">&#x27;@opensumi/di&#x27;<!-- --></span><span class="token punctuation">;<!-- --></span>
 <!-- --><span class="token keyword">import<!-- --></span> <!-- --><span class="token punctuation">{<!-- --></span> BrowserModule <!-- --><span class="token punctuation">}<!-- --></span> <!-- --><span class="token keyword">from<!-- --></span> <!-- --><span class="token string">&#x27;@opensumi/ide-core-browser&#x27;<!-- --></span><span class="token punctuation">;<!-- --></span>
+<!-- --><span class="token keyword">import<!-- --></span> <!-- --><span class="token punctuation">{<!-- --></span> TodoContribution <!-- --><span class="token punctuation">}<!-- --></span> <!-- --><span class="token keyword">from<!-- --></span> <!-- --><span class="token string">&#x27;./todo.contribution&#x27;<!-- --></span><span class="token punctuation">;<!-- --></span>
 
 <!-- --><span class="token decorator"><span class="token at operator">@<!-- --></span><span class="token function">Injectable<!-- --></span></span><span class="token punctuation">(<!-- --></span><span class="token punctuation">)<!-- --></span>
 <!-- --><span class="token keyword">export<!-- --></span> <!-- --><span class="token keyword">class<!-- --></span> <!-- --><span class="token class-name">TodoListModule<!-- --></span> <!-- --><span class="token keyword">extends<!-- --></span> <!-- --><span class="token class-name">BrowserModule<!-- --></span> <!-- --><span class="token punctuation">{<!-- --></span>
