@@ -31,7 +31,7 @@ export class DemoModule extends BrowserModule {
 }
 ```
 
-Following cases will not repeatly illustrate the way to introduce a contribution point file.
+Following cases will not repeat the way to introduce a contribution point file. 
 
 ### Lifecyle
 
@@ -130,7 +130,7 @@ export class DemoContribution implements PreferenceContribution {
 
 For more detailed preference and usage, see [Preference Module](../module-apis/preference)  
 
-### Keybinding Register
+### Keybinding Registration
 
 The contribution point of the Keybinding registration is `KeybindingContribution`, through which you can register `Keybinding`, using the following method:  
 

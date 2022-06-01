@@ -73,10 +73,11 @@ myBackService = new Proxy(
 
 ### Channel
 
-For multiple windows scenario, each window establishes a long connection to the Server side. To distinguish these windows, each connection communicates by a seperate `Channel`, and the content of those windows'communication is completely isolate. 
+For multiple windows scenario, each window establishes a long connection to the Server side. To distinguish these windows, each connection communicates by a seperate `Channel`, and The communication content between Windows is completely isolated.
 
 ![Connection](https://img.alicdn.com/imgextra/i2/O1CN01aN1VYn1dkzqWPK2ev_!!6000000003775-55-tps-825-362.svg)
 
 ## User Guide
 
 In addition to the common `frontend-> backend-` mode, OpenSumi also supports `backend-> frontend-` calls. For specific examples of backend communication, see [Examples of frontend and backend communication](../sample/connection-between-browser-and-node)
+

@@ -20,7 +20,7 @@ The following is a list of common concepts, terms and explanations you may find 
 
 ## Module
 
-OpenSumi's offerings are NPM packages from different modules. Each package is a **module** and deals with different functions. Modules are generally composed of several parts: frontend, backend, public code and type. The following is a common module structure:
+OpenSumi's offerings are NPM packages from different modules. Each package is a **module** and deals with different functions. Modules are generally composed of several parts: frontend, backend, public code and type. The following code is a common module structure:
 
 ```bash
 .
@@ -50,7 +50,7 @@ A module can provide Contribution to another, and other one in turn can register
 
 ### Module Layer and Dependencies
 
-We divide the modules into` core modules` and` functional modules`. Modules have certain dependency relations. Taking `file-service` as an example, a typical module inclues file reading and writing, file system registration and management. In many functional modules, to read and write operations will depend on `file-service`.  
+We divide the modules into` core modules` and` functional modules`. Modules have certain dependency relations. Taking `file-service` as an example, a typical module inclues file reading and writing, file system registration and management. In many functional modules, to read and write operations will depend on `file-service`.
  
 Core modules are mandatory that make up the core functionality of the IDE and cannot be removed. For example, `main-layout` is responsible for the overall layout of the main interface and view registration, `core-browser` and `core-node` are responsible for maintaining the declaration cycle of IDE ClientApp and ServerApp instances and related contribution point management.
 
@@ -69,7 +69,7 @@ By a self-developed DI framework `@opensumi/di`, OpenSumi manages and acquires i
 
 ## Extension and API
 
-As mentioned before, many of OpenSumi's functional modules are pluggable, and those that cannot be plugged is because they provide extension APIs (in other words, they can be pluggable after the Extension module is removed). OpenSumi extension system is based on the extension of VS Code, which can be regarded as a superset of VS Code extensions. For detailed introduction of the extension system, see [Extension Mechanism](./extension-mechanism).
+As mentioned before, many of OpenSumi's functional modules are pluggable, and those cannot be plugged is because they provide extension APIs (in other words, they can be pluggable after the Extension module is removed). OpenSumi extension system is based on the extension of VS Code, which can be regarded as a superset of VS Code extensions. For detailed introduction of the extension system, see [Extension Mechanism](./extension-mechanism).
 
 The OpenSumi extension is similar to the VS Code extensions. We will keep its compatibility with the VS Code extension API, and constantly update and iterate the extension API. The extension API is a collection of objects, such as methods and classes, offered to third-party code to call . Extension modules contains all extensions and extension API-related implementations, but when it comes to a certain extension API, the ultimately called module is the one implemented them. For example, `terminal-next` module offers `sumi.window.createTerminal` capability, while the extension just takes its package for the plug-in to call.
 
