@@ -151,7 +151,7 @@ export class MessageDemo {
   dialogService: IDialogService;
 
   private async showMessage() {
-    const res = await this.dialogService.info('This is a modal popup', ['No', 'Yes’]);
+    const res = await this.dialogService.info('This is a modal popup', ['No', 'Yes']);
 
     if (res === 'yes') {
       //...
