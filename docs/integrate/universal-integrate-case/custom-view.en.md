@@ -7,7 +7,7 @@ order: 3
 
 ## OverView
 
-The OpenSumi view is based on the `slot mechanism` design, where the entire Layout itself is a large React component that divides the view into several slots. For example, the layout component provided by OpenSumi by default divides the view into slot templates as shown in the following figure:
+The OpenSumi view is based on the `slot mechanism` design, where the entire Layout itself is a large React component that divides the view into several slots. For example, by default the layout component provided by OpenSumi divides the view into slot templates as shown in the following figure:
 
 ![Default slot template](https://img.alicdn.com/imgextra/i3/O1CN01jVb1Nv1n4XHe0H2wG_!!6000000005036-2-tps-1714-1374.png)
 
@@ -24,7 +24,7 @@ export interface View {
 }
 ```
 
- `Slot renderer` determines how this data is consumed. By default, the view is laid out tiled from top to bottom. In sidebar and bottom bar, by default the slot renderer is the TabBar component that supports collapsing and expanding and toggling. Except for the sidebar area that supports multiple subviews though accordion, other places will only consume the first view of views by default. 
+ `Slot renderer` determines how data is consumed. By default, the view is laid out tiled from top to bottom. In sidebar and bottom bar, by default the slot renderer is the TabBar component that supports collapsing and expanding and toggling. Except for the sidebar area that supports multiple subviews though accordion, other places will only consume the first view of views by default. 
 
 The data provider offers LayoutConfig for the view configuration. The following code shows its data structure.
 
@@ -64,7 +64,7 @@ export class SearchContribution implements ComponentContribution {
 }
 ```
 
-The following is an example of customizing Layout by adding a ToolBar component to the right side of MenuBar.
+The following picture is an example of customizing Layout by adding a ToolBar component to the right side of MenuBar.
 
 ![view effects](https://img.alicdn.com/imgextra/i2/O1CN01GNMkW31ygVtoizfSG_!!6000000006608-2-tps-2880-1750.png)
 
@@ -196,7 +196,7 @@ const layoutConfig = {
 
 ## Extended Reading
 
-In general, above methods can complete the layout requirements of common custom, but for some needs, such as, drag and change size, view, switching functions of customization scenarios, it would be more complicated to start writing directly with native HTML, and the interaction is inconsistent. OpenSumi provides several types of basic components that can be used to build layouts.
+In general, preceding methods can complete the layout requirements of common custom, but for some needs, such as, drag and change size, view, switching functions of customization scenarios, it would be more complicated to start writing with native HTML directly, and the interaction is inconsistent. OpenSumi provides several types of basic components that can be used to build layouts.
 
 
 - The Layout Basic components
@@ -207,4 +207,4 @@ In general, above methods can complete the layout requirements of common custom,
   - TabBar，a multi-tab management component, supports view activation, folding, expansion, and switching, and supports Tab drag to change position  
   - TabPanel，Tab rendering component. Its sidebar is Panel Title + Accordion. The bottom column is the ordinary React view
 
-For details on how to use components, see the component type declaration.
+For details about how to use components, see the component type declaration.

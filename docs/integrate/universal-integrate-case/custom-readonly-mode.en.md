@@ -24,8 +24,7 @@ export class ReadonlyModule extends BrowserModule {
   ];
 }
 ```
-
-secondly, implement `ReadOnlyContribution` and import it into the `ReadonlyModule`'s providers:
+Secondly, implement `ReadOnlyContribution` and import it into the `ReadonlyModule`'s providers:
 
 ```typescript
 @Domain(MenuContribution, CommandContribution, TabBarToolbarContribution)
@@ -75,7 +74,7 @@ More [`Command`](https://github.com/opensumi/core/blob/main/packages/core-browse
 
 ## Integration Module
 
-Finally, introduce at integration time. Taking the `opensumi/ide-startup` case as an example, when referring [index.ts#L12](https://github.com/opensumi/ide-startup/blob/a46a78a56b25b17f7f36ddc3f340d1720311559a/src/browser/index.ts#L12) , just import it to the modules field.
+Finally, introduce it at integration time. Taking the `opensumi/ide-startup` case as an example, when referring [index.ts#L12](https://github.com/opensumi/ide-startup/blob/a46a78a56b25b17f7f36ddc3f340d1720311559a/src/browser/index.ts#L12) , just import it to the modules field.
 
 ```typescript
 new ClientApp({

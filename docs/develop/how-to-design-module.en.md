@@ -9,7 +9,7 @@ Based on the OpenSumi system, this section mainly introduces the idea of buildin
 
 ## Know about Dependency Injection
 
-Before learning the module, we recommend you to read [Dependency Injection](./basic-design/dependence-injector.zh.md). In OpenSumi, all service registrations and invocations are based on this unified dependency injection structure to decouple service implementation and invocation logic, allowing framework developers to focus on developing modules and achieving more independent module construction.
+Before learning the module, we recommend you to read [Dependency Injection](./basic-design/dependence-injector). In OpenSumi, all service registrations and invocations are based on this unified dependency injection structure to decouple service implementation and invocation logic, allowing framework developers to focus on developing modules and achieving more independent module construction.
 
 ## What Is a Module?
 
@@ -134,7 +134,7 @@ export class DemoModule extends BrowserModule {
 }
 ```
 
-For personalized service capability registration, we recommend you to extend through[Dependency Injection](./basic-design/dependence-injector.zh.md), and eventually register by `Token + Service`.
+For personalized service capability registration, we recommend you to extend through[Dependency Injection](./basic-design/dependence-injector), and eventually register by `Token + Service`.
 
 ```ts
 @Injectable()

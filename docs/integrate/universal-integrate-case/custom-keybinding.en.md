@@ -7,13 +7,13 @@ order: 5
 
 ## Overview
 
-As a rich-interactive IDE, a favourable keybinding design can largely free users' reliance on interface operations and improve the work/operation efficiency. Apart from supporting extensions registration by extensions under the OpenSumi framework, it also supports to register expansion by modules. This section focuses on how to preset more keybindings for your application in the integration phase.
+As a rich-interactive IDE, a favourable keybinding design can largely free users from relying on interface operations and improve the work/operation efficiency. Apart from supporting extensions registration by extensions under the OpenSumi framework, it also supports to register expansion by modules. This section focuses on how to preset more keybindings for your application in the integration phase.
 
 ## Keybinding Registration
 
 In the module, we usually employ `KeybindingContribution` approach to register，which are detailed in [Keybinding Registration](../../develop/basic-design/contribution-point#快捷键注册).
 
-## Supported keybinding Characters
+## Favorable keybinding Characters
 
 The following modifiers are supported under specific platforms:
 
