@@ -151,7 +151,7 @@ export class MessageDemo {
   dialogService: IDialogService;
 
   private async showMessage() {
-    const res = await this.dialogService.info('这是一个模态弹窗', ['取消', '确定’]);
+    const res = await this.dialogService.info('这是一个模态弹窗', ['取消', '确定']);
 
     if (res === '确定') {
       //...
