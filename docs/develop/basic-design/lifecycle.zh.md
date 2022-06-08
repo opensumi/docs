@@ -56,7 +56,7 @@ onStop 同样主要作用于 Electron 端，在 onWillStop 之后，用户确认
 
 ## onDisposeSideEffects
 
-与 onStop 触发时机类似，但 `onDisposeSideEffects` 是比较特殊的一类生命周期，当 IDE 被作为一个组件时，可能存在不刷新页面，单纯卸载整个 IDE 的情况，此时需要将所有 IDE 中的副作用清楚，通过主动调用 `clientApp.dispose` 方法即可触发。
+与 onStop 触发时机类似，但 `onDisposeSideEffects` 是比较特殊的一类生命周期，当 IDE 被作为一个组件时，可能存在不刷新页面，单纯卸载整个 IDE 的情况，此时需要将所有 IDE 中的副作用清除，通过主动调用 `clientApp.dispose` 方法即可触发。
 
 ## onReconnect
 
