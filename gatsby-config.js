@@ -89,14 +89,14 @@ module.exports = {
     showDingTalkQRCode: true,
     dingTalkQRCode:
       'https://img.alicdn.com/imgextra/i1/O1CN01k3gCmL1HWPjLchVv7_!!6000000000765-0-tps-200-199.jpg',
-    showSearch: false, // 是否展示搜索框
+    showSearch: true, // 是否展示搜索框
     showChinaMirror: false, // 是否展示国内镜像链接
     showLanguageSwitcher: true, // 用于定义是否展示语言切换
     showGithubCorner: true, // 是否展示角落的 GitHub 图标
     docsearchOptions: {
-      appId: 'SOZF8EXD5Z',
-      apiKey: '614258d3f6d9bcfde76edcc8e45887af',
-      indexName: 'docs'
+      appId: 'TJ9L5P0JEZ',
+      apiKey: 'ea572740263d426554e711fca503c754',
+      indexName: 'opensumi'
     },
     redirects: []
   }

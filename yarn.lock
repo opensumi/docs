@@ -2107,10 +2107,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@opensumi/gatsby-theme@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@opensumi/gatsby-theme/-/gatsby-theme-2.0.0.tgz#c73d18f2e8fc7f1e4ead52c1be2b681e0599ccbd"
-  integrity sha512-XnQI7KHjQKEkafzbdQSyWMv1D+5dQskdFq3aFiqCkaiIDUogP/1MjKl45HU5mw+7C8Q/HKG6AU6Zq74oxVtg8A==
+"@opensumi/gatsby-theme@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@opensumi/gatsby-theme/-/gatsby-theme-2.0.2.tgz#e1c072c77de4706bcdc45abdbd5cf7c772f8b2a4"
+  integrity sha512-8qUk05n3jkO01u3lnlWqwrLgCotZQuR6ZBzswGrMeA0gEN2Lg+nqkpmHeY32Q8EGPxBocq7Tq+jvpyw6/Fy3LQ==
   dependencies:
     "@ant-design/icons" "^4.7.0"
     "@docsearch/css" "^3.1.0"
@@ -2149,7 +2149,6 @@
     gatsby-remark-autolink-headers "^5.15.0"
     gatsby-remark-external-links "^0.0.4"
     gatsby-remark-prismjs "^6.15.0"
-    gatsby-remark-reading-time "^1.1.0"
     gatsby-source-filesystem "^4.15.0"
     gatsby-source-github "^0.0.2"
     gatsby-transformer-remark "^5.15.0"
@@ -7091,13 +7090,6 @@ gatsby-remark-prismjs@^6.15.0:
     "@babel/runtime" "^7.15.4"
     parse-numeric-range "^1.2.0"
     unist-util-visit "^2.0.3"
-
-gatsby-remark-reading-time@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-reading-time/-/gatsby-remark-reading-time-1.1.0.tgz#f23590ae34233c3625e656e0368ad0e0e84761a1"
-  integrity sha512-J2I/Aerw6iEcYUs9MH5r7Ky5PIe7Aiq7+M3sDWdRa0ddWYIOZGxPq8U1xYsIBwQjVtPovk8N4aMTau9kjQQLQA==
-  dependencies:
-    reading-time "^1.1.3"
 
 gatsby-script@^1.0.0:
   version "1.0.0"
@@ -12363,11 +12355,6 @@ readdirp@~3.6.0:
   integrity sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==
   dependencies:
     picomatch "^2.2.1"
-
-reading-time@^1.1.3:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/reading-time/-/reading-time-1.5.0.tgz#d2a7f1b6057cb2e169beaf87113cc3411b5bc5bb"
-  integrity sha512-onYyVhBNr4CmAxFsKS7bz+uTLRakypIe4R+5A824vBSkQy/hB3fZepoVEf8OVAxzLvK+H/jm9TzpI3ETSm64Kg==
 
 recursive-readdir@^2.2.2:
   version "2.2.2"
