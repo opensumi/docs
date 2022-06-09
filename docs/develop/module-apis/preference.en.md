@@ -1,6 +1,6 @@
 ---
 id: preference
-title: Prefernce Module
+title: Preference Module
 slug: preference
 ---
 
@@ -120,7 +120,7 @@ export class DemoSettingContribution implements SettingContribution {
 
 At the same time, You can also use a `SettingContribution` to make a configuration value that does not appear in a configuration environment, for example:
 
-We expect the language configuration only exists in `Gobal Settings`and not in`Workspace configuration`, so we can write my contribution point file as follows:
+We expect the language configuration only exists in `Global Settings`and not in`Workspace configuration`, so we can write my contribution point file as follows:
 
 ```ts
 @Domain(SettingContribution)

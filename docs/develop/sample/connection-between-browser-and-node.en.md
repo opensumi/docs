@@ -31,9 +31,10 @@ Associate on a double end `TodoListModule` .
 
 ### Associated Front-end Service
 
-```ts
-import { Provider, Injectable } from '@ali/common-di';
-import { BrowserModule } from '@ali/ide-core-browser';
+// modules/todo/browser/index.ts
+
+import { Provider, Injectable } from '@opensumi/di';
+import { BrowserModule } from '@opensumi/ide-core-browser';
 import { TodoContribution } from './todo.contribution';
 import { TodoService } from './todo.service';
 import { ITodoConnectionServerPath, ITodoService } from '../common';
@@ -60,8 +61,10 @@ export class TodoListModule extends BrowserModule {
 ### Associate Front-end and Back-end Services
 
 ```ts
-import { Provider, Injectable } from '@ali/common-di';
-import { NodeModule } from '@ali/ide-core-node';
+// modules/todo/node/index.ts
+
+import { Provider, Injectable } from '@opensumi/di';
+import { NodeModule } from '@opensumi/ide-core-node';
 import { ITodoNodeService, ITodoConnectionServerPath } from '../common';
 import { TodoNodeService } from './todo.service';
 
@@ -111,10 +114,12 @@ export class TodoService extends RPCService implements ITodoService {
 
 The back-end service receives the message and sends it back to the front-end service.
 
-```ts
-import { Injectable } from '@ali/common-di';
+
+// modules/todo/node/todo.service.ts
+
+import { Injectable } from '@opensumi/di';
 import { ITodoNodeService } from '../common';
-import { RPCService } from '@ali/ide-connection';
+import { RPCService } from '@opensumi/ide-connection';
 
 @Injectable()
 export class TodoNodeService extends RPCService implements ITodoNodeService {
