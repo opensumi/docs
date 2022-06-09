@@ -231,6 +231,18 @@ export class TodoContribution
   @Autowired(ITodoService)
   private todoService: ITodoService;
 
+  onDidRender() {
+    this.mainLayoutService.collectViewComponent(
+      {
+        component: Todo,
+        collapsed: false,
+        id: 'todo-view',
+        name: 'Todo'
+      },
+      ExplorerContainerId
+    );
+  }
+
   registerCommands(registry: CommandRegistry) {
     registry.registerCommand(TODO_COMMANDS.ADD_TODO, {
       execute: () => {
@@ -246,6 +258,35 @@ export class TodoContribution
     });
   }
 }
+```
+
+在视图中使用自定义服务提供的 `onDidChange` ，于是在使用快捷键添加 Todo 项后，新 Todo 项就会渲染在界面中：
+
+```tsx
+// modules/todo/browser/todo.view.tsx
+
+...
+export const Todo = ({
+  viewState
+}: React.PropsWithChildren<{ viewState: ViewState }>) => {
+  ...
+  const { showMessage, onDidChange } = useInjectable<ITodoService>(ITodoService);
+
+  React.useEffect(() => {
+    const disposable = onDidChange((value: string) => {
+      const newTodos = todos.slice(0);
+      newTodos.push({
+        description: value,
+        isChecked: false,
+      });
+      setTodos(newTodos);
+    });
+    return () => {
+      disposable.dispose();
+    };
+  }, [todos]);
+ ...
+};
 ```
 
 #### 效果展示

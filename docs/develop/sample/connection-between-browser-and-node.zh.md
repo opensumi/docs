@@ -40,8 +40,8 @@ export class TodoNodeService extends RPCService implements ITodoNodeService { ..
 ```ts
 // modules/todo/browser/index.ts
 
-import { Provider, Injectable } from '@ali/common-di';
-import { BrowserModule } from '@ali/ide-core-browser';
+import { Provider, Injectable } from '@opensumi/di';
+import { BrowserModule } from '@opensumi/ide-core-browser';
 import { TodoContribution } from './todo.contribution';
 import { TodoService } from './todo.service';
 import { ITodoConnectionServerPath, ITodoService } from '../common';
@@ -70,8 +70,8 @@ export class TodoListModule extends BrowserModule {
 ```ts
 // modules/todo/node/index.ts
 
-import { Provider, Injectable } from '@ali/common-di';
-import { NodeModule } from '@ali/ide-core-node';
+import { Provider, Injectable } from '@opensumi/di';
+import { NodeModule } from '@opensumi/ide-core-node';
 import { ITodoNodeService, ITodoConnectionServerPath } from '../common';
 import { TodoNodeService } from './todo.service';
 
@@ -126,9 +126,9 @@ export class TodoService extends RPCService implements ITodoService {
 ```ts
 // modules/todo/node/todo.service.ts
 
-import { Injectable } from '@ali/common-di';
+import { Injectable } from '@opensumi/di';
 import { ITodoNodeService } from '../common';
-import { RPCService } from '@ali/ide-connection';
+import { RPCService } from '@opensumi/ide-connection';
 
 @Injectable()
 export class TodoNodeService extends RPCService implements ITodoNodeService {

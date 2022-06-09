@@ -197,7 +197,7 @@ export class TodoService implements ITodoService {
 }
 ```
 
-Registration commands and shortcut keys:
+Registration of commands and shortcut keys:
 
 ```ts
 // modules/todo/browser/todo.contribution.ts
@@ -231,6 +231,18 @@ export class TodoContribution
   @Autowired(ITodoService)
   private todoService: ITodoService;
 
+  onDidRender() {
+    this.mainLayoutService.collectViewComponent(
+      {
+        component: Todo,
+        collapsed: false,
+        id: 'todo-view',
+        name: 'Todo'
+      },
+      ExplorerContainerId
+    );
+  }
+
   registerCommands(registry: CommandRegistry) {
     registry.registerCommand(TODO_COMMANDS.ADD_TODO, {
       execute: () => {
@@ -246,6 +258,35 @@ export class TodoContribution
     });
   }
 }
+```
+
+Introduce `onDidChange` to the view so everytime after you adding a Todo item by shortcut keys, the item will be rendered and show up:
+
+```tsx
+// modules/todo/browser/todo.view.tsx
+
+...
+export const Todo = ({
+  viewState
+}: React.PropsWithChildren<{ viewState: ViewState }>) => {
+  ...
+  const { showMessage, onDidChange } = useInjectable<ITodoService>(ITodoService);
+
+  React.useEffect(() => {
+    const disposable = onDidChange((value: string) => {
+      const newTodos = todos.slice(0);
+      newTodos.push({
+        description: value,
+        isChecked: false,
+      });
+      setTodos(newTodos);
+    });
+    return () => {
+      disposable.dispose();
+    };
+  }, [todos]);
+ ...
+};
 ```
 
 #### Results Show
