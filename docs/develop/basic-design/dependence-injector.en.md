@@ -95,7 +95,7 @@ export class DemoModule extends BrowserModule {
 
 ### Implement Multiple Instances
 
-When declaring a module, we can make the implementation of the service multi-instantiated by passing `{ multiple: true }` in the module's dependency injection configuration. Namely each time the service is obtained through DI is a re-initialized instance. The following is the instance code.
+When declaring a module, we can make the implementation of the service multi-instantiated by passing `{ multiple: true }` in dependency injection of the module configuration. Namely each time the service is obtained through DI is a re-initialized instance. The following is the instance code.
 
 ```ts
 @Injectable({ multiple: true })
