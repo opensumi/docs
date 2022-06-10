@@ -6,13 +6,13 @@ slug: editor
 
 ## Basic Concept
 
-The following diagram shows the complete process of opening an editor tab, which can be used to understand the core concepts of the editor module.
+The following diagram shows a complete process to open an editor tab, which can help to understand the core concepts of the editor module.
 
 ![](https://img.alicdn.com/imgextra/i2/O1CN01BRKCnA1kelm2RqRVn_!!6000000004709-2-tps-1448-1058.png)
 
-1. There is a unique WorkbenchEditorService instance in the whole IDE global, which is the global editor management service. When we open an editor, we first call its open method, passing in a corresponding uri, such as file://path/to/fileToOpen.ts
+1. The global IDE possesses a unique WorkbenchEditorService instance. The latter is the global editor management service. When we open an editor, we first call its open method and import a corresponding uri, for example, file://path/to/fileToOpen.ts.
 
-2. To open this uri, we need to convert it into IResource that can be opened in the editor, which will have more information necessary for the editor. This information is provided by the pre-registered `IResourceProvider`.
+2. To open this uri, we need to convert it into IResource that can be opened in the editor. It will contain more information necessary for the editor. This information is provided by the pre-registered `IResourceProvider`.
 
 ```typescript
 /**
@@ -29,17 +29,17 @@ export interface IResource<MetaData = any> {
   name: string;
   // Resource URI
   uri: URI;
-  // Resource icon' class
+  // The class of resource icon
   icon: string;
-  // Resource 'addtional information
+  // Addtional information of Resource 
   metadata?: MetaData;
-  // The resource has been deleted
+  // The resource has been removed
   deleted?: any;
 }
 ```
 
-3. Once you get the IResource, you can create a new tab on the tab, displaying the corresponding name and icon.
-4. In order to display contents in the editor, you also need to know how to open the IResource. KAITIAN editor module supports multiple ways to open a resource, such as .md files with code and live preview. An opening means can be a code editor, diff editor, or an editor's rich components(React). These open methods and rich components need to be registered in the EditorComponentRegistry in advance  
+3. Once you get the IResource, you can create a new tab on tab, showing the corresponding name and icon.
+4. To display contents in the editor, you also need to know how to open the IResource. KAITIAN editor module supports multiple ways to open a resource, for example, .md files with code and real-time preview. An opening means can be a code editor, diff editor, or an editor's rich components(React component). You need to register these open methods and rich components in EditorComponentRegistry in advance.
 
 ```typescript
 // Define how to open a resource 
@@ -52,30 +52,30 @@ export interface IEditorOpenType {
 
   readonly?: boolean;
 
-  // Default 0，the bigger ones rank first
+  // Default 0，bigger ones rank first
   weight?: number;
 }
 ```
 
-5. According to the type that the user selected, the corresponding content is displayed in the body of the editor after related opening method is obtained,, thus opening process of a tab is finished.  
+5. After you obtained related opening method, the corresponding content appears in the editor body according to the user selected type, therefore completing the opening process of a tab. 
 
-## Extended Editor
+## Extend the Editor
 
 ### BrowserEditorContribution
 
-All contribution points contributing to the editor module use `BrowserEditorContribution`.
+Contribution points that offer features to the editor module use `BrowserEditorContribution`.
 
 **registerResource**
 
-Used to register resources in `ResourceService` that can be opened in the editor at the right time.
+It is used to register resources in `ResourceService` that can be opened in the editor at the right time.
 
-To open a URI in the editor, you first need to register a `ResourceService` that resolves the URI to an editor resource (`IResource`) in `ResourceService`. Its main responsibility is to provide the name, icon, edited status, etc. of the URI when it is displayed on the editor Tab, and the corresponding callback when the Tab is closed, etc.
+To open a URI in the editor, first you need to register a `IResourceProvider` in `ResourceService`. `IResourceProvider` resolves the URI to an editor resource (`IResource`) . When it is displayed on the editor Tab, its main duty is to diplay URI status including name, icon, edited status, as well as the corresponding callback when the tab is closed.
 
 **registerEditorComponent**
 
-Used to register editor components, open methods, and other functions with `EditorComponentRegistry` at the right time.
+It is used to register editor components, open methods, and other features in `EditorComponentRegistry` at the right time.
 
-The editor resource (`IResource`) corresponding to a uri needs to be able to be displayed in the editor, and one or more open methods need to be registered for it, as well as the React component used for the corresponding open method.
+editor resource(`IResource`) corresponding to a uri needs to be able to show in the editor, and one or more openning methods need to be registered for it, as well as the React component used for the corresponding open method.
 
 **onDidRestoreState**
 
@@ -84,7 +84,7 @@ When finished, the hook onDidRestoreState will be executed.
 
 **registerEditorFeature**
 
-Used to register `EditorFeatureContribution` with the `IEditorFeatureRegistry` at the right time, to enhance the monaco editor in this way.
+It is used to register `EditorFeatureContribution` with the `IEditorFeatureRegistry` at the right time, to enhance the monaco editor in this way.
 
 ### Example
 
@@ -98,7 +98,7 @@ const ExampleEditorComponent = () => {
 @Domain(BrowserEditorContribution)
 export class ExampleEditorContribution implements BrowserEditorContribution {
   registerResource(resourceService: ResourceService): void {
-    // Register example_scheme that allows you to open it in the editor and set the corresponding tab icon and name
+    // To register example_scheme will allow you to open it in the editor and set related tab icon and name
     resourceService.registerResourceProvider({
       scheme: 'example_scheme',
       provideResource: async (
@@ -114,14 +114,14 @@ export class ExampleEditorContribution implements BrowserEditorContribution {
   }
 
   registerEditorComponent(registry: EditorComponentRegistry) {
-    // register the component
+    // Register the component
     registry.registerEditorComponent({
       component: ExampleEditorComponent,
       uid: 'example_scheme_component',
       scheme: 'example_scheme'
     });
 
-    //  Set this component as the default opening method for the example_scheme's resource  
+    // Set this component as the default opening method for the example_scheme's resource  
     registry.registerEditorComponentResolver(
       'example_scheme',
       (resource, results) => {
@@ -147,7 +147,7 @@ export class ExampleEditorContribution implements BrowserEditorContribution {
   registerEditorFeature(registry: IEditorFeatureRegistry) {
     registry.registerEditorFeatureContribution({
       contribute: (editor: IEditor) => {
-        // The contribute function is called when the editor is created, you can add some features at this time 
+        // The contribute function is called when the editor is created. You can add some features at this time 
         // need to return a disposer，which can be called when the editor instance is destroyed
         return editor.monacoEditor.onDidChangeModel((e) => {
           console.log(e.oldModelUrl?.toString());
@@ -252,7 +252,7 @@ The event that the current editorGroup changed
 onDidCurrentEditorGroupChanged: Event<IEditorGroup>;
 ```
 
-The event that the current editorGroup changed
+The event of current editorGroup changes
 
 ##### `editorGroups`
 
@@ -276,7 +276,7 @@ The current editor object
 currentResource: MaybeNull<IResource>;
 ```
 
-Editor resources of the current focus
+Editor resources of current focus
 
 ##### `currentEditorGroup`
 
@@ -284,4 +284,4 @@ Editor resources of the current focus
 currentEditorGroup: IEditorGroup;
 ```
 
-The current editor groups
+The current editor group

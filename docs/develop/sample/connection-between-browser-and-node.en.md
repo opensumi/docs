@@ -5,30 +5,24 @@ slug: connection-between-browser-and-node
 order: 6
 ---
 
-To implement two-way communication between the front and back ends, we rely on special service declarations of 'BrowserModule' and 'NodeModule'.
+To implement two-way communication between the frontend and the backend, we rely on special service declarations of `BrowserModule` and `NodeModule`.  
 
-First of all, you need to define a single channel for two-way communication message. We define a `ITodoConnectionServerPath` as the only ID message channel. Front and back ends distributes the service through the channel.
+First of all, you need to define a single channel for two-way communication message. We define a `ITodoConnectionServerPath` as the only ID message channel. Frontend and backend distributes the service through the channel.  
 
 ```ts
-// modules/todo/common/index.ts
-
 export const ITodoConnectionServerPath = 'ITodoConnectionServerPath';
 ```
 
-## Associating Front-end and Back-end Services
+## Associate Front-end and Back-end Services
 
-First, you need to inherit 'RPCService' on `TodoService` and `TodoNodeService`.
+First, you need to inherit `RPCService` on `TodoService` and `TodoNodeService`.
 
 ```ts
-// modules/todo/browser/todo.service.ts
-
 @Injectable()
 export class TodoService extends RPCService implements ITodoService { ... }
 ```
 
 ```ts
-// modules/todo/node/todo.service.ts
-
 @Injectable()
 export class TodoNodeService extends RPCService implements ITodoNodeService { ... }
 ```
@@ -37,7 +31,6 @@ Associate on a double end `TodoListModule` .
 
 ### Associated Front-end Service
 
-```ts
 // modules/todo/browser/index.ts
 
 import { Provider, Injectable } from '@opensumi/di';
@@ -95,13 +88,11 @@ export class TodoListModule extends NodeModule {
 
 ## Implement Front-end and Back-end Services
 
-This case makes it possible that while the Todo item is clicked, a message is passed to the back-end service. Upon receiving the message, the back-end service reorganizes the content of the message and passes it back to the front-end for message display. The core implementation is as follows.
+This case makes it possible that while the Todo item is clicked, a message is passed to the back-end service. Upon receiving the message, the back-end service reorganizes the content of the message and passes it back to the front-end to display messages. The following is the core implementation.
 
-The front-end service notifies the back-end service as it displays the message.
+The front-end service notifies the back-end service when it displays the message.
 
 ```ts
-// modules/todo/browser/todo.service.ts
-
 @Injectable()
 export class TodoService extends RPCService implements ITodoService {
   ...
@@ -123,7 +114,7 @@ export class TodoService extends RPCService implements ITodoService {
 
 The back-end service receives the message and sends it back to the front-end service.
 
-```ts
+
 // modules/todo/node/todo.service.ts
 
 import { Injectable } from '@opensumi/di';
@@ -133,7 +124,7 @@ import { RPCService } from '@opensumi/ide-connection';
 @Injectable()
 export class TodoNodeService extends RPCService implements ITodoNodeService {
   showMessage = (message: string) => {
-    // Here, this.rpcClient![0] can directly obtain the proxy instance under the communication channel
+    // this.rpcClient![0] can directly obtain the proxy instance under the communication channel
     this.rpcClient![0].onMessage(`I got you message, echo again. ${message}`);
   };
 }
@@ -143,4 +134,4 @@ export class TodoNodeService extends RPCService implements ITodoNodeService {
 
 ![Two-way dispaly](https://img.alicdn.com/imgextra/i1/O1CN01ItcgHk1l0kmoQIjmb_!!6000000004757-1-tps-1200-706.gif)
 
-Since then, we have completed the whole case instruction.
+Since then, we finish the whole case instruction.

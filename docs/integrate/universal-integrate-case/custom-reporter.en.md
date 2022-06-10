@@ -7,7 +7,7 @@ order: 6
 
 ## Overview
 
-OpenSumi provides built-in tracking report, which provides the integrator with some key IDE data indicators, some key performance data of one party's core extensions,etc. Integrators can report this data to their own platform.
+OpenSumi provides built-in tracking report, which provides integrators with some key performance data, including key IDE data indicators and one party's core extensions. Integrators can report the data to their own platform.
 
 ### Frontend Module Usage
 

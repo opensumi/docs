@@ -4,12 +4,11 @@ title: Decoration Module
 slug: decoration
 ---
 
-The FileDecoration module is used to register/manage/distribute filename related `Decoration` services. 
+The FileDecoration module is used to register, manag or distribute filename related `Decoration` services. 
 
 ## Basic Concepts
 
-Decoration —— a means to to "decorate" the file tree style, common scenarios including Git project special decoration
-Git projects are decorated with decorations. Git projects are decorated with decorations.  
+Decoration ——a decorator, a means to to "decorate" the file tree style. The following figure is a common scenario that shows Git project special decoration
 
 ![git-sample](https://img.alicdn.com/imgextra/i4/O1CN0102WFi9267ik1JKMeC_!!6000000007615-2-tps-1038-824.png)
 
@@ -23,7 +22,7 @@ Git projects are decorated with decorations. Git projects are decorated with dec
   registerDecorationsProvider(provider: IDecorationsProvider): IDisposable;
 ```
 
-The underlying data structure for registering a DecorationsProvider is as follows.
+The following code provides the underlying data structure to register DecorationsProvider.
 
 ```ts
 interface IDecorationData {
@@ -44,13 +43,13 @@ interface IDecorationData {
    */
   readonly tooltip?: string;
   /**
-   * wheather Decoration bubbles，Whether to pass Decoration of similar files to folder
+   * Decoration bubble? Decoration of similar files pass to folder?
    */
   readonly bubble?: boolean;
 }
 ```
 
-##### Use Cases
+##### Use Case
 
 ```ts
 class SampleDecorationsProvider implements IDecorationsProvider {
@@ -86,9 +85,9 @@ class SampleDecorationsProvider implements IDecorationsProvider {
   readonly onDidChangeDecorations: Event<IResourceDecorationChangeEvent>;
 ```
 
-Event distribution is performed for the change event of file name Decoration
+Event distribution is performed for the file name Decoration change event
 
-##### Use Cases
+##### Use Case
 
 ```ts
 this.decorationsService.onDidChangeDecorations(() => {
@@ -104,9 +103,9 @@ this.decorationsService.onDidChangeDecorations(() => {
 getDecoration(uri: Uri, includeChildren: boolean, overwrite?: IDecorationData): IDecoration | undefined;
 ```
 
-Obtain the result of the current file's Decoration by means of getting the uri, or return undefined if it doesn't get the Decoration.
+Obtain the result of the current file's Decoration by means of getting the uri, or return "undefined" if it doesn't get the Decoration.
 
-##### Use Cases
+##### Use Case
 
 ```ts
 this.decorationsService.getDecoration(uri, true);

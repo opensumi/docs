@@ -5,11 +5,11 @@ slug: dependence-injector
 order: 4
 ---
 
-In order to promote developers to focus on their own modules and less-concern about the implementation details of other modules, we use [@opensumi/di](https://web.npm.alibaba-inc.com/package/@opensumi/di) for dependency decoupling.  
+To promote developers to focus on their own modules and less-concern about the implementation details of other modules, we use [@opensumi/di](https://web.npm.alibaba-inc.com/package/@opensumi/di) for dependency decoupling.  
 
 ## User Guide
 
-In the dependency injection coding pattern, if we want to use a service within a module, we no longer need to rely on its concrete implementation, but only on the `Token` it displayed and declared.  
+In the dependency injection coding pattern, if we want to use a service within a module, we do not need to rely on its concrete implementation, but only on the `Token` it displayed and declared.  
 
 For eaxmple,`IDialogService` uses pop-ups services in the module:
 
@@ -27,7 +27,7 @@ class DemoService {
 }
 ```
 
-Furthermore, we can explicitly declare part of`Token` in `@opensumi/ide-core-browser`, `@opensumi/ide-core-common`, and `@opensumi/ide-core-node`, to achieve a non-direct dependency on service capabilities, and reduce the circular dependencies.
+Furthermore, we can explicitly declare part of `Token` in `@opensumi/ide-core-browser`, `@opensumi/ide-core-common`, and `@opensumi/ide-core-node`, to achieve a non-direct dependency on service capabilities, and reduce the circular dependencies.
 
 ## Custom Registry Service
 
@@ -36,7 +36,7 @@ In the OpenSumi framework, for `Browser` and `Node` we have designed respective 
 - BrowserModule
 - NodeModule
 
-We can always mount a customizable service on it when exporting the module is. The code of the front-end and back-end modules is basically the same in terms of exported content. Take a front-end module as an example, registering a custom service is shown below.
+We can always mount a customizable service on it when exporting the module. The code of the frontend and backend modules is basically the same in terms of exported content. Take a frontend module as an example, registering a custom service is shown below.
 
 ```ts
 import { Injectable } from '@opensumi/di';
@@ -66,7 +66,7 @@ export class DemoModule extends BrowserModule {
 }
 ```
 
-Apart from the `useClass` definition syntax, the common syntax also includes `useFactory`, `useValue`. which can be used as follows:
+Apart from the `useClass` definition syntax, the common syntax also includes `useFactory`and `useValue`, which can be used as follows:
 
 ```ts
 export class DemoModule extends BrowserModule {
@@ -82,7 +82,7 @@ export class DemoModule extends BrowserModule {
     {
       token: IDemoService,
       useFactory: (injector: Injector) => {
-        // We can get an instance of Injector directly here
+        // We can fetch an instance of Injector directly here
         // In this way, we can mount the same implementation for multiple tokens to achieve separation of service responsibilities  
         return injector.get(IDemo2Service);
       }
@@ -93,9 +93,9 @@ export class DemoModule extends BrowserModule {
 
 ## Further Capabilities
 
-### Implementing Multiple Instances
+### Implement Multiple Instances
 
-When declaring a module, we can make the implementation of the service multi-instantiated by passing `{ multiple: true }` in the module's dependency injection configuration. Namely each time the service is obtained through DI is a re-initialized instance, the example code is as follows:
+When declaring a module, we can make the implementation of the service multi-instantiated by passing `{ multiple: true }` in dependency injection of the module configuration. Namely each time the service is obtained through DI is a re-initialized instance. The following is the instance code.
 
 ```ts
 @Injectable({ multiple: true })
@@ -111,7 +111,7 @@ class DemoService {
 
 ### Creat a Sub Container
 
-By creating sub-containers via [@opensumi/di](https://web.npm.alibaba-inc.com/package/@opensumi/di), we can also make colorful features including custom multitons possible with the help of getting `Injector` example directly.
+With the help of creating sub-containers through [@opensumi/di](https://web.npm.alibaba-inc.com/package/@opensumi/di), we can also make colorful features possible including custom multitons by getting `Injector` sample directly.
 
 ```ts
 import { Injectable, Autowired, INJECTOR_TOKEN, Injector } from '@opensumi/di';
@@ -143,7 +143,7 @@ class DemoService {
 
 ### Classes of Service 
 
-By registering a `tag` for the service in the DI subcontainer, we can use the `tag` parameter to implement calls to different classes of services. This parameter is usually used for service calls that require specific classes, such as in configuration modules. Three different implementations of the same `Token`are registered via  `tag`:  
+By registering a `tag` for the service in the DI subcontainer, we can use the `tag` parameter to implement calls for different classes of services. This parameter is usually used for service calls that require specific classes. For example, in configuration modules, three different implementations of the same `Token` are registered by using `tag`:  
 
 ```ts
 export function injectFolderPreferenceProvider(inject: Injector): void {
@@ -174,8 +174,8 @@ export function injectFolderPreferenceProvider(inject: Injector): void {
           return child.get(FolderPreferenceProvider);
         }
         // When passed in as another file, such as launch.json
-        // Need to be set corresponding FolderPreferenceProvider and the related FolderPreferenceProviderOptions dependency 
-        // The FolderPreferenceProvider fetch here must be multiple instances, because multiple profiles may exist in the workspace mode
+        // Need to set corresponding FolderPreferenceProvider and the related FolderPreferenceProviderOptions dependency 
+        // The way to get FolderPreferenceProvider here must be multiple instances, because multiple profiles may exist in the workspace mode
         return child.get(FolderPreferenceProvider, {
           tag: sectionName,
           multiple: true
@@ -186,6 +186,6 @@ export function injectFolderPreferenceProvider(inject: Injector): void {
 }
 ```
 
-For implementation details, please refer to：[preferences/src/browser/index.ts](https://github.com/opensumi/core/blob/develop/packages/preferences/src/browser/index.ts)
+For implementation details, see [preferences/src/browser/index.ts](https://github.com/opensumi/core/blob/develop/packages/preferences/src/browser/index.ts)
 
-For more information, please check for [@opensumi/di](https://web.npm.alibaba-inc.com/package/@opensumi/di) .
+For more capabilities, see [@opensumi/di](https://web.npm.alibaba-inc.com/package/@opensumi/di) .

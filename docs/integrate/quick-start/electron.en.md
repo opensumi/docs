@@ -4,7 +4,7 @@ title: Quick Start（Electron）
 order: 2
 ---
 
-OpenSumi integrates internally a simple Electron framework, and designed to provide a desktop environment to quick test OpenSumi. You can build your own client with [idee-electron](https://github.com/opensumi/ide-electron) as a template.
+OpenSumi integrates internally a simple Electron framework, and designed to provide a desktop environment to quick test OpenSumi. You can build your own client by using [idee-electron](https://github.com/opensumi/ide-electron) as a template.
 
 You can also get the relevant installation package in the [Release](https://github.com/opensumi/ide-electron/releases) list for a quick experience.
 
@@ -18,7 +18,8 @@ You can also get the relevant installation package in the [Release](https://gith
 
 ## Local Launch
 
-> **Note: Since a large number of packages need to be downloaded during the compilation process, and some packages need to access GitHub to download the source code, please keep GitHub accessible. Many 404 Not Found problems are caused by network access failures.**   China mainland users who cannot install dependencies properly because of network problems can switch to the `main-cn` branch first: `git checkout main-cn`, or refer to the appendix at the end of the article to configure the npm image.
+> **Note: Because a large number of packages need to be downloaded during the compilation process, and some packages need to access GitHub to download the source code, please keep GitHub accessible. Many 404 Not Found problems are caused by network access failures.**   
+> China mainland users who cannot install dependencies properly due to network problems can switch to the `main-cn` branch first: `git checkout main-cn`, or refer to the appendix at the end of the article to configure the npm image.
 
 Run the following commands in sequence:
 
@@ -28,7 +29,7 @@ $ cd ide-electron
 $ npm install
 $ npm run build
 $ npm run rebuild-native -- --force-rebuild=true
-$ npm run download-extension # install built-in plug-ins (optional)  
+$ npm run download-extension # install built-in extensions (optional)  
 $ npm run start
 ```
 
@@ -48,10 +49,10 @@ $ npm run start
 
 ## Package
 
-Run `npm run pack` to package the project. The packaged installation package will be exported in the `out` directory.   
+Run `npm run pack` to package the project. The installation package will be exported in the `out` directory.   
 
 
-## npm image
+## npm Image Configuration
 Open `ide-electron/.npmrc` and add the following NPM image configuration to resolve installation dependency failure:  
 ```config
 registry=https://registry.npmmirror.com/

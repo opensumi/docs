@@ -22,7 +22,7 @@ For workspace configuration files, we generally read them from the `${Workspace 
 
 #### Mode 1
 
-Set configuration registration and declaration via `VS Code Configuration Contribution`, please refer to[Configuration Contribution](https://code.visualstudio.com/api/references/contribution-points#contributes.configuration)。
+Set configuration registration and declaration by using `VS Code Configuration Contribution`, please see [Configuration Contribution](https://code.visualstudio.com/api/references/contribution-points#contributes.configuration)。
 
 #### Mode 2
 
@@ -49,7 +49,7 @@ export class DemoContribution implements PreferenceContribution {
 }
 ```
 
-By introducing the above `DemoContribution` class in the module declaration, you can register the new configuration in the IDE environment, refer to the code: [common.contribution.ts](https://github.com/opensumi/core/blob/v2.13.10/ packages/core-browser/src/common/common.contribution.ts).
+By introducing the above `DemoContribution` class in the module declaration, you can register the new configuration in the IDE environment, see the code: [common.contribution.ts](https://github.com/opensumi/core/blob/v2.13.10/ packages/core-browser/src/common/common.contribution.ts).
 
 ### Configuration Value Operation
 
@@ -147,4 +147,4 @@ export class DemoSettingContribution implements SettingContribution {
 }
 ```
 
-For more configuration details and extensions, please refer to the OpenSumi source code.
+For more configuration details and extensions, please see the OpenSumi source code.

@@ -1,19 +1,19 @@
 ---
 id: custom-readonly-mode
-title: Custom read-only mode
+title: Custom Read-only Mode
 slug: custom-readonly-mode
 order: 7
 ---
 
 ## Overview
 
-In some special scenarios, the integrator wants to be able to run in read-only mode, such as `sharing` functions, where the person being shared can only read but not write, cannot use certain commands, or create and delete files, or other such requirements.
+In some special scenarios, the integrator wants to be able to run in read-only mode. For example, `sharing` functions enable the receiver read but cannot write, use certain commands, or create and delete files, or other such requirements.
 
-Then we can use OpenSumi's custom module capability to enable read-only mode by disabling certain functions and `Command` commands in the module
+Then we can use OpenSumi custom module capability to enable read-only mode by disabling certain functions and `Command` commands in the module.
 
 ## Custom a Readonly Module
 
-First custom a `ReadonlyModule` module:
+Firstly, custom a `ReadonlyModule` module:
 
 ```typescript
 @Injectable()
@@ -24,8 +24,7 @@ export class ReadonlyModule extends BrowserModule {
   ];
 }
 ```
-
-Then implement a `ReadOnlyContribution` and import it into the `ReadonlyModule`'s providers:
+Secondly, implement `ReadOnlyContribution` and import it into the `ReadonlyModule`'s providers:
 
 ```typescript
 @Domain(MenuContribution, CommandContribution, TabBarToolbarContribution)
@@ -35,11 +34,11 @@ export class ReadOnlyContribution
   protected menuRegistry: IMenuRegistry;
 
   static UNREGISTER_COMMAND = new Set([
-    // Disabling file saving
+    // Disabling file save
     EDITOR_COMMANDS.SAVE_CURRENT,
     EDITOR_COMMANDS.SAVE_URI,
     EDITOR_COMMANDS.SAVE_ALL,
-    // Disabling file operations
+    // Disabling file operation
     EDITOR_COMMANDS.NEW_UNTITLED_FILE,
     FILE_COMMANDS.DELETE_FILE,
     FILE_COMMANDS.RENAME_FILE,
@@ -71,11 +70,11 @@ export class ReadOnlyContribution
 }
 ```
 
-More [`Command`](https://github.com/opensumi/core/blob/main/packages/core-browser/src/common/common.command.ts) and [`MenuId`](https://github.com/opensumi/core/blob/08cfc13779d0830fcd8663ca1e9dd4bc92218171/packages/core-browser/src/menu/next/menu-id.ts#L2) are available in the source code, simply uninstall Command or Menu as shown in the code.    
+More [`Command`](https://github.com/opensumi/core/blob/main/packages/core-browser/src/common/common.command.ts) and [`MenuId`](https://github.com/opensumi/core/blob/08cfc13779d0830fcd8663ca1e9dd4bc92218171/packages/core-browser/src/menu/next/menu-id.ts#L2) are available in the source code. You can simply uninstall Command or Menu as shown in the code.    
 
 ## Integration Module
 
-Finally introduced at integration time. Taking the `opensumi/ide-startup` case as an example, when referring [index.ts#L12](https://github.com/opensumi/ide-startup/blob/a46a78a56b25b17f7f36ddc3f340d1720311559a/src/browser/index.ts#L12) , just import it to the modules field.
+Finally, introduce it at integration time. Taking the `opensumi/ide-startup` case as an example, when referring [index.ts#L12](https://github.com/opensumi/ide-startup/blob/a46a78a56b25b17f7f36ddc3f340d1720311559a/src/browser/index.ts#L12) , just import it to the modules field.
 
 ```typescript
 new ClientApp({
@@ -83,7 +82,7 @@ new ClientApp({
     // other modules
     ReadonlyModule
   ],
-  //  You can also set editor.forceReadOnly as true in the default configuration 
+  //  You can also set editor.forceReadOnly as true in default configurations 
   defaultPreferences: {
     'editor.forceReadOnly': true
   }

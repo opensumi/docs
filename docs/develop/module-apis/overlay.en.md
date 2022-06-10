@@ -95,7 +95,7 @@ export class MessageDemo {
 
 ### closable
 
-Whether to display the close button. The default is true
+Whether to display the close button. The default is true.
 
 ## FAQ 
 
