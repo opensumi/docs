@@ -26,11 +26,11 @@ Run the following commands in sequence:
 ```bash
 $ git clone git@github.com:opensumi/ide-electron.git
 $ cd ide-electron
-$ npm install
-$ npm run build
-$ npm run rebuild-native -- --force-rebuild=true
-$ npm run download-extension # install built-in extensions (optional)  
-$ npm run start
+$ yarn
+$ yarn run build
+$ yarn run rebuild-native -- --force-rebuild=true
+$ yarn run download-extension # install built-in extensions (optional)  
+$ yarn run start
 ```
 
 ## Development 
@@ -38,18 +38,18 @@ $ npm run start
 Run in the project root directory
 
 ```bash
-$ npm run watch
+$ yarn run watch
 ```
 
 Start
 
 ```bash
-$ npm run start
+$ yarn run start
 ```
 
 ## Package
 
-Run `npm run pack` to package the project. The installation package will be exported in the `out` directory.   
+Run `yarn run pack` to package the project. The installation package will be exported in the `out` directory.   
 
 
 ## npm Image Configuration
