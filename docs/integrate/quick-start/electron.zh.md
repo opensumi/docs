@@ -26,11 +26,11 @@ OpenSumi 内部集成了一个简易的 Electron 框架，旨在提供一个快�
 ```bash
 $ git clone git@github.com:opensumi/ide-electron.git
 $ cd ide-electron
-$ npm install
-$ npm run build
-$ npm run rebuild-native -- --force-rebuild=true
-$ npm run download-extension # 安装内置插件（可选）
-$ npm run start
+$ yarn
+$ yarn build
+$ yarn rebuild-native -- --force-rebuild=true
+$ yarn download-extension # 安装内置插件（可选）
+$ yarn start
 ```
 
 ## 开发
@@ -38,18 +38,18 @@ $ npm run start
 在项目根目录运行：
 
 ```bash
-$ npm run watch
+$ yarn watch
 ```
 
 启动：
 
 ```bash
-$ npm run start
+$ yarn start
 ```
 
 ## 打包
 
-运行 `npm run pack` 即可将项目打包，打包后的安装包将输出在 `out` 目录。
+运行 `yarn pack` 即可将项目打包，打包后的安装包将输出在 `out` 目录。
 
 ## npm 镜像配置
 
