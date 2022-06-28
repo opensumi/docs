@@ -5,7 +5,7 @@ slug: dependence-injector
 order: 4
 ---
 
-为了让模块开发者能够专注于自己的模块，无需关注其他模块的实现细节，我们使用 [@opensumi/di](https://web.npm.alibaba-inc.com/package/@opensumi/di) 来实现依赖的解耦。
+为了让模块开发者能够专注于自己的模块，无需关注其他模块的实现细节，我们使用 [@opensumi/di](https://www.npmjs.com/package/@opensumi/di) 来实现依赖的解耦。
 
 ## 使用
 
@@ -111,7 +111,7 @@ class DemoService {
 
 ### 创建子容器
 
-通过 [@opensumi/di](https://web.npm.alibaba-inc.com/package/@opensumi/di) 创建子容器的能力，我们还可以通过直接获取 `Injector` 示例来实现自定义多例等丰富多彩的功能。
+通过 [@opensumi/di](https://www.npmjs.com/package/@opensumi/di) 创建子容器的能力，我们还可以通过直接获取 `Injector` 示例来实现自定义多例等丰富多彩的功能。
 
 ```ts
 import { Injectable, Autowired, INJECTOR_TOKEN, Injector } from '@opensumi/di';
@@ -188,4 +188,4 @@ export function injectFolderPreferenceProvider(inject: Injector): void {
 
 详细实现见：[preferences/src/browser/index.ts](https://github.com/opensumi/core/blob/develop/packages/preferences/src/browser/index.ts)
 
-更多能力，请自行查阅 [@opensumi/di](https://web.npm.alibaba-inc.com/package/@opensumi/di) 文档。
+更多能力，请自行查阅 [@opensumi/di](https://www.npmjs.com/package/@opensumi/di) 文档。
