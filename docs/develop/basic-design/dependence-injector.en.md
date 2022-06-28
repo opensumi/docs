@@ -5,7 +5,7 @@ slug: dependence-injector
 order: 4
 ---
 
-To promote developers to focus on their own modules and less-concern about the implementation details of other modules, we use [@opensumi/di](https://web.npm.alibaba-inc.com/package/@opensumi/di) for dependency decoupling.  
+To promote developers to focus on their own modules and less-concern about the implementation details of other modules, we use [@opensumi/di](https://www.npmjs.com/package/@opensumi/di) for dependency decoupling.  
 
 ## User Guide
 
@@ -111,7 +111,7 @@ class DemoService {
 
 ### Creat a Sub Container
 
-With the help of creating sub-containers through [@opensumi/di](https://web.npm.alibaba-inc.com/package/@opensumi/di), we can also make colorful features possible including custom multitons by getting `Injector` sample directly.
+With the help of creating sub-containers through [@opensumi/di](https://www.npmjs.com/package/@opensumi/di), we can also make colorful features possible including custom multitons by getting `Injector` sample directly.
 
 ```ts
 import { Injectable, Autowired, INJECTOR_TOKEN, Injector } from '@opensumi/di';
@@ -188,4 +188,4 @@ export function injectFolderPreferenceProvider(inject: Injector): void {
 
 For implementation details, see [preferences/src/browser/index.ts](https://github.com/opensumi/core/blob/develop/packages/preferences/src/browser/index.ts)
 
-For more capabilities, see [@opensumi/di](https://web.npm.alibaba-inc.com/package/@opensumi/di) .
+For more capabilities, see [@opensumi/di](https://www.npmjs.com/package/@opensumi/di) .
