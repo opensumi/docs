@@ -62,7 +62,7 @@ export class ExplorerContribution implements ComponentContribution {
       title: localize('explorer.title'),
       priority: 10,
       // component: ExplorerComponent,  // The specific rendering component can be passed in here
-      containerId: ExplorerContainerId
+      containerId: EXPLORER_CONTAINER_ID
     });
   }
 }
