@@ -62,7 +62,7 @@ export class ExplorerContribution implements ComponentContribution {
       title: localize('explorer.title'),
       priority: 10,
       // component: ExplorerComponent,  // 这里可以传入具体的渲染组件
-      containerId: ExplorerContainerId
+      containerId: EXPLORER_CONTAINER_ID
     });
   }
 }

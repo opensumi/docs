@@ -195,7 +195,7 @@ import {
   KeybindingRegistry,
   localize
 } from '@opensumi/ide-core-browser';
-import { ExplorerContainerId } from '@opensumi/ide-explorer/lib/browser/explorer-contribution';
+import { EXPLORER_CONTAINER_ID } from '@opensumi/ide-explorer/lib/browser/explorer-contribution';
 import {
   MainLayoutContribution,
   IMainLayoutService
@@ -223,7 +223,7 @@ export class TodoContribution
         id: 'todo-view',
         name: 'Todo'
       },
-      ExplorerContainerId
+      EXPLORER_CONTAINER_ID
     );
   }
 

@@ -84,7 +84,7 @@ this.layoutService.collectViewComponent(
     collapsed: false,
     component: FileTree
   },
-  ExplorerContainerId
+  EXPLORER_CONTAINER_ID
 );
 ```
 

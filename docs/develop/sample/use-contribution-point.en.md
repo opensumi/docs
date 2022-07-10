@@ -29,7 +29,7 @@ To create the`todo.contribution.ts` file, you can use the `onDidRender` contribu
 ```ts
 import { Autowired } from '@opensumi/di';
 import { Domain, localize } from '@opensumi/ide-core-browser';
-import { ExplorerContainerId } from '@opensumi/ide-explorer/lib/browser/explorer-contribution';
+import { EXPLORER_CONTAINER_ID } from '@opensumi/ide-explorer/lib/browser/explorer-contribution';
 import {
   MainLayoutContribution,
   IMainLayoutService
@@ -49,7 +49,7 @@ export class TodoContribution implements MainLayoutContribution {
         id: 'todo-view',
         name: 'Todo'
       },
-      ExplorerContainerId
+      EXPLORER_CONTAINER_ID
     );
   }
 }
