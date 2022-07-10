@@ -114,7 +114,7 @@
     collapsed<!-- --><span class="token operator">:<!-- --></span> <!-- --><span class="token boolean">false<!-- --></span><span class="token punctuation">,<!-- --></span>
     component<!-- --><span class="token operator">:<!-- --></span> FileTree
   <!-- --><span class="token punctuation">}<!-- --></span><span class="token punctuation">,<!-- --></span>
-  ExplorerContainerId
+  <!-- --><span class="token constant">EXPLORER_CONTAINER_ID<!-- --></span>
 <!-- --><span class="token punctuation">)<!-- --></span><span class="token punctuation">;<!-- --></span></code></pre></div>
 <!-- --><h3 id="控制监听视图变化" style="position:relative"><a href="#%E6%8E%A7%E5%88%B6%E7%9B%91%E5%90%AC%E8%A7%86%E5%9B%BE%E5%8F%98%E5%8C%96" aria-label="控制监听视图变化 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>控制/监听视图变化<!-- --></h3>
 <!-- --><p>视图注册到支持多视图切换的位置后（目前为左侧、底部和右侧），可以通过 <!-- --><code class="language-text">layoutService.getTabbarHandler(viewOrContainerId: string)<!-- --></code> 拿到 <!-- --><code class="language-text">TabbarHandler<!-- --></code>，<!-- --><code class="language-text">TabbarHandler<!-- --></code> 提供了非常强大的视图控制与监听能力：<!-- --></p>
@@ -152,7 +152,7 @@
    */<!-- --></span>
   <!-- --><span class="token function">setTitleComponent<!-- --></span><span class="token punctuation">(<!-- --></span>Fc<!-- --><span class="token operator">:<!-- --></span> React<!-- --><span class="token punctuation">.<!-- --></span>ComponentType<!-- --><span class="token punctuation">,<!-- --></span> props<!-- --><span class="token operator">?<!-- --></span><span class="token operator">:<!-- --></span> object<!-- --><span class="token punctuation">)<!-- --></span><span class="token punctuation">;<!-- --></span>
   <!-- --><span class="token comment">/**
-   *   设置当前视图的展开尺寸，会强制展开面板
+   * 设置当前视图的展开尺寸，会强制展开面板
    */<!-- --></span>
   <!-- --><span class="token function">setSize<!-- --></span><span class="token punctuation">(<!-- --></span>size<!-- --><span class="token operator">:<!-- --></span> <!-- --><span class="token builtin">number<!-- --></span><span class="token punctuation">)<!-- --></span><span class="token punctuation">;<!-- --></span>
   <!-- --><span class="token comment">/**
