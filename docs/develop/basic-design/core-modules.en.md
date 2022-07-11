@@ -1,5 +1,3 @@
-
-
 ---
 id: core-modules
 title: Core Modules
@@ -43,7 +41,7 @@ Extension is the core OpenSumi extension system implementation, including the fr
 
 ### Extension Manager
 
-The main role of Extension-manager is to install, manage, enable or disable extensions. Aslo it supports customized sources. What makes it special is that extension-manager is the only module that can directly depend on extension module, because the extension needs to be synchronized and activated after installing and enabling it.
+The main role of Extension-manager is to install, manage, enable or disable extensions. Also it supports customized sources. What makes it special is that extension-manager is the only module that can directly depend on extension module, because the extension needs to be synchronized and activated after installing and enabling it.
 
 ## Module Layering
 
@@ -67,7 +65,7 @@ One of the most important criteria to determine a module belongs to an `underlyi
 ├── decoration                    # Used to manage and register decorations except the editor, such as decorations of the Git state in the file tree view
 ├── editor                        # Providing editor and group editor operations and relevant management functionalities for Upper-level packaging module of Monaco Editor
 ├── electron-basic                # The custom feature in the Electron base，including the basic implementation of the Welcome interface 
-├── explorer                      # Providing a basic view container for FileTree, to be dicarded. 
+├── explorer                      # Providing a basic view container for FileTree, to be discarded. 
 ├── express-file-server           # OpenSumi built-in static resource server，mainly providing functions including extension resource reading  
 ├── extension-manager             # Built-in extension installation, management and other functions  
 ├── extension-storage             # Providing storage-related VS Code APIs to manage extension-related storage 
@@ -104,7 +102,7 @@ One of the most important criteria to determine a module belongs to an `underlyi
 ├── toolbar                       # Toolbar functionality implementation, providing the OpenSumi-extended Toolbar-related APIs 
 ├── types                         # OpenSumi extension type declaration module, containing all VS Code API type declarations compatible with OpenSumi 
 ├── userstorage                   # User cache functionality implementation
-├── variable                      # Providing management and implementaion of various "magic variables" at runtime. For example, in the Task configuration file tasks.json, you can use ${WorkspaceFolder} to get the current working directory  
+├── variable                      # Providing management and implementation of various "magic variables" at runtime. For example, in the Task configuration file tasks.json, you can use ${WorkspaceFolder} to get the current working directory  
 ├── webview                       # Webview feature implementation, including various Webview components and capabilities, offering standard VS Code Webview APIs
 ├── workspace                     # Workspace functionality implementation, used to manage the current OpenSumi open workspace, and supporting multi-workspace functions
 └── workspace-edit                # Packaging workspace-level editing, for example, to revoke a renaming needs to call WorkspaceEdit relative functions at the same time, so as to perform a file-level revocation.
