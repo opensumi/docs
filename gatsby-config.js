@@ -67,7 +67,7 @@ module.exports = {
           zh: '基础设计',
           en: 'Basic Design'
         },
-        order: 2
+        order: 4
       },
       {
         slug: 'develop/module-apis',
@@ -75,7 +75,7 @@ module.exports = {
           zh: '模块 API',
           en: 'Modules API'
         },
-        order: 3
+        order: 5
       },
       {
         slug: 'develop/sample',
@@ -83,7 +83,7 @@ module.exports = {
           zh: '经典案例',
           en: 'Sample'
         },
-        order: 5
+        order: 6
       }
     ],
     showDingTalkQRCode: true,
