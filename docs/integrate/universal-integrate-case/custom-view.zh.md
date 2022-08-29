@@ -66,17 +66,31 @@ export class SearchContribution implements ComponentContribution {
 
 下面以在 MenuBar 右侧增加一个 ToolBar 组件为例，介绍如何定制 Layout。
 
-![视图效果](https://img.alicdn.com/imgextra/i2/O1CN01GNMkW31ygVtoizfSG_!!6000000006608-2-tps-2880-1750.png)
+![视图效果](https://img.alicdn.com/imgextra/i4/O1CN014ixdVn1OainoMihzF_!!6000000001722-2-tps-1424-882.png)
+
+完整代码案例见：[Custom View](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/custom-toolbar)
 
 ## 视图注册
 
 首先我们需要将 ToolBar 组件进行注册，关联到一个字符串 Token `test-toolbar` 上：
 
-```typescript
-export const Toolbar = () => (
-  <div style={{ lineHeight: '27px' }}>I'm a ToolBar, ToolBar, ToolBar</div>
+```ts
+export const TestToolbar = () => (
+  <div
+    style={{
+      lineHeight: '35px',
+      flex: 1,
+      padding: '0 20px',
+      textAlign: 'center',
+      backgroundColor: 'var(--kt-menubar-background)'
+    }}
+  >
+    I'm a Test ToolBar
+  </div>
 );
+```
 
+```ts
 @Domain(ComponentContribution)
 export class TestContribution implements ComponentContribution {
   registerComponent(registry: ComponentRegistry) {
@@ -85,7 +99,7 @@ export class TestContribution implements ComponentContribution {
       [
         {
           id: 'test-toolbar',
-          component: Toolbar,
+          component: TestToolbar,
           name: '测试'
         }
       ],
@@ -106,9 +120,9 @@ export class TestContribution implements ComponentContribution {
 
 ### 定制插槽渲染器
 
-通过 SlotRenderer Contribution 替换顶部的 SlotRenderer，将默认的上下平铺模式改成横向的 flex 模式：
+通过 SlotRendererContribution 替换顶部的 SlotRenderer，将默认的上下平铺模式改成横向的 flex 模式：
 
-```typescript
+```ts
 export const TopSlotRenderer: (props: {
   className: string;
   components: ComponentRegistryInfo[];
@@ -124,7 +138,7 @@ export const TopSlotRenderer: (props: {
 };
 
 @Domain(SlotRendererContribution)
-export class SampleContribution implements SlotRendererContribution {
+export class TestToolbarSlotContribution implements SlotRendererContribution {
   registerRenderer(registry: SlotRendererRegistry) {
     registry.registerSlotRenderer(SlotLocation.top, TopSlotRenderer);
   }
@@ -133,16 +147,13 @@ export class SampleContribution implements SlotRendererContribution {
 
 之后在视图配置里将 ToolBar 的视图传入顶部位置即可：
 
-```typescript
-const layoutConfig = {
-  [SlotLocation.top]: {
-    modules: ['@opensumi/ide-menu-bar', 'test-ToolBar']
-  }
-  // rest code
-};
+```ts
 renderApp({
-  layoutConfig
-  // rest code
+  ...
+  [SlotLocation.top]: {
+    modules: ['@opensumi/ide-menu-bar', 'test-toolbar']
+  }
+  ...
 });
 ```
 
@@ -150,35 +161,33 @@ renderApp({
 
 增加插槽位置非常简单，只需要将 SlotRenderer 组件放入视图即可，Layout 设计的很灵活，你可以在任意位置插入这个渲染器。在本例中，可以选择在布局组件中增加该位置，或在 MenuBar 视图内增加该位置：
 
-```typescript
-// 在布局模板上增加
+```ts
 export function LayoutComponent() {
   return (
     <BoxPanel direction="top-to-bottom">
       <BoxPanel direction="left-to-right">
         <SlotRenderer
           color={colors.menuBarBackground}
-          defaultSize={27}
+          defaultSize={35}
           slot="top"
         />
-        // 增加一个slot插槽
+        // 增加一个 Slot 插槽
         <SlotRenderer
           color={colors.menuBarBackground}
-          defaultSize={27}
-          slot="action"
+          defaultSize={35}
+          slot="customAction"
         />
       </BoxPanel>
-      // rest code
     </BoxPanel>
   );
 }
 
-// 在MenuBar视图内增加
+// 或在 MenuBar 视图内增加
 export const MenuBarMixToolbarAction: React.FC<MenuBarMixToolbarActionProps> = props => {
   return (
     <div className={clx(styles.MenuBarWrapper, props.className)}>
       <MenuBar />
-      <SlotRenderer slot="action" flex={1} overflow={'initial'} />
+      <SlotRenderer slot="customAction" flex={1} overflow={'initial'} />
     </div>
   );
 };
@@ -186,13 +195,14 @@ export const MenuBarMixToolbarAction: React.FC<MenuBarMixToolbarActionProps> = p
 
 增加好插槽位置后，在视图配置里增加对应位置及相应的视图 Token 即可：
 
-```typescript
-const layoutConfig = {
-  [SlotLocation.action]: {
+```ts
+renderApp({
+  ...
+  customAction: {
     modules: ['test-toolbar']
   }
-  // rest code
-};
+  ...
+});
 ```
 
 ## 扩展阅读
