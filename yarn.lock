@@ -2112,10 +2112,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@opensumi/gatsby-theme@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@opensumi/gatsby-theme/-/gatsby-theme-2.0.3.tgz#4c6a4e7359ecc8e0872504923a0c313d4395fdf0"
-  integrity sha512-D6sEd4mPnYA9sNnMQ2M80nBR8ZSOpSIMHTUTqMcLCwG/nLtA1/F1UwZQySs0pGA+VW/e/AmhKQWMqdwsE+tu1w==
+"@opensumi/gatsby-theme@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@opensumi/gatsby-theme/-/gatsby-theme-2.0.6.tgz#8ce144e666c3e49a1fcd8be9da5ba481f6fc82d7"
+  integrity sha512-27iqESU7YfjguMB3agc5Hn+cpn5Bq9cdTqC726nYDVGPm+7BYaD3Uz/J+qnmsyT0qchIQ98t2OqMd7CrMXaZ3A==
   dependencies:
     "@ant-design/icons" "^4.7.0"
     "@docsearch/css" "^3.1.0"
