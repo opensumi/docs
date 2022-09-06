@@ -118,7 +118,7 @@ OpenSumi 运行时存在多个进程，你需要确定你要调试的具体进�
 
 ### 插件进程
 
-针对 `插件进程`，你可以通过使用 `VSCode` 或基于 OpenSumi 搭建的调试面板中的 `Attach to Extension Host` 的方式进行 `插件进程` 的断点调试。偶尔不太灵的情况，你也可以直接打开 `chrome://inspect` 面板进行代码调试（比较好用），通过在发现端口中填入 `localhost:9999` 便可以在框架运行后获取到调试进程进行调试，如下图所示：
+针对 `插件进程`，你可以通过使用 `VSCode` 或基于 OpenSumi 搭建的调试面板中的 `Attach to Extension Host` 的方式进行 `插件进程` 的断点调试。偶尔不太灵的情况，你也可以直接打开 `chrome://inspect` 面板进行代码调试（比较好用），通过在发现端口中填入 `localhost:9889` 便可以在框架运行后获取到调试进程进行调试，如下图所示：
 
 ![插件进程](https://img.alicdn.com/imgextra/i4/O1CN01qr67Fb1LCxJsM9S8p_!!6000000001264-2-tps-2500-1412.png#id=MrtyW&originHeight=1412&originWidth=2500&originalType=binary&ratio=1&status=done&style=none)
 
