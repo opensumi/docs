@@ -110,7 +110,7 @@ In addition, you can also use the `Launch Backend` and `Launch Frontend` in the 
 
 ### Extension Process
 
-As for the `extension process`, you can use `VSCode` or the `Attach to Extension Host` method in the debugging panel built on OpenSumi to debug the `extension process`. When it doesn't work sometimes, you can directly open `chrome://inspect` panel to debug the code(easy to use). You can start to debug it after the framework is running by filling in `localhost:9999` in the discovery port, as shown in the following figure: 
+As for the `extension process`, you can use `VSCode` or the `Attach to Extension Host` method in the debugging panel built on OpenSumi to debug the `extension process`. When it doesn't work sometimes, you can directly open `chrome://inspect` panel to debug the code(easy to use). You can start to debug it after the framework is running by filling in `localhost:9889` in the discovery port, as shown in the following figure: 
 
 ![Extension process](https://img.alicdn.com/imgextra/i4/O1CN01qr67Fb1LCxJsM9S8p_!!6000000001264-2-tps-2500-1412.png#id=MrtyW&originHeight=1412&originWidth=2500&originalType=binary&ratio=1&status=done&style)
 
