@@ -5,7 +5,7 @@ slug: shortcuts-guard
 order: 1
 ---
 
-The shortcuts of the OpenSumi IDE conflict with those of the Chrome, which makes the corresponding actions of OpenSumi IDE unable to take effect. For example, the Ctrl/Cmd + W shortcut will close the current browser tab, making OpenSumi unable to handle this shortcut event. Shortcuts Guard solve the most common used shortcuts conflict.
+The shortcuts of IDEs developed based on OpenSumi conflict with those of Chrome, which makes the corresponding actions of IDEs unable to take effect. For example, the `Ctrl/Cmd + W` shortcut will close the current browser tab, making IDEs unable to handle this shortcut event. Shortcuts Guard solve the most common used shortcuts conflict.
 
 ![popup page](https://gw.alipayobjects.com/zos/antfincdn/WT9eqVueq/9b0b170a-cd32-40ec-9dbf-ea145f6bc800.png)
 
@@ -13,10 +13,12 @@ The shortcuts of the OpenSumi IDE conflict with those of the Chrome, which makes
 
 - Go to [the release page](https://github.com/opensumi/shortcuts-guard/releases) of the extension repository or [the Chrome Web Store](https://chrome.google.com/webstore/detail/shortcuts-guard/nephehdkdelkjgiihmhdjpedpoinmpjl?hl=en-US) to get the extension.
 - Click the Chrome Extension icon, and then there is a popup page.
-- Add the URL which can be a match pattern in the popup page where the extension will guard the OpenSumi IDE shortcuts.
-- Click the keyboard icon in the upper right corner of the popup page to go to the shortcut settings page, and then input the conflicting shortcuts.
+- Add a URL which can be a match pattern on the popup page where the extension will guard the IDE shortcuts.
+- Click the keyboard icon on the upper right corner of the popup page to go to the shortcut settings page, and then input the conflicting shortcuts.
 
 ## Match patterns
+
+Support clicking the pencil button in the new URL input box on the popup page to automatically obtain the match pattern of the current browser page URL into the input box.
 
 ### Basic Syntax
 

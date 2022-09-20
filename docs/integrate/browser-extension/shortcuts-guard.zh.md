@@ -5,7 +5,7 @@ slug: shortcuts-guard
 order: 1
 ---
 
-OpenSumi IDE 快捷键存在和谷歌浏览器快捷键冲突的情况，这些情况让 OpenSumi IDE 对应行为无法生效。例如 Ctrl/Cmd + W 快捷键会关闭当前浏览器的标签页，使得 OpenSumi 无法处理这个快捷键事件。Shortcuts Guard 解决常用的快捷键冲突。
+基于 OpenSumi 开发的 IDE 的快捷键存在和谷歌浏览器快捷键冲突的情况，这些情况让 IDE 对应行为无法生效。例如 `Ctrl/Cmd + W` 快捷键会关闭当前浏览器的标签页，使得 IDE 无法处理这个快捷键事件。Shortcuts Guard 解决常用的快捷键冲突。
 
 ![popup 页面](https://gw.alipayobjects.com/zos/antfincdn/Vplt6x5G9/4b3c7a42-f9b6-4b36-a42e-d814397c6137.png)
 
@@ -13,10 +13,12 @@ OpenSumi IDE 快捷键存在和谷歌浏览器快捷键冲突的情况，这些�
 
 - 前往插件仓库的[发布页面](https://github.com/opensumi/shortcuts-guard/releases)或者 [Chrome 应用商店](https://chrome.google.com/webstore/detail/shortcuts-guard/nephehdkdelkjgiihmhdjpedpoinmpjl?hl=zh-CN)获取 Shortcuts Guard。
 - 点击插件图标，然后会出现一个 popup 页面。
-- 在 popup 页面中输入可为匹配模式的 URL，插件会在你输入的 URL 上守护 OpenSumi IDE 快捷键。
+- 在 popup 页面中输入可为匹配模式的 URL，插件会在你输入的 URL 上守护 IDE 快捷键。
 - 点击 popup 页面右上角键盘图标，前往快捷键设置页面，然后输入冲突的快捷键。
 
 ## 匹配模式
+
+支持点击 popup 页面新增 URL 输入框内的铅笔按钮，自动获取当前浏览器页面 URL 的匹配模式到输入框中。
 
 ### 基本语法
 
