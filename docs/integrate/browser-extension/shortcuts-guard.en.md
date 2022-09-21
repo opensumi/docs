@@ -44,12 +44,12 @@ Support clicking the pencil button in the new URL input box on the popup page to
 
 ## Guarded shortcuts
 
-| **Windows Shortcut** | **Mac Shortcut** | **OpenSumi IDE Action** | **Chrome Action**                                           |
-| -------------------- | ---------------- | ----------------------- | ----------------------------------------------------------- |
-| Ctrl + n             | ⌘ + n            | New file                | Open a new window                                           |
-| Ctrl + w             | ⌘ + w            | Close editor            | Close the current tab                                       |
-| Ctrl + t             | ⌘ + t            | Show all Symbols        | Open a new tab, and jump to it                              |
-| Ctrl + Shift + t     | ⌘ + Shift + t    | Reopen closed editor    | Reopen previously closed tabs in the order they were closed |
-| Ctrl + Shift + w     | ⌘ + Shift + w    | Close the current tab   | Close the current window                                    |
+| **Windows Shortcut** | **Mac Shortcut** | **IDE Action**        | **Chrome Action**                                           |
+| -------------------- | ---------------- | --------------------- | ----------------------------------------------------------- |
+| Ctrl + n             | ⌘ + n            | New file              | Open a new window                                           |
+| Ctrl + w             | ⌘ + w            | Close editor          | Close the current tab                                       |
+| Ctrl + t             | ⌘ + t            | Show all Symbols      | Open a new tab, and jump to it                              |
+| Ctrl + Shift + t     | ⌘ + Shift + t    | Reopen closed editor  | Reopen previously closed tabs in the order they were closed |
+| Ctrl + Shift + w     | ⌘ + Shift + w    | Close the current tab | Close the current window                                    |
 
 > Reference [Chrome keyboard shortcuts](https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop) and [VS Code keyboard shortcuts](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
