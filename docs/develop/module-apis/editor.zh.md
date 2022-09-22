@@ -124,12 +124,10 @@ export class ExampleEditorContribution implements BrowserEditorContribution {
     registry.registerEditorComponentResolver(
       'example_scheme',
       (resource, results) => {
-        results.push([
-          {
-            type: 'component',
-            componentId: 'example_scheme_component'
-          }
-        ]);
+        results.push({
+          type: 'component',
+          componentId: 'example_scheme_component'
+        });
       }
     );
   }
