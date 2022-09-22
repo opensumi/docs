@@ -62,6 +62,14 @@ module.exports = {
         order: 2
       },
       {
+        slug: 'integrate/browser-extension',
+        title: {
+          zh: '浏览器插件',
+          en: 'Browser Extension'
+        },
+        order: 3
+      },
+      {
         slug: 'develop/basic-design',
         title: {
           zh: '基础设计',
