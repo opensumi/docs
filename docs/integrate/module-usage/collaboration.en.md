@@ -9,6 +9,10 @@ order: 8
 
 You can use the hot-pluggable module `@opensumi/ide-collaboration` to implement real-time multi-person collaborative editing for the editor part of your IDE.
 
+<video controls autoplay loop style="width:100%">
+    <source src="https://gw.alipayobjects.com/os/antfincdn/BhOIHyo%26E/co-editing-example.mp4" type="video/mp4">
+</video>
+
 ## Platform Support
 
 The module currently only supports the Cloud IDE scenario of Browser + Node.

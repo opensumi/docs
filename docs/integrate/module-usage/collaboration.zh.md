@@ -9,6 +9,10 @@ order: 8
 
 你可以使用支持热插拔的模块`@opensumi/ide-collaboration`来为你的 IDE 的**编辑器部分**实现实时多人协同编辑功能。
 
+<video controls autoplay loop style="width:100%">
+    <source src="https://gw.alipayobjects.com/os/antfincdn/BhOIHyo%26E/co-editing-example.mp4" type="video/mp4">
+</video>
+
 ## 平台支持
 
 模块目前只支持 Browser + Node 的 Cloud IDE 场景。
