@@ -42,8 +42,8 @@ The [`ClientApp`](https://github.com/opensumi/core/blob/main/packages/core-brows
 export interface AppConfig {
   ...
   /**
-   * 是否开启对 OpenSumi DevTools 的支持
-   * 默认值为 false
+   * If enable the support for OpenSumi DevTools
+   * The default is false
    */
   devtools?: boolean;
 }
@@ -60,8 +60,8 @@ The [`ElectronMainApp`](https://github.com/opensumi/core/blob/main/packages/core
 export interface ElectronAppConfig {
   ...
   /**
-   * 是否开启对 OpenSumi DevTools 的支持
-   * 默认值为 false
+   * If enable the support for OpenSumi DevTools
+   * The default is false
    */
   devtools?: boolean;
 }
