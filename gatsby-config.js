@@ -62,6 +62,14 @@ module.exports = {
         order: 2
       },
       {
+        slug: 'integrate/module-usage',
+        title: {
+          zh: '模块使用',
+          en: 'Module Usage'
+        },
+        order: 3
+      },
+      {
         slug: 'develop/basic-design',
         title: {
           zh: '基础设计',
