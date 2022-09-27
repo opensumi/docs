@@ -74,6 +74,11 @@ const IndexPage = () => {
       name: '斑马智行',
       img:
         'https://img.alicdn.com/imgextra/i1/O1CN01Kdo06P1EgXeCg89DD_!!6000000000381-2-tps-206-64.png'
+    },
+    {
+      name: 'Gitlink',
+      img:
+        'https://img.alicdn.com/imgextra/i2/O1CN01V2gmmp1SMlCOSoXzs_!!6000000002233-0-tps-846-168.jpg'
     }
   ];
 
@@ -99,6 +104,17 @@ const IndexPage = () => {
       ),
       image:
         'https://img.alicdn.com/imgextra/i3/O1CN01goeVvb1w0iYnj95LL_!!6000000006246-2-tps-775-667.png'
+    },
+    {
+      logo:
+        'https://img.alicdn.com/imgextra/i2/O1CN01cBd8fD1tMIQC8kU7D_!!6000000005887-2-tps-200-200.png',
+      title: t('Gitlink 开源代码托管平台'),
+      link: 'https://www.gitlink.org.cn',
+      description: t(
+        'CCF Gitlink 开源代码托管平台使用基于 OpenSumi 的极速版 IDE 框架，将代码阅读、代码评审、WebIDE 浏览等交互进行升级，极大的提高了用户的使用效率。'
+      ),
+      image:
+        'https://img.alicdn.com/imgextra/i4/O1CN01KJjLgt1bN3zy9e6MB_!!6000000003452-2-tps-2728-1774.png'
     }
   ];
 
