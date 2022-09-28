@@ -62,7 +62,7 @@ const IndexPage = () => {
     {
       name: '支付宝',
       img:
-        'https://img.alicdn.com/imgextra/i3/O1CN01wpX2KZ1WxB7Nl6rxq_!!6000000002854-2-tps-381-114.png'
+        'https://img.alicdn.com/imgextra/i1/O1CN010pmd1e251ToI3lNQA_!!6000000007466-2-tps-3138-1446.png'
     },
     {
       name: '天猫',
