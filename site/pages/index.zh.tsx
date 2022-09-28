@@ -49,6 +49,10 @@ const IndexPage = () => {
     }
   ];
 
+  /**
+   * 图标尺寸标准：100 * 32
+   * 图标需要填充完整图片，无需预留边距，参考图片：https://img.alicdn.com/imgextra/i3/O1CN01OBrnZW1HvbYZHlCe0_!!6000000000820-2-tps-100-32.png
+   */
   const companies = [
     {
       name: '阿里云',
@@ -79,6 +83,16 @@ const IndexPage = () => {
       name: 'Gitlink',
       img:
         'https://img.alicdn.com/imgextra/i2/O1CN01V2gmmp1SMlCOSoXzs_!!6000000002233-0-tps-846-168.jpg'
+    },
+    {
+      name: '钉钉',
+      img:
+        'https://img.alicdn.com/imgextra/i3/O1CN01OBrnZW1HvbYZHlCe0_!!6000000000820-2-tps-100-32.png'
+    },
+    {
+      name: 'CSDN',
+      img:
+        'https://img.alicdn.com/imgextra/i2/O1CN015PdP6E1UrZ4MJTCbW_!!6000000002571-2-tps-100-32.png'
     }
   ];
 
@@ -114,7 +128,7 @@ const IndexPage = () => {
         'CCF Gitlink 开源代码托管平台使用基于 OpenSumi 的极速版 IDE 框架，将代码阅读、代码评审、WebIDE 浏览等交互进行升级，极大的提高了用户的使用效率。'
       ),
       image:
-        'https://img.alicdn.com/imgextra/i4/O1CN01KJjLgt1bN3zy9e6MB_!!6000000003452-2-tps-2728-1774.png'
+        'https://img.alicdn.com/imgextra/i4/O1CN01JSJl7d1yegP0B6ZLt_!!6000000006604-2-tps-775-667.png'
     }
   ];
 
@@ -143,7 +157,11 @@ const IndexPage = () => {
       />
       <Cases cases={cases} />
       <Features title={t('能力特性')} features={features} />
-      <Companies title={t('合作公司')} companies={companies} />
+      <Companies
+        title={t('合作公司')}
+        companies={companies}
+        addMoreLink="https://github.com/opensumi/docs/blob/main/site/pages/index.zh.tsx#L56"
+      />
     </>
   );
 };
