@@ -2,7 +2,7 @@
 id: collaboration
 title: 协同编辑模块
 slug: collaboration
-order: 8
+order: 1
 ---
 
 ## 概览
@@ -19,7 +19,20 @@ order: 8
 
 ## 使用
 
-该模块的使用很简单，只需要在你的 IDE 中添加上该模块，并将用户信息给注册到`CollaborationModuleContribution`即可。
+该模块的使用很简单，只需要在你的 IDE 中的 Browser 端和 Node 端分别添加该模块。
+
+```typescript
+// Browser 端
+renderApp({
+  modules: [...CommonBrowserModules, CollaborationModule],
+  wsPath: 'your-ws-path-here',
+
+// Node 端
+startServer({
+  modules: [...CommonNodeModules, CollaborationModule],
+```
+
+然后，将用户信息给注册到 browser 侧的`CollaborationModuleContribution`即可。
 
 ```typescript
 export interface CollaborationModuleContribution {
@@ -32,7 +45,25 @@ export interface UserInfo {
 }
 ```
 
-目前该模块的通信走 TCP 12345 端口，请检查并配置你的服务器的防火墙设置。
+对该模块的一个简单贡献如下所示。
+
+```typescript
+import {
+  CollaborationModuleContribution,
+  UserInfo
+} from '@opensumi/ide-collaboration';
+import { Domain } from '@opensumi/ide-core-common';
+
+@Domain(CollaborationModuleContribution)
+export class SampleContribution implements CollaborationModuleContribution {
+  info: UserInfo = {
+    id: 'your id',
+    nickname: 'your name'
+  };
+}
+```
+
+目前该模块的通信走 TCP 12345 端口。该模块通信的 URL 与你在 IDE 的里定义的 [wsPath](https://github.com/opensumi/core/blob/5511c0c2f625f814100271c405f96861cde8643b/packages/core-browser/src/react-providers/config-provider.tsx#L81) 一致(除了端口为 12345)。请检查并配置你的服务器的防火墙设置。
 
 ## 限制
 

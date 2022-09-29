@@ -2,7 +2,7 @@
 id: collaboration
 title: Collaboration Module
 slug: collaboration
-order: 8
+order: 1
 ---
 
 ## Overview
@@ -19,7 +19,20 @@ The module currently only supports the Cloud IDE scenario of Browser + Node.
 
 ## How to use
 
-The use of this module is very simple, just add this module to your IDE and register your user information to `CollaborationModuleContribution`.
+The use of this module is very simple, just add this module to browser side and node side of your IDE.
+
+```typescript
+// on browser side
+renderApp({
+  modules: [...CommonBrowserModules, CollaborationModule],
+  wsPath: 'your-ws-path-here',
+
+// on node side
+startServer({
+  modules: [...CommonNodeModules, CollaborationModule],
+```
+
+And then register your user information to `CollaborationModuleContribution`.
 
 ```typescript
 export interface CollaborationModuleContribution {
@@ -32,7 +45,25 @@ export interface UserInfo {
 }
 ```
 
-Currently collaborative communication goes through TCP port 12345, please check and configure your server's firewall settings.
+Here is a simple contribution to this module.
+
+```typescript
+import {
+  CollaborationModuleContribution,
+  UserInfo
+} from '@opensumi/ide-collaboration';
+import { Domain } from '@opensumi/ide-core-common';
+
+@Domain(CollaborationModuleContribution)
+export class SampleContribution implements CollaborationModuleContribution {
+  info: UserInfo = {
+    id: 'your id',
+    nickname: 'your name'
+  };
+}
+```
+
+Currently collaborative communication goes through TCP port 12345. URL(except port) of the collaborative communication is the same as your IDE server's [wsPath](https://github.com/opensumi/core/blob/5511c0c2f625f814100271c405f96861cde8643b/packages/core-browser/src/react-providers/config-provider.tsx#L81) defined in `AppConfig`. Please check and configure your server's firewall settings.
 
 ## Limitations
 
