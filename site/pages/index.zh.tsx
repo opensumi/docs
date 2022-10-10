@@ -50,8 +50,8 @@ const IndexPage = () => {
   ];
 
   /**
-   * 图标尺寸标准：100 * 32
-   * 图标需要填充完整图片，无需预留边距，参考图片：https://img.alicdn.com/imgextra/i3/O1CN01OBrnZW1HvbYZHlCe0_!!6000000000820-2-tps-100-32.png
+   * 图标尺寸标准：600 * 192
+   * 图标需要填充完整图片，无需预留边距，参考图片：https://img.alicdn.com/imgextra/i1/O1CN01fmecBk29AQ0Bj7uN3_!!6000000008027-2-tps-600-192.png
    */
   const companies = [
     {
@@ -82,17 +82,22 @@ const IndexPage = () => {
     {
       name: 'Gitlink',
       img:
-        'https://img.alicdn.com/imgextra/i2/O1CN01V2gmmp1SMlCOSoXzs_!!6000000002233-0-tps-846-168.jpg'
+        'https://img.alicdn.com/imgextra/i3/O1CN01aHVG7G1Cv51cjPujr_!!6000000000142-2-tps-600-192.png'
     },
     {
       name: '钉钉',
       img:
-        'https://img.alicdn.com/imgextra/i3/O1CN01OBrnZW1HvbYZHlCe0_!!6000000000820-2-tps-100-32.png'
+        'https://img.alicdn.com/imgextra/i1/O1CN01fmecBk29AQ0Bj7uN3_!!6000000008027-2-tps-600-192.png'
     },
     {
       name: 'CSDN',
       img:
-        'https://img.alicdn.com/imgextra/i2/O1CN015PdP6E1UrZ4MJTCbW_!!6000000002571-2-tps-100-32.png'
+        'https://img.alicdn.com/imgextra/i3/O1CN01vN9VGT24dCozGwuYo_!!6000000007413-2-tps-600-192.png'
+    },
+    {
+      name: 'ByteDance',
+      img:
+        'https://img.alicdn.com/imgextra/i1/O1CN01vDP9lv1jaopFYqCGP_!!6000000004565-2-tps-600-192.png'
     }
   ];
 
