@@ -49,6 +49,10 @@ const IndexPage = () => {
     }
   ];
 
+  /**
+   * 图标尺寸标准：600 * 192
+   * 图标需要填充完整图片，无需预留边距，参考图片：https://img.alicdn.com/imgextra/i1/O1CN01fmecBk29AQ0Bj7uN3_!!6000000008027-2-tps-600-192.png
+   */
   const companies = [
     {
       name: '阿里云',
@@ -58,7 +62,7 @@ const IndexPage = () => {
     {
       name: '支付宝',
       img:
-        'https://img.alicdn.com/imgextra/i3/O1CN01wpX2KZ1WxB7Nl6rxq_!!6000000002854-2-tps-381-114.png'
+        'https://img.alicdn.com/imgextra/i4/O1CN017u9LRz1XAv2Q35ddE_!!6000000002884-2-tps-1373-406.png'
     },
     {
       name: '天猫',
@@ -74,6 +78,26 @@ const IndexPage = () => {
       name: '斑马智行',
       img:
         'https://img.alicdn.com/imgextra/i1/O1CN01Kdo06P1EgXeCg89DD_!!6000000000381-2-tps-206-64.png'
+    },
+    {
+      name: 'Gitlink',
+      img:
+        'https://img.alicdn.com/imgextra/i3/O1CN01aHVG7G1Cv51cjPujr_!!6000000000142-2-tps-600-192.png'
+    },
+    {
+      name: '钉钉',
+      img:
+        'https://img.alicdn.com/imgextra/i1/O1CN01fmecBk29AQ0Bj7uN3_!!6000000008027-2-tps-600-192.png'
+    },
+    {
+      name: 'CSDN',
+      img:
+        'https://img.alicdn.com/imgextra/i3/O1CN01vN9VGT24dCozGwuYo_!!6000000007413-2-tps-600-192.png'
+    },
+    {
+      name: 'ByteDance',
+      img:
+        'https://img.alicdn.com/imgextra/i1/O1CN01vDP9lv1jaopFYqCGP_!!6000000004565-2-tps-600-192.png'
     }
   ];
 
@@ -83,7 +107,7 @@ const IndexPage = () => {
         'https://img.alicdn.com/imgextra/i2/O1CN01DVM7ow1njIZNWiUnK_!!6000000005125-2-tps-180-172.png',
       title: t('支付宝小程序开发工具'),
       description: t(
-        '小程序开发者工具是支付宝开放平台打造的一站式小程序研发工具，提供了编码、调试、测试、上传、项目管理等功能。不仅支持开发支付宝小程序，相同代码还通用于蚂蚁开放生态，可直接发布至淘宝、钉钉、高德等应用平台。'
+        '小程序开发者工具是支付宝开放平台打造的一站式小程序研发工具，提供了编码、调试、测试、上传、项目管理等功能。不仅支持开发支付宝小程序，相同代码还通用于蚂蚁开放生态，可直接发布至钉钉、高德等应用平台。'
       ),
       link: 'https://opendocs.alipay.com/mini/ide/overview',
       image:
@@ -99,6 +123,17 @@ const IndexPage = () => {
       ),
       image:
         'https://img.alicdn.com/imgextra/i3/O1CN01goeVvb1w0iYnj95LL_!!6000000006246-2-tps-775-667.png'
+    },
+    {
+      logo:
+        'https://img.alicdn.com/imgextra/i2/O1CN01cBd8fD1tMIQC8kU7D_!!6000000005887-2-tps-200-200.png',
+      title: t('Gitlink 开源代码托管平台'),
+      link: 'https://www.gitlink.org.cn',
+      description: t(
+        'CCF Gitlink 开源代码托管平台使用基于 OpenSumi 的极速版 IDE 框架，将代码阅读、代码评审、WebIDE 浏览等交互进行升级，极大的提高了用户的使用效率。'
+      ),
+      image:
+        'https://img.alicdn.com/imgextra/i4/O1CN01JSJl7d1yegP0B6ZLt_!!6000000006604-2-tps-775-667.png'
     }
   ];
 
@@ -127,7 +162,11 @@ const IndexPage = () => {
       />
       <Cases cases={cases} />
       <Features title={t('能力特性')} features={features} />
-      <Companies title={t('合作公司')} companies={companies} />
+      <Companies
+        title={t('合作公司')}
+        companies={companies}
+        addMoreLink="https://github.com/opensumi/docs/blob/main/site/pages/index.zh.tsx#L56"
+      />
     </>
   );
 };

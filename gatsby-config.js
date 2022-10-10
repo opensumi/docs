@@ -67,7 +67,15 @@ module.exports = {
           zh: '模块使用',
           en: 'Module Usage'
         },
-        order: 3
+        order: 3,
+       },
+       {
+        slug: 'integrate/browser-extension',
+        title: {
+          zh: '浏览器插件',
+          en: 'Browser Extension'
+        },
+        order: 4
       },
       {
         slug: 'develop/basic-design',
