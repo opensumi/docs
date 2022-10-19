@@ -165,7 +165,7 @@ const IndexPage = () => {
       <Companies
         title={t('合作公司')}
         companies={companies}
-        addMoreLink="https://github.com/opensumi/docs/blob/main/site/pages/index.zh.tsx#L56"
+        addMoreLink="https://github.com/opensumi/docs/edit/main/site/pages/index.zh.tsx#L56"
       />
     </>
   );
