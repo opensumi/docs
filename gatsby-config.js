@@ -42,6 +42,13 @@ module.exports = {
           en: 'Development',
           zh: '开发文档'
         }
+      },
+      {
+        slug: 'https://marketplace.opentrs.com/square',
+        title: {
+          en: 'Marketplace',
+          zh: '插件市场'
+        }
       }
     ],
     docs: [
@@ -67,9 +74,9 @@ module.exports = {
           zh: '模块使用',
           en: 'Module Usage'
         },
-        order: 3,
-       },
-       {
+        order: 3
+      },
+      {
         slug: 'integrate/browser-extension',
         title: {
           zh: '浏览器插件',
