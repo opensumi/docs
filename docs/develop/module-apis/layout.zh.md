@@ -177,19 +177,6 @@ interface TabbarHandler {
 
 布局模块最上层的控制服务。
 
-#### Static Methods
-
-##### `test()`
-
-```js
-static test(
-  text: string,
-  delimiter?: string
-): ContentState
-```
-
-这是一个测试的静态方法（LayoutService 没有静态方法，先做个示例）。
-
 #### Methods
 
 ##### `isVisible()`
