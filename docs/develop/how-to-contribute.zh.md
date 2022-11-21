@@ -20,7 +20,8 @@ order: 1
 手动设置方式如下：
 
 ```bash
-npm config set registry https://registry.npmmirror.com
+# 这会修改你的 ~/.yarnrc.yml 文件
+yarn config set -H npmRegistryServer "https://registry.npmmirror.com"
 ```
 
 你可能需要下面一些开发工具：
@@ -70,8 +71,8 @@ git pull https://github.com/opensumi/core.git main
 
 ```bash
 cd core
-npm install
-npm run init
+yarn install
+yarn run init
 ```
 
 #### 处理 Nodejs 原生模块
@@ -87,13 +88,13 @@ yarn rebuild:node
 初始化完成后，你便可以通过下面命令直接运行 Web 版本，并同时启用 `Hot Reload` 除了插件进程外的修改都能够实时在 Web 中看到修改效果。
 
 ```bash
-npm start
+yarn start
 ```
 
 默认情况下，框架会将项目下的 `tools/workspace` 目录作为工作区目录展现，你也可以通过 `MY_WORKSPACE=` 指定路径的方式打开 OpenSumi，如下所示：
 
 ```bash
-MY_WORKSPACE={workspace_path} npm start
+MY_WORKSPACE={workspace_path} yarn start
 ```
 
 ![perview](https://img.alicdn.com/imgextra/i1/O1CN01eP6aZU1al34XVd38l_!!6000000003369-2-tps-2842-1714.png)
@@ -129,14 +130,14 @@ OpenSumi 运行时存在多个进程，你需要确定你要调试的具体进�
 你可以通过如下命令对某个模块（下面代码测试模块为 debug，即 packages 目录下的 debug 目录）的代码进行测试：
 
 ```bash
-npm run test:module -- --module=debug
+yarn run test:module -- --module=debug
 ```
 
 你也可以通过调试面板中的 `Jest Current File` 指令，对当前编辑器激活的测试文件进行断点调试。
 
 ## 代码规范
 
-直接运行 `npm run lint` 可对整体代码进行规范检索，同时代码提交时也会触发相应的代码格式校验。
+直接运行 `yarn run lint` 可对整体代码进行规范检索，同时代码提交时也会触发相应的代码格式校验。
 
 ## 提交规范
 

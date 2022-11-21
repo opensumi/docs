@@ -70,8 +70,8 @@ Note: The default `opensumi/core` also contains a lot of GitHub Actions. If you 
 
 ```bash
 cd core
-npm install
-npm run init
+yarn
+yarn run init
 ```
 
 ### Run
@@ -79,7 +79,7 @@ npm run init
 After the initialization is complete, you can run the Web version directly by using the following command, and enable `Hot Reload` at the same time. All modifications except the extension process can be seen in the Web in real time.
 
 ```bash
-npm start
+yarn start
 ```
 
 By default, the framework will display the `tools/workspace` directory under the project as the workspace directory. You can also open OpenSumi by specifying the path with `MY_WORKSPACE=`, as shown below:
@@ -121,14 +121,14 @@ We use `Jest` for unit testing, combined with the mock capability implemented in
 You can test the code of a module (the following code test module is debug, that is, the debug directory in the packages directory) by using the following command.
 
 ```bash
-npm run test:module -- --module=debug
+yarn run test:module -- --module=debug
 ```
 
 You can also debug breakpoints on test files currently activated by the editor, using the `Jest Current File` command in the debug panel.
 
 ## Code Specification
 
-When running `npm run lint`, you can directly retrieve the overall code specification. Meanwhile when the code is committed, corresponding code formatting checks will be triggered.
+When running `yarn run lint`, you can directly retrieve the overall code specification. Meanwhile when the code is committed, corresponding code formatting checks will be triggered.
 
 ## PR Rules
 
