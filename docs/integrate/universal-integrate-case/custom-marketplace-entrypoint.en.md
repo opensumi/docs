@@ -5,7 +5,7 @@ slug: custom-marketplace-entrypoint
 order: 8
 ---
 
-OpenSumi support both [Ant Cloud IDE marketplace](https://marketplace.opentrs.com/square) and [Eclipse Open VSX](https://www.eclipse.org/community/eclipse_newsletter/2020/march/1.php), and can be switched between each other through configuration. At present, the default is the Ant Cloud IDE extension marketplace
+OpenSumi support both [Ant Cloud IDE marketplace](https://marketplace.opentrs.cn/square) and [Eclipse Open VSX](https://www.eclipse.org/community/eclipse_newsletter/2020/march/1.php), and can be switched between each other through configuration. At present, the default is the Ant Cloud IDE extension marketplace
 
 
 ## Configuration
@@ -36,7 +36,7 @@ You can refer to the code here: [node/start-server.ts#L18](https://github.com/op
 let opts: IServerAppOpts = {
   ...
   marketplace: {
-    endpoint: 'https://marketplace.opentrs.com',
+    endpoint: 'https://marketplace.opentrs.cn',
     accountId: 'clcJKq_Gea47whxAJGrgoYqf',
     masterKey: '_V_LPJ6Ar-1nrSVa05xDGBYp',
   },

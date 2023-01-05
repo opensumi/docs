@@ -7,7 +7,7 @@ order: 8
 
 ## 概览
 
-OpenSumi 同时支持 [蚂蚁 Cloud IDE 插件市场](https://marketplace.opentrs.com/square) 及 [Eclipse Open VSX](https://www.eclipse.org/community/eclipse_newsletter/2020/march/1.php) ，两个插件市场可以通过配置相互切换，目前默认使用的是蚂蚁 Cloud IDE 插件市场
+OpenSumi 同时支持 [蚂蚁 Cloud IDE 插件市场](https://marketplace.opentrs.cn/square) 及 [Eclipse Open VSX](https://www.eclipse.org/community/eclipse_newsletter/2020/march/1.php) ，两个插件市场可以通过配置相互切换，目前默认使用的是蚂蚁 Cloud IDE 插件市场
 
 
 ## 配置方式
@@ -37,7 +37,7 @@ OpenSumi 同时支持 [蚂蚁 Cloud IDE 插件市场](https://marketplace.opentr
 let opts: IServerAppOpts = {
   ...
   marketplace: {
-    endpoint: 'https://marketplace.opentrs.com',
+    endpoint: 'https://marketplace.opentrs.cn',
     accountId: 'clcJKq_Gea47whxAJGrgoYqf',
     masterKey: '_V_LPJ6Ar-1nrSVa05xDGBYp',
   },
