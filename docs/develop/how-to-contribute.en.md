@@ -13,15 +13,7 @@ For [issue](https://github.com/opensumi/core/issues) marked with `PR Welcome`, i
 
 > The system tool installation method here refers to [How-to-Contribute](https://github.com/microsoft/vscode/wiki/How-to-Contribute) document of VS Code for translation, and you can directly view the document.
 
-Before developing the code, you need to install some necessary development tools, clone our project code [opensumi/core](https://github.com/opensumi/core), and install dependencies through `npm`.
-
-Due to the Great Firewall, using the official npm source will lead to slow download and installation. We recommend to switch your NPM image to  [npmmirror China image station](https://npmmirror.com/) before starting (or install an NPM image switching tool for quick switchover, such as [nrm](https://www.npmjs.com/package/nrm)).
-
-The following is the manual setting mode:
-
-```bash
-npm config set registry https://registry.npmmirror.com
-```
+Before developing the code, you need to install some necessary development tools, clone our project code [opensumi/core](https://github.com/opensumi/core), and install dependencies through `yarn`.
 
 You may need the following development tools:
 
