@@ -7,7 +7,7 @@ order: 8
 
 ## 概览
 
-OpenSumi 同时支持 [蚂蚁 Cloud IDE 插件市场](https://marketplace.opentrs.cn/square) 及 [Eclipse Open VSX](https://www.eclipse.org/community/eclipse_newsletter/2020/march/1.php) ，两个插件市场可以通过配置相互切换，目前默认使用的是蚂蚁 Cloud IDE 插件市场
+OpenSumi 同时支持 [蚂蚁 CloudIDE 插件市场](https://marketplace.opentrs.cn/square) 及 [Eclipse Open VSX](https://www.eclipse.org/community/eclipse_newsletter/2020/march/1.php) ，两个插件市场可以通过配置相互切换，目前默认使用的是蚂蚁 CloudIDE 插件市场
 
 
 ## 配置方式
@@ -16,7 +16,7 @@ OpenSumi 同时支持 [蚂蚁 Cloud IDE 插件市场](https://marketplace.opentr
 
 ### 如何修改下载脚本
 
-下载脚本（`scripts/download.js`）默认使用的是蚂蚁 Cloud IDE 插件市场，如需切换，可以在 `package.json` 文件的 `download-extension` 命令中指定插件市场类型：
+下载脚本（`scripts/download.js`）默认使用的是蚂蚁 CloudIDE 插件市场，如需切换，可以在 `package.json` 文件的 `download-extension` 命令中指定插件市场类型：
 
 ```json
 {
@@ -31,7 +31,7 @@ OpenSumi 同时支持 [蚂蚁 Cloud IDE 插件市场](https://marketplace.opentr
 
 可以参考这里的代码：[node/start-server.ts#L18](https://github.com/opensumi/opensumi-module-samples/blob/main/example/src/node/start-server.ts#L18)，在 Node 进程启动的配置参数中添加相关参数信息，具体配置如下：
 
-#### 蚂蚁 Cloud IDE 插件市场
+#### 蚂蚁 CloudIDE 插件市场
 
 ```typescript
 let opts: IServerAppOpts = {
@@ -62,4 +62,4 @@ let opts: IServerAppOpts = {
 
 ## 插件同步机制
 
-目前 OpenSumi 对 VSCode 插件 API 的兼容有一定的滞后性（约三个月），因此托管在插件市场中的 VSCode 插件在同步前必须先进行代码扫描，如果用户在使用蚂蚁 Cloud IDE 插件市场时发现缺少想要的插件，可以在 [OpenSumi 项目主仓库](https://github.com/opensumi/core/issues) issues 列表中提出插件同步需求，项目组成员会对插件扫描后同步可用的版本。
+目前 OpenSumi 对 VSCode 插件 API 的兼容有一定的滞后性（约三个月），因此托管在插件市场中的 VSCode 插件在同步前必须先进行代码扫描，如果用户在使用蚂蚁 CloudIDE 插件市场时发现缺少想要的插件，可以在 [OpenSumi 项目主仓库](https://github.com/opensumi/core/issues) issues 列表中提出插件同步需求，项目组成员会对插件扫描后同步可用的版本。
