@@ -5,31 +5,48 @@ slug: custom-marketplace-entrypoint
 order: 8
 ---
 
-在 OpenSumi 的默认插件市场模块中，我们兼容了由 Eclipse 推出的 [Eclipse Open VSX](https://www.eclipse.org/community/eclipse_newsletter/2020/march/1.php)，通过使用默认的 `https://open-vsx.org` 外，你也可以通过学习 OpenVSX 的部署文档去实现你自己的插件市场。
+## 概览
 
-目前框架共支持两个镜像站点：
+OpenSumi 同时支持 [蚂蚁 CloudIDE 插件市场](https://marketplace.opentrs.cn/square) 及 [Eclipse Open VSX](https://www.eclipse.org/community/eclipse_newsletter/2020/march/1.php) ，两个插件市场可以通过配置相互切换，目前默认使用的是蚂蚁 CloudIDE 插件市场
 
-1. 国内镜像站：[https://marketplace.smartide.cn](https://marketplace.smartide.cn)
-2. 官方镜像站：[https://open-vsx.org](https://open-vsx.org) （访问速度较慢）
 
 ## 配置方式
 
-一般框架的初始项目会在两个地方使用到该镜像站点的配置，一个为安装默认插件的下载脚本，另一个则是框架启动时的插件市场配置。
+一般框架的初始项目会在两个地方使用插件市场相关的配置，一个为安装默认插件的下载脚本，另一个则是框架启动时的插件市场配置。
 
 ### 如何修改下载脚本
 
-你只需要找到如 `scripts/download.js` 文件，修改里面使用的站点信息即可
+下载脚本（`scripts/download.js`）默认使用的是蚂蚁 CloudIDE 插件市场，如需切换，可以在 `package.json` 文件的 `download-extension` 命令中指定插件市场类型：
 
-```typescript
-- const api = 'https://open-vsx.org/api/';
-+ const api = 'https://marketplace.smartide.cn/api/'; // China Mirror
+```json
+{
+  "scripts": {
+    -"download-extension": "cross-env DEBUG=InstallExtension node scripts/download.js"
+    +"download-extension": "cross-env DEBUG=InstallExtension MARKETPLACE=openvsx node scripts/download.js"
+  }
+}
 ```
 
 ### 如何修改插件市场源
 
-可以参考这里的代码：[node/start-server.ts#L18](https://github.com/opensumi/opensumi-module-samples/blob/main/example/src/node/start-server.ts#L18)。
+可以参考这里的代码：[node/start-server.ts#L18](https://github.com/opensumi/opensumi-module-samples/blob/main/example/src/node/start-server.ts#L18)，在 Node 进程启动的配置参数中添加相关参数信息，具体配置如下：
 
-仅需要在 Node 进程启动的配置参数中添加如下参数信息：
+#### 蚂蚁 CloudIDE 插件市场
+
+```typescript
+let opts: IServerAppOpts = {
+  ...
+  marketplace: {
+    endpoint: 'https://marketplace.opentrs.cn',
+    accountId: 'clcJKq_Gea47whxAJGrgoYqf',
+    masterKey: '_V_LPJ6Ar-1nrSVa05xDGBYp',
+  },
+  ...
+};
+```
+上文配置中使用的 `accountId` 及 `masterKey` 是由蚂蚁 CloudIDE 插件市场提供的公共密钥，该密钥默认可访问插件市场中全部的公开插件，如需要自定义密钥，可以参考 [蚂蚁 CloudIDE 插件市场文档](https://www.opentrs.cn/cloudide/documents/documentDetail?productStr=cloudide-20221026&nameSpace=trms2d/xyyfdt&slug=ooxr2vxp32r9hv4q) 中的客户端管理一节的内容，通过自定义密钥，用户可以访问自己托管在插件市场中的私有插件
+
+#### Eclipse Open VSX
 
 ```typescript
 let opts: IServerAppOpts = {
@@ -42,4 +59,8 @@ let opts: IServerAppOpts = {
 };
 ```
 
-如遇到插件市场无法正常访问问题，请及时切换响应的插件插件源解决该问题。
+如遇到插件市场无法正常访问问题，请及时切换相应的插件插件源解决该问题。
+
+## 插件同步机制
+
+目前 OpenSumi 对 VSCode 插件 API 的兼容有一定的滞后性（约三个月），因此托管在插件市场中的 VSCode 插件在同步前必须先进行代码扫描，如果用户在使用蚂蚁 CloudIDE 插件市场时发现缺少想要的插件，可以在 [OpenSumi 项目主仓库](https://github.com/opensumi/core/issues) issues 列表中提出插件同步需求，项目组成员会对插件扫描后同步可用的版本。
