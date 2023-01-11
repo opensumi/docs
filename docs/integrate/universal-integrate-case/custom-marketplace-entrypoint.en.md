@@ -43,7 +43,7 @@ let opts: IServerAppOpts = {
   ...
 };                 
 ```
-The accountId and masterKey used in the above configuration are the public secret key provided by the Ant CloudIDE Marketplace. This secret key can access all public extensions in the marketplace by default. If you need to customize the secret key, you can refer to the client management section in the [Ant CloudIDE Marketplace documentation](https://www.opentrs.cn/cloudide/documents/documentDetail?productStr=cloudide-20221026&nameSpace=trms2d/xyyfdt&slug=ooxr2vxp32r9hv4q). Through the custom secret key, users can access their private extensions hosted in the marketplace.
+The `accountId` and `masterKey` used in the above configuration are the public secret key provided by the Ant CloudIDE Marketplace. This secret key can access all public extensions in the marketplace by default. If you need to customize the secret key, you can refer to the client management section in the [Ant CloudIDE Marketplace documentation](https://www.opentrs.cn/cloudide/documents/documentDetail?productStr=cloudide-20221026&nameSpace=trms2d/xyyfdt&slug=ooxr2vxp32r9hv4q). Through the custom secret key, you can access your private extensions hosted in the marketplace.
 
 
 #### Eclipse Open VSX

@@ -44,7 +44,7 @@ let opts: IServerAppOpts = {
   ...
 };
 ```
-上文配置中使用的 accountId 及 masterKey 是由蚂蚁 CloudIDE 插件市场提供的公共密钥，该密钥默认可访问插件市场中全部的公开插件，如需要自定义密钥，可以参考 [蚂蚁 CloudIDE 插件市场文档](https://www.opentrs.cn/cloudide/documents/documentDetail?productStr=cloudide-20221026&nameSpace=trms2d/xyyfdt&slug=ooxr2vxp32r9hv4q) 中的客户端管理一节的内容，通过自定义密钥，用户可以访问自己托管在插件市场中的私有插件
+上文配置中使用的 `accountId` 及 `masterKey` 是由蚂蚁 CloudIDE 插件市场提供的公共密钥，该密钥默认可访问插件市场中全部的公开插件，如需要自定义密钥，可以参考 [蚂蚁 CloudIDE 插件市场文档](https://www.opentrs.cn/cloudide/documents/documentDetail?productStr=cloudide-20221026&nameSpace=trms2d/xyyfdt&slug=ooxr2vxp32r9hv4q) 中的客户端管理一节的内容，通过自定义密钥，用户可以访问自己托管在插件市场中的私有插件
 
 #### Eclipse Open VSX
 
