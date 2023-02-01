@@ -163,7 +163,7 @@ const IndexPage = () => {
       <Cases cases={cases} />
       <Features title={t('能力特性')} features={features} />
       <Companies
-        title={t('合作公司')}
+        title={t('谁在使用？')}
         companies={companies}
         addMoreLink="https://github.com/opensumi/docs/edit/main/site/pages/index.zh.tsx#L56"
       />
