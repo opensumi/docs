@@ -44,7 +44,7 @@ module.exports = {
         }
       },
       {
-        slug: 'https://marketplace.opentrs.com/square',
+        slug: 'https://marketplace.opentrs.cn/square',
         title: {
           en: 'Marketplace',
           zh: '插件市场'
