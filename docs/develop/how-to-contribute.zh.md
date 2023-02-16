@@ -71,6 +71,9 @@ git pull https://github.com/opensumi/core.git main
 
 ```bash
 cd core
+# 注意，如果网络原因你无法下载 Electron 的二进制文件（如你位于中国大陆境内）
+# 请参考 electron 官方文档设置国内镜像：https://www.electronjs.org/zh/docs/latest/tutorial/installation#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%95%9C%E5%83%8F%E5%92%8C%E7%BC%93%E5%AD%98
+# 或者设置环境变量 `ELECTRON_SKIP_BINARY_DOWNLOAD=1` 以跳过二进制文件的下载
 yarn install
 yarn run init
 ```
