@@ -98,6 +98,11 @@ const IndexPage = () => {
       name: 'ByteDance',
       img:
         'https://img.alicdn.com/imgextra/i1/O1CN01vDP9lv1jaopFYqCGP_!!6000000004565-2-tps-600-192.png'
+    },
+    {
+      name: '行云创新',
+      img:
+        'https://img.alicdn.com/imgextra/i2/O1CN01iUGF9A1GQdBaKE46F_!!6000000000617-2-tps-1138-392.png'
     }
   ];
 
