@@ -14,11 +14,53 @@ order: 1
 
 OpenSumi 提供了自定义配置能力，基于 OpenSumi 的 [Contribution Point](../../develop/basic-design/contribution-point) 机制，只需要实现 `PreferenceContribution` 即可进行配置注册。
 
+通过创建DemoPreference
+```
+import { PreferenceContribution } from '@opensumi/ide-core-browser';
+import { Domain, PreferenceSchema } from '@opensumi/ide-core-common';
+
+export const DemoPreferenceSchema: PreferenceSchema = {
+    type: 'object',
+    properties: {
+        'testValue': {
+        type: 'string',
+        default: 'test',
+        description: 'test'
+        }
+    }
+};
+
+@Domain(PreferenceContribution)
+export class DemoPreference implements PreferenceContribution {
+  public schema: PreferenceSchema = DemoPreferenceSchema;
+}
+```
+
+在其他任意位置即可读取
+```
+@Autowired(PreferenceService)
+protected readonly preferenceService: PreferenceService;
+
+...
+this.preferenceService.get('testValue')
+```
+
 另一种注册方式则是通过插件的 [configuration 贡献点](https://code.visualstudio.com/api/references/contribution-points#contributes.configuration) 在插件中进行注册。
 
 ## 自定义集成参数
 
 在集成 OpenSumi 框架的时候，我们往往需要进行独立的配置，下面列举了一些可在集成阶段通过传入配置项进行配置的参数：
+
+在ide-electron中，找到src\index.ts的renderApp初始化方法添加如下：
+```
+renderApp({
+  // 追加配置
+  appName: 'OpenSumi',
+  // 原有内容
+  modules: [
+```
+完整配置文件可以参考实时代码：
+https://github.com/opensumi/core/blob/9e931275bd5bb74af8309e8bf54ad0d27baf165a/packages/core-browser/src/react-providers/config-provider.tsx#L14~#L245
 
 ### Browser 配置
 
