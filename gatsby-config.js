@@ -110,6 +110,9 @@ module.exports = {
       }
     ],
     showDingTalkQRCode: true,
+    showWeChatQRCode: true,
+    weChatQRCode:
+      'https://img.alicdn.com/imgextra/i4/O1CN01mAEZDH26YkE1hfUAi_!!6000000007674-2-tps-200-199.png',
     dingTalkQRCode:
       'https://img.alicdn.com/imgextra/i1/O1CN01k3gCmL1HWPjLchVv7_!!6000000000765-0-tps-200-199.jpg',
     showSearch: true, // 是否展示搜索框
