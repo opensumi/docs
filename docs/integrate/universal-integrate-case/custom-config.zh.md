@@ -14,7 +14,7 @@ order: 1
 
 OpenSumi 提供了自定义配置能力，基于 OpenSumi 的 [Contribution Point](../../develop/basic-design/contribution-point) 机制，只需要实现 `PreferenceContribution` 即可进行配置注册。
 
-通过创建DemoPreference
+通过创建DemoPreference -> 举个例子，我们通过创建 DemoPreference 可以在项目中注册运行时配置，伪代码如下：
 ```
 import { PreferenceContribution } from '@opensumi/ide-core-browser';
 import { Domain, PreferenceSchema } from '@opensumi/ide-core-common';
@@ -31,12 +31,12 @@ export const DemoPreferenceSchema: PreferenceSchema = {
 };
 
 @Domain(PreferenceContribution)
-export class DemoPreference implements PreferenceContribution {
+export class DemoPreferenceContribution implements PreferenceContribution {
   public schema: PreferenceSchema = DemoPreferenceSchema;
 }
 ```
 
-在其他任意位置即可读取
+在其他任意位置即可读取 -> 通过将 DemoPreferenceContribution 引入到模块中的 Providers 声明后，便可以在其他模块通过下面方式使用
 ```
 @Autowired(PreferenceService)
 protected readonly preferenceService: PreferenceService;
