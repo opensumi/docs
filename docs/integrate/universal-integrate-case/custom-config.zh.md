@@ -14,7 +14,7 @@ order: 1
 
 OpenSumi 提供了自定义配置能力，基于 OpenSumi 的 [Contribution Point](../../develop/basic-design/contribution-point) 机制，只需要实现 `PreferenceContribution` 即可进行配置注册。
 
-通过创建DemoPreferenceContribution -> 举个例子，我们通过创建 DemoPreferenceContribution 可以在项目中注册运行时配置，伪代码如下：
+举个例子，我们通过创建 ```DemoPreferenceContribution``` 可以在项目中注册运行时配置，伪代码如下：
 ```
 import { PreferenceContribution } from '@opensumi/ide-core-browser';
 import { Domain, PreferenceSchema } from '@opensumi/ide-core-common';
@@ -36,7 +36,7 @@ export class DemoPreferenceContribution implements PreferenceContribution {
 }
 ```
 
-在其他任意位置即可读取 -> 通过将 DemoPreferenceContribution 引入到模块中的 Providers 声明后，便可以在其他模块通过下面方式使用
+通过将 ```DemoPreferenceContribution``` 引入到模块中的 Providers 声明后，便可以在其他模块通过下面方式使用
 ```
 @Autowired(PreferenceService)
 protected readonly preferenceService: PreferenceService;
@@ -51,7 +51,7 @@ this.preferenceService.get('testValue')
 
 在集成 OpenSumi 框架的时候，我们往往需要进行独立的配置，下面列举了一些可在集成阶段通过传入配置项进行配置的参数：
 
-在ide-electron中，找到src\index.ts的renderApp初始化方法添加如下：
+在```ide-electron```中，找到```src\index.ts```的```renderApp```初始化方法添加如下：
 ```
 renderApp({
   // 追加配置
