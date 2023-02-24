@@ -59,9 +59,42 @@
 <!-- --><li>Register by using <!-- --><code class="language-text">Configurations<!-- --></code> contribution points of extensions.<!-- --></li>
 <!-- --></ol>
 <!-- --><p>OpenSumi provides custom configuration capabilities based on OpenSumi&#x27;s <!-- --><a href="../../develop/basic-design/contribution-point">Contribution Point<!-- --></a> mechanism. You only need to implement <!-- --><code class="language-text">PreferenceContribution<!-- --></code> to register the configuration.<!-- --></p>
+<!-- --><p>e.g. we can register the runtime configuration in the project by creating a <!-- --><code class="language-text">DemoPreferenceContribution<!-- --></code> with the following pseudo code.<!-- --></p>
+<!-- --><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">import { PreferenceContribution } from &#x27;@opensumi/ide-core-browser&#x27;;
+import { Domain, PreferenceSchema } from &#x27;@opensumi/ide-core-common&#x27;;
+
+export const DemoPreferenceSchema: PreferenceSchema = {
+    type: &#x27;object&#x27;,
+    properties: {
+        &#x27;testValue&#x27;: {
+        type: &#x27;string&#x27;,
+        default: &#x27;test&#x27;,
+        description: &#x27;test&#x27;
+        }
+    }
+};
+
+@Domain(PreferenceContribution)
+export class DemoPreferenceContribution implements PreferenceContribution {
+  public schema: PreferenceSchema = DemoPreferenceSchema;
+}<!-- --></code></pre></div>
+<!-- --><p>By introducing the <!-- --><code class="language-text">DemoPreferenceContribution<!-- --></code> into the Providers declaration in the module, it can be used in other modules in the following way<!-- --></p>
+<!-- --><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">@Autowired(PreferenceService)
+protected readonly preferenceService: PreferenceService;
+
+...
+this.preferenceService.get(&#x27;testValue&#x27;)<!-- --></code></pre></div>
 <!-- --><p>Another way to register is to use extensions <!-- --><a href="https://code.visualstudio.com/api/references/contribution-points#contributes.configuration" target="_self" rel="nofollow">configuration Contribution points<!-- --></a>.<!-- --></p>
 <!-- --><h2 id="customize-integration-parameters" style="position:relative"><a href="#customize-integration-parameters" aria-label="customize integration parameters permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Customize Integration Parameters<!-- --></h2>
 <!-- --><p>When integrating OpenSumi framework, we often need to perform independent configurations, and the following table lists some parameters that can be configured during the integration phase by passing in configuration items.<!-- --></p>
+<!-- --><p>In<!-- --><code class="language-text">ide-electron<!-- --></code>, find the<!-- --><code class="language-text">renderApp<!-- --></code>initialization method in<!-- --><code class="language-text">src\index.ts<!-- --></code>and add the following:<!-- --></p>
+<!-- --><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">renderApp({
+  // Additional configurations
+  appName: &#x27;OpenSumi&#x27;,
+  // Original content
+  modules: [<!-- --></code></pre></div>
+<!-- --><p>The complete configuration file can be found in the live code:
+<!-- --><a href="https://github.com/opensumi/core/blob/9e931275bd5bb74af8309e8bf54ad0d27baf165a/packages/core-browser/src/react-providers/config-provider.tsx#L14~#L245" target="_self" rel="nofollow">https://github.com/opensumi/core/blob/9e931275bd5bb74af8309e8bf54ad0d27baf165a/packages/core-browser/src/react-providers/config-provider.tsx#L14~#L245<!-- --></a></p>
 <!-- --><h3 id="browser-configuration" style="position:relative"><a href="#browser-configuration" aria-label="browser configuration permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Browser Configuration<!-- --></h3>
 <!-- --><p>The definition can be found in the <!-- --><code class="language-text">AppConfig<!-- --></code> definition in <!-- --><code class="language-text">@opensumi/ide-core-browser<!-- --></code>.<!-- --></p>
 
