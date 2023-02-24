@@ -14,11 +14,53 @@ There are two main ways to register frequently-used customized configurations:
 
 OpenSumi provides custom configuration capabilities based on OpenSumi's [Contribution Point](../../develop/basic-design/contribution-point) mechanism. You only need to implement `PreferenceContribution` to register the configuration.
 
+e.g. we can register the runtime configuration in the project by creating a ```DemoPreferenceContribution``` with the following pseudo code.
+```
+import { PreferenceContribution } from '@opensumi/ide-core-browser';
+import { Domain, PreferenceSchema } from '@opensumi/ide-core-common';
+
+export const DemoPreferenceSchema: PreferenceSchema = {
+    type: 'object',
+    properties: {
+        'testValue': {
+        type: 'string',
+        default: 'test',
+        description: 'test'
+        }
+    }
+};
+
+@Domain(PreferenceContribution)
+export class DemoPreferenceContribution implements PreferenceContribution {
+  public schema: PreferenceSchema = DemoPreferenceSchema;
+}
+```
+
+By introducing the ```DemoPreferenceContribution``` into the Providers declaration in the module, it can be used in other modules in the following way
+```
+@Autowired(PreferenceService)
+protected readonly preferenceService: PreferenceService;
+
+...
+this.preferenceService.get('testValue')
+```
+
 Another way to register is to use extensions [configuration Contribution points](https://code.visualstudio.com/api/references/contribution-points#contributes.configuration).
 
 ## Customize Integration Parameters
 
 When integrating OpenSumi framework, we often need to perform independent configurations, and the following table lists some parameters that can be configured during the integration phase by passing in configuration items.
+
+In```ide-electron```, find the```renderApp```initialization method in```src\index.ts```and add the following:
+```
+renderApp({
+  // Additional configurations
+  appName: 'OpenSumi',
+  // Original content
+  modules: [
+```
+The complete configuration file can be found in the live code:
+https://github.com/opensumi/core/blob/9e931275bd5bb74af8309e8bf54ad0d27baf165a/packages/core-browser/src/react-providers/config-provider.tsx#L14~#L245
 
 ### Browser Configuration
 
