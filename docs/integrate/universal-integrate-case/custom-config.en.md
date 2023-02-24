@@ -14,7 +14,7 @@ There are two main ways to register frequently-used customized configurations:
 
 OpenSumi provides custom configuration capabilities based on OpenSumi's [Contribution Point](../../develop/basic-design/contribution-point) mechanism. You only need to implement `PreferenceContribution` to register the configuration.
 
-e.g, we can register the runtime configuration in the project by creating a ```DemoPreferenceContribution``` with the following pseudo code.
+e.g. we can register the runtime configuration in the project by creating a ```DemoPreferenceContribution``` with the following pseudo code.
 ```
 import { PreferenceContribution } from '@opensumi/ide-core-browser';
 import { Domain, PreferenceSchema } from '@opensumi/ide-core-common';
