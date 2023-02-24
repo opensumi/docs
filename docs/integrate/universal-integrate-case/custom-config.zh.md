@@ -53,7 +53,7 @@ this.preferenceService.get('testValue')
 
 在集成 OpenSumi 框架的时候，我们往往需要进行独立的配置，下面列举了一些可在集成阶段通过传入配置项进行配置的参数：
 
-在 [opensumi/ide-electron](https://github.com/opensumi/ide-electron) 项目中，找到 [src/browser/index.ts#L113](https://github.com/opensumi/ide-electron/blob/main/src/browser/index.ts#L113) 的 `renderApp` 初始化方法添加如下：
+在 [本地 IDE 示例](https://github.com/opensumi/ide-electron) 项目中，找到 [src/browser/index.ts#L113](https://github.com/opensumi/ide-electron/blob/main/src/browser/index.ts#L113) 的 `renderApp` 初始化方法添加如下：
 
 ```ts
 renderApp({
@@ -64,7 +64,7 @@ renderApp({
 })
 ```
 
-而在 [opensumi/ide-electron](https://github.com/opensumi/ide-startup) 项目中, 你也可以找到类似配置，见 [src/browser/index.ts#L12](https://github.com/opensumi/ide-startup/blob/main/src/browser/index.ts#L12)。
+而在 [WebIDE 示例](https://github.com/opensumi/ide-startup) 项目中, 你也可以找到类似配置，见 [src/browser/index.ts#L12](https://github.com/opensumi/ide-startup/blob/main/src/browser/index.ts#L12)。
 
 完整配置文件可以参考实时代码：[packages/core-browser/src/react-providers/config-provider.tsx#L14~#L245](https://github.com/opensumi/core/blob/main/packages/core-browser/src/react-providers/config-provider.tsx#L14~#L245)
 

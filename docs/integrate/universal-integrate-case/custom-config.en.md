@@ -53,9 +53,7 @@ Another way to register is to use extensions [configuration Contribution points]
 
 When integrating OpenSumi framework, we often need to perform independent configurations, and the following table lists some parameters that can be configured during the integration phase by passing in configuration items.
 
-In `opensumi/ide-electron` project, you can find the `renderApp` initialization method in `src\index.ts` and add the following:
-
-In [opensumi/ide-electron](https://github.com/opensumi/ide-electron) project, you can find the `renderApp` initialization method in [src/browser/index.ts#L113](https://github.com/opensumi/ide-electron/blob/main/src/browser/index.ts#L113) and add the following:
+In [Electron IDE Sample](https://github.com/opensumi/ide-electron), you can find the `renderApp` initialization method in [src/browser/index.ts#L113](https://github.com/opensumi/ide-electron/blob/main/src/browser/index.ts#L113) and add the following:
 
 ```ts
 renderApp({
@@ -65,7 +63,7 @@ renderApp({
 })
 ```
 
-Also you can find the same configuration logic on [opensumi/ide-electron](https://github.com/opensumi/ide-startup) project, see [src/browser/index.ts#L12](https://github.com/opensumi/ide-startup/blob/main/src/browser/index.ts#L12).
+Also you can find the same configuration logic on [WebIDE Sample](https://github.com/opensumi/ide-startup), see [src/browser/index.ts#L12](https://github.com/opensumi/ide-startup/blob/main/src/browser/index.ts#L12).
 
 The complete configuration file can be found in the live code [packages/core-browser/src/react-providers/config-provider.tsx#L14~#L245](https://github.com/opensumi/core/blob/main/packages/core-browser/src/react-providers/config-provider.tsx#L14~#L245).
 
