@@ -14,20 +14,21 @@ order: 1
 
 OpenSumi 提供了自定义配置能力，基于 OpenSumi 的 [Contribution Point](../../develop/basic-design/contribution-point) 机制，只需要实现 `PreferenceContribution` 即可进行配置注册。
 
-举个例子，我们通过创建 ```DemoPreferenceContribution``` 可以在项目中注册运行时配置，伪代码如下：
-```
+举个例子，我们通过创建 `DemoPreferenceContribution` 可以在项目中注册运行时配置，伪代码如下：
+
+```ts
 import { PreferenceContribution } from '@opensumi/ide-core-browser';
 import { Domain, PreferenceSchema } from '@opensumi/ide-core-common';
 
 export const DemoPreferenceSchema: PreferenceSchema = {
-    type: 'object',
-    properties: {
-        'testValue': {
-        type: 'string',
-        default: 'test',
-        description: 'test'
-        }
+  type: 'object',
+  properties: {
+    testValue: {
+      type: 'string',
+      default: 'test',
+      description: 'test'
     }
+  }
 };
 
 @Domain(PreferenceContribution)
@@ -36,8 +37,9 @@ export class DemoPreferenceContribution implements PreferenceContribution {
 }
 ```
 
-通过将 ```DemoPreferenceContribution``` 引入到模块中的 Providers 声明后，便可以在其他模块通过下面方式使用
-```
+通过将 `DemoPreferenceContribution` 引入到模块中的 Providers 声明后，便可以在其他模块通过下面方式使用
+
+```ts
 @Autowired(PreferenceService)
 protected readonly preferenceService: PreferenceService;
 
@@ -51,16 +53,20 @@ this.preferenceService.get('testValue')
 
 在集成 OpenSumi 框架的时候，我们往往需要进行独立的配置，下面列举了一些可在集成阶段通过传入配置项进行配置的参数：
 
-在```ide-electron```中，找到```src\index.ts```的```renderApp```初始化方法添加如下：
-```
+在 [opensumi/ide-electron](https://github.com/opensumi/ide-electron) 项目中，找到 [src/browser/index.ts#L113](https://github.com/opensumi/ide-electron/blob/main/src/browser/index.ts#L113) 的 `renderApp` 初始化方法添加如下：
+
+```ts
 renderApp({
   // 追加配置
   appName: 'OpenSumi',
   // 原有内容
-  modules: [
+  ...
+})
 ```
-完整配置文件可以参考实时代码：
-https://github.com/opensumi/core/blob/9e931275bd5bb74af8309e8bf54ad0d27baf165a/packages/core-browser/src/react-providers/config-provider.tsx#L14~#L245
+
+而在 [opensumi/ide-electron](https://github.com/opensumi/ide-startup) 项目中, 你也可以找到类似配置，见 [src/browser/index.ts#L12](https://github.com/opensumi/ide-startup/blob/main/src/browser/index.ts#L12)。
+
+完整配置文件可以参考实时代码：[packages/core-browser/src/react-providers/config-provider.tsx#L14~#L245](https://github.com/opensumi/core/blob/main/packages/core-browser/src/react-providers/config-provider.tsx#L14~#L245)
 
 ### Browser 配置
 
@@ -99,7 +105,7 @@ https://github.com/opensumi/core/blob/9e931275bd5bb74af8309e8bf54ad0d27baf165a/p
 | allowSetDocumentTitleFollowWorkspaceDir | 允许按照工作区路径去动态设置 document#title,                                                                                                                                                                                                              | true                                                                                                                                                                    |
 | remoteHostname                          | 远程访问地址，可以通过该地址访问当容器服务                                                                                                                                                                                                                | window.location.hostname                                                                                                                                                |
 | enableDebugExtensionHost                | 开启插件进程的调试能力                                                                                                                                                                                                                                    | false                                                                                                                                                                   |
-| inspectExtensionHost                    | 调试插件进程时的 ip 地址                                                                                                                                                                                                                                    | 无                                                                                                                                                                   |
+| inspectExtensionHost                    | 调试插件进程时的 ip 地址                                                                                                                                                                                                                                  | 无                                                                                                                                                                      |
 | extensionFetchCredentials               | 加载插件前端资源时的 fetch credentials 选项，可选项为 "include"                                                                                                                                                                                           | "omit"                                                                                                                                                                  | "same-origin" | 无 |
 | extensionConnectOption                  | 参考：[ExtensionConnectOption](https://github.com/opensumi/core/blob/58b998d9e1f721928f576579f16ded46b7505e84/packages/core-common/src/types/extension.ts#L18)                                                                                            | 无                                                                                                                                                                      |
 
