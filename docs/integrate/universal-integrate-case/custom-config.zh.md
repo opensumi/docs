@@ -5,14 +5,77 @@ slug: custom-config
 order: 1
 ---
 
-## 注册自定义配置
+## 使用自定义配置
 
-常用的注册自定义配置主要有如下两种方式：
+在 OpenSumi 中，常见的配置项一般分为如下两种：
 
-1. 在集成侧通过模块贡献点注册
-2. 通过插件的`Configurations`贡献点注册
+1. 集成配置
+2. 运行时配置
 
-OpenSumi 提供了自定义配置能力，基于 OpenSumi 的 [Contribution Point](../../develop/basic-design/contribution-point) 机制，只需要实现 `PreferenceContribution` 即可进行配置注册。
+`集成配置` 一般为静态配置，随用户 IDE 服务的启动生效，即便修改后也需要 “刷新/重启服务” 后才能生效，常用的配置可以查看下面的 [集成配置](#集成配置) 查看。
+
+`运行时配置` 一般为动态配置，支持在用户使用过程中通过一些界面操作，或用户自定义的方式去动态改变，常用于一些具有 “开关属性” 或 “多场景配置” 的场景，用户可以通过框架中的配置界面进行动态修改。
+![settings](https://img.alicdn.com/imgextra/i4/O1CN015YKbLY1xUmFjFnVNs_!!6000000006447-2-tps-2354-1118.png)
+
+与 `集成配置` 不同的是，`运行时配置` 在框架内可以通过具体的配置文件去进行自定义，如 `launch.json`、`task.json`、`settings.json` 等文件。
+
+## 运行时配置
+
+### 如何使用
+
+在模块内，我们可以通过 `PreferenceService` 服务直接获取相关配置的值，如下面我们可以通过该服务去获取我们注册的 `debugModel.enable` 配置项：
+
+```ts
+@Autowired(PreferenceService)
+protected readonly preferenceService: PreferenceService;
+
+...
+this.preferenceService.get('debugModel.enable')
+```
+
+而在插件中，我们兼容了 VS Code 中的 Configuration API，可以跟 VS Code 插件内采用相同的方式获取对应配置，如下面展示如何获取 `launch.json` 内的配置值:
+
+```ts
+const config = workspace.getConfiguration(
+  'launch',
+  vscode.workspace.workspaceFolders[0].uri
+);
+
+// retrieve values
+const values = config.get('configurations');
+```
+
+同时，在 `集成配置` 中，也可以对框架一些默认的 `运行时配置` 进行二次配置，下面的代码配置了 “默认情况下隐藏文件树下的 index.js 文件” 配置：
+
+```ts
+appconfig = {
+   ...
+  defaultPreferences: {
+    'files.exclude': {
+      // 默认值 glob 表达式
+      '**/.git': true,
+      '**/.svn': true,
+      '**/.hg': true,
+      '**/CVS': true,
+      '**/.DS_Store': true,
+      // 追加, 这里屏蔽了 index.js 文件的展示
+      '**/index.js'
+    }
+  }
+   ...
+}
+```
+
+需要注意的是，这些配置将影响 IDE 初次访问情况的表现，当用户通过设置面板或文件修改配置后，后续访问将会采用用户的自定义配置。
+
+### 如何注册新的配置
+
+常用的注册运行时配置主要有如下两种方式：
+
+1. 模块 —— 通过 `PreferenceContribution` 贡献点注册
+2. 插件 —— 通过 `Configurations` 贡献点注册
+
+OpenSumi 提供了自定义配置能力，基于 [Contribution Point](../../develop/basic-design/contribution-point) 机制，只需要实现 `PreferenceContribution` 即可进行配置注册。
 
 举个例子，我们通过创建 `DemoPreferenceContribution` 可以在项目中注册运行时配置，伪代码如下：
 
@@ -23,7 +86,7 @@ import { Domain, PreferenceSchema } from '@opensumi/ide-core-common';
 export const DemoPreferenceSchema: PreferenceSchema = {
   type: 'object',
   properties: {
-    testValue: {
+    'debugModel.enable': {
       type: 'string',
       default: 'test',
       description: 'test'
@@ -44,16 +107,16 @@ export class DemoPreferenceContribution implements PreferenceContribution {
 protected readonly preferenceService: PreferenceService;
 
 ...
-this.preferenceService.get('testValue')
+this.preferenceService.get('debugModel.enable')
 ```
 
-另一种注册方式则是通过插件的 [configuration 贡献点](https://code.visualstudio.com/api/references/contribution-points#contributes.configuration) 在插件中进行注册。
+另一种注册方式则是通过插件的 [Configuration 贡献点](https://code.visualstudio.com/api/references/contribution-points#contributes.configuration) 在插件中进行注册。
 
-## 自定义集成参数
+## 集成配置
 
 在集成 OpenSumi 框架的时候，我们往往需要进行独立的配置，下面列举了一些可在集成阶段通过传入配置项进行配置的参数：
 
-在 [本地 IDE 示例](https://github.com/opensumi/ide-electron) 项目中，找到 [src/browser/index.ts#L113](https://github.com/opensumi/ide-electron/blob/main/src/browser/index.ts#L113) 的 `renderApp` 初始化方法添加如下：
+在 [本地客户端示例](https://github.com/opensumi/ide-electron) 项目中，找到 [src/browser/index.ts#L113](https://github.com/opensumi/ide-electron/blob/main/src/browser/index.ts#L113) 的 `renderApp` 初始化方法添加如下：
 
 ```ts
 renderApp({
@@ -66,11 +129,21 @@ renderApp({
 
 而在 [WebIDE 示例](https://github.com/opensumi/ide-startup) 项目中, 你也可以找到类似配置，见 [src/browser/index.ts#L12](https://github.com/opensumi/ide-startup/blob/main/src/browser/index.ts#L12)。
 
-完整配置文件可以参考实时代码：[packages/core-browser/src/react-providers/config-provider.tsx#L14~#L245](https://github.com/opensumi/core/blob/main/packages/core-browser/src/react-providers/config-provider.tsx#L14~#L245)
+完整配置文件可以参考实时代码：[packages/core-browser/src/react-providers/config-provider.tsx#L14~#L245](https://github.com/opensumi/core/blob/main/packages/core-browser/src/react-providers/config-provider.tsx#L14~#L245)。
 
-### Browser 配置
+![appconfig](https://img.alicdn.com/imgextra/i1/O1CN01kT4yVO1Ul9YeeMGWE_!!6000000002557-2-tps-1722-1490.png)
 
-定义可见 `@opensumi/ide-core-browser` 中的 `AppConfig` 定义。
+### 浏览器端配置
+
+定义可见 `@opensumi/ide-core-browser` 中的 [AppConfig](https://github.com/opensumi/core/blob/main/packages/core-browser/src/react-providers/config-provider.tsx#L14~#L245) 定义。
+
+示例项目中修改配置的参考位置如下：
+
+- [WebIDE 示例](https://github.com/opensumi/ide-startup) - [src/browser/index.ts#L12](https://github.com/opensumi/ide-startup/blob/main/src/browser/index.ts#L12)
+- [纯前端示例](https://github.com/opensumi/ide-startup-lite) - [src/browser/index.ts#L52](https://github.com/opensumi/ide-startup-lite/blob/main/src/app.tsx#L52)
+- [本地客户端示例](https://github.com/opensumi/ide-startup) - [src/browser/index.ts#L113](https://github.com/opensumi/ide-electron/blob/main/src/browser/index.ts#L113)
+
+部分配置如下：
 
 | 参数                                    | 参数说明                                                                                                                                                                                                                                                  | 默认值                                                                                                                                                                  |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -109,9 +182,16 @@ renderApp({
 | extensionFetchCredentials               | 加载插件前端资源时的 fetch credentials 选项，可选项为 "include"                                                                                                                                                                                           | "omit"                                                                                                                                                                  | "same-origin" | 无 |
 | extensionConnectOption                  | 参考：[ExtensionConnectOption](https://github.com/opensumi/core/blob/58b998d9e1f721928f576579f16ded46b7505e84/packages/core-common/src/types/extension.ts#L18)                                                                                            | 无                                                                                                                                                                      |
 
-### Node 配置
+### 服务端配置
 
-定义可见 `@opensumi/ide-core-node` 中的 `AppConfig` 定义。
+定义可见 `@opensumi/ide-core-node` 中的 [AppConfig](https://github.com/opensumi/core/blob/a3e8741b86ba2dc7974d914da35e74200aabe1e2/packages/core-node/src/types.ts#L43~L115) 定义。
+
+示例项目中修改配置的参考位置如下：
+
+- [WebIDE 示例](https://github.com/opensumi/ide-startup) - [src/browser/index.ts#L50](https://github.com/opensumi/ide-startup/blob/main/src/node/start-server.ts#L50)
+- [本地客户端示例](https://github.com/opensumi/ide-startup) - [src/browser/index.ts#L65](https://github.com/opensumi/ide-electron/blob/main/src/node/server.ts#L65)
+
+部分配置如下：
 
 | 参数                      | 参数说明                                                                                                                                              | 默认值        |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
@@ -131,4 +211,4 @@ renderApp({
 | extHostIPCSockPath        | 插件进程存放用于通信的 sock 地址                                                                                                                      | /tmp          |
 | extHostForkOptions        | 插件进程 fork 配置                                                                                                                                    | 无            |
 
-更多配置，可查看 OpenSumi 源码。
+更多配置，可查看 OpenSumi 源码 [opensumi/core](https://github.com/opensumi/core)。
