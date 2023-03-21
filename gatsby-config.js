@@ -44,6 +44,13 @@ module.exports = {
         }
       },
       {
+        slug: 'docs/extension/overview',
+        title: {
+          en: 'Extension API',
+          zh: '插件研发'
+        }
+      },
+      {
         slug: 'https://marketplace.opentrs.cn/square',
         title: {
           en: 'Marketplace',
@@ -107,6 +114,14 @@ module.exports = {
           en: 'Sample'
         },
         order: 6
+      },
+      {
+        slug: 'extension/opensumi-api',
+        title: {
+          zh: 'OpenSumi 插件开发',
+          en: 'OpenSumi Extension API'
+        },
+        order: 2
       }
     ],
     showDingTalkQRCode: true,
