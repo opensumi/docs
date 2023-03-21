@@ -7,7 +7,7 @@ order: 0
 
 The OpenSumi extension supports extensions in both Browser and Node environments. Generally, we recommend that you only register views at the Browser entry and write extension business logic in the Node entry.
 
-## Code Example
+## Front-end and Back-end communication
 
 ![Click](https://img.alicdn.com/imgextra/i3/O1CN01jgVXs41u6YSrFgIZY_!!6000000005988-2-tps-362-120.png)
 

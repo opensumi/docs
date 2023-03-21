@@ -7,7 +7,7 @@ order: 0
 
 OpenSumi 插件支持 Browser 及 Node 环境下的扩展，一般的我们建议在 Browser 层仅注册视图，在 Node 层编写插件业务逻辑。
 
-## 代码示例
+## 前后端通信
 
 ![Click](https://img.alicdn.com/imgextra/i3/O1CN01jgVXs41u6YSrFgIZY_!!6000000005988-2-tps-362-120.png)
 
