@@ -1,6 +1,6 @@
 ---
 id: overview
-title: 概览
+title: 框架介绍
 slug: overview
 order: 0
 ---
@@ -102,9 +102,9 @@ export class ModuleDemoModule extends NodeModule {
 
 插件, 也可称为 Extension，是指当前 OpenSumi 框架下支持的，通过在特定位置安装插件文件，从而对 IDE 的界面、功能进行二次插件的一类程序文件，设计上兼容 `VSCode` 中的 [VSCode Extension API](https://code.visualstudio.com/api)，即对于使用 OpenSumi 进行开发的 IDE 产品天然兼容 `VSCode` 的插件体系。
 
-> 针对 OpenSumi 插件开发相关的研发流程链路支持将会在后续逐步推出，敬请期待。
-
 ![插件](https://img.alicdn.com/imgextra/i3/O1CN01gHphRQ26x18NyYeTz_!!6000000007727-2-tps-1156-800.png)
+
+插件开发文档见：[Extension API 概览](../extension/overview);
 
 ### 如何发布
 

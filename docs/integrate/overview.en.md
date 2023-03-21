@@ -1,6 +1,6 @@
 ---
 id: overview
-title: OverView
+title: Introduction
 slug: overview
 order: 0
 ---
@@ -24,7 +24,7 @@ There are three core processes within OpenSumi:
 - Extension process（Extension Process）
 - Backend process （Node Process）
 - Frontend process（Browser Process）
- 
+
 To ensure that extension problems do not affect IDE performance, OpenSumi uses a similar solution in terms of extension capabilities: similar to `VS Code`, the extension is enabled by a separate extension process, and the extension process communicates with the frontend process by the backend process.
 
 ![OpenSumi Overall Structure](https://img.alicdn.com/imgextra/i2/O1CN01qNPXUm1wbMFgrPieN_!!6000000006326-2-tps-1332-1180.png)
@@ -104,9 +104,9 @@ export class ModuleDemoModule extends NodeModule {
 
 Extension, is a type of program files supported by OpenSumi framework. By installing extension files on a specific location, the interface and functions of IDE can be re-developed. It is designed to be compatible with the [VSCode Extension API](https://code.visualstudio.com/api), that is, IDE products developed by OpenSumi are naturally compatible with `VSCode` plug-in system.
 
-> We will roll out support for OpenSumi extension development-related R&D process links in the future, so stay tuned.
-
 ![Extension](https://img.alicdn.com/imgextra/i3/O1CN01gHphRQ26x18NyYeTz_!!6000000007727-2-tps-1156-800.png)
+
+See [Extension API Overview](../extension/overview);
 
 ### How to Release
 

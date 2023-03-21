@@ -116,7 +116,7 @@ const IndexPage = () => {
       ),
       link: 'https://opendocs.alipay.com/mini/ide/overview',
       image:
-        'https://img.alicdn.com/imgextra/i1/O1CN01BYqn4B219wcGGXHBS_!!6000000006943-2-tps-775-667.png'
+        'https://img.alicdn.com/imgextra/i4/O1CN012vU3ct201s6upzFwb_!!6000000006790-2-tps-775-667.png'
     },
     {
       logo:
