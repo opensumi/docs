@@ -2,7 +2,7 @@
 id: connection-mode
 title: Connection Mode
 slug: connection-mode
-order: 0
+order: 4
 ---
 
 The OpenSumi extension supports extensions in both Browser and Node environments. Generally, we recommend that you only register views at the Browser entry and write extension business logic in the Node entry.
