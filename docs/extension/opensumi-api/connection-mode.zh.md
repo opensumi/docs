@@ -2,7 +2,7 @@
 id: connection-mode
 title: 通信模型
 slug: connection-mode
-order: 0
+order: 4
 ---
 
 OpenSumi 插件支持 Browser 及 Node 环境下的扩展，一般的我们建议在 Browser 层仅注册视图，在 Node 层编写插件业务逻辑。
