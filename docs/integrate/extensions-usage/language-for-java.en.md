@@ -19,8 +19,6 @@ After installing these three extensions, Java project development can begin.
 
 ![Java研发](https://img.alicdn.com/imgextra/i1/O1CN019llEwh1u7TG9OOals_!!6000000005990-2-tps-1047-479.png)
 
-> 图片
-
 If it is a Maven project, you can install this extension:
 
 ```bash

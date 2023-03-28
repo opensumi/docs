@@ -84,12 +84,20 @@ module.exports = {
         order: 3
       },
       {
+        slug: 'integrate/extensions-usage',
+        title: {
+          zh: '插件使用',
+          en: 'Extensions Usage'
+        },
+        order: 4
+      },
+      {
         slug: 'integrate/browser-extension',
         title: {
           zh: '浏览器插件',
           en: 'Browser Extension'
         },
-        order: 4
+        order: 5
       },
       {
         slug: 'develop/basic-design',
