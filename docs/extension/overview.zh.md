@@ -1,6 +1,6 @@
 ---
 id: overview
-title: 概览
+title: 如何开发插件
 slug: overview
 order: 0
 ---
