@@ -1,6 +1,6 @@
 ---
 id: overview
-title: Extension API Overview
+title: How To Develop Extension
 slug: overview
 order: 0
 ---
