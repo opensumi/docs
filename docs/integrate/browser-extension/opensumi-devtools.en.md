@@ -16,7 +16,7 @@ GitHub：https://github.com/opensumi/devtools
 Currently OpenSumi DevTools focuses on inner messages capturing and presenting:
 
 - RPC messages between frontend and backend
-- IPC messages between Electron processes (Electron client only)
+- IPC messages([partial](https://github.com/opensumi/core/issues/2359#issuecomment-1495977098)) between Electron processes (Electron client only)
 
 Users are allowed to:
 
@@ -36,7 +36,8 @@ The installed extension works only when the devtools supports are enabled first.
 
 ### Web client
 
-The [`ClientApp`](https://github.com/opensumi/core/blob/main/packages/core-browser/src/bootstrap/app.ts) of the [core-browser](https://github.com/opensumi/core/tree/main/packages/core-browser) package is provided for integrators to bootstrap their Web IDEs.
+The [`ClientApp`](https://github.com/opensumi/core/blob/main/packages/core-browser/src/bootstrap/app.ts) of the [core-browser](https://github.com/opensumi/core/tree/main/packages/core-browser) package is provided for integrators to bootstrap their Web IDEs. Now we have added a `devtools` option to [AppConfig](https://github.com/opensumi/core/blob/main/packages/core-browser/src/react-providers/config-provider.tsx). So integrators are allowed to toggle the devtools support for Web clients like [this
+example](https://github.com/opensumi/core/blob/main/packages/startup/entry/web/app.tsx).
 
 ```javascript
 export interface AppConfig {
@@ -49,27 +50,6 @@ export interface AppConfig {
 }
 ```
 
-Now we have added a `devtools` option to [AppConfig](https://github.com/opensumi/core/blob/main/packages/core-browser/src/react-providers/config-provider.tsx). So integrators are allowed to toggle the devtools support for Web clients like [this
-example](https://github.com/opensumi/core/blob/main/packages/startup/entry/web/app.tsx).
-
 ### Electron client
 
-The [`ElectronMainApp`](https://github.com/opensumi/core/blob/main/packages/core-electron-main/src/bootstrap/app.ts) of the [core-electron-main](https://github.com/opensumi/core/tree/main/packages/core-electron-main) package is provided for integrators to bootstrap their Electron IDEs.
-
-```javascript
-export interface ElectronAppConfig {
-  ...
-  /**
-   * If enable the support for OpenSumi DevTools
-   * The default is false
-   */
-  devtools?: boolean;
-}
-```
-
-Now we have added a `devtools` option to [ElectronAppConfig](https://github.com/opensumi/core/blob/main/packages/core-electron-main/src/bootstrap/types.ts). So integrators are allowed to toggle the devtools support for Electron clients like [this
-example](https://github.com/opensumi/core/blob/main/tools/electron/src/main/index.ts).
-
-Wait, there is more. Integrators also need to enable devtools support in core-browser side (see [this](https://github.com/opensumi/core/blob/main/tools/electron/src/browser/index.ts)) like they do for Web clients, since Electron clients also depend on the core-browser package.
-
-So, integrators should enable `devtools` in one place for Web clients but two places for Electron clients.
+At the moment, OpenSumi DevTools captures IPC messages in Renderer processes side only. Since Renderer processes also depend on the core-browser package to initialize apps, integrators just need to enable devtools support in core-browser side (see [this](https://github.com/opensumi/core/blob/main/tools/electron/src/browser/index.ts)) like they do for Web clients.

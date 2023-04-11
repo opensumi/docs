@@ -16,7 +16,7 @@ GitHub：https://github.com/opensumi/devtools
 目前该插件主要聚焦于 OpenSumi 内部通信消息的捕获与呈现：
 
 - OpenSumi 前后端的 RPC 通信消息
-- Electron 客户端中的 IPC 通信消息（仅 Electron 端）
+- Electron 客户端中的[部分](https://github.com/opensumi/core/issues/2359#issuecomment-1495977098) IPC 通信消息（仅 Electron 端）
 
 用户可以：
 
@@ -36,7 +36,7 @@ GitHub：https://github.com/opensumi/devtools
 
 ### Web 客户端
 
-[core-browser](https://github.com/opensumi/core/tree/main/packages/core-browser) 模块中的 [`ClientApp`](https://github.com/opensumi/core/blob/main/packages/core-browser/src/bootstrap/app.ts) 使得集成方能够快速启动他们的 Web IDE 产品。
+[core-browser](https://github.com/opensumi/core/tree/main/packages/core-browser) 模块中的 [`ClientApp`](https://github.com/opensumi/core/blob/main/packages/core-browser/src/bootstrap/app.ts) 使得集成方能够快速启动他们的 Web IDE 产品。现在我们在 [AppConfig](https://github.com/opensumi/core/blob/main/packages/core-browser/src/react-providers/config-provider.tsx) 中增加了`devtools`这个配置项。如此一来，集成方就能控制是否在 Web 客户端中开启 devtools 支持，请见[此例](https://github.com/opensumi/core/blob/main/packages/startup/entry/web/app.tsx)。
 
 ```javascript
 export interface AppConfig {
@@ -49,25 +49,6 @@ export interface AppConfig {
 }
 ```
 
-现在我们在 [AppConfig](https://github.com/opensumi/core/blob/main/packages/core-browser/src/react-providers/config-provider.tsx) 中增加了`devtools`这个配置项。如此一来，集成方就能控制是否在 Web 客户端中开启 devtools 支持，请见[此例](https://github.com/opensumi/core/blob/main/packages/startup/entry/web/app.tsx)。
-
 ### Electron 客户端
 
-[core-electron-main](https://github.com/opensumi/core/tree/main/packages/core-electron-main) 模块中的 [`ElectronMainApp`](https://github.com/opensumi/core/blob/main/packages/core-electron-main/src/bootstrap/app.ts) 使得集成方能够快速启动他们的 Electron IDE 产品。
-
-```javascript
-export interface ElectronAppConfig {
-  ...
-  /**
-   * 是否开启对 OpenSumi DevTools 的支持
-   * 默认值为 false
-   */
-  devtools?: boolean;
-}
-```
-
-现在我们在 [ElectronAppConfig](https://github.com/opensumi/core/blob/main/packages/core-electron-main/src/bootstrap/types.ts) 中增加了`devtools`这个配置项。如此一来，集成方就能控制是否在 Electron 客户端中开启 devtools 支持，请见[此例](https://github.com/opensumi/core/blob/main/tools/electron/src/main/index.ts)。
-
-请注意，集成方同时还需要在 core-browser 侧开启对 devtools 的支持（ 见[此例](https://github.com/opensumi/core/blob/main/tools/electron/src/browser/index.ts)），这是因为 Electron 客户端与 Web 客户端一样，都依赖 core-browser 模块。
-
-也就是说，对于 Web 客户端，集成方只需将一处的`devtools`设置为`true`便能开启对 OpenSumi DevTools 的支持；而对于 Electron 客户端，集成方需要在两处将`devtools`设置为`true`才能完全开启对插件的支持。
+目前，OpenSumi DevTools 只捕获并展示 Electron Renderer 进程一侧的通信消息。由于 Renderer 进程也会利用 core-browser 模块进行初始化，所以和 Web 客户端类似，集成方只需要在 core-browser 侧开启对 devtools 的支持即可，请见[此例](https://github.com/opensumi/core/blob/main/tools/electron/src/browser/index.ts)。
