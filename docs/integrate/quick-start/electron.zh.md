@@ -13,8 +13,8 @@ OpenSumi 内部集成了一个简易的 Electron 框架，旨在提供一个快�
 ## 兼容环境
 
 - Electron 11.4.3+
-- macOS & Windows 7+
-- Node.js 12+
+- macOS & Windows 10+
+- Node.js 14+
 
 ## 本地启动
 
@@ -26,11 +26,11 @@ OpenSumi 内部集成了一个简易的 Electron 框架，旨在提供一个快�
 ```bash
 $ git clone git@github.com:opensumi/ide-electron.git
 $ cd ide-electron
-$ yarn
-$ yarn build
-$ yarn rebuild-native -- --force-rebuild=true
-$ yarn download-extension # 安装内置插件（可选）
-$ yarn start
+$ pnpm i
+$ pnpm build
+$ pnpm rebuild-native -- --force-rebuild=true
+$ pnpm download-extension # 安装内置插件（可选）
+$ pnpm start
 ```
 
 ## 开发
@@ -38,18 +38,18 @@ $ yarn start
 在项目根目录运行：
 
 ```bash
-$ yarn watch
+$ pnpm watch
 ```
 
 启动：
 
 ```bash
-$ yarn start
+$ pnpm start
 ```
 
 ## 打包
 
-运行 `yarn pack` 即可将项目打包，打包后的安装包将输出在 `out` 目录。
+运行 `pnpm pack` 即可将项目打包，打包后的安装包将输出在 `out` 目录。
 
 ## npm 镜像配置
 
