@@ -13,8 +13,8 @@ You can also get the relevant installation package in the [Release](https://gith
 ## Compatible Environments 
 
 - Electron 11.4.3+
-- macOS & Windows 7+
-- Node.js 12+
+- macOS & Linux & Windows 10+
+- Node.js 14+
 
 ## Local Launch
 
@@ -26,11 +26,11 @@ Run the following commands in sequence:
 ```bash
 $ git clone git@github.com:opensumi/ide-electron.git
 $ cd ide-electron
-$ yarn
-$ yarn build
-$ yarn rebuild-native -- --force-rebuild=true
-$ yarn download-extension # install built-in extensions (optional)  
-$ yarn start
+$ pnpm i
+$ pnpm build
+$ pnpm rebuild-native -- --force-rebuild=true
+$ pnpm download-extension # install extension (Optional)
+$ pnpm start
 ```
 
 ## Development 
@@ -38,15 +38,15 @@ $ yarn start
 Run in the project root directory
 
 ```bash
-$ yarn watch
+$ pnpm watch
 ```
 
 Start
 
 ```bash
-$ yarn start
+$ pnpm start
 ```
 
 ## Package
 
-Run `yarn pack` to package the project. The installation package will be exported in the `out` directory.   
+Run `pnpm pack` to package the project. The installation package will be exported in the `out` directory.   
