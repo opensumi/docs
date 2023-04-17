@@ -124,12 +124,20 @@ module.exports = {
         order: 6
       },
       {
-        slug: 'extension/opensumi-api',
+        slug: 'extension/develop',
         title: {
           zh: 'OpenSumi 插件开发',
-          en: 'OpenSumi Extension API'
+          en: 'Extension Develop'
         },
         order: 2
+      },
+      {
+        slug: 'extension/interface',
+        title: {
+          zh: 'OpenSumi API',
+          en: 'OpenSumi API'
+        },
+        order: 3
       }
     ],
     showDingTalkQRCode: true,
