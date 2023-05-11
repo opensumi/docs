@@ -44,7 +44,7 @@ function activate(context) {
 
 ## 特殊用法
 
-### 获取打开页面详细信息及状态控制
+### 获取信息及状态控制
 
 在注册完页面后，也可通过 `vscode.window.showTextDocument` 接口进行打开操作，已支持更多的参数配置，同时可获取到详细的编辑器信息，详细文档见 [VSCode API - showTextDocument](https://code.visualstudio.com/api/references/vscode-api) , 基础使用如下：
 

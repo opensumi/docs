@@ -138,6 +138,14 @@ module.exports = {
           en: 'OpenSumi API'
         },
         order: 3
+      },
+      {
+        slug: 'extension/contributes',
+        title: {
+          zh: 'OpenSumi 贡献点',
+          en: 'OpenSumi Contribute Points'
+        },
+        order: 4
       }
     ],
     showDingTalkQRCode: true,

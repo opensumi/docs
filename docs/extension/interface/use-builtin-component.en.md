@@ -2,7 +2,7 @@
 id: use-builtin-component
 title: Use Components
 slug: use-builtin-component
-order: 1
+order: 10
 ---
 
 ## Built-in components

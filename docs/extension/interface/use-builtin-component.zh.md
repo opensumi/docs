@@ -1,8 +1,8 @@
 ---
 id: use-builtin-component
-title: 组件使用
+title: Components
 slug: use-builtin-component
-order: 1
+order: 10
 ---
 
 ## 内置组件
