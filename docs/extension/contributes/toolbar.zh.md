@@ -206,8 +206,6 @@ export function activate() {
 }
 ```
 
-![button-handle](https://img.alicdn.com/imgextra/i2/O1CN01iENgIf1YZwLRIc4DT_!!6000000003074-1-tps-1200-805.gif)
-
 示例中我们自定义了一组 `clicked` 状态，通过 Toolbar API 可以在点击时切换为 `clicked`
 
 ```ts
@@ -224,7 +222,9 @@ export function activate() {
 }
 ```
 
-![clicked-update](https://img.alicdn.com/imgextra/i4/O1CN01iDS8AS1UiPCPjbHWk_!!6000000002551-1-tps-1366-1080.gif)
+效果如下：
+
+![button-handle](https://img.alicdn.com/imgextra/i2/O1CN01iENgIf1YZwLRIc4DT_!!6000000003074-1-tps-1200-805.gif)
 
 ### 自定义 Popover
 

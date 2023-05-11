@@ -206,8 +206,6 @@ export function activate() {
 }
 ```
 
-![button-handle](https://img.alicdn.com/imgextra/i2/O1CN01iENgIf1YZwLRIc4DT_!!6000000003074-1-tps-1200-805.gif)
-
 In the example, we have customized a set of `clicked` states, which can be switched to `clicked` when clicked through the Toolbar API
 
 ```ts
@@ -224,7 +222,7 @@ export function activate() {
 }
 ```
 
-![clicked-update](https://img.alicdn.com/imgextra/i4/O1CN01iDS8AS1UiPCPjbHWk_!!6000000002551-1-tps-1366-1080.gif)
+![button-handle](https://img.alicdn.com/imgextra/i2/O1CN01iENgIf1YZwLRIc4DT_!!6000000003074-1-tps-1200-805.gif)
 
 ### Customize Popover
 
