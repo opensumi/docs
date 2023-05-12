@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkopensumi_doc=self.webpackChunkopensumi_doc||[]).push([[155],{4840:function(e,n,u){u.r(n);var t=u(7294),a=u(8900),c=function(){var e=(0,a.$)().t;return t.createElement(t.Fragment,null,e("独立页面"))};c.noLayout=!0,n.default=c}}]);
