@@ -1,6 +1,6 @@
 ---
 id: use-event
-title: 事件使用
+title: Event
 slug: use-event
 order: 2
 ---
