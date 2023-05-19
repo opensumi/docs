@@ -157,3 +157,59 @@ registerMenus(registry: IMenuRegistry) {
 ```
 
 ![submenu](https://img.alicdn.com/imgextra/i3/O1CN01uVgEDb1CnICqwllsD_!!6000000000125-2-tps-2208-1527.png)
+
+### 反注册菜单或者菜单项
+
+OpenSumi 也提供了反注册菜单或者菜单项的功能，如果你不需要界面上的某些按钮，可以反注册掉它们。
+
+core 内部会预先注册了一些菜单，如：帮助；也为这些菜单预先配置了菜单项，如: 帮助 > 切换开发人员工具。
+
+我们在 `IMenuRegistry` 中提供了两个方法: `unregisterMenuId` 和 `unregisterMenuItem`; 前者用来删除某个菜单，后者用来删除某个菜单的菜单项：
+
+```ts
+export abstract class IMenuRegistry {
+  ...
+  abstract unregisterMenuItem(menuId: MenuId | string, menuItemId: string): void;
+  abstract unregisterMenuId(menuId: string): IDisposable;
+}
+```
+
+比如我们想删除帮助菜单项，可以使用：
+
+```ts
+import {
+  MenuContribution,
+  IMenuRegistry,
+  MenuId
+} from '@opensumi/ide-core-browser/lib/menu/next';
+
+const terminalMenuBarId = 'menubar/terminal';
+
+@Domain(MenuContribution)
+class MyMenusContribution implements MenuContribution {
+  registerMenus(registry: IMenuRegistry) {
+    registry.unregisterMenuId(MenuId.MenubarHelpMenu);
+  }
+}
+```
+
+如果我们想删除帮助菜单中的切换开发人员功能，我们需要先查到这个菜单项的 id，一般来说就是该菜单要执行的 command 的 id:
+
+```ts
+import {
+  MenuContribution,
+  IMenuRegistry,
+  MenuId
+} from '@opensumi/ide-core-browser/lib/menu/next';
+
+const terminalMenuBarId = 'menubar/terminal';
+
+@Domain(MenuContribution)
+class MyMenusContribution implements MenuContribution {
+  registerMenus(registry: IMenuRegistry) {
+    registry.unregisterMenuItem(MenuId.MenubarHelpMenu, 'electron.toggleDevTools');
+  }
+}
+```
+
+core 内部注册的菜单你可以通过关键字 `registerMenuItem` 搜索到，比如 electron-basic 里注册的菜单项在这儿：[packages/electron-basic/src/browser/index.ts#L159](https://github.com/opensumi/core/blob/36846886d9cbeee47ac17e745576fb0d99f1f423/packages/electron-basic/src/browser/index.ts#L159)
