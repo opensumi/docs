@@ -158,7 +158,7 @@ registerMenus(registry: IMenuRegistry) {
 
 ![submenu](https://img.alicdn.com/imgextra/i3/O1CN01uVgEDb1CnICqwllsD_!!6000000000125-2-tps-2208-1527.png)
 
-### 反注册菜单或者菜单项
+## 反注册菜单或者菜单项
 
 OpenSumi 也提供了反注册菜单或者菜单项的功能，如果你不需要界面上的某些按钮，可以反注册掉它们。
 
