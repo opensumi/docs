@@ -44,6 +44,31 @@ class DemoModule {
 }
 ```
 
+### React Component
+
+in React component, you can use `useInjectable` function to get the command service：  
+
+```tsx
+import React from 'react';
+
+import { useInjectable, FILE_COMMANDS } from '@opensumi/ide-core-browser';
+import { localize, CommandService } from '@opensumi/ide-core-common';
+
+export const DemoView = () => {
+  const commandService: CommandService = useInjectable(CommandService);
+
+  const openFolder = () => {
+    commandService.executeCommand(FILE_COMMANDS.OPEN_FOLDER.id, { newWindow: false });
+  };
+
+  return (
+    <a className={styles.empty_button} onClick={openFolder}>
+      {localize('file.empty.openFolder')}
+    </a>
+  );
+};
+```
+
 ## Built-in Command
 
 In the OpenSumi framework, many basic commands are built-in. When you need to implement them, you can go to the module to find the corresponding implementation first to avoid repetitive work. the following table lists some frequently used built-in commands.
