@@ -161,7 +161,7 @@ registerMenus(registry: IMenuRegistry) {
 
 OpenSumi also provides the functionality of unregistering menus or menu items. If you do not need certain buttons on the interface, you can unregister them.
 
-core  internally registers some menus in advance, such as Help, and also preconfigures menu items for these menus, such as Help > Toggle Developer Tools.
+core internally registers some menus in advance, such as Help, and also preconfigures menu items for these menus, such as Help > Toggle Developer Tools.
 
 We provide two methods in `IMenuRegistry`: `unregisterMenuId` and `unregisterMenuItem`. The former is used to delete a menu, while the latter is used to delete a menu item of a menu.
 
@@ -206,9 +206,64 @@ const terminalMenuBarId = 'menubar/terminal';
 @Domain(MenuContribution)
 class MyMenusContribution implements MenuContribution {
   registerMenus(registry: IMenuRegistry) {
-    registry.unregisterMenuItem(MenuId.MenubarHelpMenu, 'electron.toggleDevTools');
+    registry.unregisterMenuItem(
+      MenuId.MenubarHelpMenu,
+      'electron.toggleDevTools'
+    );
   }
 }
 ```
 
 You can search for the menus that are registered internally in core by using the keyword `registerMenuItem`. For example, the menu items registered in Electron Basic can be found here: [packages/electron-basic/src/browser/index.ts#L159](https://github.com/opensumi/core/blob/36846886d9cbeee47ac17e745576fb0d99f1f423/packages/electron-basic/src/browser/index.ts#L159)
+
+### Using Icon Menus
+
+In addition to custom menus, you can also choose to use icon menus, which display menu items in the form of icon icons.
+
+![submenu](https://img.alicdn.com/imgextra/i4/O1CN01NnQNDA1JaCKpvk6lA_!!6000000001044-0-tps-720-217.jpg)
+
+#### Usage
+
+To customize the rendering of the toolbar, you first need to use custom view，see [Custom Slot](./custom-view) 。
+
+Then import the <IconMenuBar /> component.
+
+```typescript
+import { IconMenuBar } from '@opensumi/ide-menu-bar/lib/browser/menu-bar.view';
+
+/**
+ * Custom menu bar component.
+ * Add a logo in here, and keep
+ * opensumi's original menubar.
+ */
+export const MenuBarView = () => (
+  <div>
+    <IconMenuBar />
+  </div>
+);
+```
+
+Then call the registerMenuItems method provided by menuRegistry in MenuContribution.
+
+Register menu items on the MenuId.IconMenubarContext context.
+
+```typescript
+registerMenus(registry: IMenuRegistry) {
+  menus.registerMenuItems(MenuId.IconMenubarContext, [
+    {
+      command: EDITOR_COMMANDS.REDO.id,
+      iconClass: getIcon('up'),
+      group: '1_icon_menubar',
+    },
+    {
+      command: EDITOR_COMMANDS.UNDO.id,
+      iconClass: getIcon('down'),
+      group: '2_icon_menubar',
+    },
+  ])
+}
+```
+
+> Note: iconClass is required, otherwise icons cannot be displayed.
+
+The group field will be automatically grouped for you, and separated by a separator | between different groups.

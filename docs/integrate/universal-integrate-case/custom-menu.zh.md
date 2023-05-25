@@ -207,9 +207,64 @@ const terminalMenuBarId = 'menubar/terminal';
 @Domain(MenuContribution)
 class MyMenusContribution implements MenuContribution {
   registerMenus(registry: IMenuRegistry) {
-    registry.unregisterMenuItem(MenuId.MenubarHelpMenu, 'electron.toggleDevTools');
+    registry.unregisterMenuItem(
+      MenuId.MenubarHelpMenu,
+      'electron.toggleDevTools'
+    );
   }
 }
 ```
 
 core 内部注册的菜单你可以通过关键字 `registerMenuItem` 搜索到，比如 electron-basic 里注册的菜单项在这儿：[packages/electron-basic/src/browser/index.ts#L159](https://github.com/opensumi/core/blob/36846886d9cbeee47ac17e745576fb0d99f1f423/packages/electron-basic/src/browser/index.ts#L159)
+
+### 使用图标菜单
+
+除了自定义菜单，你还可以选择使用图标菜单，它是以 `icon` 图标的形式来显示菜单项。
+
+![submenu](https://img.alicdn.com/imgextra/i4/O1CN01NnQNDA1JaCKpvk6lA_!!6000000001044-0-tps-720-217.jpg)
+
+#### 使用方式
+
+首先需要通过`自定义视图`的方式来自定义顶部 toolbar 的渲染器，见 [自定义插槽](./custom-view) 。
+
+然后引入 `<IconMenuBar />` 组件
+
+```typescript
+import { IconMenuBar } from '@opensumi/ide-menu-bar/lib/browser/menu-bar.view';
+
+/**
+ * Custom menu bar component.
+ * Add a logo in here, and keep
+ * opensumi's original menubar.
+ */
+export const MenuBarView = () => (
+  <div>
+    <IconMenuBar />
+  </div>
+);
+```
+
+然后在 `MenuContribution` 里调用 `menuRegistry` 提供的 `registerMenuItems` 方法。
+
+往 `MenuId.IconMenubarContext` 这个 context 上注册菜单项即可
+
+```typescript
+registerMenus(registry: IMenuRegistry) {
+  menus.registerMenuItems(MenuId.IconMenubarContext, [
+    {
+      command: EDITOR_COMMANDS.REDO.id,
+      iconClass: getIcon('up'),
+      group: '1_icon_menubar',
+    },
+    {
+      command: EDITOR_COMMANDS.UNDO.id,
+      iconClass: getIcon('down'),
+      group: '2_icon_menubar',
+    },
+  ])
+}
+```
+
+> 注意： `iconClass` 为必填，否则无法展示图标
+
+其中 group 字段会自动帮你分组，在不同组之间会以分隔符 `|` 区分开
