@@ -74,7 +74,7 @@
     iconClass<span class="token operator">:</span> <span class="token function">getIcon</span><span class="token punctuation">(</span><span class="token string">&#x27;debug&#x27;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span class="token comment">// Map token to view slot </span>
+<span class="token comment">// Map token to view slot</span>
 <span class="token keyword">const</span> layoutConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
   <span class="token punctuation">[</span>SlotLocation<span class="token punctuation">.</span>left<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token punctuation">{</span>modules<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&#x27;@opensumi/ide-debug-console&#x27;</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
@@ -152,7 +152,7 @@
    */</span>
   <span class="token function">setTitleComponent</span><span class="token punctuation">(</span>Fc<span class="token operator">:</span> React<span class="token punctuation">.</span>ComponentType<span class="token punctuation">,</span> props<span class="token operator">?</span><span class="token operator">:</span> object<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token comment">/**
-   * set the expansion size of the current view, which will force the panel to expand 
+   * set the expansion size of the current view, which will force the panel to expand
    */</span>
   <span class="token function">setSize</span><span class="token punctuation">(</span>size<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token comment">/**
@@ -191,7 +191,22 @@
    * disable resize in the sidebar
    */</span>
   <span class="token function">setResizeLock</span><span class="token punctuation">(</span>lock<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">/**
+   * Listen to the activation status of the view
+   */</span>
+  <span class="token keyword">readonly</span> onActivate<span class="token operator">:</span> Event<span class="token operator">&lt;</span><span class="token keyword">void</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  <span class="token comment">/**
+   * Listen to the deactivation status of the view
+   */</span>
+  <span class="token keyword">readonly</span> onInActivate<span class="token operator">:</span> Event<span class="token operator">&lt;</span><span class="token keyword">void</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
+<p>Example:</p>
+<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> handlerExplorer <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>layoutService<span class="token punctuation">.</span><span class="token function">getTabbarHandle</span><span class="token punctuation">(</span>
+  <span class="token constant">EXPLORER_CONTAINER_ID</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+handlerExplorer<span class="token operator">?.</span><span class="token function">onActivate</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// handlerExplorer is activated</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <h2 id="class" style="position:relative"><a href="#class" aria-label="class permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Class</h2>
 <h3 id="layoutservice" style="position:relative"><a href="#layoutservice" aria-label="layoutservice permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>LayoutService</h3>
 <p><code class="language-text">DI token: IMainLayoutService</code></p>
