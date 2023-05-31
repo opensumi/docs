@@ -166,7 +166,26 @@ interface TabbarHandler {
    * 禁用侧边栏的resize功能
    */
   setResizeLock(lock?: boolean);
+  /**
+   * 监听视图的激活状态
+   */
+  readonly onActivate: Event<void>;
+  /**
+   * 监听视图的取消激活状态
+   */
+  readonly onInActivate: Event<void>;
 }
+```
+
+使用示例：
+
+```ts
+const handlerExplorer = this.layoutService.getTabbarHandle(
+  EXPLORER_CONTAINER_ID
+);
+handlerExplorer?.onActivate(() => {
+  // handlerExplorer is activated
+});
 ```
 
 ## 类

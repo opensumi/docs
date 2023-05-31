@@ -18,7 +18,7 @@ The views we register will end up inside the view container or sub-views. Each v
 
 #### Mode 1: Static Declaration
 
-Associate a view to a unique view Token by using `ComponentContribution`, and then declare the Token to the corresponding location:  
+Associate a view to a unique view Token by using `ComponentContribution`, and then declare the Token to the corresponding location:
 
 ```ts
 // Associate view information to Tokens
@@ -35,7 +35,7 @@ registerComponent(registry: ComponentRegistry) {
     iconClass: getIcon('debug'),
   });
 }
-// Map token to view slot 
+// Map token to view slot
 const layoutConfig = {
   [SlotLocation.left]: {modules: ['@opensumi/ide-debug-console']}
 }
@@ -90,7 +90,7 @@ this.layoutService.collectViewComponent(
 
 ### Control/Listen for View Changes
 
-After registering a view to a location (currently left, bottom and right) that supports multi-view switching, you can get `TabbarHandler` by using `layoutService.getTabbarHandler(viewOrContainerId: string)`. `TabbarHandler` provides very powerful view control and listening capabilities: 
+After registering a view to a location (currently left, bottom and right) that supports multi-view switching, you can get `TabbarHandler` by using `layoutService.getTabbarHandler(viewOrContainerId: string)`. `TabbarHandler` provides very powerful view control and listening capabilities:
 
 ```ts
 interface TabbarHandler {
@@ -127,7 +127,7 @@ interface TabbarHandler {
    */
   setTitleComponent(Fc: React.ComponentType, props?: object);
   /**
-   * set the expansion size of the current view, which will force the panel to expand 
+   * set the expansion size of the current view, which will force the panel to expand
    */
   setSize(size: number);
   /**
@@ -166,7 +166,26 @@ interface TabbarHandler {
    * disable resize in the sidebar
    */
   setResizeLock(lock?: boolean);
+  /**
+   * Listen to the activation status of the view
+   */
+  readonly onActivate: Event<void>;
+  /**
+   * Listen to the deactivation status of the view
+   */
+  readonly onInActivate: Event<void>;
 }
+```
+
+Example:
+
+```ts
+const handlerExplorer = this.layoutService.getTabbarHandle(
+  EXPLORER_CONTAINER_ID
+);
+handlerExplorer?.onActivate(() => {
+  // handlerExplorer is activated
+});
 ```
 
 ## Class
@@ -215,6 +234,7 @@ The incoming `size` of 0 will be ignored.
 ```js
 getTabbarService(location: string): TabbarService
 ```
+
 Available only in Slot that supports multi-view registration and collapsible expansion. Pass in the Slot location and return the `TabbarService` instance at the specified location.
 
 ##### `getAccordionService()`
@@ -283,7 +303,7 @@ Available only in Slot that supports multi-view rendering. Replace an existing s
 disposeViewComponent(viewId: string): void
 ```
 
-Available only in slots that support multiple subview rendering. Destroy a registered subview.  
+Available only in slots that support multiple subview rendering. Destroy a registered subview.
 
 ##### `revealView()`
 
