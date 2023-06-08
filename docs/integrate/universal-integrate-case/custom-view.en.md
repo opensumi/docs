@@ -74,7 +74,7 @@ Code sample here: [Custom View](https://github.com/opensumi/opensumi-modue-sampl
 
 First we need to register the ToolBar component to connect it to string Token `test-toolbar`.
 
-```ts
+```tsx
 export const TestToolbar = () => (
   <div
     style={{
@@ -109,6 +109,23 @@ export class TestContribution implements ComponentContribution {
     );
   }
 }
+```
+
+### Notice: Using Bottom Slot
+
+If you are using the `SlotLocation.bottom`, there has a style applied to bottom slot view wrapper: `overflow: hidden;`.
+So if you need scroll effect on your component, please add a additional `div` with `overflow: auto` in the outside of your component:
+
+```tsx
+export const BottomView = () => (
+  <div
+    style={{
+      overflow: auto,
+    }}
+  >
+    <App />
+  </div>
+);
 ```
 
 ## View Consumption

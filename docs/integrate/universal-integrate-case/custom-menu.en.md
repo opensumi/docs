@@ -157,7 +157,7 @@ registerMenus(registry: IMenuRegistry) {
 
 ![submenu](https://img.alicdn.com/imgextra/i3/O1CN01uVgEDb1CnICqwllsD_!!6000000000125-2-tps-2208-1527.png)
 
-### Unregistering Menus or Menu Items
+## Unregistering Menus or Menu Items
 
 OpenSumi also provides the functionality of unregistering menus or menu items. If you do not need certain buttons on the interface, you can unregister them.
 

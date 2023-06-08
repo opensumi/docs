@@ -74,7 +74,7 @@ export class SearchContribution implements ComponentContribution {
 
 首先我们需要将 ToolBar 组件进行注册，关联到一个字符串 Token `test-toolbar` 上：
 
-```ts
+```tsx
 export const TestToolbar = () => (
   <div
     style={{
@@ -109,6 +109,22 @@ export class TestContribution implements ComponentContribution {
     );
   }
 }
+```
+
+### 底部插槽注册注意事项
+
+如果你使用的是底部插槽 (SlotLocation.bottom), 该插槽的样式为 `overflow: hidden;`，如果你需要实现滚动的页面效果，请使用一层 div 进行包裹并设置 overflow 属性。
+
+```tsx
+export const BottomView = () => (
+  <div
+    style={{
+      overflow: auto,
+    }}
+  >
+    <App />
+  </div>
+);
 ```
 
 ## 视图消费

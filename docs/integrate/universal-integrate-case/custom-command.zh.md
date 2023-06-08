@@ -23,7 +23,7 @@ let success = await commands.executeCommand('vscode.openFolder', uri);
 
 ### 模块
 
-模块中可以通过下面例子的用法使用 OpenSumi 中的命令：
+模块中可以通过下面例子的用法使用 OpenSumi 中的命令：  
 
 ```ts
 import { Injectable, Autowired } from '@opensumi/common-di';
@@ -42,6 +42,31 @@ class DemoModule {
 
   ...
 }
+```
+
+### React 组件
+
+在 React 组件中你可以使用 `useInjectable` 来获取到命令服务：  
+
+```tsx
+import React from 'react';
+
+import { useInjectable, FILE_COMMANDS } from '@opensumi/ide-core-browser';
+import { localize, CommandService } from '@opensumi/ide-core-common';
+
+export const DemoView = () => {
+  const commandService: CommandService = useInjectable(CommandService);
+
+  const openFolder = () => {
+    commandService.executeCommand(FILE_COMMANDS.OPEN_FOLDER.id, { newWindow: false });
+  };
+
+  return (
+    <a className={styles.empty_button} onClick={openFolder}>
+      {localize('file.empty.openFolder')}
+    </a>
+  );
+};
 ```
 
 ## 内置命令
