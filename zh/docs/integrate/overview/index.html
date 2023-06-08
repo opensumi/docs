@@ -66,7 +66,6 @@
 <li>前端进程 （Browser Process）</li>
 </ul>
 <p>为了保证插件的问题不会影响 IDE 的性能表现，插件能力上 OpenSumi 采用了跟 <code class="language-text">VS Code</code> 类似的方案，通过独立的插件进程去启动插件，插件进程再通过后端进程与前端进程进行通信。</p>
-<p><img src="https://img.alicdn.com/imgextra/i3/O1CN019HcqJq1VzddNMtHcO_!!6000000002724-0-tps-800-709.jpg" alt="OpenSumi整体架构"/></p>
 <p>OpenSumi 的不同能力实现被拆分到了不同的模块内，这些模块通过 <a href="../develop/basic-design/contribution-point">贡献点机制 (Contribution Point)</a>、<a href="../develop/basic-design/dependence-injector">DI 机制 (Dependence Inject)</a> 互相之间有较弱的依赖关系，对于一些比较核心的基础模块，如主题服务、布局服务等，也会被其他模块直接依赖。</p>
 <p><strong>因此，在集成开发过程中需要保证一些模块的引入顺序。</strong></p>
 <p>整体启动的生命周期如下图所示：</p>
@@ -91,7 +90,7 @@
 </blockquote>
 <p>模块即可以包含 <code class="language-text">Browser</code> 层代码，也可以包含 <code class="language-text">Node</code> 层代码</p>
 <ul>
-<li><code class="language-text">browser</code>   层代码一般用于处理视图相关的能力，以 OpenSumi 中的 <code class="language-text">search</code>  模块为例，搜索的界面就是由 <code class="language-text">browser</code> 层进行实现。</li>
+<li><code class="language-text">browser</code> 层代码一般用于处理视图相关的能力，以 OpenSumi 中的 <code class="language-text">search</code>  模块为例，搜索的界面就是由 <code class="language-text">browser</code> 层进行实现。</li>
 <li><code class="language-text">node</code> 层代码一般用于处理需要使用到 <code class="language-text">Node.js</code> 能力的逻辑，例如搜索面板中的全局搜索能力就需要 <code class="language-text">node</code> 层进行实现。</li>
 <li><code class="language-text">common</code> 层一般用于存放一些公共的变量、工具方法、类型声明等。</li>
 </ul>
@@ -107,7 +106,7 @@
   <span class="token literal-property property">providers</span><span class="token operator">:</span> Provider<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
 <h3 id="拓展-node-层能力" style="position:relative"><a href="#%E6%8B%93%E5%B1%95-node-%E5%B1%82%E8%83%BD%E5%8A%9B" aria-label="拓展 node 层能力 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>拓展 Node 层能力</h3>
-<p>我们通过以下的文件结构拓展 <code class="language-text">Node</code> 层能力，你可以通过在 <code class="language-text">providers</code> 中声明相关内容来拓展能力，详细案例可见我们的 <a href="../develop/sample/overview">Todo List 案例</a>。</p>
+<p>我们通过以下的文件  结构拓展 <code class="language-text">Node</code> 层能力，你可以通过在 <code class="language-text">providers</code> 中声明相关内容来拓展能力，详细案例可见我们的 <a href="../develop/sample/overview">Todo List 案例</a>。</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// Node 模块入口</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> Provider<span class="token punctuation">,</span> Injectable <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;@opensumi/di&#x27;</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> NodeModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;@opensumi/ide-core-node&#x27;</span><span class="token punctuation">;</span>

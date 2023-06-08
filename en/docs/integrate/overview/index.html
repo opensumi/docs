@@ -66,7 +66,6 @@
 <li>Frontend process（Browser Process）</li>
 </ul>
 <p>To ensure that extension problems do not affect IDE performance, OpenSumi uses a similar solution in terms of extension capabilities: similar to <code class="language-text">VS Code</code>, the extension is enabled by a separate extension process, and the extension process communicates with the frontend process by the backend process.</p>
-<p><img src="https://img.alicdn.com/imgextra/i2/O1CN01qNPXUm1wbMFgrPieN_!!6000000006326-2-tps-1332-1180.png" alt="OpenSumi Overall Structure"/></p>
 <p>The different capability implementations of OpenSumi are split into different modules. The modules have a weak dependency on each other by using <a href="../develop/basic-design/contribution-point">Contribution Point</a> and <a href="../develop/basic-design/dependence-injector">Dependence Inject</a>. Some core basic modules, such as theme service and layout service, are also directly dependent by other modules.</p>
 <p><strong>Therefore, it is necessary to ensure the introduction sequence of some modules during the integration development process.</strong></p>
 <p>The overall start-up life cycle is shown in the following diagram.</p>
