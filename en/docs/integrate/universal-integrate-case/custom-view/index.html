@@ -100,18 +100,18 @@
 <p>Code sample here: <a href="https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/custom-toolbar" target="_self" rel="nofollow">Custom View</a></p>
 <h2 id="view-registration" style="position:relative"><a href="#view-registration" aria-label="view registration permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>View Registration</h2>
 <p>First we need to register the ToolBar component to connect it to string Token <code class="language-text">test-toolbar</code>.</p>
-<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">TestToolbar</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span>
-    <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">TestToolbar</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>div
+    style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
       lineHeight<span class="token operator">:</span> <span class="token string">&#x27;35px&#x27;</span><span class="token punctuation">,</span>
       flex<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
       padding<span class="token operator">:</span> <span class="token string">&#x27;0 20px&#x27;</span><span class="token punctuation">,</span>
       textAlign<span class="token operator">:</span> <span class="token string">&#x27;center&#x27;</span><span class="token punctuation">,</span>
       backgroundColor<span class="token operator">:</span> <span class="token string">&#x27;var(--kt-menubar-background)&#x27;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-  <span class="token punctuation">&gt;</span></span><span class="token plain-text">
-    I&#x27;m a Test ToolBar
-  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token punctuation">}</span><span class="token punctuation">}</span>
+  <span class="token operator">&gt;</span>
+    <span class="token constant">I</span>&#x27;m a Test ToolBar
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token decorator"><span class="token at operator">@</span><span class="token function">Domain</span></span><span class="token punctuation">(</span>ComponentContribution<span class="token punctuation">)</span>
 <span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">TestContribution</span> <span class="token keyword">implements</span> <span class="token class-name">ComponentContribution</span> <span class="token punctuation">{</span>
@@ -131,18 +131,6 @@
     <span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
-<h3 id="notice-using-bottom-slot" style="position:relative"><a href="#notice-using-bottom-slot" aria-label="notice using bottom slot permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Notice: Using Bottom Slot</h3>
-<p>If you are using the <code class="language-text">SlotLocation.bottom</code>, there has a style applied to bottom slot view wrapper: <code class="language-text">overflow: hidden;</code>.
-So if you need scroll effect on your component, please add a additional <code class="language-text">div</code> with <code class="language-text">overflow: auto</code> in the outside of your component:</p>
-<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">BottomView</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span>
-    <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-      overflow<span class="token operator">:</span> auto<span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-  <span class="token punctuation">&gt;</span></span><span class="token plain-text">
-    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
-  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <h2 id="view-consumption" style="position:relative"><a href="#view-consumption" aria-label="view consumption permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>View Consumption</h2>
 <p>For this demand, there are two options to support view rendering:</p>
 <ol>
