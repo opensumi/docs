@@ -2,7 +2,7 @@
 id: offline-deployment
 title: 离线部署
 slug: offline-deployment
-order: 9
+order: 10
 ---
 
 ## 概览
