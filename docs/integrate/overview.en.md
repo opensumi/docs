@@ -27,8 +27,6 @@ There are three core processes within OpenSumi:
 
 To ensure that extension problems do not affect IDE performance, OpenSumi uses a similar solution in terms of extension capabilities: similar to `VS Code`, the extension is enabled by a separate extension process, and the extension process communicates with the frontend process by the backend process.
 
-![OpenSumi Overall Structure](https://img.alicdn.com/imgextra/i2/O1CN01qNPXUm1wbMFgrPieN_!!6000000006326-2-tps-1332-1180.png)
-
 The different capability implementations of OpenSumi are split into different modules. The modules have a weak dependency on each other by using [Contribution Point](../develop/basic-design/contribution-point) and [Dependence Inject](../develop/basic-design/dependence-injector). Some core basic modules, such as theme service and layout service, are also directly dependent by other modules.
 
 **Therefore, it is necessary to ensure the introduction sequence of some modules during the integration development process.**
