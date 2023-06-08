@@ -27,8 +27,6 @@ OpenSumi 框架旨在解决阿里经济体内部 IDE 产品研发的重复建设
 
 为了保证插件的问题不会影响 IDE 的性能表现，插件能力上 OpenSumi 采用了跟 `VS Code` 类似的方案，通过独立的插件进程去启动插件，插件进程再通过后端进程与前端进程进行通信。
 
-![OpenSumi整体架构](https://img.alicdn.com/imgextra/i3/O1CN019HcqJq1VzddNMtHcO_!!6000000002724-0-tps-800-709.jpg)
-
 OpenSumi 的不同能力实现被拆分到了不同的模块内，这些模块通过 [贡献点机制 (Contribution Point)](../develop/basic-design/contribution-point)、[DI 机制 (Dependence Inject)](../develop/basic-design/dependence-injector) 互相之间有较弱的依赖关系，对于一些比较核心的基础模块，如主题服务、布局服务等，也会被其他模块直接依赖。
 
 **因此，在集成开发过程中需要保证一些模块的引入顺序。**
