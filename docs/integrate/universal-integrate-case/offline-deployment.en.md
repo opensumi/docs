@@ -6,6 +6,7 @@ order: 9
 ---
 
 ## Overview
+
 OpenSumi naturally supports offline deployment scenarios. You only need to replace some internal network resources such as (icon, onig-wasm) with the resource addresses of the intranet through browser-side configuration.
 
 ## Configuration items that need to be modified
@@ -26,12 +27,38 @@ new ClientAPP({
     componentUri: '', // Configuration plugin browser layer component style file
     iconfontUri: '' // Configuration plugin browser layer iconfont style file
   }
-})
+});
 ```
 
 #### You can obtain the required resources from the following methods
+
 - **onigWasmUri**: Download from https://g.alicdn.com/kaitian/vscode-oniguruma-wasm/1.5.1/onig.wasm
 - **componentUri**: Get from `node_modules/@opensumi/ide-components/dist/index.css`
 - **iconfontUri**: Get from `node_modules/@opensumi/ide-components/lib/icon/iconfont/iconfont.css`
 
 Upload these resources to the intranet environment, and then fill in the corresponding configuration items with the intranet resource address.
+
+## Localization of ide-startup-lite Extension
+
+### Extension Resources
+
+The Extensions in [ide-startup-lite](https://github.com/opensumi/ide-startup-lite) are referenced through CDN. All extension resources are packaged and output in [lite-worker-extensions](https://github.com/opensumi/lite-worker-extensions).
+
+### Code Modification
+
+You need to modify the relevant code for importing plugins in Lite [here](https://github.com/opensumi/ide-startup-lite/blob/main/web-lite/extension/utils.ts#L56).
+
+```diff
+export async function getExtension(extensionId: string, version: string): Promise<IExtensionMetaData | undefined> {
+  const [, extName] = extensionId.split('.')
+-  const extPath = `gw.alipayobjects.com/os/marketplace/extension/${extensionId}-${version}/`;
++  const extPath = `${your local path}`;
+  const packageJSON = await fetch(`https://${extPath}package.json`)
+    .then((res) => res.json());
+  packageJSON.contributes = mergeContributes(
+    packageJSON.kaitianContributes,
+    packageJSON.contributes,
+  );
+
+...
+```
