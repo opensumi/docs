@@ -93,7 +93,6 @@ extension-manager 主要负责插件的安装、管理、启/禁用等功能，�
 ├── scm                           # Source Control 功能抽象接口，并提供了标准的 VS Code SCM API，例如 Git 插件就是基于 SCM 提供的接口实现的
 ├── search                        # 跨文件文本搜索功能实现
 ├── startup                       # 示例模块，开发状态下可以基于 startup 模块来启动 OpenSumi
-├── static-resource               # 静态资源服务管理模块
 ├── status-bar                    # 状态栏功能实现，并提供标准的 VS Code StatusBar API
 ├── storage                       # 存储功能实现，主要维护 OpenSumi 内的各种缓存读写
 ├── task                          # 任务功能实现，并提供标准的 VS Code Task API

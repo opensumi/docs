@@ -93,7 +93,6 @@ One of the most important criteria to determine a module belongs to an `underlyi
 ├── scm                           # The abstract interface of Source Control functionality, offering a standard VS Code SCM API, such as Git extensions that are implemented based on the SCM interface  
 ├── search                        # Cross-file text search functionality
 ├── startup                       # OpenSumi Example module that can be used to start OpenSumi based on the Startup module in development state 
-├── static-resource               # Static resource service management module
 ├── status-bar                    # Status bar functionality implementation, offering standard VS Code StatusBar APIs
 ├── storage                       # Storage functionality implementation, mainly maintaining reading and writing of various cache in OpenSumi  
 ├── task                          # Task functionality implementation, offering standard VS Code Task APIs
