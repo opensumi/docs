@@ -146,6 +146,14 @@ module.exports = {
           en: 'OpenSumi Contribute Points'
         },
         order: 4
+      },
+      {
+        slug: 'extension/vscode',
+        title: {
+          zh: 'VS Code 插件开发',
+          en: 'VS Code Extension Develop'
+        },
+        order: 5
       }
     ],
     showDingTalkQRCode: true,
