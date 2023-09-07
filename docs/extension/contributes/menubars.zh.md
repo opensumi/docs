@@ -55,4 +55,4 @@ interface IContributedMenubarItem {
 
 ![Sample](https://img.alicdn.com/imgextra/i2/O1CN01VLQjCz1iP598hWLQO_!!6000000004404-2-tps-1000-397.png)
 
-其余菜单注册，可见：[Menus 贡献点](https://code.visualstudio.com/api/references/contribution-points#contributes.menus)
+常规菜单注册，可见：[Menus 贡献点](https://code.visualstudio.com/api/references/contribution-points#contributes.menus)
