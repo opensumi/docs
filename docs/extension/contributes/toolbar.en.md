@@ -264,6 +264,7 @@ Components need to be implemented by developers themselves and exported in `brow
 // browser/index.ts
 import * as React from 'react';
 import { useEffect } from 'react';
+import { commands } from 'kaitian-browser';
 
 export const CustomPopover = props => {
   useEffect(() => {
@@ -276,6 +277,13 @@ export const CustomPopover = props => {
   return (
     <div style={{ width: 200, height: 200, padding: 10 }}>
       Hello {props.context?.name}
+      <button
+        onClick={() => {
+          commands.executeCommand('popup.testCommand');
+        }}
+      >
+        Execute Command
+      </button>
     </div>
   );
 };
@@ -283,12 +291,23 @@ export const CustomPopover = props => {
 
 In this code, a context object can be obtained from props, and the context can be dynamically updated by calling `actionHandler API` from the plug-in Node side.
 
+The Popover can obtain the state passed in by NodeJS from props.context, and it can also use `commands.executeCommand` to invoke the Commands registered in NodeJS.
+
 ```ts
 // node/index.ts
 export function activate() {
   const action = await kaitian.toolbar.getToolbarActionButtonHandle(
     'sample-start'
   );
+
+  kaitian.commands.registerCommand('popup.testCommand', () => {
+    console.log('command executed');
+  });
+
+  action.onClick(() => {
+    action.showPopover();
+  });
+
   setInterval(() => {
     action.setContext({
       // Update context value regularly

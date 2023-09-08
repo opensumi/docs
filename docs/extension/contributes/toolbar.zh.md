@@ -266,6 +266,7 @@ export function activate() {
 // browser/index.ts
 import * as React from 'react';
 import { useEffect } from 'react';
+import { commands } from 'kaitian-browser';
 
 export const CustomPopover = props => {
   useEffect(() => {
@@ -278,6 +279,13 @@ export const CustomPopover = props => {
   return (
     <div style={{ width: 200, height: 200, padding: 10 }}>
       Hello {props.context?.name}
+      <button
+        onClick={() => {
+          commands.executeCommand('popup.testCommand');
+        }}
+      >
+        调用 Command
+      </button>
     </div>
   );
 };
@@ -285,12 +293,23 @@ export const CustomPopover = props => {
 
 这段代码中，可以从 props 获取一个 context 对象，context 可以通过插件 Node 端调用 `actionHandler API` 来动态更新。
 
+Popover 可以从 props.context 中获取到 NodeJS 传入的状态，同时又可以使用 `commands.executeCommand` 来调用 NodeJS 中注册的 Commands。
+
 ```ts
 // node/index.ts
 export function activate() {
   const action = await kaitian.toolbar.getToolbarActionButtonHandle(
     'sample-start'
   );
+
+  kaitian.commands.registerCommand('popup.testCommand', () => {
+    console.log('command executed');
+  });
+
+  action.onClick(() => {
+    action.showPopover();
+  });
+
   setInterval(() => {
     action.setContext({
       // 定时更新 context 值
