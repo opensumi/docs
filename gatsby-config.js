@@ -159,7 +159,7 @@ module.exports = {
     showDingTalkQRCode: true,
     showWeChatQRCode: true,
     weChatQRCode:
-      'https://img.alicdn.com/imgextra/i2/O1CN01s9Ob1C1et4cU5tEfr_!!6000000003928-0-tps-1376-1373.jpg',
+      'https://img.alicdn.com/imgextra/i1/O1CN010tRZ6B1eSy3HIYj3Y_!!6000000003871-0-tps-1376-1475.jpg',
     dingTalkQRCode:
       'https://img.alicdn.com/imgextra/i2/O1CN01Fcw6RC1T8qozkQBFG_!!6000000002338-2-tps-200-239.png',
     showSearch: true, // 是否展示搜索框
