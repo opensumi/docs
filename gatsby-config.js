@@ -56,6 +56,13 @@ module.exports = {
           en: 'Marketplace',
           zh: '插件市场'
         }
+      },
+      {
+        slug: 'https://codeblitz.opensumi.com',
+        title: {
+          en: 'CodeBlitz',
+          zh: 'CodeBlitz'
+        }
       }
     ],
     docs: [
