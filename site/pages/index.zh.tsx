@@ -131,6 +131,17 @@ const IndexPage = () => {
     },
     {
       logo:
+        'https://mdn.alipayobjects.com/huamei_htww6h/afts/img/A*BstfT6p0xWUAAAAAAAAAAAAADhl8AQ/original',
+      title: t('支付宝小程序云 Cloud IDE'),
+      link: 'https://ide.cloud.alipay.com',
+      description: t(
+        '支付宝小程序云 Cloud IDE 是一个以代码为中心、专业高效的云端研发平台。为您提供云上集成开发环境，您无需下载安装、配置环境，打开浏览器即可实现编码、构建、调试、代码理解的协同工作。'
+      ),
+      image:
+        'https://mdn.alipayobjects.com/huamei_htww6h/afts/img/A*ejQxS6sz7TMAAAAAAAAAAAAADhl8AQ/original'
+    },
+    {
+      logo:
         'https://img.alicdn.com/imgextra/i2/O1CN01cBd8fD1tMIQC8kU7D_!!6000000005887-2-tps-200-200.png',
       title: t('Gitlink 开源代码托管平台'),
       link: 'https://www.gitlink.org.cn',
