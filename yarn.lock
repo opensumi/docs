@@ -1778,10 +1778,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@opensumi/gatsby-theme@^2.4.1":
-  version "2.4.1"
-  resolved "https://registry.npmmirror.com/@opensumi/gatsby-theme/-/gatsby-theme-2.4.1.tgz#12b067aac79e227076cfdeeaa0985ce32962590c"
-  integrity sha512-RUSPx8X7eiu9SNpbzy6rajPh4hml00Nle99PhVH0RIbEVhcPh7q5q+6AI6hUbMdxl2S8n/Y5O/qHhcymYm78PA==
+"@opensumi/gatsby-theme@^2.4.4":
+  version "2.4.4"
+  resolved "https://registry.npmmirror.com/@opensumi/gatsby-theme/-/gatsby-theme-2.4.4.tgz#b78990b05be0446eb2421b1c8eaee3fd59a70711"
+  integrity sha512-Y5ouWXd1hEwCwFbATHdWTDqfgwOt+Mfg0PDxfUzsJB7NFAZ9ZOzA+Poyv3t6bjWD1Q8Q6h7ovPULnoiq6Fx3eA==
   dependencies:
     "@ant-design/icons" "^4.7.0"
     "@docsearch/css" "^3.1.0"
