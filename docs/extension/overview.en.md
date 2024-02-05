@@ -71,7 +71,7 @@ The Worker has the ability to run in a WebWorker environment. If your extension 
 
 ## Getting Started
 
-Refer to the [Quick Start](<(./quick-start)>) document to quickly set up a extension development environment using OpenSumi CLI locally.
+Refer to the [Quick Start](./quick-start) document to quickly set up a extension development environment using OpenSumi CLI locally.
 
 ## Extension Examples
 
