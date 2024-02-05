@@ -79,4 +79,4 @@ myBackService = new Proxy(
 
 ## 用法
 
-除了常见的 `前端 -> 后端` 这种模式，OpenSumi 也支持 `后端 -> 前端` 调用。关于前后端通信的具体实例，可以参考 [前后端通信示例](../sample/connection-between-browser-and-node)。
+除了常见的 `前端 -> 后端` 这种模式，OpenSumi 也支持 `后端 -> 前端` 调用。关于前后端通信的具体实例，可以参考 [前后端通信示例](../../sample/connection-between-browser-and-node)。

@@ -79,5 +79,4 @@ For multiple windows scenarios, each window establishes a long connection to the
 
 ## User Guide
 
-In addition to the common `frontend-> backend-` mode, OpenSumi also supports `backend-> frontend-` call. For specific examples of backend communication, see [Examples of frontend and backend communication](../sample/connection-between-browser-and-node)
-
+In addition to the common `frontend-> backend-` mode, OpenSumi also supports `backend-> frontend-` call. For specific examples of backend communication, see [Examples of frontend and backend communication](../../sample/connection-between-browser-and-node)
