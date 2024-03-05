@@ -92,7 +92,7 @@ Worker 端拥有 WebWorker 环境运行时，如果你的插件包含一些计�
 
 ![Extension Marketplace](https://img.alicdn.com/imgextra/i2/O1CN01Kq3jZf25zTjbBJWzR_!!6000000007597-2-tps-1906-732.png)
 
-- [OpenTRS](https://marketplace.opentrs.cn/square) —— 蚂蚁集团开放的公共插件市场服务
+- [AlipayCloud](https://ide.cloud.alipay.com/marketplace/square) —— 蚂蚁集团开放的支付宝小程序云插件市场
 - [OpenVSX](https://open-vsx.org/) —— Eclipse 基金会开放的公共插件市场服务（源码开源）
 
 可以根据使用场景自由进行源的切换，见文档 [自定义插件市场源](../integrate/universal-integrate-case/custom-marketplace-entrypoint)。
