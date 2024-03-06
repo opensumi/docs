@@ -51,7 +51,7 @@ module.exports = {
         }
       },
       {
-        slug: 'https://marketplace.opentrs.cn/square',
+        slug: 'https://ide.cloud.alipay.com/marketplace/square',
         title: {
           en: 'Marketplace',
           zh: '插件市场'

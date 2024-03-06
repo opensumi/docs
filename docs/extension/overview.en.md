@@ -94,7 +94,7 @@ Currently, OpenSumi supports two types of plugin marketplaces as shown below:
 
 ![Extension Marketplace](https://img.alicdn.com/imgextra/i2/O1CN01Kq3jZf25zTjbBJWzR_!!6000000007597-2-tps-1906-732.png)
 
-- [OpenTRS](https://marketplace.opentrs.cn/square) —— A public extension marketplace service provided by Ant Group.
+- [AlipayCloud](https://ide.cloud.alipay.com/marketplace/square) —— A public extension marketplace service provided by Ant Group.
 - [OpenVSX](https://open-vsx.org/) —— A public extension marketplace service provided by the Eclipse Foundation (with open source code).
 
 You can freely switch between sources according to your usage scenario, see the documentation for [Custom Extension Marketplace](../integrate/universal-integrate-case/custom-marketplace-entrypoint).
