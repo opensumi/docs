@@ -166,9 +166,9 @@ module.exports = {
     showDingTalkQRCode: true,
     showWeChatQRCode: true,
     weChatQRCode:
-      'https://img.alicdn.com/imgextra/i1/O1CN010tRZ6B1eSy3HIYj3Y_!!6000000003871-0-tps-1376-1475.jpg',
+      'https://img.alicdn.com/imgextra/i2/O1CN01gGv30m1FBgm52NCDh_!!6000000000449-2-tps-200-198.png',
     dingTalkQRCode:
-      'https://img.alicdn.com/imgextra/i2/O1CN01Fcw6RC1T8qozkQBFG_!!6000000002338-2-tps-200-239.png',
+      'https://img.alicdn.com/imgextra/i3/O1CN01aUGtnO1gMfu1JESuP_!!6000000004128-0-tps-200-239.jpg',
     showSearch: true, // 是否展示搜索框
     showChinaMirror: false, // 是否展示国内镜像链接
     showLanguageSwitcher: true, // 用于定义是否展示语言切换
