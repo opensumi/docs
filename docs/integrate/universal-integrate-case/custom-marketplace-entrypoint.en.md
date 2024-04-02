@@ -28,7 +28,7 @@ The download script (`scripts/download.js`) uses the Alipay CloudIDE extension m
 
 ### How to modify the plugin market source
 
-You can refer to the code here: [node/start-server.ts#L18](https://github.com/opensumi/opensumi-module-samples/blob/main/example/src/node/start-server.ts# L18), add relevant parameter information in the configuration parameters of the Node process startup. The specific configuration is as follows:
+You can refer to the code here: [node/start-server.ts#L18](https://github.com/opensumi/opensumi-module-samples/blob/main/example/src/node/start-server.ts#L18) , add relevant parameter information in the configuration parameters of the Node process startup. The specific configuration is as follows:
 
 #### Alipay CloudIDE Marketplace
 
@@ -43,8 +43,7 @@ let opts: IServerAppOpts = {
   ...
 };                 
 ```
-The `accountId` and `masterKey` used in the above configuration are the public secret key provided by the Alipay CloudIDE Marketplace. This secret key can access all public extensions in the marketplace by default. If you need to customize the secret key, you can refer to the client management section in the [Alipay CloudIDE Marketplace documentation](https://www.opentrs.cn/cloudide/documents/documentDetail?productStr=cloudide-20221026&nameSpace=trms2d/xyyfdt&slug=ooxr2vxp32r9hv4q). Through the custom secret key, you can access your private extensions hosted in the marketplace.
-
+The 'accountId' and 'masterKey' used in the above configuration are public keys provided by the Alipay CloudIDE Marketplace. By default, the key can access all public extension. If you need a custom key, please refer to [Alipay CloudIDE Marketplace](https://opendocs.alipay.com/cloud/0b5470) The content of the client management section in allows users to access private extension which hosted in the extension marketplace through custom keys
 
 #### Eclipse Open VSX
 
