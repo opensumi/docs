@@ -48,13 +48,13 @@ startServer({
 
 The purpose of this step is to register various AI capabilities.
 
-1. Create a new contribution file and implement the AiNativeCoreContribution interface.
+1. Create a new contribution file and implement the AINativeCoreContribution interface.
 
 ```typescript
-import { AiNativeCoreContribution } from '@opensumi/ide-ai-native/lib/browser/types';
+import { AINativeCoreContribution } from '@opensumi/ide-ai-native/lib/browser/types';
 
-@Domain(AiNativeCoreContribution)
-export class AiNativeContribution implements AiNativeCoreContribution {
+@Domain(AINativeCoreContribution)
+export class AiNativeContribution implements AINativeCoreContribution {
   // Register various AI capabilities here
 }
 ```
@@ -110,8 +110,8 @@ So, it is necessary to provide various provider capabilities in AiNativeContribu
 Taking inline chat as an example, implement the registerInlineChatFeature method in AiNativeContribution.
 
 ```typescript
-@Domain(AiNativeCoreContribution)
-export class AiNativeContribution implements AiNativeCoreContribution {
+@Domain(AINativeCoreContribution)
+export class AiNativeContribution implements AINativeCoreContribution {
   // Obtain the registered backend service through AIBackSerivcePath
   // At this point, you can directly RPC call the functions provided by the backend service
   @Autowired(AIBackSerivcePath)
