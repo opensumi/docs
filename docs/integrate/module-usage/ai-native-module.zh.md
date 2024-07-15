@@ -47,13 +47,13 @@ startServer({
 
 这一步的目的是为了注册各种 AI 能力
 
-**1. 新建一个 `contribution` 文件，并实现 `AiNativeCoreContribution` 接口**
+**1. 新建一个 `contribution` 文件，并实现 `AINativeCoreContribution` 接口**
 
 ```typescript
-import { AiNativeCoreContribution } from '@opensumi/ide-ai-native/lib/browser/types';
+import { AINativeCoreContribution } from '@opensumi/ide-ai-native/lib/browser/types';
 
-@Domain(AiNativeCoreContribution)
-export class AiNativeContribution implements AiNativeCoreContribution {
+@Domain(AINativeCoreContribution)
+export class AiNativeContribution implements AINativeCoreContribution {
   // 在这里注册各种 AI 能力
 }
 ```
@@ -140,8 +140,8 @@ const serverApp = new ServerApp(opts);
 我们以 inline chat 为例，在 AiNativeContribution 中实现 `registerInlineChatFeature` 方法
 
 ```typescript
-@Domain(AiNativeCoreContribution)
-export class AiNativeContribution implements AiNativeCoreContribution {
+@Domain(AINativeCoreContribution)
+export class AiNativeContribution implements AINativeCoreContribution {
   // 通过 AIBackSerivcePath 拿到注册好的后端服务
   // 此时就能直接 RPC 调用后端服务提供的函数
   @Autowired(AIBackSerivcePath)
