@@ -86,12 +86,12 @@
 <h4 id="step-2-contribution" style="position:relative"><a href="#step-2-contribution" aria-label="step 2 contribution permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 2: Contribution</h4>
 <p>The purpose of this step is to register various AI capabilities.</p>
 <ol>
-<li>Create a new contribution file and implement the AiNativeCoreContribution interface.</li>
+<li>Create a new contribution file and implement the AINativeCoreContribution interface.</li>
 </ol>
-<div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> AiNativeCoreContribution <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;@opensumi/ide-ai-native/lib/browser/types&#x27;</span><span class="token punctuation">;</span>
+<div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> AINativeCoreContribution <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;@opensumi/ide-ai-native/lib/browser/types&#x27;</span><span class="token punctuation">;</span>
 
-<span class="token decorator"><span class="token at operator">@</span><span class="token function">Domain</span></span><span class="token punctuation">(</span>AiNativeCoreContribution<span class="token punctuation">)</span>
-<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AiNativeContribution</span> <span class="token keyword">implements</span> <span class="token class-name">AiNativeCoreContribution</span> <span class="token punctuation">{</span>
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">Domain</span></span><span class="token punctuation">(</span>AINativeCoreContribution<span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AiNativeContribution</span> <span class="token keyword">implements</span> <span class="token class-name">AINativeCoreContribution</span> <span class="token punctuation">{</span>
   <span class="token comment">// Register various AI capabilities here</span>
 <span class="token punctuation">}</span></code></pre></div>
 <ol start="2">
@@ -130,8 +130,8 @@ opts<span class="token punctuation">.</span>injector <span class="token operator
 <p>So, it is necessary to provide various provider capabilities in AiNativeContribution.</p>
 <p><strong>Contribution</strong></p>
 <p>Taking inline chat as an example, implement the registerInlineChatFeature method in AiNativeContribution.</p>
-<div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token decorator"><span class="token at operator">@</span><span class="token function">Domain</span></span><span class="token punctuation">(</span>AiNativeCoreContribution<span class="token punctuation">)</span>
-<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AiNativeContribution</span> <span class="token keyword">implements</span> <span class="token class-name">AiNativeCoreContribution</span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token decorator"><span class="token at operator">@</span><span class="token function">Domain</span></span><span class="token punctuation">(</span>AINativeCoreContribution<span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AiNativeContribution</span> <span class="token keyword">implements</span> <span class="token class-name">AINativeCoreContribution</span> <span class="token punctuation">{</span>
   <span class="token comment">// Obtain the registered backend service through AIBackSerivcePath</span>
   <span class="token comment">// At this point, you can directly RPC call the functions provided by the backend service</span>
   <span class="token decorator"><span class="token at operator">@</span><span class="token function">Autowired</span></span><span class="token punctuation">(</span>AIBackSerivcePath<span class="token punctuation">)</span>
