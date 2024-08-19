@@ -166,7 +166,7 @@ module.exports = {
     showDingTalkQRCode: true,
     showWeChatQRCode: true,
     weChatQRCode:
-      'https://mdn.alipayobjects.com/huamei_1fkuc4/afts/img/A*p31pT4e29YYAAAAAAAAAAAAADhviAQ/original',
+      'https://mdn.alipayobjects.com/huamei_1fkuc4/afts/img/A*j_ooQLNzdxcAAAAAAAAAAAAADhviAQ/original',
     dingTalkQRCode:
       'https://mdn.alipayobjects.com/huamei_1fkuc4/afts/img/A*EMZYTIpdYJsAAAAAAAAAAAAADhviAQ/original',
     showSearch: true, // 是否展示搜索框
