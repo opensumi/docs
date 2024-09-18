@@ -74,12 +74,11 @@ const app = new ClientApp(opts);
 
 > 完整示例代码见 [ai.back.service.ts](https://github.com/opensumi/core/blob/main/packages/startup/entry/sample-modules/ai-native/ai.back.service.ts)
 
-**1. 新建一个后端 service 文件，并继承 BaseAIBackService 服务**
+**1. 新建一个后端 service 文件**
 
 ```typescript
 @Injectable()
-export class AiBackService extends BaseAIBackService
-  implements IAIBackService<ReqeustResponse, ChatReadableStream> {
+export class AiBackService implements IAIBackService<ReqeustResponse, ChatReadableStream> {
   // 在这里可以跟任何的大模型 API 做接口交互
 
   // 例如 request 可以一次性返回大模型的返回结果
@@ -203,50 +202,14 @@ export class AiNativeContribution implements AINativeCoreContribution {
 
 | 方法名                         | 描述                                        | 参数类型                          | 返回类型 |
 | ------------------------------ | ------------------------------------------- | --------------------------------- | -------- |
-| middleware                     | 提供中间件来扩展部分 AI 能力                | IAIMiddleware                     | void     |
 | registerInlineChatFeature      | 注册 inline chat 相关功能                   | IInlineChatFeatureRegistry        | void     |
 | registerChatFeature            | 注册 chat 面板相关功能                      | IChatFeatureRegistry              | void     |
 | registerChatRender             | 注册 chat 面板相关渲染层，可以自定义 render | IChatRenderRegistry               | void     |
 | registerResolveConflictFeature | 注册智能解决冲突相关功能                    | IResolveConflictRegistry          | void     |
 | registerRenameProvider         | 注册智能重命名相关功能                      | IRenameCandidatesProviderRegistry | void     |
+| registerProblemFixFeature         | 注册智能修复相关功能                      | IProblemFixProviderRegistry | void     |
+| registerIntelligentCompletionFeature         | 注册智能代码补全相关功能                      | IIntelligentCompletionsRegistry | void     |
 
-#### IAIMiddleware
-
-| 方法名                            | 描述             | 参数类型                                                                                                                                          | 返回类型                                                                                      |
-| --------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| language.provideInlineCompletions | 扩展内联补全能力 | (model: ITextModel, position: Position, token: CancellationToken, next: (reqBean: CompletionRequestBean) => MaybePromise<IAICompletionResultModel | null>, completionRequestBean: CompletionRequestBean) => MaybePromise<IAICompletionResultModel | null> | void |
-
-用例：
-
-```typescript
-middleware: IAIMiddleware = {
-  language: {
-    provideInlineCompletions: async (
-      model: ITextModel,
-      position: Position,
-      token: CancellationToken,
-      next: (
-        reqBean: CompletionRequestBean
-      ) => MaybePromise<IAICompletionResultModel>,
-      completionRequestBean: CompletionRequestBean
-    ) => {
-      // 在这里可以根据参数信息做一些自定义逻辑，来改变代码补全返回的结果
-      // 例如
-      return {
-        sessionId: completionRequestBean.sessionId,
-        codeModelList: [
-          {
-            content: 'Hello OpenSumi!'
-          }
-        ]
-      };
-
-      // 当然也可以直接返回原始的代码补全结果（该结果会直接请求 back service 后端服务的 requestCompletion 方法）
-      return next(completionRequestBean);
-    }
-  }
-};
-```
 
 #### IInlineChatFeatureRegistry
 
@@ -457,6 +420,128 @@ registerRenameProvider(registry: IRenameCandidatesProviderRegistry): void {
 }
 ```
 
+#### IProblemFixProviderRegistry
+
+| 方法名                            | 描述                   | 参数类型                 | 返回类型 |
+| --------------------------------- | ---------------------- | ------------------------ | -------- |
+| registerHoverFixProvider | 注册问题诊断的提供者 | IHoverFixHandler | void     |
+
+用例:
+
+```typescript
+registerProblemFixFeature(registry: IProblemFixProviderRegistry): void {
+  registry.registerHoverFixProvider({
+    provideFix: async (
+      editor: ICodeEditor,
+      context: IProblemFixContext,
+      token: CancellationToken,
+    ): Promise<ChatResponse | InlineChatController> => {
+      const { marker, editRange } = context;
+      const prompt = '可自行组装问题诊断的 prompt';
+
+      const controller = new InlineChatController({ enableCodeblockRender: true });
+      const stream = await this.aiBackService.requestStream(prompt, {}, token);
+      controller.mountReadable(stream);
+
+      return controller;
+    },
+  });
+}
+```
+
+#### IIntelligentCompletionsRegistry
+
+| 方法名                            | 描述                   | 参数类型                 | 返回类型 |
+| --------------------------------- | ---------------------- | ------------------------ | -------- |
+| registerIntelligentCompletionProvider | 注册智能补全的提供者 | IIntelligentCompletionProvider | void     |
+
+说明: 在返回的补全列表当中配置 `enableMultiLine` 字段可开启多行补全的能力
+
+用例:
+
+```typescript
+registerIntelligentCompletionFeature(registry: IIntelligentCompletionsRegistry): void {
+  registry.registerIntelligentCompletionProvider(async (editor, position, bean, token) => {
+    const model = editor.getModel()!;
+    const value = model.getValueInRange({
+      startLineNumber: position.lineNumber,
+      startColumn: 1,
+      endLineNumber: position.lineNumber + 3,
+      endColumn: model?.getLineMaxColumn(position.lineNumber + 3),
+    });
+
+    const cancelController = new AbortController();
+    const { signal } = cancelController;
+
+    token.onCancellationRequested(() => {
+      cancelController.abort();
+    });
+
+    const getRandomString = (length) => {
+      const characters = 'opensumi';
+      let result = '';
+      for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      return result;
+    };
+
+    /**
+     * 随机增删字符
+     */
+    const insertRandomStrings = (originalString) => {
+      const minChanges = 2;
+      const maxChanges = 5;
+      const changesCount = Math.floor(Math.random() * (maxChanges - minChanges + 1)) + minChanges;
+      let modifiedString = originalString;
+      for (let i = 0; i < changesCount; i++) {
+        const randomIndex = Math.floor(Math.random() * originalString.length);
+        const operation = Math.random() < 0.5 ? 'delete' : 'insert';
+        if (operation === 'delete') {
+          modifiedString = modifiedString.slice(0, randomIndex) + modifiedString.slice(randomIndex + 1);
+        } else {
+          const randomChar = getRandomString(1);
+          modifiedString = modifiedString.slice(0, randomIndex) + randomChar + modifiedString.slice(randomIndex);
+        }
+      }
+      return modifiedString;
+    };
+
+    try {
+      await new Promise((resolve, reject) => {
+        const timeout = setTimeout(resolve, 1000);
+
+        signal.addEventListener('abort', () => {
+          clearTimeout(timeout);
+          reject(new DOMException('Aborted', 'AbortError'));
+        });
+      });
+
+      return {
+        items: [
+          {
+            insertText: insertRandomStrings(value),
+            range: {
+              startLineNumber: position.lineNumber,
+              startColumn: 1,
+              endLineNumber: position.lineNumber + 3,
+              endColumn: model?.getLineMaxColumn(position.lineNumber + 3),
+            },
+          },
+        ],
+        // 是否启动多行补全
+        enableMultiLine: true,
+      };
+    } catch (error) {
+      if (error.name === 'AbortError') {
+        return { items: [] };
+      }
+      throw error;
+    }
+  });
+}
+```
+
 **完整示例代码见 [ai-native.contribution.ts](https://github.com/opensumi/core/blob/main/packages/startup/entry/sample-modules/ai-native/ai-native.contribution.ts)**
 
 ## 相关配置
@@ -482,6 +567,7 @@ AI Native Config 相关的配置参数可以控制所有 AI 能力的开关
 | supportsInlineCompletion       | boolean | 是否开启代码智能补全功能         |
 | supportsConflictResolve        | boolean | 是否开启 AI 智能解决冲突的功能   |
 | supportsRenameSuggestions      | boolean | 是否开启 AI 提供重命名建议的功能 |
+| supportsProblemFix             | boolean | 是否开启 AI 问题诊断能力       |
 | supportsTerminalDetection      | boolean | 是否开启 AI 终端检测功能         |
 | supportsTerminalCommandSuggest | boolean | 是否开启 AI 终端命令建议功能     |
 
