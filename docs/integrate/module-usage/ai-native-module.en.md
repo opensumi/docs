@@ -79,7 +79,7 @@ Complete example code can be found in ai.back.service.ts.
 
 ```typescript
 @Injectable()
-export class AiBackService extends BaseAIBackService implements IAIBackService {
+export class AiBackService implements IAIBackService<ReqeustResponse, ChatReadableStream> {
   // Here you can interact with any large model API interface
 }
 ```
@@ -144,45 +144,15 @@ Other capabilities' Provider API documentation is as follows:
 
 | Method Name                    | Description                                                         | Parameter Type                    | Return Type |
 | ------------------------------ | ------------------------------------------------------------------- | --------------------------------- | ----------- |
-| middleware                     | Provides middleware to extend some AI capabilities                  | IAIMiddleware                     | void        |
 | registerInlineChatFeature      | Registers inline chat related features                              | IInlineChatFeatureRegistry        | void        |
 | registerChatFeature            | Registers chat panel related features                               | IChatFeatureRegistry              | void        |
 | registerChatRender             | Registers chat panel related rendering layers, can customize render | IChatRenderRegistry               | void        |
 | registerResolveConflictFeature | Registers intelligent conflict resolution related features          | IResolveConflictRegistry          | void        |
 | registerRenameProvider         | Registers intelligent renaming related features                     | IRenameCandidatesProviderRegistry | void        |
+| registerProblemFixFeature         | 
+Register smart repair related functions                      | IProblemFixProviderRegistry | void     |
+| registerIntelligentCompletionFeature         | Register for smart code completion related functions                      | IIntelligentCompletionsRegistry | void     |
 
-#### IAIMiddleware
-
-| Method Name                       | Description                            | Parameter Type                                                                                                                                                                          | Return Type |
-| --------------------------------- | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| language.provideInlineCompletions | Extends inline completion capabilities | (model: ITextModel, position: Position, token: CancellationToken, next: (reqBean: CompletionRequestBean) => MaybePromise, completionRequestBean: CompletionRequestBean) => MaybePromise | void        |
-
-Example:
-
-```typescript
-middleware: IAIMiddleware = {
-  language: {
-    provideInlineCompletions: async (
-      model: ITextModel,
-      position: Position,
-      token: CancellationToken,
-      next: (reqBean: CompletionRequestBean) => MaybePromise,
-      completionRequestBean: CompletionRequestBean
-    ) => {
-      // Custom logic based on parameter information to alter the code completion results
-      // For example
-      return {
-        sessionId: completionRequestBean.sessionId,
-        codeModelList: [
-          {
-            content: 'Hello OpenSumi!'
-          }
-        ]
-      };
-    }
-  }
-};
-```
 
 #### IInlineChatFeatureRegistry
 
@@ -381,6 +351,127 @@ registerRenameProvider(registry: IRenameCandidatesProviderRegistry): void {
 }
 ```
 
+#### IProblemFixProviderRegistry
+
+| Method Name                            | Description                   | Parameter Type                 | Return Type |
+| --------------------------------- | ---------------------- | ------------------------ | -------- |
+| registerHoverFixProvider | Register a provider for problem diagnosis | IHoverFixHandler | void     |
+
+Example:
+
+```typescript
+registerProblemFixFeature(registry: IProblemFixProviderRegistry): void {
+  registry.registerHoverFixProvider({
+    provideFix: async (
+      editor: ICodeEditor,
+      context: IProblemFixContext,
+      token: CancellationToken,
+    ): Promise<ChatResponse | InlineChatController> => {
+      const { marker, editRange } = context;
+      const prompt = 'Self-assembled prompts for problem diagnosis';
+
+      const controller = new InlineChatController({ enableCodeblockRender: true });
+      const stream = await this.aiBackService.requestStream(prompt, {}, token);
+      controller.mountReadable(stream);
+
+      return controller;
+    },
+  });
+}
+```
+
+#### IIntelligentCompletionsRegistry
+
+| Method Name                            | Description                   | Parameter Type                 | Return Type |
+| --------------------------------- | ---------------------- | ------------------------ | -------- |
+| registerIntelligentCompletionProvider | Register a smart completion provider | IIntelligentCompletionProvider | void     |
+
+Note: Configuring the `enableMultiLine` field in the returned completion list can enable multi-line completion.
+
+Example:
+
+```typescript
+registerIntelligentCompletionFeature(registry: IIntelligentCompletionsRegistry): void {
+  registry.registerIntelligentCompletionProvider(async (editor, position, bean, token) => {
+    const model = editor.getModel()!;
+    const value = model.getValueInRange({
+      startLineNumber: position.lineNumber,
+      startColumn: 1,
+      endLineNumber: position.lineNumber + 3,
+      endColumn: model?.getLineMaxColumn(position.lineNumber + 3),
+    });
+
+    const cancelController = new AbortController();
+    const { signal } = cancelController;
+
+    token.onCancellationRequested(() => {
+      cancelController.abort();
+    });
+
+    const getRandomString = (length) => {
+      const characters = 'opensumi';
+      let result = '';
+      for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      return result;
+    };
+
+    /**
+     * 随机增删字符
+     */
+    const insertRandomStrings = (originalString) => {
+      const minChanges = 2;
+      const maxChanges = 5;
+      const changesCount = Math.floor(Math.random() * (maxChanges - minChanges + 1)) + minChanges;
+      let modifiedString = originalString;
+      for (let i = 0; i < changesCount; i++) {
+        const randomIndex = Math.floor(Math.random() * originalString.length);
+        const operation = Math.random() < 0.5 ? 'delete' : 'insert';
+        if (operation === 'delete') {
+          modifiedString = modifiedString.slice(0, randomIndex) + modifiedString.slice(randomIndex + 1);
+        } else {
+          const randomChar = getRandomString(1);
+          modifiedString = modifiedString.slice(0, randomIndex) + randomChar + modifiedString.slice(randomIndex);
+        }
+      }
+      return modifiedString;
+    };
+
+    try {
+      await new Promise((resolve, reject) => {
+        const timeout = setTimeout(resolve, 1000);
+
+        signal.addEventListener('abort', () => {
+          clearTimeout(timeout);
+          reject(new DOMException('Aborted', 'AbortError'));
+        });
+      });
+
+      return {
+        items: [
+          {
+            insertText: insertRandomStrings(value),
+            range: {
+              startLineNumber: position.lineNumber,
+              startColumn: 1,
+              endLineNumber: position.lineNumber + 3,
+              endColumn: model?.getLineMaxColumn(position.lineNumber + 3),
+            },
+          },
+        ],
+        // Whether to enable multi-line completion
+        enableMultiLine: true,
+      };
+    } catch (error) {
+      if (error.name === 'AbortError') {
+        return { items: [] };
+      }
+      throw error;
+    }
+  });
+}
+
 **Complete example code can be found in [ai-native.contribution.ts](https://github.com/opensumi/core/blob/main/packages/startup/entry/sample-modules/ai-native/ai-native.contribution.ts).**
 
 ## Related Configuration
@@ -406,6 +497,7 @@ The AI Native Config-related configuration parameters can control the on/off sta
 | supportsInlineCompletion       | boolean | Whether to enable the code intelligent completion feature        |
 | supportsConflictResolve        | boolean | Whether to enable the AI intelligent conflict resolution feature |
 | supportsRenameSuggestions      | boolean | Whether to enable the AI to provide renaming suggestions feature |
+| supportsProblemFix             | boolean | Whether to enable AI problem diagnosis capability       |
 | supportsTerminalDetection      | boolean | Whether to enable the AI terminal detection feature              |
 | supportsTerminalCommandSuggest | boolean | Whether to enable the AI terminal command suggestion feature     |
 
