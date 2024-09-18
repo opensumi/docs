@@ -102,10 +102,9 @@ opts<span class="token punctuation">.</span>injector <span class="token operator
 <blockquote>
 <p>完整示  例代码见 <a href="https://github.com/opensumi/core/blob/main/packages/startup/entry/sample-modules/ai-native/ai.back.service.ts" target="_self" rel="nofollow">ai.back.service.ts</a></p>
 </blockquote>
-<p><strong>1. 新建一个后端 service 文件，并继承 BaseAIBackService 服务</strong></p>
+<p><strong>1. 新建一个后端 service 文件</strong></p>
 <div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token decorator"><span class="token at operator">@</span><span class="token function">Injectable</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AiBackService</span> <span class="token keyword">extends</span> <span class="token class-name">BaseAIBackService</span>
-  <span class="token keyword">implements</span> <span class="token class-name">IAIBackService<span class="token operator">&lt;</span>ReqeustResponse<span class="token punctuation">,</span> ChatReadableStream<span class="token operator">&gt;</span></span> <span class="token punctuation">{</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AiBackService</span> <span class="token keyword">implements</span> <span class="token class-name">IAIBackService<span class="token operator">&lt;</span>ReqeustResponse<span class="token punctuation">,</span> ChatReadableStream<span class="token operator">&gt;</span></span> <span class="token punctuation">{</span>
   <span class="token comment">// 在这里可以跟任何的大模型 API 做接口交互</span>
 
   <span class="token comment">// 例如 request 可以一次性返回大模型的返回结果</span>
@@ -259,54 +258,13 @@ opts<span class="token punctuation">.</span>injector <span class="token operator
 
 
 
-<table><thead><tr><th>方法名</th><th>描述</th><th>参数类型</th><th>返回类型</th></tr></thead><tbody><tr><td>middleware</td><td>提供中间件来扩展部分 AI 能力</td><td>IAIMiddleware</td><td>void</td></tr><tr><td>registerInlineChatFeature</td><td>注册 inline chat 相关功能</td><td>IInlineChatFeatureRegistry</td><td>void</td></tr><tr><td>registerChatFeature</td><td>注册 chat 面板相关功能</td><td>IChatFeatureRegistry</td><td>void</td></tr><tr><td>registerChatRender</td><td>注册 chat 面板相关渲染层，可以自定义 render</td><td>IChatRenderRegistry</td><td>void</td></tr><tr><td>registerResolveConflictFeature</td><td>注册智能解决冲突相关功能</td><td>IResolveConflictRegistry</td><td>void</td></tr><tr><td>registerRenameProvider</td><td>注册智能重命名相关功能</td><td>IRenameCandidatesProviderRegistry</td><td>void</td></tr></tbody></table>
-<h4 id="iaimiddleware" style="position:relative"><a href="#iaimiddleware" aria-label="iaimiddleware permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IAIMiddleware</h4>
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>方法名</th><th>描述</th><th>参数类型</th><th>返回类型</th></tr></thead><tbody><tr><td>language.provideInlineCompletions</td><td>扩展内联补全能力</td><td>(model: ITextModel, position: Position, token: CancellationToken, next: (reqBean: CompletionRequestBean) =&gt; MaybePromise&lt;IAICompletionResultModel</td><td>null&gt;, completionRequestBean: CompletionRequestBean) =&gt; MaybePromise&lt;IAICompletionResultModel</td></tr></tbody></table>
-<p>用例：</p>
-<div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript">middleware<span class="token operator">:</span> IAIMiddleware <span class="token operator">=</span> <span class="token punctuation">{</span>
-  language<span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token function-variable function">provideInlineCompletions</span><span class="token operator">:</span> <span class="token keyword">async</span> <span class="token punctuation">(</span>
-      model<span class="token operator">:</span> ITextModel<span class="token punctuation">,</span>
-      position<span class="token operator">:</span> Position<span class="token punctuation">,</span>
-      token<span class="token operator">:</span> CancellationToken<span class="token punctuation">,</span>
-      <span class="token function-variable function">next</span><span class="token operator">:</span> <span class="token punctuation">(</span>
-        reqBean<span class="token operator">:</span> CompletionRequestBean
-      <span class="token punctuation">)</span> <span class="token operator">=&gt;</span> MaybePromise<span class="token operator">&lt;</span>IAICompletionResultModel<span class="token operator">&gt;</span><span class="token punctuation">,</span>
-      completionRequestBean<span class="token operator">:</span> CompletionRequestBean
-    <span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-      <span class="token comment">// 在这里可以根据参数信息做一些自定义逻辑，来改变代码补全返回的结果</span>
-      <span class="token comment">// 例如</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span>
-        sessionId<span class="token operator">:</span> completionRequestBean<span class="token punctuation">.</span>sessionId<span class="token punctuation">,</span>
-        codeModelList<span class="token operator">:</span> <span class="token punctuation">[</span>
-          <span class="token punctuation">{</span>
-            content<span class="token operator">:</span> <span class="token string">&#x27;Hello OpenSumi!&#x27;</span>
-          <span class="token punctuation">}</span>
-        <span class="token punctuation">]</span>
-      <span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-      <span class="token comment">// 当然也可以直接返回原始的代码补全结果（该结果会直接请求 back service 后端服务的 requestCompletion 方法）</span>
-      <span class="token keyword">return</span> <span class="token function">next</span><span class="token punctuation">(</span>completionRequestBean<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<table><thead><tr><th>方法名</th><th>描述</th><th>参数类型</th><th>返回类型</th></tr></thead><tbody><tr><td>registerInlineChatFeature</td><td>注册 inline chat 相关功能</td><td>IInlineChatFeatureRegistry</td><td>void</td></tr><tr><td>registerChatFeature</td><td>注册 chat 面板相关功能</td><td>IChatFeatureRegistry</td><td>void</td></tr><tr><td>registerChatRender</td><td>注册 chat 面板相关渲染层，可以自定义 render</td><td>IChatRenderRegistry</td><td>void</td></tr><tr><td>registerResolveConflictFeature</td><td>注册智能解决冲突相关功能</td><td>IResolveConflictRegistry</td><td>void</td></tr><tr><td>registerRenameProvider</td><td>注册智能重命名相关功能</td><td>IRenameCandidatesProviderRegistry</td><td>void</td></tr><tr><td>registerProblemFixFeature</td><td>注册智能修复相关功能</td><td>IProblemFixProviderRegistry</td><td>void</td></tr><tr><td>registerIntelligentCompletionFeature</td><td>注册智能代码补全相关功能</td><td>IIntelligentCompletionsRegistry</td><td>void</td></tr></tbody></table>
 <h4 id="iinlinechatfeatureregistry" style="position:relative"><a href="#iinlinechatfeatureregistry" aria-label="iinlinechatfeatureregistry permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IInlineChatFeatureRegistry</h4>
 
 
@@ -626,6 +584,145 @@ registry<span class="token punctuation">.</span><span class="token function">reg
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
+<h4 id="iproblemfixproviderregistry" style="position:relative"><a href="#iproblemfixproviderregistry" aria-label="iproblemfixproviderregistry permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IProblemFixProviderRegistry</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>方法名</th><th>描述</th><th>参数类型</th><th>返回类型</th></tr></thead><tbody><tr><td>registerHoverFixProvider</td><td>注册问题诊断的提供者</td><td>IHoverFixHandler</td><td>void</td></tr></tbody></table>
+<p>用例:</p>
+<div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token function">registerProblemFixFeature</span><span class="token punctuation">(</span>registry<span class="token operator">:</span> IProblemFixProviderRegistry<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+  registry<span class="token punctuation">.</span><span class="token function">registerHoverFixProvider</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    provideFix<span class="token operator">:</span> <span class="token keyword">async</span> <span class="token punctuation">(</span>
+      editor<span class="token operator">:</span> ICodeEditor<span class="token punctuation">,</span>
+      context<span class="token operator">:</span> IProblemFixContext<span class="token punctuation">,</span>
+      token<span class="token operator">:</span> CancellationToken<span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Promise</span><span class="token operator">&lt;</span>ChatResponse <span class="token operator">|</span> InlineChatController<span class="token operator">&gt;</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> <span class="token punctuation">{</span> marker<span class="token punctuation">,</span> editRange <span class="token punctuation">}</span> <span class="token operator">=</span> context<span class="token punctuation">;</span>
+      <span class="token keyword">const</span> prompt <span class="token operator">=</span> <span class="token string">&#x27;可自行组装问题诊断的 prompt&#x27;</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InlineChatController</span><span class="token punctuation">(</span><span class="token punctuation">{</span> enableCodeblockRender<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> stream <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">this</span><span class="token punctuation">.</span>aiBackService<span class="token punctuation">.</span><span class="token function">requestStream</span><span class="token punctuation">(</span>prompt<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      controller<span class="token punctuation">.</span><span class="token function">mountReadable</span><span class="token punctuation">(</span>stream<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">return</span> controller<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h4 id="iintelligentcompletionsregistry" style="position:relative"><a href="#iintelligentcompletionsregistry" aria-label="iintelligentcompletionsregistry permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IIntelligentCompletionsRegistry</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>方法名</th><th>描述</th><th>参数类型</th><th>返回类型</th></tr></thead><tbody><tr><td>registerIntelligentCompletionProvider</td><td>注册智能补全的提供者</td><td>IIntelligentCompletionProvider</td><td>void</td></tr></tbody></table>
+<p>说明: 在返回的补全列表当中配置 <code class="language-text">enableMultiLine</code> 字段可开启多行补全的能力</p>
+<p>用例:</p>
+<div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token function">registerIntelligentCompletionFeature</span><span class="token punctuation">(</span>registry<span class="token operator">:</span> IIntelligentCompletionsRegistry<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+  registry<span class="token punctuation">.</span><span class="token function">registerIntelligentCompletionProvider</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span>editor<span class="token punctuation">,</span> position<span class="token punctuation">,</span> bean<span class="token punctuation">,</span> token<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> model <span class="token operator">=</span> editor<span class="token punctuation">.</span><span class="token function">getModel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> value <span class="token operator">=</span> model<span class="token punctuation">.</span><span class="token function">getValueInRange</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      startLineNumber<span class="token operator">:</span> position<span class="token punctuation">.</span>lineNumber<span class="token punctuation">,</span>
+      startColumn<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      endLineNumber<span class="token operator">:</span> position<span class="token punctuation">.</span>lineNumber <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      endColumn<span class="token operator">:</span> model<span class="token operator">?.</span><span class="token function">getLineMaxColumn</span><span class="token punctuation">(</span>position<span class="token punctuation">.</span>lineNumber <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> cancelController <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AbortController</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> signal <span class="token punctuation">}</span> <span class="token operator">=</span> cancelController<span class="token punctuation">;</span>
+
+    token<span class="token punctuation">.</span><span class="token function">onCancellationRequested</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      cancelController<span class="token punctuation">.</span><span class="token function">abort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> <span class="token function-variable function">getRandomString</span> <span class="token operator">=</span> <span class="token punctuation">(</span>length<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> characters <span class="token operator">=</span> <span class="token string">&#x27;opensumi&#x27;</span><span class="token punctuation">;</span>
+      <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token string">&#x27;&#x27;</span><span class="token punctuation">;</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        result <span class="token operator">+=</span> characters<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> characters<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * 随机增删字符
+     */</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">insertRandomStrings</span> <span class="token operator">=</span> <span class="token punctuation">(</span>originalString<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> minChanges <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> maxChanges <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> changesCount <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>maxChanges <span class="token operator">-</span> minChanges <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> minChanges<span class="token punctuation">;</span>
+      <span class="token keyword">let</span> modifiedString <span class="token operator">=</span> originalString<span class="token punctuation">;</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> changesCount<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> randomIndex <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> originalString<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> operation <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">&#x27;delete&#x27;</span> <span class="token operator">:</span> <span class="token string">&#x27;insert&#x27;</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>operation <span class="token operator">===</span> <span class="token string">&#x27;delete&#x27;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          modifiedString <span class="token operator">=</span> modifiedString<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> randomIndex<span class="token punctuation">)</span> <span class="token operator">+</span> modifiedString<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>randomIndex <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          <span class="token keyword">const</span> randomChar <span class="token operator">=</span> <span class="token function">getRandomString</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          modifiedString <span class="token operator">=</span> modifiedString<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> randomIndex<span class="token punctuation">)</span> <span class="token operator">+</span> randomChar <span class="token operator">+</span> modifiedString<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>randomIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> modifiedString<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token builtin">Promise</span></span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> timeout <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        signal<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">&#x27;abort&#x27;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timeout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">DOMException</span><span class="token punctuation">(</span><span class="token string">&#x27;Aborted&#x27;</span><span class="token punctuation">,</span> <span class="token string">&#x27;AbortError&#x27;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        items<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            insertText<span class="token operator">:</span> <span class="token function">insertRandomStrings</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">,</span>
+            range<span class="token operator">:</span> <span class="token punctuation">{</span>
+              startLineNumber<span class="token operator">:</span> position<span class="token punctuation">.</span>lineNumber<span class="token punctuation">,</span>
+              startColumn<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+              endLineNumber<span class="token operator">:</span> position<span class="token punctuation">.</span>lineNumber <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">,</span>
+              endColumn<span class="token operator">:</span> model<span class="token operator">?.</span><span class="token function">getLineMaxColumn</span><span class="token punctuation">(</span>position<span class="token punctuation">.</span>lineNumber <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token comment">// 是否启动多行补全</span>
+        enableMultiLine<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">&#x27;AbortError&#x27;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span> items<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">throw</span> error<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
 <p><strong>完整示例代码见 <a href="https://github.com/opensumi/core/blob/main/packages/startup/entry/sample-modules/ai-native/ai-native.contribution.ts" target="_self" rel="nofollow">ai-native.contribution.ts</a></strong></p>
 <h2 id="相关配置" style="position:relative"><a href="#%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE" aria-label="相关配置 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>相关配置</h2>
 <p>AI Native Config 相关的配置参数可以控制所有 AI 能力的开关</p>
@@ -705,7 +802,12 @@ registry<span class="token punctuation">.</span><span class="token function">reg
 
 
 
-<table><thead><tr><th>属性名</th><th>类型</th><th>描述</th></tr></thead><tbody><tr><td>supportsMarkers</td><td>boolean</td><td>是否开启 AI 能力处理问题面板</td></tr><tr><td>supportsChatAssistant</td><td>boolean</td><td>是否开启 AI 聊天助手功能</td></tr><tr><td>supportsInlineChat</td><td>boolean</td><td>是否开启 Inline Chat 功能</td></tr><tr><td>supportsInlineCompletion</td><td>boolean</td><td>是否开启代码智能补全功能</td></tr><tr><td>supportsConflictResolve</td><td>boolean</td><td>是否开启 AI 智能解决冲突的功能</td></tr><tr><td>supportsRenameSuggestions</td><td>boolean</td><td>是否开启 AI 提供重命名建议的功能</td></tr><tr><td>supportsTerminalDetection</td><td>boolean</td><td>是否开启 AI 终端检测功能</td></tr><tr><td>supportsTerminalCommandSuggest</td><td>boolean</td><td>是否开启 AI 终端命令建议功能</td></tr></tbody></table>
+
+
+
+
+
+<table><thead><tr><th>属性名</th><th>类型</th><th>描述</th></tr></thead><tbody><tr><td>supportsMarkers</td><td>boolean</td><td>是否开启 AI 能力处理问题面板</td></tr><tr><td>supportsChatAssistant</td><td>boolean</td><td>是否开启 AI 聊天助手功能</td></tr><tr><td>supportsInlineChat</td><td>boolean</td><td>是否开启 Inline Chat 功能</td></tr><tr><td>supportsInlineCompletion</td><td>boolean</td><td>是否开启代码智能补全功能</td></tr><tr><td>supportsConflictResolve</td><td>boolean</td><td>是否开启 AI 智能解决冲突的功能</td></tr><tr><td>supportsRenameSuggestions</td><td>boolean</td><td>是否开启 AI 提供重命名建议的功能</td></tr><tr><td>supportsProblemFix</td><td>boolean</td><td>是否开启 AI 问题诊断能力</td></tr><tr><td>supportsTerminalDetection</td><td>boolean</td><td>是否开启 AI 终端检测功能</td></tr><tr><td>supportsTerminalCommandSuggest</td><td>boolean</td><td>是否开启 AI 终端命令建议功能</td></tr></tbody></table>
 <h3 id="idesignlayoutconfig" style="position:relative"><a href="#idesignlayoutconfig" aria-label="idesignlayoutconfig permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IDesignLayoutConfig</h3>
 
 
