@@ -5,7 +5,7 @@ slug: quick-start
 order: 1
 ---
 
-OpenSumi 基于 Node.js `12.x +` 版本开发，需要确保你本地已经安装上正确的 Node.js 版本。同时 OpenSumi 依赖一些 Node.js Addon，为了确保这些 Addon 能够被正常编译运行，建议参考 [node-gyp](https://github.com/nodejs/node-gyp#installation) 中的安装指南来搭建本地环境。
+OpenSumi 基于 Node.js `18.x +` 版本开发，需要确保你本地已经安装上正确的 Node.js 版本。同时 OpenSumi 依赖一些 Node.js Addon，为了确保这些 Addon 能够被正常编译运行，建议参考 [node-gyp](https://github.com/nodejs/node-gyp#installation) 中的安装指南来搭建本地环境。
 
 ![preview](https://img.alicdn.com/imgextra/i3/O1CN01uIRRRl1wmLkN9geV3_!!6000000006350-2-tps-2844-1830.png)
 
