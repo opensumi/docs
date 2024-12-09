@@ -51,13 +51,6 @@ module.exports = {
         }
       },
       {
-        slug: 'https://ide.cloud.alipay.com/marketplace/square',
-        title: {
-          en: 'Marketplace',
-          zh: '插件市场'
-        }
-      },
-      {
         slug: 'https://codeblitz.opensumi.com',
         title: {
           en: 'CodeBlitz',
