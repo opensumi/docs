@@ -103,6 +103,11 @@ const IndexPage = () => {
       name: '行云创新',
       img:
         'https://img.alicdn.com/imgextra/i2/O1CN01iUGF9A1GQdBaKE46F_!!6000000000617-2-tps-1138-392.png'
+    },
+    {
+      name: '青团社',
+      img:
+        'https://qiniu-image.qtshe.com/qts_logo.png'
     }
   ];
 
